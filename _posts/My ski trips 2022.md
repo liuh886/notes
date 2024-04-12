@@ -5,7 +5,9 @@ author: Zhihao
 description: What's the next?
 date: 2022-04-13
 categories: images
-tags: <d-cite key="\1"></d-cite>
+tags:
+  - withme
+  - norge
 lang: eng
 publish: true
 status: done
@@ -32,7 +34,7 @@ It was petty late when we reached sognsvann where the icy condition was not good
 
 ### Høgevarde, Norefjell - Cabin trip
 
-!<d-cite key="\1"></d-cite>(https://drscdn.500px.org/photo/1046875037/m%3D900/v2?sig=ae448281b42dea7c59595ac48e782b15d32c111f9958983ace2605de553d803b)
+![2](https://drscdn.500px.org/photo/1046875037/m%3D900/v2?sig=ae448281b42dea7c59595ac48e782b15d32c111f9958983ace2605de553d803b)
 
 <center>Høgevarde </center>
 
@@ -46,7 +48,7 @@ After that, I quickly brought fjellski because I realized that xc skis is not en
 
 ### Finse - Field trip 1
 
-!<d-cite key="\1"></d-cite>(https://drscdn.500px.org/photo/1046875107/m%3D900/v2?sig=919c366d3ee448b1151d25f548c24a9a9cbde956f80ab7652fea416cfa66dcac)
+![4](https://drscdn.500px.org/photo/1046875107/m%3D900/v2?sig=919c366d3ee448b1151d25f548c24a9a9cbde956f80ab7652fea416cfa66dcac)
 
 <center>Finse</center>
 
@@ -56,19 +58,19 @@ This is not a ski trip but rather a fieldwork. The elevation from LiDAR sensor w
 
 ### Finse - Field trip 2
 
-!<d-cite key="\1"></d-cite>(https://drscdn.500px.org/photo/1046875109/m%3D900/v2?sig=b3c63ca312b26a8b5e8ba1a8a46a1c55f9f09b2e02c4a1083610ce90082d401e)
+![11](https://drscdn.500px.org/photo/1046875109/m%3D900/v2?sig=b3c63ca312b26a8b5e8ba1a8a46a1c55f9f09b2e02c4a1083610ce90082d401e)
 
 <center>Finse</center>
 
 I miss my class trip to Finse, where we learned about snow profiles, snowpack instability tests, flux towers, and avalanche beacons. This is an excellent tutorials of avalanche awareness, particularly for winter activities fans.
 
-After class, the lecturer did some slopes with us. I found it would be fun to learn telemark skiing, albeit  today there are not much local telemark skiers in Norway (<d-cite key="\1"></d-cite>(https://trewgear.com/blogs/happenings/why-i-stille-telly-the-art-of-telemark-skiing) ).
+After class, the lecturer did some slopes with us. I found it would be fun to learn telemark skiing, albeit  today there are not much local telemark skiers in Norway ([Telemark skiing is dead](https://trewgear.com/blogs/happenings/why-i-stille-telly-the-art-of-telemark-skiing) ).
 
 
 
 ### Snøhetta, Dovrefjell  - Cabin trip
 
-!<d-cite key="\1"></d-cite>(https://drscdn.500px.org/photo/1046875160/m%3D900/v2?sig=1c994fa3ec23cf87a316b85aa69436503c4f606ccbd5c115f0f0a922a05f9798)
+![13](https://drscdn.500px.org/photo/1046875160/m%3D900/v2?sig=1c994fa3ec23cf87a316b85aa69436503c4f606ccbd5c115f0f0a922a05f9798)
 
 <center>Dovrefjell</center>
 
