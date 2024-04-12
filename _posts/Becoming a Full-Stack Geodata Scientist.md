@@ -4,8 +4,10 @@ title: Becoming a Full-Stack Geodata Scientist
 author: ChatGPT
 description: a talk with ChatGPT about career planning
 date: 2022-12-25
-categories: <d-cite key="\1"></d-cite>
-tags: <d-cite key="\1"></d-cite>
+categories:
+  - notes
+tags:
+  - geodata datascience
 lang: eng
 publish: yes
 ---
