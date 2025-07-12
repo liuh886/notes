@@ -2,7 +2,12 @@
 layout: distill
 title: Field Trip to Ice Age Museum
 description: The most interesting Quaternary geomorphology story of Norway
-tags: notes geomorphology glacier climate permafrost
+tags:
+  - notes
+  - geomorphology
+  - glacier
+  - climate
+  - permafrost
 giscus_comments: false
 date: 2022-11-20
 featured: true
@@ -10,9 +15,9 @@ publish: yes
 bibliography: lib.bib
 authors:
   - name: Zhihao
-    url: "" # Add your URL or leave it empty if not available
+    url: ""
     affiliations:
-      name: UiO # Add your affiliation or leave it empty if not available
+      name: UiO
 toc:
   - name: 1 Introduction
     subsections:
@@ -34,6 +39,7 @@ toc:
       - name: 4.2 Frozen-bed preservation hypothesis
       - name: 4.3 ICE (isostasy-climate-erosion) hypothesis
   - name: 5 Summary of the field trip
+filename: 2022-11-20-Quaternary-geomorphology-of-Norway
 ---
 
 
@@ -47,9 +53,9 @@ Instead of being only tourist attractions, glaciers and their geomorphic conditi
 - The process and impact of deglaciation, particularly the collapse of the Eurasian ice sheet complex (EISC) and the permafrost thawing.
 - The links between fieldwork and the literature.
 
-### 1.1 The glacier heritage in figures
+### 1.1 The Glacier Heritage in Figures
 
-#### Landscape 
+#### Landscape
 How glaciers have changed Norway? Here are some **figures**.
 
 Ice sheets, or glaciers in milder periods largely affected the Norwegian landscape, from dramatic western coastlines, deep valleys and fjord to alpine relief. The vertical linear glacier erosion along fjords amounts to **1500 m - 2000m**. A mean bedrock has been lowered of **520 m** through the Quaternary glaciations in Mid-Norway <d-cite key="mangerud.etal_2011"></d-cite>.
@@ -83,7 +89,7 @@ It takes a long time to sort sediments by water, deposit it in flat areas, and w
 
 Luckily, although being few in size, the precious farmland can still be found upon glaciolfluvial, fluvial sediments and marine deposits in lowland areas adjacent to and under the former ice divided in southeastern Norway, where the average Quaternary sediment thickness is estimated to ca. **6 m**, similar to Sweden<d-cite key="olsen.etal_2013"></d-cite>.
 
-### 1.2 Beyond the present is the key to the past
+### 1.2 Beyond the Present is the Key to the past
 
  During the field trip, we visited Jotunheim and Dovrefjell area in southern Norway. Assuming that the natural processes continue occurring and follow the same laws, we infer what happened in past by what we have seen today. This is a basic geoscience principle:
 
@@ -91,7 +97,7 @@ Luckily, although being few in size, the precious farmland can still be found up
 
 Today, people are also curious about what can we learn from the past. The past is the key to the future as well. The instability of marine-based ice sheets, e.g. the West Antarctic Ice Sheet today, or EISC back to the LGM, is the tipping element of the climate system. Understanding past responses of ice sheets to past climate change provides an important long-term context for observations of present, and projected future, ice-sheet dynamics.<d-cite key="regnell.etal_2021, sejrup.etal_2022"></d-cite>
 
-## 2 Definition and concepts
+## 2 Definition and Concepts
 
 As described in the introduction, when there were glaciation & deglaciation events, we need to know *when*, *who* and *why* it happened and *how* we can study it.
 
@@ -147,7 +153,7 @@ The Vikings established a colony on an island and call it Greenland during the *
 | Ice dammed lakes        | meltwater | -      | Flood event, lakes origin |                                                      |
 | Glacifluvial deposit    | meltwater | -      | Water channels            | on delta, outwash,lake bottom. Sorted.               |
 
-#### 2.2.1 Ice-marginal landforms
+#### 2.2.1 Ice-marginal Landforms
 
 When we walk towards a glacier, frequently we see the sediments concentrated in the foreland, including end moraines and glaciofluvial deposits that generally mirror the shape and position of former ice margins.
 
@@ -179,7 +185,7 @@ If the water cannot reach the bed, perhaps because the glacier is frozen to its 
 </div>
 
 
-#### 2.2.2 Subglacial landforms
+#### 2.2.2 Subglacial Landforms
 
 Subglacial exhibit a variety of landforms as a result of glacier, glaciofluvial erosion and sediment:
 - *ice-moulded bedrock*, *rock drumlins*, *Roches moutonnee*.
@@ -213,7 +219,7 @@ Subglacial exhibit a variety of landforms as a result of glacier, glaciofluvial 
 
 *Potholes or kettle holes* could be found on bedrock or deposited delta. 
 
-#### 2.2.3 Proglacial lakes and Ice-dammed lakes
+#### 2.2.3 Proglacial Lakes and Ice-dammed Lakes
 
 *Proglacial lakes*, *Ice-dammed lakes*, *shorelines*, *raised deltas*, *out-wash* and, fluvial sediments are associated with the ice margin landform, providing information on deglaciation patterns.
 
@@ -250,7 +256,7 @@ The failure of the dam is triggered by ice retreat, rock avalanche or seismic sh
 </div>
 
 
-#### 2.2.4 Periglacial landforms
+#### 2.2.4 Periglacial Landforms
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -274,7 +280,7 @@ In summary, water expands by 9% when it freezes. Consequently, in the periglacia
 
 ### 2.3 Why
 This section discusses several frameworks for discussing glacial and periglacial environments.
-#### 2.3.1 Equilibrium line altitude and permafrost limit
+#### 2.3.1 Equilibrium line Altitude and Permafrost Limit
 
 The *equilibrium line altitude (ELA)* is the point on a glacier where annual accumulation balances annual ablation <d-cite key="benn.evans_2010"></d-cite>. The ELA concept connects the most important two variables for glaciers, regional climate and topography. The accumulation is from precipitation mainly in winter, and the ablation is the melt-out mainly in summer. Temperate glaciers have both high snowfall and high melting rates.
 
@@ -291,7 +297,7 @@ In southern Norway, from the western coast to the eastern inland, the ELA is fro
 </div>
 
 
-#### 2.3.2 Erosion, debris transport
+#### 2.3.2 Erosion, Debris Transport
 
  The glacier buzzsaw hypothesis <d-cite key="egholm.etal_2009"></d-cite> regarded glaciers as highly effective erosion agents, which are strong enough to limit the mountain height. Bedrock erosion has *quarrying* and *abrasion* as two basic mechanisms (Figure 5). Both abrasion and quarring depend on the sliding velocity, in turn, depends on the ice thickness, the ice surface slope, the effective pressure at the bed and the subglacial hydrology. In a word, the rate of erosion is a simple function of the basal sliding speed  <d-cite key="herman.etal_2021"></d-cite>:
 
@@ -314,8 +320,8 @@ During the winter, low temperatures and low melting water reduce sliding, erosio
 
 Not just transporting the basal debris, the glacier also transports debris supraglacial, and englacial. The steeper mass balance gradient, the higher velocities, for instance, the marine glaciers in western Norway (Figure 12). Finally, 90% of sediments were transported into the sea. The erosion rate was estimated to be c. 20 cm/kyr based on the volumes of the offshore sediment volumes <d-cite key="olsen.etal_2013"></d-cite>. However, the erosion of onshore valleys and fjords can only explain 61% - 66 % of the offshore sink volume <d-cite key="pedersen.etal_2021"></d-cite>, which raised debates about the paleosurface and the thickness of the ice sheet.
 
-### 2.4  How
-#### 2.4.1 Dating technique
+### 2.4 How
+#### 2.4.1 Dating Technique
 
 - *Radiocarbon dating*: based on the burial of organic materials.
 - Burying dating: based on the burial of sand through *optically-stimulated luminescence (OSL)* and the exposure of quartz-bearing clasts. Requires: 
@@ -340,14 +346,14 @@ The rebound (R) values generated by the Schmidt hammer mirror the rebound veloci
 </div>
 
 
-#### 2.4.2 Reconstructure modeling
+#### 2.4.2 Reconstructure Modeling
 The geological evidence from the ice margin (proglacial lakes, ice-dammed lakes, end moraines, esker, meltwater channels), combined with ice flow direction(striae, eskers, drumlins, lineations) and ice-free time (erratics, boulders, bedrocks) can describe a proximate extent of the past ice masses but hardly the ice thickness. The varves from lake sediments were used to infer the pace of the deglaciation (*Swedish Time Scale*). The field evidences are used to constrain the numerical modeling of the ice sheet. 
 
 *Glacial isostatic adjustment (GIA) modeling* focuses on the relative sea level change process. As an ice sheet grows and decays, it transfers a shifting load onto Earth's crust which responds through elastic and visco-plastic deformation. it is possible to separate the effects of eustatic sea level rise (through ice sheet melting) and isostatic rebound, which can then be used to inversely deduce the history of the ice load <d-cite key="stroeven.etal_2015"></d-cite>.
 
 *Ice sheet numerical modeling* focus on how the ice reacted to climate change in the past. It turns correct paleoclimate forcing into mass balance over large spatial scales to achieve the ice sheet history of 4D dynamics.
 
-#### 2.4.3 Geophysical observations: ERT and Boreholes
+#### 2.4.3 Geophysical Observations: ERT and Boreholes
 
 During the field trip, we visited boreholes (129 m and 20 m) at Juvvasshøe on 1 Sept and used electrical resistivity tomography (ERT) to profile the subsurface resistivity near the second boreholes (Figure 14). The widespread polygon nets in the block field denote the permafrost condition (Figure 10c).
 
@@ -390,7 +396,7 @@ The observations and model suggest that the permafrost exists from -2.89 m to > 
 </div>
 
 
-## 3 Deglaciation concerns
+## 3 Deglaciation Concerns
 
 There were not only approximately 40 glacial cycles in Quaternary but also numerous intra-cycle dynamics in the location and extent of basa thermal zones. So it is extremely complex to deblend the deglaciation events. The numerical models combined with the information from paleo-climate, dating, isostatics adjustment, and offshore sediments with geomorphological datasets as constraints to achieve the ice sheet dynamic history. Figure 17 is one example.
 
@@ -404,7 +410,7 @@ There were not only approximately 40 glacial cycles in Quaternary but also numer
 
 Some details behind the deglaciation event are closely related to today's challenges. For instance, scientists are worried about the tipping point of the Antarctic Ice Sheet, the Greenland ice sheet melting, and the permafrost carbon stock. The latest reconstruction revealed the story of the collapse of the EISC<d-cite key="brendryen.etal_2020"></d-cite>.
 
-### 3.1 The collapse of the EISC
+### 3.1 The Collapse of the EISC
 
 During the LGM, The EISC has a sea level equivalent (SLE) ice volume of ~24 m, which is three times nowadays Greenland Ice Sheet. Large marine-based sectors extended to the continental shelf edge, making EISC a marine ice sheet, similar to West Antarctic Ice Sheet.
 
@@ -412,7 +418,7 @@ An event known as global Meltwater Pulse 1A (MWP-1A) at the Bølling transition 
 
 The new reconstruction attributes up to 50% of meltwater to the collapse of EISC. The peak melting of EISC reached SLE ~2.2 cm/year at centennial scales. The authors estimated that the rates of ice loss from the EISC during the early Bølling are comparable to high-end values of mass loss projected for the West Antarctic Ice Sheet in the next centuries<d-cite key="brendryen.etal_2020"></d-cite>. The collapse of EISC reminds us that sudden deglaciation is not a friendly process but possible even if there was no anthropogenic effect but subtle changes in incoming solar radiation by the Earth's orbit procession.
 
-### 3.2 The thawing permafrost
+### 3.2 The Thawing Permafrost
 
 Many periglacial landscapes show the imprint of previous glacial conditions<d-cite key="french_2007"></d-cite>. The widespread thawing of permafrost is a consequence and simultaneous event of deglaciation. Particularly, the peatland (palsa, and polygon mires) exists in regions of discontinuous permafrost, and will not be able to survive soon under the latest projection of the warming trend. For instance, the palsa in southern Norway (~1000 m) and northern Noway (~sea level) locates below the permafrost limit (~1300 m for the south, ~600 for the north)<d-cite key="lilleoren.etal_2012"></d-cite>. In the Finnmark area, the aerial images from the 1950s suggest palsa degradation started as early as the 1950s and decreased 33-71% from the 1950s to the 2010s<d-cite key="borge.etal_2017"></d-cite>.
 
@@ -438,7 +444,7 @@ Glaciers as amplifiers of relief incised Earth's steepest and highest relief, he
 
 The classic theory is that plateaus remnants of paleic lowland surface dating back to Tertiary period. **This paleic surface was uplifted and preserved by cold-based ice or as nunatak during glacial periods <d-cite key="olsen.etal_2013a"></d-cite>**
 
-### 4.1 Nunataks hypothesis
+### 4.1 Nunataks Hypothesis
 
 Nunataks represents the nonglacier surface protrudes through the thin ice sheet (Nesje et al. 1988). Evidence and criticism:
 
@@ -447,7 +453,7 @@ Nunataks represents the nonglacier surface protrudes through the thin ice sheet 
 - The dating evidence from the west coast. The mountains along the west coast have a higher chance to be nunataks because the deep fjords would efficiently drain the ice and keep the ice surface low. E.g. the mountain of Skåla (1848 m a.s.l) is ice-free, which is supported by trimlines, weathering limits and results of exposure dating (Nesje and Dahl, 1992, Brook et al., 1996, Goehring et al., 2008). Some dating results are even data back to pre-Quaternary times but the results are ambiguous <d-cite key="olsen.etal_2013a"></d-cite>.
 - Implying a thin ice sheet in the inland area, which *does not fit* with modeling results ( Näslund et al. 2003, Follestad and Fredin 2011). 
 
-### 4.2 Frozen-bed preservation hypothesis 
+### 4.2 Frozen-bed Preservation Hypothesis
 
 Sugden (1974) noted the importance of relief and basal temperature in developing different landscapes of glacial erosion. Where ice had remained frozen to its bed, there was hardly any erosion. Where deeper valleys had permitted basal melting and thus sliding, they were deepened further while intervening uplands were unaffected. Kleman and Stroeven (1997) demonstrated the selectivity of glacial erosion in the Swedish mountains. This may explain the origin of low-relief plateaus.
 
@@ -457,7 +463,7 @@ Evidence and criticism:
 - Some dating case (20.3 ± 0.6 ka ) in Snowhetta area of 1570 a.s.l suggests there was *ice-free peaks in inland area as early as 20-15 ka<d-cite key="lane.etal_2020"></d-cite>. The Blåhø (1617 m a.s.l.) in south-central Norway dating (46.4 ± 1.7 ka) indicates long-term weathering history and suggests low erosive cold-based ice cover during the Last Glacial Maximum shielding it (Philipp et al. 2019).
 - However, the offshore sediments do not match the sequence of the erosion, and the erosion of onshore valleys and fjords can only explain 61% - 66 % of the offshore sink volume <d-cite key="pedersen.etal_2021"></d-cite>. These offshore sediments budgets also criticized by Japsen <d-cite key="japsen.chalmers_2022"></d-cite>.
 
-### 4.3 ICE (isostasy-climate-erosion) hypothesis
+### 4.3 ICE (isostasy-climate-erosion) Hypothesis
 
 The ICE hypothesis<d-cite key="nielsen.etal_2010, nielsen.etal_2009b, nielsen.etal_2009a"></d-cite> ensemble models to explain both erosion problem (the presence of the low relief plateaus) and the offshore sediments problem. The ICE disagrees that there is an old surface neither by nunataks hypotheses nor frozen-bed preservation hypotheses.
 
@@ -467,7 +473,7 @@ Evidence and criticism:
 	- Glacier erosion uploads the weight -> Isostatic uplift -> more land raised to ELA -> more erosion. And this erosion is more efficient than uplift thus Neogen uplift is not important anymore.
 - Lidmar (2009)<d-cite key="lidmar-bergstrom.bonow_2009"></d-cite> criticized that ICE addressed too much on climate factor, but ignored the significant fact that there was an uplift in Western Norway during the Neogene. He/she said that instead, they discuss the origin of accordant summits, which are not the relevant landforms for conclusions on recent uplift.
 
-## 5 Summary of the field trip
+## 5 Summary of the Field Trip
 
 This field trip and the related lab exercise give a good description of the process from glacial-to-periglacial environments. The connection between the geomorphology process and nowadays society's concerns are addressed in the introduction. Then, this report reviewed the common definitions, concepts and methodologies in geomorphology and glacial & periglacial environments.
 
