@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank # the website title (if blank, full name will be used instead)
+title: "Zhihao Liu | Notes" # used by SEO/meta tags and search engines
 first_name: Zhihao
 middle_name: 
 last_name: LIU
@@ -112,7 +112,7 @@ bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: Hao\s notes # blog_name will be displayed in your blog page
+blog_name: "Hao's notes" # blog_name will be displayed in your blog page
 blog_nav_title: blog # your blog must have a title for it to be displayed in the nav bar
 blog_description: Mens sana in corpore sano
 permalink: /blog/:year/:title/
