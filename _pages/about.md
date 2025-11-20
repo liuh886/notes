@@ -9,7 +9,7 @@ profile:
   image: blog_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p> 🎯 Digging the truth behind variability.</p>
+    <p>  📍 Offshore Bergen, 2020 Aug </p>
 
 news: true # includes a list of news items
 latest_posts: false # recent blog
@@ -19,8 +19,8 @@ display_categories: [work] # Projects show in about page
 social: true # includes social icons at the bottom of the page
 ---
 
-Throughout my career, I've had the privilege of collaborating with geologists, geophysicists, geomorphologists, glaciologists and other specialists; even though I am still none of them right now🤷‍♂️.
+Throughout my career, I've had the privilege of collaborating with geologists, geophysicists, geomorphologists, glaciologists and climate scientists; even though I am still none of them right now 🤷‍♂️.
 
-I've experienced a fantastic journey from discovering [offshore oil](https://zhihaol.eu.org/projects/2020_q35/) to carbon capture and storage, from glacial mass balance to [the origin of landforms](https://zhihaol.eu.org/blog/2022/Quaternary-geomorphology-of-Norway/), from offshore windfarm site derisking to predicting [permafrost changes in 2100](https://zhihaol.eu.org/blog/2022/permafrost-extent/) and climate model downscaling. [All things are nested by geophysical data science,](https://i.imgur.com/wldOmMO.png) under the framework of [**Bayes theorem**](https://www.britannica.com/topic/philosophy-of-science/Explanations-laws-and-theories), which is about how to make better decisions (predictions) based on incomplete observations and prior knowledge of the Earth system.
+I see myself as a data scientist, and I've experienced a fantastic journey from discovering [offshore oil](https://zhihaol.eu.org/projects/2020_q35/) to carbon capture and storage, from glacial mass balance to [the origin of landforms](https://zhihaol.eu.org/blog/2022/Quaternary-geomorphology-of-Norway/), from offshore windfarm site derisking to predicting [permafrost changes in 2100](https://zhihaol.eu.org/blog/2022/permafrost-extent/) and climate model downscaling. [All things are nested by geophysical data: how can we make a better descison,](https://i.imgur.com/wldOmMO.png) under the framework of [**Bayes theorem**](https://www.britannica.com/topic/philosophy-of-science/Explanations-laws-and-theories), based on incomplete observations and prior knowledge of the physical model.
 
 Geophysical data holds the key to uncovering hidden treasures for energy, the environment and society...For example, can we know more about the variability of [snow mass distribution](https://zhihaol.eu.org/projects/2022_snowdepth/)? If we do so, the energy system will be more robust in hydropower production areas, such as Norway, Switzerland, and Southwest China. Similarly, [more precise and bias-free climate observations & models](https://zhihaol.eu.org/projects/2023_downscaling/) will help us better cope with the uncertainties associated with climate-related risks.
