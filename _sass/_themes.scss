@@ -44,6 +44,14 @@
   .repo-img-dark {
     display: none;
   }
+
+  .stock-widget-light {
+    display: block;
+  }
+
+  .stock-widget-dark {
+    display: none;
+  }
 }
 
 html[data-theme='dark'] {
@@ -87,6 +95,14 @@ html[data-theme='dark'] {
     display: none;
   }
   .repo-img-dark {
+    display: block;
+  }
+
+  .stock-widget-light {
+    display: none;
+  }
+
+  .stock-widget-dark {
     display: block;
   }
 }
