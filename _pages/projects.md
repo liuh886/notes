@@ -5,7 +5,7 @@ permalink: /projects/
 description: A growing collection of my cool projects.
 nav: true
 nav_order: 2
-year_categories: [2023-2024,2022,2019-2020] # Projects show in project page
+year_categories: [2025-2026, 2023-2024, 2022, 2019-2020] # Projects show in project page
 horizontal: false
 ---
 
@@ -36,10 +36,15 @@ horizontal: false
   {% endfor %}
 
 {%- else -%}
+
 <!-- Display projects without categories -->
-  {%- assign sorted_projects = site.projects | sort: "importance" -%}
+
+{%- assign sorted_projects = site.projects | sort: "importance" -%}
+
   <!-- Generate cards for each project -->
-  {% if page.horizontal -%}
+
+{% if page.horizontal -%}
+
   <div class="container">
     <div class="row row-cols-2">
     {%- for project in sorted_projects -%}
