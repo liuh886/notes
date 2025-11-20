@@ -63,5 +63,3 @@ horizontal: false
 </div>
 
 ---
-
-{% include stocks/widget.html title="Market watchlist" %}
