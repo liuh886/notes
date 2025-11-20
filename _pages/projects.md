@@ -61,3 +61,7 @@ horizontal: false
   {%- endif -%}
 {%- endif -%}
 </div>
+
+---
+
+{% include stocks/widget.html title="Market watchlist" %}
