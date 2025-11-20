@@ -1,8 +1,10 @@
 # Symbols used by the TradingView watchlist widget on the projects page.
 # Add or remove entries to personalize the list.
 symbols:
-  - NASDAQ:AAPL
   - NASDAQ:TSLA
-  - NYSE:IBM
-  - AMEX:SPY
   - NASDAQ:QQQ
+  - NYSE:BE
+  - NASDAQ:IREN
+  - NASDAQ:NBIS
+  - NASDAQ:PDD
+  - NYSE:HIMS
