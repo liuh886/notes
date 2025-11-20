@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Excited to start a share my study in IUGG 2023 in Berlin!
+Excited to present my study in IUGG 2023 in Berlin!

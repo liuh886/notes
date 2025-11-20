@@ -15,14 +15,13 @@
 
     - name: GIS
       value: Automating GIS (QGIS, ArcGIS, Global Mapper), Kriging, OpenStreetMap, Shapely, Geopandas, Xarray, Rasterio
-    
+
     - name: DevOps
       value: Git, GitHub, Docker, ETL, PostgreSQL, FastAPI, RESTful API, GCP
-  
+
 - title: Education
   type: time_table
   contents:
-  
     - title: Master - Geosciences
       institution: University of Oslo, Oslo, Norway
       year: 2021-2023
@@ -41,15 +40,14 @@
       description:
         - Background in Engineering, GIS, GNSS and Cartography.
         - Thesis - A WebGIS System for Urban Infrastructures.
-  
+
 - title: Experience
   type: time_table
   contents:
-  
     - title: Data scientist (Freelance)
       institution: Eurostar & IKOS
-      year: 2024.02 - 2024.03
-      description: 
+      year: 2024.02 - 2024.05
+      description:
         - Using Kalman Filter in data fusing & intergration.
         - Using FastAPI to develop Restful microservice.
         - PostgreSQL.
@@ -57,7 +55,7 @@
     - title: Geomatics professional & Assistant Manager
       institution: BGP Offshore, China National Petroleum Corporation
       year: 2021.01 - 2021.07
-      description: 
+      description:
         - Offshore gephysical surveying.
         - Quality Control, Data Reprocess, GNSS & Acoustic Positioning.
         - Get promoted to the senior position✨
@@ -70,7 +68,7 @@
         - Global 3D/4D seismic operation among offshore Norway, UK, Morocco, Senegal, Nigeria...
         - HSEQ awareness and multidisciplinary environment.
         - Registered Licensed Surveyors of P.R.C.
-  
+
 - title: Part-time and Volunteering
   type: time_table
   contents:
@@ -85,23 +83,22 @@
     - title: IT Helper - UiO Geo
       year: 2021.11 - 2023.06
       description: I am paid to attend seminars, disputations, and scientific events but do IT-related supports. As an ex-technician in oil and gas, I am skilled at troubleshooting of machines.
-  
-    - title: IMO 2022 - Volunteer  
+
+    - title: IMO 2022 - Volunteer
       year: 2022.07
       description: For the first time, UiO (or Norway) hosted the 63rd International Mathematical Olympiad where we proudly represent the city of Oslo to welcome young mathematicians as a tour guide.
-      
+
     - title: OSI Friluft - Board member, Volunteer
       year: 2022.01 - 2024.01
       description: Student association for outdoor events. I am a outdoor leader.
-  
+
 - title: Academic Interests
   type: nested_list
   contents:
-  
     - title: Cryosphere x Remote Sensing
-      items: 
+      items:
         - Snow, periglacial geomorphology
-        - DEM, geostatistics, 
+        - DEM, geostatistics,
         - Statistical modeling and machine learning
 
     - title: Geospatial data science
@@ -112,7 +109,6 @@
 - title: Publications, Workshops and Patents
   type: nested_list
   contents:
-  
     - title: Cryosphere x Remote Sensing
       items:
         - Retrieving snow depth distribution by downscaling ERA5 Reanalysis with ICESat-2 laser altimetry · Cold Regions Science and Technology · July 1, 2025.
@@ -120,17 +116,16 @@
         - Unlocking the Secrets of Snow Depth · Student Presentation at SDG Conference 2023, UiO · Feb 08, 2023.
     - title: Offshore seismic
       items:
-      - Wide-towed sources in streamer seismic - A case study from Norway, Conference paper from Society of Petroleum Geophysicists 2021, China · Sep 27, 2021.
-      - A hybrid seismic acquisition - from wide-towed sources, sparse node to FWI. BGP geophysical technology overseas workshop 2021 · Jun 7, 2021
-      - An identification system for underwater seismic devices. Patent, PRC 201911154941X · Issued May 13, 2022.
-      - Offshoreorinet v1.0. Software Copyright, 2020SR0194691 · Issued Mar 2, 2020.
-      - USBL Pos. Software Copyright, PRC 2023SR0384978 · Issued Mar 23, 2023.
+        - Wide-towed sources in streamer seismic - A case study from Norway, Conference paper from Society of Petroleum Geophysicists 2021, China · Sep 27, 2021.
+        - A hybrid seismic acquisition - from wide-towed sources, sparse node to FWI. BGP geophysical technology overseas workshop 2021 · Jun 7, 2021
+        - An identification system for underwater seismic devices. Patent, PRC 201911154941X · Issued May 13, 2022.
+        - Offshoreorinet v1.0. Software Copyright, 2020SR0194691 · Issued Mar 2, 2020.
+        - USBL Pos. Software Copyright, PRC 2023SR0384978 · Issued Mar 23, 2023.
 
 - title: Other Interests
   type: list
   contents:
-    - <u>Writing:</u> Climate change and energy transition at Zhihu.com 
+    - <u>Writing:</u> Climate change and energy transition at Zhihu.com
     - <u>Hobbies:</u> Marathon with 1h28 (21K) 3h29 (42K) of PB, Cross-country skiing.
     - <u>OnePiece:</u> What's the will of D?
     - <u>Opensource:</u> Why I dislike Overleaf, becasue I have Obsidian, Quarto...
-

@@ -9,14 +9,14 @@ profile:
   image: blog_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p> Scientific programming 🎯 Digging the truth behind variability.</p>
+    <p> 🎯 Digging the truth behind variability.</p>
 
 news: true # includes a list of news items
 latest_posts: true # recent blog
-selected_papers: false # includes a list of papers marked as "selected={true}"
+selected_papers: true # includes a list of papers marked as "selected={true}"
 projects: false # includes projects
 display_categories: [work] # Projects show in about page
-social: true  # includes social icons at the bottom of the page
+social: true # includes social icons at the bottom of the page
 ---
 
 Throughout my career, I've had the privilege of collaborating with geologists, geophysicists, geomorphologists, glaciologists and other specialists; even though I am still none of them right now🤷‍♂️.
