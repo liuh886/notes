@@ -12,7 +12,7 @@ profile:
     <p> 🎯 Digging the truth behind variability.</p>
 
 news: true # includes a list of news items
-latest_posts: true # recent blog
+latest_posts: false # recent blog
 selected_papers: true # includes a list of papers marked as "selected={true}"
 projects: false # includes projects
 display_categories: [work] # Projects show in about page
