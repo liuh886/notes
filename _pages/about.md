@@ -9,7 +9,7 @@ profile:
   image: blog_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>  📍 Offshore Bergen, 2020 Aug </p>
+    <p>📍Offshore Bergen, 2020 Aug</p>
 
 news: true # includes a list of news items
 latest_posts: false # recent blog
