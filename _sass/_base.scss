@@ -1058,3 +1058,16 @@ nav[data-toggle="toc"] {
     padding-top: 0.5rem;
   }
 }
+.stock-widget {
+  .tradingview-widget-container {
+    width: 100%;
+  }
+}
+
+.stock-widget__title {
+  margin-bottom: 1rem;
+}
+
+.stock-widget__empty {
+  color: var(--global-text-color-light);
+}
