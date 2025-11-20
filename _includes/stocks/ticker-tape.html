@@ -1,0 +1,52 @@
+{% assign stocks = site.data.stocks %}
+{% if stocks and stocks.symbols and stocks.symbols.size > 0 %}
+<div class="stock-widget my-4 stock-widget--ticker">
+  {% if include.title %}
+    <h2 class="stock-widget__title">{{ include.title }}</h2>
+  {% endif %}
+
+  <div class="tradingview-widget-container stock-widget-light">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        {% for symbol in stocks.symbols %}
+        {
+          "proName": "{{ symbol | escape }}",
+          "title": "{{ symbol | split: ':' | last }}"
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ],
+      "showSymbolLogo": true,
+      "colorTheme": "light",
+      "isTransparent": false,
+      "displayMode": "regular",
+      "locale": "{{ stocks.locale | default: site.lang | default: 'en' }}"
+    }
+    </script>
+  </div>
+
+  <div class="tradingview-widget-container stock-widget-dark">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        {% for symbol in stocks.symbols %}
+        {
+          "proName": "{{ symbol | escape }}",
+          "title": "{{ symbol | split: ':' | last }}"
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ],
+      "showSymbolLogo": true,
+      "colorTheme": "dark",
+      "isTransparent": false,
+      "displayMode": "regular",
+      "locale": "{{ stocks.locale | default: site.lang | default: 'en' }}"
+    }
+    </script>
+  </div>
+</div>
+{% else %}
+<p class="stock-widget__empty">Add stock symbols to <code>_data/stocks.yml</code> to render a ticker tape.</p>
+{% endif %}

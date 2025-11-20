@@ -1071,3 +1071,28 @@ nav[data-toggle="toc"] {
 .stock-widget__empty {
   color: var(--global-text-color-light);
 }
+
+.portfolio-widgets {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1.5fr 1fr;
+  }
+}
+
+.stock-widget--story .tradingview-widget-container,
+.stock-widget--analysis .tradingview-widget-container {
+  min-height: 520px;
+}
+
+.stock-widget--ticker {
+  .stock-widget__title {
+    margin-bottom: 0.75rem;
+  }
+
+  .tradingview-widget-container {
+    width: 100%;
+  }
+}

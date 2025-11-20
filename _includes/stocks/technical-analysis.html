@@ -1,0 +1,41 @@
+{% assign stocks = site.data.stocks %}
+{% assign analysis_symbol = include.symbol | default: stocks.symbols | first | default: 'NASDAQ:AAPL' %}
+<div class="stock-widget my-4">
+  {% if include.title %}
+    <h2 class="stock-widget__title">{{ include.title }}</h2>
+  {% endif %}
+
+  <div class="tradingview-widget-container stock-widget-light stock-widget--analysis">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+    {
+      "interval": "1D",
+      "width": "100%",
+      "isTransparent": false,
+      "height": "480",
+      "symbol": "{{ analysis_symbol | escape }}",
+      "showIntervalTabs": true,
+      "displayMode": "single",
+      "colorTheme": "light",
+      "locale": "{{ stocks.locale | default: site.lang | default: 'en' }}"
+    }
+    </script>
+  </div>
+
+  <div class="tradingview-widget-container stock-widget-dark stock-widget--analysis">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+    {
+      "interval": "1D",
+      "width": "100%",
+      "isTransparent": false,
+      "height": "480",
+      "symbol": "{{ analysis_symbol | escape }}",
+      "showIntervalTabs": true,
+      "displayMode": "single",
+      "colorTheme": "dark",
+      "locale": "{{ stocks.locale | default: site.lang | default: 'en' }}"
+    }
+    </script>
+  </div>
+</div>
