@@ -7,7 +7,9 @@ nav: true
 nav_order: 5
 ---
 
-## Market watchlist
+## Market pulse
+
+{% include stocks/ticker-tape.html %}
 
 {% include stocks/widget.html %}
 
@@ -21,7 +23,3 @@ nav_order: 5
     {% include stocks/technical-analysis.html %}
   </div>
 </div>
-
-## Market pulse
-
-{% include stocks/ticker-tape.html %}
