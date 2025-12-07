@@ -1,6 +1,6 @@
 {% assign stocks = site.data.stocks %}
 {% if stocks and stocks.symbols and stocks.symbols.size > 0 %}
-<div class="stock-widget my-4">
+<div class="stock-widget stock-widget--overview my-4">
   {% if include.title %}
     <h2 class="stock-widget__title">{{ include.title }}</h2>
   {% elsif stocks.title %}

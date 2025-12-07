@@ -1072,6 +1072,14 @@ nav[data-toggle="toc"] {
   color: var(--global-text-color-light);
 }
 
+.stock-widget--overview {
+  .tradingview-widget-container,
+  iframe {
+    width: 100% !important;
+    max-width: none;
+  }
+}
+
 .portfolio-widgets {
   display: grid;
   grid-template-columns: 1fr;
@@ -1085,6 +1093,58 @@ nav[data-toggle="toc"] {
 .stock-widget--story .tradingview-widget-container,
 .stock-widget--analysis .tradingview-widget-container {
   min-height: 520px;
+}
+
+.stock-analysis__selector {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.stock-analysis__label {
+  color: var(--global-text-color-light);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.stock-analysis__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.stock-analysis__pill {
+  border: 1px solid var(--global-border-color);
+  background: transparent;
+  color: var(--global-text-color);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--global-theme-color);
+    color: var(--global-theme-color);
+    outline: none;
+  }
+
+  &.is-active {
+    background: var(--global-theme-color);
+    color: var(--global-bg-color);
+    border-color: var(--global-theme-color);
+  }
+}
+
+.stock-analysis__panel {
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
 }
 
 .stock-widget--ticker {

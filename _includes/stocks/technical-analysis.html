@@ -1,41 +1,96 @@
 {% assign stocks = site.data.stocks %}
-{% assign analysis_symbol = include.symbol | default: stocks.symbols | first | default: 'NASDAQ:AAPL' %}
+{% assign analysis_symbols = include.symbols | default: stocks.symbols %}
+{% assign default_symbol = include.symbol | default: analysis_symbols | first | default: 'NASDAQ:AAPL' %}
+{% assign widget_id = 'analysis-' | append: page.url | slugify %}
+{% assign symbols_to_render = analysis_symbols %}
+{% unless symbols_to_render and symbols_to_render.size > 0 %}
+  {% assign symbols_to_render = default_symbol | split: ',' %}
+{% endunless %}
+
 <div class="stock-widget my-4">
   {% if include.title %}
     <h2 class="stock-widget__title">{{ include.title }}</h2>
   {% endif %}
 
-  <div class="tradingview-widget-container stock-widget-light stock-widget--analysis">
-    <div class="tradingview-widget-container__widget"></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-    {
-      "interval": "1D",
-      "width": "100%",
-      "isTransparent": false,
-      "height": "480",
-      "symbol": "{{ analysis_symbol | escape }}",
-      "showIntervalTabs": true,
-      "displayMode": "single",
-      "colorTheme": "light",
-      "locale": "{{ stocks.locale | default: site.lang | default: 'en' }}"
-    }
-    </script>
-  </div>
+  {% if symbols_to_render and symbols_to_render.size > 0 %}
+    <div class="stock-analysis__selector" data-analysis-tabs="{{ widget_id }}">
+      <span class="stock-analysis__label">Analyze</span>
+      <div class="stock-analysis__buttons">
+        {% for symbol in symbols_to_render %}
+          <button class="stock-analysis__pill{% if symbol == default_symbol %} is-active{% endif %}" type="button" data-symbol="{{ symbol | escape }}">
+            {{ symbol | split: ':' | last }}
+          </button>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
 
-  <div class="tradingview-widget-container stock-widget-dark stock-widget--analysis">
-    <div class="tradingview-widget-container__widget"></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-    {
-      "interval": "1D",
-      "width": "100%",
-      "isTransparent": false,
-      "height": "480",
-      "symbol": "{{ analysis_symbol | escape }}",
-      "showIntervalTabs": true,
-      "displayMode": "single",
-      "colorTheme": "dark",
-      "locale": "{{ stocks.locale | default: site.lang | default: 'en' }}"
-    }
-    </script>
+  <div class="stock-analysis" data-analysis-panels="{{ widget_id }}">
+    {% for symbol in symbols_to_render %}
+      <div class="stock-analysis__panel{% if symbol == default_symbol %} is-active{% endif %}" data-analysis-panel="{{ widget_id }}" data-symbol="{{ symbol | escape }}">
+        <div class="tradingview-widget-container stock-widget-light stock-widget--analysis">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+          {
+            "interval": "1D",
+            "width": "100%",
+            "isTransparent": false,
+            "height": "480",
+            "symbol": "{{ symbol | escape }}",
+            "showIntervalTabs": true,
+            "displayMode": "single",
+            "colorTheme": "light",
+            "locale": "{{ stocks.locale | default: site.lang | default: 'en' }}"
+          }
+          </script>
+        </div>
+
+        <div class="tradingview-widget-container stock-widget-dark stock-widget--analysis">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+          {
+            "interval": "1D",
+            "width": "100%",
+            "isTransparent": false,
+            "height": "480",
+            "symbol": "{{ symbol | escape }}",
+            "showIntervalTabs": true,
+            "displayMode": "single",
+            "colorTheme": "dark",
+            "locale": "{{ stocks.locale | default: site.lang | default: 'en' }}"
+          }
+          </script>
+        </div>
+      </div>
+    {% endfor %}
   </div>
 </div>
+
+<script>
+  (function() {
+    var tabs = document.querySelector('[data-analysis-tabs="{{ widget_id }}"]');
+    var panels = document.querySelectorAll('[data-analysis-panel="{{ widget_id }}"]');
+
+    if (!tabs || panels.length === 0) {
+      return;
+    }
+
+    var buttons = tabs.querySelectorAll('[data-symbol]');
+
+    function setActiveSymbol(symbol) {
+      buttons.forEach(function(button) {
+        button.classList.toggle('is-active', button.getAttribute('data-symbol') === symbol);
+      });
+
+      panels.forEach(function(panel) {
+        panel.classList.toggle('is-active', panel.getAttribute('data-symbol') === symbol);
+      });
+    }
+
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        setActiveSymbol(button.getAttribute('data-symbol'));
+      });
+    });
+  })();
+</script>
