@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: "Zhihao Liu" # used by SEO/meta tags and search engines
+title: "Zhihao LIU" # used by SEO/meta tags and search engines
 first_name: Zhihao
 middle_name:
 last_name: LIU
@@ -12,7 +12,7 @@ description: > # the ">" symbol means to ignore newlines until "footer_text:"
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: geoscience, geodata science, geomorphology, seismic, energy transition, marathon # add your own keywords or leave empty
+keywords: geoscience, seismic, energy transition, AI # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 📓 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
@@ -69,7 +69,7 @@ github_username: liuh886 # your GitHub user name
 gitlab_username: # your GitLab user name
 twitter_username: liuh886qw # your Twitter handle
 linkedin_username: liuzhihao # your LinkedIn user name
-scholar_userid: qc6CJjYAAAAJ # your Google Scholar ID
+scholar_userid: usxQ4tcAAAAJ # your Google Scholar ID
 orcid_id: 0000-0002-4996-2521 # your ORCID ID
 medium_username: # your Medium username
 quora_username: # your Quora username
