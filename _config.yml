@@ -67,10 +67,10 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 
 github_username: liuh886 # your GitHub user name
 gitlab_username: # your GitLab user name
-twitter_username: # your Twitter handle
+twitter_username: liuh886qw # your Twitter handle
 linkedin_username: liuzhihao # your LinkedIn user name
-scholar_userid: # your Google Scholar ID
-orcid_id: # your ORCID ID
+scholar_userid: qc6CJjYAAAAJ # your Google Scholar ID
+orcid_id: 0000-0002-4996-2521 # your ORCID ID
 medium_username: # your Medium username
 quora_username: # your Quora username
 publons_id: # your ID on Publons
@@ -104,7 +104,7 @@ contact_note: >
 google_analytics: G-7WCMSE9NXD # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
 cronitor_analytics: # cronitor RUM analytics site ID (format: XXXXXXXXX)
 
-google_site_verification: # your google-site-verification ID (Google Search Console)
+google_site_verification: ZREAvrDW0C9TEAizhk_2lRKHEDD30tS_hOQUx5NP55w # your google-site-verification ID (Google Search Console)
 bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 
 # -----------------------------------------------------------------------------

@@ -2,9 +2,11 @@
 # Add or remove entries to personalize the list.
 symbols:
   - NASDAQ:TSLA
-  - NASDAQ:QQQ
   - NYSE:BE
   - NASDAQ:IREN
   - NASDAQ:NBIS
   - NASDAQ:PDD
   - NYSE:HIMS
+  - NASDAQ:LITE
+  - NASDAQ:QQQ
+  - SZSE:002594
