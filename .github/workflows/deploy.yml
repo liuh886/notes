@@ -30,27 +30,8 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1.4'      # or 3.2.x if you run Jekyll ??4.3.3
+          ruby-version: '3.1.4'      # or 3.2.x if you run Jekyll ≥ 4.3.3
           bundler-cache: true
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Cache pip
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install system deps
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends imagemagick
 
       # 4. Patch your _config.yml (giscus.repo) without committing
       - name: Update _config.yml ⚙️
@@ -64,10 +45,10 @@ jobs:
       # 5. Install extra tools + build
       - name: Install CLI helpers & Build 🔧
         run: |
-          pip install --upgrade "pip==23.3.2" "jupyter==1.0.0"
-          npm install -g @mermaid-js/mermaid-cli@10.6.1 purgecss@5.0.0
+          pip install --upgrade pip jupyter
+          npm install -g @mermaid-js/mermaid-cli purgecss
           export JEKYLL_ENV=production
-          bundle exec jekyll build
+          bundle exec jekyll build --lsi
           purgecss -c purgecss.config.js
 
       # 6. Upload the _site folder as the pages artifact
