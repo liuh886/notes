@@ -225,14 +225,17 @@
             "@type": "Person",
             "name": "{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}"
         },
-        "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}",
+        "url": "{% if is_blog_post %}{{ page.url | prepend: site.baseurl | prepend: site.url }}{% else %}{{ site.url | append: '/' }}{% endif %}",
         "@type": "{%- if is_blog_post -%}BlogPosting{%- else -%}WebSite{%- endif -%}",
         "description": "{%- if page.description -%}{{ page.description }}{%- else if site.description -%}{{ site.description }}{%- endif -%}",
         "headline": "{%- if page.title -%}{{ page.title }}{%- else -%}{{ site.title }}{%- endif -%}",
         {% if sameaslinks != blank -%}
         "sameAs": {{ sameaslinks }},
         {%- endif %}
-        "name": "{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}",
+        "name": "{% if is_blog_post %}{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}{% else %}{{ site.title }}{% endif %}",
+        {% if site.alternate_site_name and is_blog_post == false -%}
+        "alternateName": "{{ site.alternate_site_name }}",
+        {%- endif %}
         "@context": "https://schema.org"
     }
     </script>
