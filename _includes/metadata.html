@@ -37,6 +37,11 @@
     </title>
     <meta name="author" content="{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}" />
     <meta name="description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}" />
+    {%- if page.noindex -%}
+    <meta name="robots" content="noindex, nofollow" />
+    {%- else -%}
+    <meta name="robots" content="index, follow" />
+    {%- endif -%}
 {%- if page.keywords or site.keywords %}
     <meta name="keywords" content="{%- if page.keywords -%}{{ page.keywords }}{%- else -%}{{ site.keywords }}{%- endif -%}" />
 {%- endif %}
@@ -225,6 +230,7 @@
             "@type": "Person",
             "name": "{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}"
         },
+        "@id": "{% if is_blog_post %}{{ page.url | prepend: site.baseurl | prepend: site.url }}{% else %}{{ site.url | append: '/' }}#website{% endif %}",
         "url": "{% if is_blog_post %}{{ page.url | prepend: site.baseurl | prepend: site.url }}{% else %}{{ site.url | append: '/' }}{% endif %}",
         "@type": "{%- if is_blog_post -%}BlogPosting{%- else -%}WebSite{%- endif -%}",
         "description": "{%- if page.description -%}{{ page.description }}{%- else if site.description -%}{{ site.description }}{%- endif -%}",
@@ -235,6 +241,16 @@
         "name": "{% if is_blog_post %}{{ site.first_name }} {{ site.middle_name }} {{ site.last_name }}{% else %}{{ site.title }}{% endif %}",
         {% if site.alternate_site_name and is_blog_post == false -%}
         "alternateName": "{{ site.alternate_site_name }}",
+        {%- endif %}
+        {% if is_blog_post -%}
+        "mainEntityOfPage": "{{ page.url | prepend: site.baseurl | prepend: site.url }}",
+        {%- else -%}
+        "inLanguage": "{{ site.lang }}",
+        "publisher":
+        {
+            "@type": "Organization",
+            "name": "{{ site.title }}"
+        },
         {%- endif %}
         "@context": "https://schema.org"
     }
