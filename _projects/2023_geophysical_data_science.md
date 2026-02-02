@@ -9,6 +9,14 @@ year: 2023-2024
 category: work
 ---
 
+> **TL;DR**
+> - **Problem:** Teach geophysical data science with practical, reproducible workflows (not just theory).
+> - **Data:** Real-world geophysical datasets used in GEO4300/9300 labs and assignments.
+> - **Method:** Hands-on Python labs + structured exercises and project guidance.
+> - **Output:** Course exercises, lab workflow tips, and a public repository for assignments.
+> - **Impact:** Trained students to move from statistical foundations to applied geoscience modeling.
+> - **Links:** [GEO4300_2023 repository](https://github.com/liuh886/GEO4300_2023/).
+
 
 In the autumn of 2023, I had the privilege of serving as a teaching assistant for the Geophysical Data Science course. I brought a blend of practical programing experience and academic knowledge to the classroom. This course not only deepens students' understanding of geophysical data science but also serves as a nexus between my experience in the field and the fresh, inquisitive minds ready to explore the intricacies of geoscience. The following are some tips for the course.
 

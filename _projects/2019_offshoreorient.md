@@ -8,6 +8,14 @@ year: 2019-2020
 category: work
 ---
 
+> **TL;DR**
+> - **Problem:** Reduce manual offshore seismic QC and reporting across GEO/NAV/client deliverables.
+> - **Data:** Navigation and acquisition files (e.g., P190/CSV/STS) + near-field gun controller headers.
+> - **Method:** Python toolbox (NavPy/QcPy/SourcePy) for shot-by-shot QC, RMS/noise analysis, trace edit, and real-time alarms.
+> - **Output:** OffshoreOrient Studio v1.0.3 (internal tool) + software copyright (Registration No. 5073387).
+> - **Impact:** Faster, more consistent QC workflows; less Excel/manual work for survey teams.
+> - **Links:** Screenshots and workflow overview in this page.
+
 `OffshoreOrient Studio` (OOS) is an offshore seismic QC toolbox, a good friend for lazy seismic QC/GEO/NAV/Client. This is my independent work that has been tested and used by my colleagues for several years. Sadly, I will not update it anymore. The OOS had applied for software copyright (Registration No. 5073387) under the National Copyright Administration.
 
 In OffshoreOrient Studio v1.0.3 toolbox, _NavPy_ focuses on the shot-by-shot** or sequence-by-sequence QC**. *QcPy* is mainly used for **Trace edit** and **RMS analysis**. *SourcePy* is a **real-time solution for near-field Gun QC**.

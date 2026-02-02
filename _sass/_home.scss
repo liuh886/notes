@@ -72,10 +72,4 @@ html[data-theme='dark'] .home-proof .home-proof__item {
   background: rgba(255, 255, 255, 0.035);
 }
 
-.post-header {
-  .desc {
-    margin-top: 0.25rem;
-    font-size: 1.05rem;
-    color: var(--global-text-color-light);
-  }
-}
+/* Keep homepage header typography close to the original theme defaults. */

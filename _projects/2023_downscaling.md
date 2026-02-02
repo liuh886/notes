@@ -9,6 +9,14 @@ year: 2023-2024
 category: work
 ---
 
+> **TL;DR**
+> - **Problem:** Make climate-model wind simulations usable for energy-system modeling despite bias and coarse resolution.
+> - **Data:** ERA5 (and ERA5-Coarsen) + CMIP6 (CMCC-CM2, CMCC-ESM2; SSP585), focused on Scandinavia.
+> - **Method:** Quantile-based bias adjustment and downscaling (QDM, EDCDFm) with validation on coarsened reanalysis.
+> - **Output:** A structured evaluation of what improves, what doesn't, and where uncertainty dominates.
+> - **Impact:** Decision guidance: when statistical correction helps, and where climate-model limits remain for weekly/daily use.
+> - **Links:** Key figures and conclusions are in this page.
+
 Understanding the availability and variability of solar and wind energy resources is crucial for designing and planning optimal energy systems. However, existing climate models (GCM) have limitations in terms of resolution and bias. 
 
 How the variability and change of climate/weather system can affect the energy system?

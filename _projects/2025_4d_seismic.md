@@ -9,6 +9,14 @@ year: 2025-2026
 category: work
 ---
 
+> **TL;DR**
+> - **Problem:** Make it easy to learn from high-quality 4D (time-lapse) seismic case studies.
+> - **Data:** Published 4D seismic case studies and references.
+> - **Method:** Curate and structure a hub for screening practices and examples.
+> - **Output:** A dedicated website aggregating case studies and notes.
+> - **Impact:** Faster onboarding and pattern discovery for time-lapse project design/interpretation.
+> - **Links:** [4d-seismic-hub](https://liuh886.github.io/4d-seismic-hub).
+
 ![](https://cdn.jsdelivr.net/gh/liuh886/pic-obsidian@main/img/20251121000345.png)
 
 ## Screening good practive of time-lapse seismic

@@ -8,6 +8,14 @@ year: 2022
 category: work
 ---
 
+> **TL;DR**
+> - **Problem:** Estimate snow depth in complex terrain with quantified uncertainty (relevant for hydropower and climate impacts).
+> - **Data:** ICESat-2 laser altimetry, reference DEMs, and field/drone observations (SNOWDEPTH project).
+> - **Method:** Elevation differencing + DEM co-registration and uncertainty benchmarking (focus on bias/terrain effects).
+> - **Output:** A reproducible workflow narrative for snow-depth retrieval and error sources.
+> - **Impact:** Supports cryosphere research and downstream applications (hydrology, permafrost, energy planning).
+> - **Links:** [SNOWDEPTH (UiO)](https://www.mn.uio.no/geo/english/research/projects/snowdepth/index.html), [News article](https://titan.uio.no/geologi-klima/2022/hvor-mye-sno-er-det-egentlig-i-fjellet), [Publications]({{ '/publications/' | relative_url }}).
+
 As a research assistant in this scientist group (SNOWDEPTH), I joined the field (drone) trip and currently working on the algorithm development for processing DEM and ICESat-2 datasets. The topic is highly related to my thesis: `Benchmarking DEM uncertainties by ICESat-2 - a workflow and application on snowdepth`. This research is key to understanding the snow-depth-related climate mechanism or application, e.g. permafrost, high-mountain precipitation, hydropower...
 
 ## The state of the snow depth problem
