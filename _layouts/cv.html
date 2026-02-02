@@ -12,29 +12,33 @@ layout: default
 
   <article>
     <div class="cv">
-      {%- assign primary_entries = site.data.cv | where_exp: "e", "e.layer != 'additional'" -%}
-      {%- assign additional_entries = site.data.cv | where_exp: "e", "e.layer == 'additional'" -%}
+      {%- comment -%}
+        Keep Liquid/Jekyll compatibility high: avoid `where_exp` (not available in some older stacks).
+      {%- endcomment -%}
+      {%- assign additional_entries = site.data.cv | where: "layer", "additional" -%}
 
-      {% for entry in primary_entries %}
-        <a class="anchor" id="{{ entry.title | slugify }}"></a>
-        <div class="card mt-3 p-3">
-          <h3 class="card-title font-weight-medium">{{ entry.title }}</h3>
-          <div>
-          {% if entry.type == "list" %}
-            {% include cv/list.html %}
-          {% elsif entry.type == "map" %}
-            {% include cv/map.html %}
-          {% elsif entry.type == "nested_list" %}
-            {% include cv/nested_list.html %}
-          {% elsif entry.type == "time_table" %}
-            {% include cv/time_table.html %}
-          {% elsif entry.type == "list_groups" %}
-            {% include cv/list_groups.html %}
-          {% else %}
-            {{ entry.contents }}
-          {% endif %}
+      {% for entry in site.data.cv %}
+        {% unless entry.layer == 'additional' %}
+          <a class="anchor" id="{{ entry.title | slugify }}"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">{{ entry.title }}</h3>
+            <div>
+            {% if entry.type == "list" %}
+              {% include cv/list.html %}
+            {% elsif entry.type == "map" %}
+              {% include cv/map.html %}
+            {% elsif entry.type == "nested_list" %}
+              {% include cv/nested_list.html %}
+            {% elsif entry.type == "time_table" %}
+              {% include cv/time_table.html %}
+            {% elsif entry.type == "list_groups" %}
+              {% include cv/list_groups.html %}
+            {% else %}
+              {{ entry.contents }}
+            {% endif %}
+            </div>
           </div>
-        </div>
+        {% endunless %}
       {% endfor %}
 
       {% if additional_entries and additional_entries.size > 0 %}

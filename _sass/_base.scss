@@ -26,17 +26,18 @@ hr {
 table {
   td,
   th {
-    font-size: 1rem;
+    font-size: 0.95rem; /* Better density */
   }
 
   th {
-    font-weight: bold;
+    font-weight: 600; /* Semi-bold */
   }
 }
 
 a,
 table.table a {
   color: var(--global-theme-color);
+  transition: color 0.15s ease-in-out; /* Smooth transition */
 
   &:hover {
     color: var(--global-theme-color);
@@ -62,10 +63,11 @@ img {
 
 blockquote {
   background: var(--global-bg-color);
-  border-left: 5px solid var(--global-theme-color);
+  border-left: 4px solid var(--global-theme-color); /* Thinner border */
   margin: 1.5em 0;
   padding: 1em;
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Slightly smaller */
+  border-radius: 0 8px 8px 0; /* Rounded right side */
 
   p {
     margin-bottom: 0;
@@ -75,6 +77,7 @@ blockquote {
   &.block-tip {
     border-color: var(--global-tip-block);
     background-color: var(--global-tip-block-bg);
+    border-radius: 8px; /* Fully rounded */
 
     p {
       color: var(--global-tip-block-text);
@@ -88,6 +91,7 @@ blockquote {
   &.block-warning {
     border-color: var(--global-warning-block);
     background-color: var(--global-warning-block-bg);
+    border-radius: 8px;
 
     p {
       color: var(--global-warning-block-text);
@@ -101,6 +105,7 @@ blockquote {
   &.block-danger {
     border-color: var(--global-danger-block);
     background-color: var(--global-danger-block-bg);
+    border-radius: 8px;
 
     p {
       color: var(--global-danger-block-text);
@@ -126,15 +131,27 @@ blockquote {
   margin-top: 0.75rem;
   margin-bottom: 1.5rem;
   text-align: center;
+  color: var(--global-text-color-light); /* Lighter caption */
 }
 
 // Card
 
 .card {
   background-color: var(--global-card-bg-color);
+  border: none; /* Cleaner look */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
 
   img {
     width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
 
   .card-title {
@@ -198,7 +215,7 @@ blockquote {
 
 .post-description {
   margin-bottom: 2rem;
-  font-size: 0.875rem;
+  font-size: 0.95rem; /* Tweak */
 
   a {
     color: inherit;
@@ -214,15 +231,19 @@ blockquote {
 // Navbar customization
 
 .navbar {
-  box-shadow: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   border-bottom: 1px solid var(--global-divider-color);
   background-color: var(--global-bg-color);
-  opacity: 0.95;
+  opacity: 0.98;
+  backdrop-filter: blur(10px); /* Modern frosted glass effect */
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .navbar .dropdown-menu {
   background-color: var(--global-bg-color);
   border: 1px solid var(--global-divider-color);
+  border-radius: 8px; /* Rounded dropdowns */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 
   a:not(.active) {
     color: var(--global-text-color);
@@ -430,6 +451,21 @@ footer.sticky-bottom {
   padding-top: 40px;
   padding-bottom: 40px;
   font-size: 0.9rem;
+
+  a {
+    color: var(--global-text-color);
+
+    &:hover {
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+  }
+}
+
+.footer-minor-link {
+  opacity: 0.7;
+  font-size: 0.9em;
+  white-space: nowrap;
 }
 
 // CV
@@ -922,7 +958,7 @@ progress::-moz-progress-bar {
   .copy {
     background: var(--global-card-bg-color);
     border-color: var(--global-bg-color);
-    border-radius: .3rem;
+    border-radius: 6px;
     border-style: none;
     color: var(--global-text-color);
     font-size: medium;
@@ -930,6 +966,7 @@ progress::-moz-progress-bar {
     position: absolute;
     right: .5rem;
     top: .5rem;
+    transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;
   }
 
   &:active .copy,
@@ -944,6 +981,8 @@ progress::-moz-progress-bar {
   .btn {
     box-shadow: none;
     -webkit-box-shadow: none;
+    border-radius: 6px; /* Rounded buttons */
+    transition: all 0.2s ease-in-out;
   }
 
   .btn-secondary.dropdown-toggle {
@@ -961,19 +1000,25 @@ progress::-moz-progress-bar {
     &:hover {
       background-color: var(--global-hover-color) !important;
       color: var(--global-hover-text-color) !important;
+      border-color: var(--global-hover-color);
     }
   }
 
   .dropdown-menu {
     background-color: var(--global-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid var(--global-divider-color);
   }
 
   .dropdown-item {
     background-color: var(--global-bg-color);
     color: var(--global-text-color);
+    transition: background-color 0.15s ease;
 
     &:hover {
       color: var(--global-hover-color);
+      background-color: var(--global-code-bg-color); /* Subtle background on hover */
     }
   }
 
@@ -992,12 +1037,13 @@ nav[data-toggle="toc"] {
   top: 5rem;
 
   .nav .nav>li>a {
-    font-size: .75rem;
+    font-size: .8rem; /* Slightly larger */
   }
 
   .nav>li>a {
     color: var(--global-text-color);
-    font-size: .75rem;
+    font-size: .8rem;
+    transition: all 0.2s ease;
 
     &:hover {
       color: var(--global-hover-color);
@@ -1008,7 +1054,8 @@ nav[data-toggle="toc"] {
   .nav-link.active {
     color: var(--global-theme-color);
     border-left-color: var(--global-theme-color);
-    font-size: .75rem;
+    font-size: .8rem;
+    font-weight: 600;
 
     &:hover {
       color: var(--global-hover-color);
@@ -1031,6 +1078,8 @@ nav[data-toggle="toc"] {
   a {
     color: var(--global-text-color-light);
     text-decoration: none;
+    display: block;
+    transition: transform 0.2s ease-in-out;
 
     .card-text {
       overflow: hidden;
@@ -1040,6 +1089,7 @@ nav[data-toggle="toc"] {
 
     &:hover {
       color: var(--global-theme-color);
+      transform: translateX(4px); /* Subtle slide right */
 
       .card-title {
         color: var(--global-theme-color);
