@@ -239,7 +239,11 @@ sass:
 # -----------------------------------------------------------------------------
 
 jekyll-minifier:
-  exclude: ["robots.txt"]
+  exclude:
+    - "robots.txt"
+    # CV page is generated from data-heavy templates; minifier can be brittle here.
+    - "cv/index.html"
+    - "cv/"
   uglifier_args:
     harmony: true
 
