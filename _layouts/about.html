@@ -113,6 +113,14 @@ layout: default
               {%- include news.html limit=true %}
           {%- endif %}
 
+          {% if page.home_cta -%}
+          <div class="home-cta home-cta--after-news" role="group" aria-label="Primary actions">
+            <a class="btn btn-primary home-cta__primary" href="https://calendar.app.google/UQ267iEs4MTAGFSd7" target="_blank" rel="noopener">Book a chat</a>
+            <a class="btn btn-outline-primary" href="{{ '/cv/' | relative_url }}">Download CV</a>
+            <a class="btn btn-outline-primary" href="{{ '/projects/' | relative_url }}">Selected projects</a>
+          </div>
+          {%- endif %}
+
           <!-- Social -->
           <div class="social">
             <div class="contact-icons">

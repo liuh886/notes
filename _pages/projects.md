@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Projects
+nav_title: projects
 permalink: /projects/
 description: Selected projects in climate, geospatial ML, and decision tooling.
 nav: true
