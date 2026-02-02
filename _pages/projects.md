@@ -1,8 +1,8 @@
 ---
 layout: page
-title: projects
+title: Projects
 permalink: /projects/
-description: A growing collection of my cool projects.
+description: Selected projects in climate, geospatial ML, and decision tooling.
 nav: true
 nav_order: 2
 year_categories: [2025-2026, 2023-2024, 2022, 2019-2020] # Projects show in project page

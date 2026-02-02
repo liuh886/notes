@@ -1,131 +1,108 @@
-- title: General Information
+- title: Summary
   type: map
   contents:
-    - name: Full Name
-      value: Zhihao LIU
-
-    - name: Languages
-      value: Chinese, English
-
-- title: Tech stack
-  type: map
-  contents:
-    - name: Data Science
-      value: Python, Matlab, Scikit-learn, Kalman Filter, XGBoost, Gradient Descent
-
-    - name: GIS
-      value: Automating GIS (QGIS, ArcGIS, Global Mapper), Kriging, OpenStreetMap, Shapely, Geopandas, Xarray, Rasterio
-
-    - name: DevOps
-      value: Git, GitHub, Docker, ETL, PostgreSQL, FastAPI, RESTful API, GCP
-
-- title: Education
-  type: time_table
-  contents:
-    - title: Master - Geosciences
-      institution: University of Oslo, Oslo, Norway
-      year: 2021-2023
-      description:
-        - Advanced Remote Sensing and Topographic Analysis
-        - Surveying, Photogrammetry and Spatial Analysis
-        - Geophysical Data-science
-        - Floods, Avalanches and Landslides
-        - The Surface Energy Balance in Cold Environments
-        - Glacial and Periglacial Geomorphology
-        - IPCC Climate Change 2021-The Physical Science Basis
-
-    - title: Bachelor - Geodesy and Geomatics
-      institution: South West Petroleum University, Chengdu, P.R.C
-      year: 2010-2014
-      description:
-        - Background in Engineering, GIS, GNSS and Cartography.
-        - Thesis - A WebGIS System for Urban Infrastructures.
+    - name: Focus
+      value: Climate & energy data science; turning geospatial/climate data + ML into reusable decision tooling.
+    - name: Strengths
+      value: Uncertainty-aware modeling, remote sensing, prototype-to-product workflows (APIs, data pipelines).
+    - name: Book a chat
+      links:
+        - name: Google Calendar
+          link: https://calendar.app.google/UQ267iEs4MTAGFSd7
 
 - title: Experience
   type: time_table
   contents:
-    - title: Data scientist (Freelance)
-      institution: Eurostar & IKOS
+    - title: Business Development Manager (Energy)
+      institution: BGP Offshore (CNPC)
+      year: 2024.07 - Present
+      description:
+        - Client-facing work translating technical constraints into commercial proposals and delivery plans; strengthens my data-to-decision product mindset.
+
+    - title: Data Scientist (Freelance)
+      institution: Eurostar / IKOS
       year: 2024.02 - 2024.05
       description:
-        - Using Kalman Filter in data fusing & intergration.
-        - Using FastAPI to develop Restful microservice.
-        - PostgreSQL.
+        - Built a real-time state-estimation prototype (Unscented Kalman Filter) with FastAPI + PostgreSQL.
+        - Converted modeling output into user-facing service features as a blueprint for scalable B2B decision tools.
 
-    - title: Geomatics professional & Assistant Manager
-      institution: BGP Offshore, China National Petroleum Corporation
-      year: 2021.01 - 2021.07
+    - title: Research Assistant (Energy & Climate Data Science)
+      institution: University of Oslo
+      year: 2021.11 - 2023.12
       description:
-        - Offshore gephysical surveying.
-        - Quality Control, Data Reprocess, GNSS & Acoustic Positioning.
-        - Get promoted to the senior position✨
+        - Bias correction and spatial downscaling workflows for climate/weather data with energy applications in mind.
+        - Remote sensing + ML for seasonal snow; contributed to reproducible research workflows and open-source tooling.
 
-    - title: Field Technician & Geomatics professional
-      institution: BGP Offshore, China National Petroleum Corporation
-      year: 2014.07 - 2020.12
-      description:
-        - Onboard seismic vessel as a (shift-lead) navigator and a technician.
-        - Global 3D/4D seismic operation among offshore Norway, UK, Morocco, Senegal, Nigeria...
-        - HSEQ awareness and multidisciplinary environment.
-        - Registered Licensed Surveyors of P.R.C.
+- title: Skills
+  type: map
+  contents:
+    - name: Programming
+      value: Python, SQL, Git
+    - name: ML & Statistics
+      value: Bayesian inference, Kalman filtering, machine learning, evaluation under uncertainty
+    - name: Data & Engineering
+      value: FastAPI, PostgreSQL, Docker, ETL, REST APIs
+    - name: Geospatial
+      value: Xarray, GeoPandas, Rasterio, Shapely, GIS automation
+    - name: Domains
+      value: Climate & energy datasets, remote sensing, geophysical data
 
-- title: Part-time and Volunteering
+- title: Education
   type: time_table
   contents:
-    - title: Research Assistant
-      year: 2021.12 - 2023.11
-      description: Teaching assistant for GEO4300/9300 (Geophysical data science, 23 Fall). Coding and field trips.
+    - title: M.Sc. Geoscience
+      institution: University of Oslo (Norway)
+      year: 2021 - 2023
+      description:
+        - Thesis: Snow depth retrieval and downscaling using satellite laser altimetry, machine learning, and climate reanalysis.
+        - GPA: 3.9/4.0.
+
+    - title: B.Sc. Geodesy & Geomatics
+      institution: Southwest Petroleum University (China)
+      year: 2010 - 2014
+      description:
+        - Thesis: A WebGIS system for urban infrastructure management.
+
+- title: Publications, Workshops and Patents
+  layer: additional
+  type: nested_list
+  contents:
+    - title: Cryosphere x Remote Sensing
+      items:
+        - Retrieving snow depth distribution by downscaling ERA5 reanalysis with ICESat-2 laser altimetry · Cold Regions Science and Technology · 2025.
+        - Snow depth retrieval and downscaling using satellite laser altimetry, machine learning and climate reanalysis · IUGG 2023 Berlin · 2023.
+        - Unlocking the Secrets of Snow Depth · Student presentation at SDG Conference (UiO) · 2023.
+    - title: Offshore / Geophysics
+      items:
+        - An identification system for underwater seismic devices · Patent (PRC) · 2022.
+        - Offshoreorient v1.0 · Software Copyright · 2020.
+
+- title: Additional Experience & Volunteering
+  layer: additional
+  type: time_table
+  contents:
+    - title: Geomatics Engineer & Assistant Project Manager
+      institution: BGP Offshore (CNPC)
+      year: 2014.07 - 2021.07
+      description:
+        - Delivered offshore geophysical survey data products; built QC/reporting automation to reduce manual workload.
+        - Licensed Registered Surveyor (2018); promoted to Assistant Project Manager (2021).
 
     - title: Summer Research Assistant
       year: 2023.05 - 2023.07
-      description: Downscaling and bias correction of weather/cliamte dataset for energy system modeling.
+      description:
+        - Bias correction and spatial downscaling of weather/climate datasets for energy-system modeling.
 
-    - title: IT Helper - UiO Geo
-      year: 2021.11 - 2023.06
-      description: I am paid to attend seminars, disputations, and scientific events but do IT-related supports. As an ex-technician in oil and gas, I am skilled at troubleshooting of machines.
-
-    - title: IMO 2022 - Volunteer
-      year: 2022.07
-      description: For the first time, UiO (or Norway) hosted the 63rd International Mathematical Olympiad where we proudly represent the city of Oslo to welcome young mathematicians as a tour guide.
-
-    - title: OSI Friluft - Board member, Volunteer
-      year: 2022.01 - 2024.01
-      description: Student association for outdoor events. I am a outdoor leader.
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Cryosphere x Remote Sensing
-      items:
-        - Snow, periglacial geomorphology
-        - DEM, geostatistics,
-        - Statistical modeling and machine learning
-
-    - title: Geospatial data science
-      items:
-        - Open source geospatial tools
-        - Geodata as a service
-
-- title: Publications, Workshops and Patents
-  type: nested_list
-  contents:
-    - title: Cryosphere x Remote Sensing
-      items:
-        - Retrieving snow depth distribution by downscaling ERA5 Reanalysis with ICESat-2 laser altimetry · Cold Regions Science and Technology · July 1, 2025.
-        - Snow depth retrieval and downscaling using satellite laser altimetry, machine learning and climate reanalysis · IUGG 2023 Berlin · July 13, 2023.
-        - Unlocking the Secrets of Snow Depth · Student Presentation at SDG Conference 2023, UiO · Feb 08, 2023.
-    - title: Offshore seismic
-      items:
-        - Wide-towed sources in streamer seismic - A case study from Norway, Conference paper from Society of Petroleum Geophysicists 2021, China · Sep 27, 2021.
-        - A hybrid seismic acquisition - from wide-towed sources, sparse node to FWI. BGP geophysical technology overseas workshop 2021 · Jun 7, 2021
-        - An identification system for underwater seismic devices. Patent, PRC 201911154941X · Issued May 13, 2022.
-        - Offshoreorinet v1.0. Software Copyright, 2020SR0194691 · Issued Mar 2, 2020.
-        - USBL Pos. Software Copyright, PRC 2023SR0384978 · Issued Mar 23, 2023.
+    - title: Teaching Assistant (Geophysical Data Science)
+      year: 2023
+      description:
+        - Taught Python labs and supported students with scientific programming and data analysis workflows.
 
 - title: Other Interests
+  layer: additional
   type: list
   contents:
-    - <u>Writing:</u> Climate change and energy transition at Zhihu.com
-    - <u>Hobbies:</u> Marathon with 1h28 (21K) 3h29 (42K) of PB, Cross-country skiing.
-    - <u>OnePiece:</u> What's the will of D?
-    - <u>Opensource:</u> Why I dislike Overleaf, becasue I have Obsidian, Quarto...
+    - Writing on climate change and energy transition.
+    - Endurance sports (running, skiing).
+    - Open source geospatial tooling and scientific workflows.
+

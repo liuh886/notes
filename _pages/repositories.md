@@ -1,8 +1,8 @@
 ---
 layout: page
 permalink: /repositories/
-title: repositories
-description: I just started to share my codes in GitHub profile, but my repositories soon are going to change the world!
+title: Repositories
+description: Selected open-source repositories and code projects.
 nav: true
 nav_order: 3
 ---

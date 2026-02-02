@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Research assistant. 0371 Oslo.
+subtitle: Climate & Energy Data Scientist
 
 profile:
   align: right
@@ -19,8 +19,31 @@ display_categories: [work] # Projects show in about page
 social: true # includes social icons at the bottom of the page
 ---
 
-Throughout my career, I've had the privilege of collaborating with geologists, geophysicists, geomorphologists, glaciologists and climate scientists; even though I am still none of them right now 🤷‍♂️.
+Throughout my career, I've worked at the intersection of climate, geospatial data, and applied machine learning.
+I build reusable decision tools from climate and geophysical data, with a bias toward workflows that can be reviewed, reproduced, and shipped.
 
-I see myself as a data scientist, and I've experienced a fantastic journey from discovering [offshore oil](https://zhihaol.eu.org/projects/2020_q35/) to carbon capture and storage, from glacial mass balance to [the origin of landforms](https://zhihaol.eu.org/blog/2022/Quaternary-geomorphology-of-Norway/), from offshore windfarm site derisking to predicting [permafrost changes in 2100](https://zhihaol.eu.org/blog/2022/permafrost-extent/) and climate model downscaling. [All things are nested by geophysical data: how can we make a better descison,](https://i.imgur.com/wldOmMO.png) under the framework of [**Bayes theorem**](https://www.britannica.com/topic/philosophy-of-science/Explanations-laws-and-theories), based on incomplete observations and prior knowledge of the physical model.
+<div class="home-cta" role="group" aria-label="Primary actions">
+  <a class="btn btn-primary home-cta__primary" href="https://calendar.app.google/UQ267iEs4MTAGFSd7" target="_blank" rel="noopener">Book a chat</a>
+  <a class="btn btn-outline-primary" href="{{ '/cv/' | relative_url }}">Download CV</a>
+  <a class="btn btn-outline-primary" href="{{ '/projects/' | relative_url }}">Selected work</a>
+</div>
 
-Geophysical data holds the key to uncovering hidden treasures for energy, the environment and society...For example, can we know more about the variability of [snow mass distribution](https://zhihaol.eu.org/projects/2022_snowdepth/)? If we do so, the energy system will be more robust in hydropower production areas, such as Norway, Switzerland, and Southwest China. Similarly, [more precise and bias-free climate observations & models](https://zhihaol.eu.org/projects/2023_downscaling/) will help us better cope with the uncertainties associated with climate-related risks.
+<div class="home-proof row">
+  <div class="col-12 col-md-4 home-proof__item">
+    <h2>Research credibility</h2>
+    <p>Peer-reviewed work on snow distribution from satellite laser altimetry (2025). See <a href="{{ '/publications/' | relative_url }}">publications</a>.</p>
+  </div>
+  <div class="col-12 col-md-4 home-proof__item">
+    <h2>Climate/energy relevance</h2>
+    <p>Bias correction and spatial downscaling for climate and energy datasets, with uncertainty-aware evaluation.</p>
+  </div>
+  <div class="col-12 col-md-4 home-proof__item">
+    <h2>Shipping ability</h2>
+    <p>Real-time estimation prototype: Unscented Kalman Filter + FastAPI + PostgreSQL, designed as a blueprint for B2B decision tooling.</p>
+  </div>
+</div>
+
+<h2>How I work</h2>
+I use AI-assisted workflows to accelerate drafting, experimentation, and documentation, while keeping results reproducible and reviewable.
+
+<hr class="home-divider" />

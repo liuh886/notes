@@ -1,0 +1,126 @@
+/*******************************************************************************
+ * Visual polish (site-wide)
+ * Keep the existing theme/layout, but improve typography, spacing, and buttons.
+ ******************************************************************************/
+
+body {
+  font-size: 1.03rem;
+  line-height: 1.65;
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle "climate-tech" atmosphere without changing layout structure */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(900px 520px at 10% -10%, rgba(11, 114, 133, 0.12), transparent 60%),
+    radial-gradient(900px 520px at 110% 0%, rgba(45, 212, 191, 0.10), transparent 55%);
+}
+
+html[data-theme='dark'] body::before {
+  background:
+    radial-gradient(900px 520px at 10% -10%, rgba(45, 212, 191, 0.12), transparent 60%),
+    radial-gradient(900px 520px at 110% 0%, rgba(11, 114, 133, 0.10), transparent 55%);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Roboto Slab", "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  letter-spacing: -0.012em;
+  line-height: 1.2;
+}
+
+.post-header {
+  margin-bottom: 1.25rem;
+}
+
+.post-header .post-title {
+  font-weight: 650;
+  margin-bottom: 0.35rem;
+}
+
+@media (min-width: 576px) {
+  .post-header .post-title {
+    font-size: 2.35rem;
+  }
+}
+
+.post-description {
+  margin-bottom: 1.5rem;
+  line-height: 1.55;
+}
+
+/* Readability: make in-article links visually scannable without affecting nav/buttons */
+.post article a:not(.btn):not(.nav-link) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.17em;
+  text-decoration-color: rgba(0, 0, 0, 0.18);
+}
+
+html[data-theme='dark'] .post article a:not(.btn):not(.nav-link) {
+  text-decoration-color: rgba(255, 255, 255, 0.22);
+}
+
+.post article a:not(.btn):not(.nav-link):hover {
+  text-decoration-color: currentColor;
+}
+
+/* Lists read better with slightly tighter leading */
+.post article ul,
+.post article ol {
+  line-height: 1.55;
+}
+
+.post article li + li {
+  margin-top: 0.25rem;
+}
+
+/* Make buttons consistent and clearly "primary" */
+.btn-primary {
+  background-color: var(--global-theme-color) !important;
+  border-color: var(--global-theme-color) !important;
+  color: var(--global-hover-text-color) !important;
+
+  &:hover,
+  &:focus {
+    filter: brightness(0.95);
+  }
+}
+
+.btn-outline-primary {
+  color: var(--global-theme-color) !important;
+  border-color: var(--global-theme-color) !important;
+
+  &:hover,
+  &:focus {
+    background-color: var(--global-theme-color) !important;
+    color: var(--global-hover-text-color) !important;
+  }
+}
+
+.btn:focus,
+.btn:focus-visible {
+  box-shadow: 0 0 0 0.2rem rgba(11, 114, 133, 0.25) !important;
+}
+
+html[data-theme='dark'] .btn:focus,
+html[data-theme='dark'] .btn:focus-visible {
+  box-shadow: 0 0 0 0.2rem rgba(45, 212, 191, 0.25) !important;
+}
+
+/* Cards feel slightly more premium */
+.card {
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme='dark'] .card {
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+}

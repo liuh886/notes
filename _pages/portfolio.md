@@ -1,9 +1,9 @@
 ---
 layout: page
 permalink: /portfolio/
-title: portfolio
-description: A collection of my favorite stocks.
-nav: true
+title: Portfolio
+description: Experiments and dashboards (not primary focus).
+nav: false
 nav_order: 5
 ---
 

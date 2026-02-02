@@ -12,8 +12,11 @@ layout: default
 
   <article>
     <div class="cv">
-      {% for entry in site.data.cv %}
-        <a class="anchor" id="{{ entry.title }}"></a>
+      {%- assign primary_entries = site.data.cv | where_exp: "e", "e.layer != 'additional'" -%}
+      {%- assign additional_entries = site.data.cv | where_exp: "e", "e.layer == 'additional'" -%}
+
+      {% for entry in primary_entries %}
+        <a class="anchor" id="{{ entry.title | slugify }}"></a>
         <div class="card mt-3 p-3">
           <h3 class="card-title font-weight-medium">{{ entry.title }}</h3>
           <div>
@@ -33,6 +36,41 @@ layout: default
           </div>
         </div>
       {% endfor %}
+
+      {% if additional_entries and additional_entries.size > 0 %}
+        <div class="card mt-3 p-3">
+          <div class="d-flex align-items-center justify-content-between">
+            <h3 class="card-title font-weight-medium mb-0">Additional</h3>
+            <button class="btn btn-sm btn-outline-primary" type="button" data-toggle="collapse" data-target="#cv-additional" aria-expanded="false" aria-controls="cv-additional">
+              Show / Hide
+            </button>
+          </div>
+          <div id="cv-additional" class="collapse mt-3">
+            {% for entry in additional_entries %}
+              <a class="anchor" id="{{ entry.title | slugify }}"></a>
+              <div class="card mt-3 p-3">
+                <h3 class="card-title font-weight-medium">{{ entry.title }}</h3>
+                <div>
+                {% if entry.type == "list" %}
+                  {% include cv/list.html %}
+                {% elsif entry.type == "map" %}
+                  {% include cv/map.html %}
+                {% elsif entry.type == "nested_list" %}
+                  {% include cv/nested_list.html %}
+                {% elsif entry.type == "time_table" %}
+                  {% include cv/time_table.html %}
+                {% elsif entry.type == "list_groups" %}
+                  {% include cv/list_groups.html %}
+                {% else %}
+                  {{ entry.contents }}
+                {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
       </div>
   </article>
 
