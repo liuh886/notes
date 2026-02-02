@@ -2,7 +2,12 @@
 layout: default
 ---
 <!-- _layouts/cv.html -->
-{% unless site.data.resume %}
+{%- comment -%}
+  Prefer the site-specific CV dataset (site.data.cv). The upstream theme often
+  defines site.data.resume via jekyll-get-json (even when the JSON file is
+  missing), which can make `site.data.resume` truthy and break this page in CI.
+{%- endcomment -%}
+{% if site.data.cv != empty %}
 <div class="post">
 
   <header class="post-header">
@@ -79,7 +84,7 @@ layout: default
   </article>
 
 </div>
-{% else %}
+{% elsif site.data.resume != empty %}
 <div class="post">
 
   <header class="post-header">
@@ -135,4 +140,15 @@ layout: default
   </article>
 
 </div>
-{% endunless %}
+{% else %}
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }} {% if page.cv_pdf %}<a href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}" target="_blank" rel="noopener noreferrer" class="float-right"><i class="fas fa-file-pdf"></i></a>{% endif %}</h1>
+    {% if page.description %}<p class="post-description">{{ page.description }}</p>{% endif %}
+  </header>
+
+  <article>
+    <p>CV content is temporarily unavailable. Please use the PDF link above.</p>
+  </article>
+</div>
+{% endif %}
