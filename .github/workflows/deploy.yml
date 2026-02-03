@@ -89,7 +89,7 @@ jobs:
       - name: Debug CV strict rebuild (does not affect deploy) 🧪
         continue-on-error: true
         run: |
-          set -euo pipefail
+          set -uo pipefail
           export JEKYLL_ENV=production
 
           cat > _config-ci-strict.yml <<'YML'
@@ -98,7 +98,11 @@ jobs:
           YML
 
           echo "::group::Strict rebuild logs"
+          set +e
           bundle exec jekyll build --lsi --trace --config _config.yml,_config-ci-strict.yml --destination _site_strict
+          rc=$?
+          set -e
+          echo "strict_build_exit_code=$rc"
           echo "::endgroup::"
 
           echo "::group::Strict rebuild output check"
