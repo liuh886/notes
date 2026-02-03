@@ -73,3 +73,73 @@ html[data-theme='dark'] .home-proof .home-proof__item {
 }
 
 /* Keep homepage header typography close to the original theme defaults. */
+
+/*******************************************************************************
+ * Projects page: capability tracks (recruiter-first)
+ ******************************************************************************/
+
+.projects-intro {
+  margin-bottom: 1.25rem;
+
+  .projects-intro__lede {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+    color: var(--global-text-color);
+  }
+}
+
+.tracks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.track {
+  border-radius: 14px;
+
+  .track__title {
+    font-size: 1.1rem;
+    margin: 0 0 0.35rem;
+    text-transform: none;
+  }
+
+  .track__desc {
+    margin: 0 0 0.75rem;
+    color: var(--global-text-color-light);
+    line-height: 1.55;
+  }
+
+  .track__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--global-divider-color);
+  background: rgba(0, 0, 0, 0.015);
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+
+.chip:hover {
+  border-color: var(--global-theme-color);
+  text-decoration: none;
+}
+
+html[data-theme='dark'] .chip {
+  background: rgba(255, 255, 255, 0.03);
+}
