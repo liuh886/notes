@@ -5,7 +5,7 @@ author: Zhihao
 description: What if the ice block expedition 1959 happens in 2021?
 date: 2022-05-04
 tags: links
-categories: modeling
+categories: modeling links
 redirect: /assets/pdf/iceblock_expedition.pptx
 lang: eng
 publish: true
