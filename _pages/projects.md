@@ -11,6 +11,10 @@ horizontal: false
 ---
 
 <!-- pages/projects.md -->
+<p class="lead mb-4">
+  I build decision tools from climate/energy and offshore data &mdash; from governance frameworks to shippable artifacts.
+</p>
+
 <div class="projects">
 {%- if site.enable_project_categories and page.year_categories %}
   <!-- Display categorized projects -->

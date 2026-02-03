@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 4D Seismic
-description: Screening good practive of time-lapse seismic
+description: A curated knowledge hub for 4D (time-lapse) seismic best practices and case studies.
 img: assets/img/4d_seismic_logo.svg
 bibliography: lib.bib
 importance: 1
@@ -10,32 +10,36 @@ category: work
 ---
 
 > **TL;DR**
-> - **Problem:** Make it easy to learn from high-quality 4D (time-lapse) seismic case studies.
-> - **Data:** Published 4D seismic case studies and references.
-> - **Method:** Curate and structure a hub for screening practices and examples.
-> - **Output:** A dedicated website aggregating case studies and notes.
-> - **Impact:** Faster onboarding and pattern discovery for time-lapse project design/interpretation.
-> - **Links:** [4d-seismic-hub](https://liuh886.github.io/4d-seismic-hub).
+> - **Problem:** High-quality 4D seismic know-how is scattered across papers/talks; teams repeat screening work.
+> - **Data:** Open-access 4D/OBN case studies, classic references, and reusable notes.
+> - **Method:** Curate + standardize summaries (what/why/how/so-what) and keep everything link-back-to-source.
+> - **Output:** A public hub (resources + case studies + working-group docs + contribution workflow).
+> - **Impact:** Faster screening and onboarding; a shared, citable baseline for time-lapse program design (incl. CCS monitoring examples).
+> - **Links:** Website: [4d-seismic-hub](https://liuh886.github.io/4d-seismic-hub) | Repo: [4d-seismic-hub](https://github.com/liuh886/4d-seismic-hub)
 
 ![]({{ '/assets/img/4d_seismic_logo.svg' | relative_url }})
 
-## Screening good practive of time-lapse seismic
+## 4D Seismic Hub (time-lapse seismic + OBN)
 
-4D seismic, also known as time-lapse seismic, is a technique used in the oil and gas industry to monitor changes in a reservoir over time. By comparing seismic surveys taken at different times, geophysicists can identify changes in the subsurface that may indicate fluid movement, pressure changes, or other reservoir dynamics. This information is crucial for optimizing production strategies, enhancing recovery, and managing reservoirs more effectively.
+4D Seismic Hub is a public, community-oriented knowledge product: it turns "great but scattered" time-lapse seismic experience into an easy-to-scan index of best practices and case studies, with short summaries pointing back to original sources.
 
-I established a site to screen good practices of 4D seismic projects from published case studies.
+It is designed for early-stage screening questions like:
+- What has worked (and failed) for repeatability in a similar environment?
+- When do PRM vs OBN vs streamer make sense?
+- What attributes are actually decision-grade in the field context?
+- What are the classic reference cases worth reading first?
 
-The site is [here](https://liuh886.github.io/4d-seismic-hub).
+## What's shipped
 
-## The site is still under development
+From the current build of the hub, you can find:
+- **Resources** rendered from a maintained dataset (`_data/papers.yml`) so additions are lightweight and reviewable.
+- **Case studies** in a consistent format (`_data/case_studies_map.yml`) to support pattern-matching across assets.
+- **Working Group** docs (charter, cadence, contribution guidance) to make collaboration durable.
+- **Citation + licensing** so the hub can be reused and referenced properly.
 
-To do list:
+As of the current repo snapshot, the hub includes **14** curated resources and **15** case studies (and is designed to grow by contribution, not by one-off writing).
 
-- [ ] Add more case studies
-- [ ] Add more analysis of the case studies
-- [ ] Add interactive visualization of the case studies
-- [ ] Add a section for user contributions
-- [ ] Improve the design and layout of the site
-- [ ] Add references and further reading materials
-- [ ] Add a section for frequently asked questions (FAQs)
-- [ ] Add a section for contact information and feedback
+## Links
+
+- Hub: [https://liuh886.github.io/4d-seismic-hub](https://liuh886.github.io/4d-seismic-hub)
+- Source: [https://github.com/liuh886/4d-seismic-hub](https://github.com/liuh886/4d-seismic-hub)
