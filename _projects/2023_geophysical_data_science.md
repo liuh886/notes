@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Geophysical Data Science
-description: Describing the dynamics of Earth system by data science
+description: Building reproducible Python workflows for Earth system modeling.
 img: assets/img/post/datascience.jpg
 bibliography: lib.bib
 importance: 1
@@ -10,27 +10,40 @@ category: work
 ---
 
 > **TL;DR**
-> - **Problem:** Teach geophysical data science with practical, reproducible workflows (not just theory).
+> - **Problem:** Help students turn geophysical data science theory into robust, reproducible code.
 > - **Data:** Real-world geophysical datasets used in GEO4300/9300 labs and assignments.
-> - **Method:** Hands-on Python labs + structured exercises and project guidance.
-> - **Output:** Course exercises, lab workflow tips, and a public repository for assignments.
-> - **Impact:** Trained students to move from statistical foundations to applied geoscience modeling.
+> - **Method:** Hands-on Python labs + Git/GitHub workflows + iterative debugging support.
+> - **Output:** A structured lab curriculum and a public repository of exercises/datasets.
+> - **Impact:** Students shipped end-to-end analyses with stronger validation + reproducibility habits.
 > - **Links:** [GEO4300_2023 repository](https://github.com/liuh886/GEO4300_2023/).
 
+### Situation
+Geophysical data science sits at the intersection of complex physical theory and messy, real-world observations. Students often grasp the equations but struggle to translate them into robust code, facing barriers in data cleaning, dimensionality reduction, and reproducible modeling.
 
-In the autumn of 2023, I had the privilege of serving as a teaching assistant for the Geophysical Data Science course. I brought a blend of practical programing experience and academic knowledge to the classroom. This course not only deepens students' understanding of geophysical data science but also serves as a nexus between my experience in the field and the fresh, inquisitive minds ready to explore the intricacies of geoscience. The following are some tips for the course.
+### Task
+My objective was to bridge the gap between statistical theory and applied coding. I aimed to design a lab curriculum that didn't just teach "how to use a library," but **how to think like a data scientist**—handling uncertainty, validating models, and maintaining clean, version-controlled workflows.
 
-## Introduction
+### Action
+*   **Curriculum Development:** Designed and deployed weekly Python labs covering the full data lifecycle:
+    *   **Preprocessing:** Handling missing data and outliers in sensor time-series.
+    *   **Modeling:** Implementing Linear/Multiple Regression, Principal Component Analysis (PCA), and Canonical Correlation Analysis (CCA) from scratch and using libraries.
+    *   **Advanced Analysis:** Stochastic processes and frequency domain analysis (FFT) for seismic and climatic data.
+*   **Engineering Best Practices:** Introduced students to **Git/GitHub** for assignment submissions, enforcing version control habits early.
+*   **Technical Mentorship:** Provided code reviews and debugging support for course projects, guiding students through feature engineering and model selection for their specific geophysical datasets.
 
-The course begins with a solid foundation in core statistical concepts, including probability theories and distributions, essential for grasping the variability of geophysical data. It then builds up to linear and multiple regression techniques, paving the way for more advanced analyzes. As the course progresses, students delve into specialized tools engaging with hypothesis testing, uncertainty analysis... The curriculum culminates in mastering stochastic processes, temporal and frequency domain analysis, and multivariate techniques such as principal component analysis, canonical correlation, geostatistics and machine learning, equipping students with a comprehensive skill set for tackling complex data.
+### Result
+*   **Reproducible Resource:** Created a structured, open-source [GitHub repository](https://github.com/liuh886/GEO4300_2023/) that serves as a permanent reference for future cohorts.
+*   **Student Success:** Empowered students to successfully deliver independent research projects, moving from raw data to statistical inference with confidence.
+*   **Bridge to Industry:** The workflows taught mirrored industry standards, preparing students for roles in energy and environmental analytics.
 
-## Exercises
+---
 
-The best way to learn is by doing. To excel in programming and data analysis, it's crucial to practice in our data lab, engage with real-world data, and not shy away from challenging problems. Here are a few tips to get started: break down complex problems into manageable parts, embrace trial and error, and collaborate in lab for diverse perspectives. Each week, practical exercises available on our [GitHub repository](https://github.com/liuh886/GEO4300_2023/) will reinforce lecture topics and hone your data science skills. These assignments are designed to be challenging yet rewarding, fostering a deep understanding and hands-on experience with geophysical data sets.
+## Course Highlights
 
+The course builds from statistical foundations to advanced machine learning applications in geoscience:
 
-## Course Project
+1.  **Statistical Foundations:** Probability distributions and hypothesis testing.
+2.  **Linear Models:** Regression techniques and uncertainty quantification.
+3.  **Multivariate Analysis:** Uncovering patterns with PCA and geostatistics.
+4.  **Time Series:** Analyzing temporal dynamics in Earth systems.
 
-Your learning journey will culminate in a comprehensive project where you'll employ the techniques acquired to scrutinize and model a geophysical dataset of your selection. This project will not only reflect your analytical prowess but also your innovative approach to problem-solving in the realm of geophysical data science.
-
-This content should provide a strong framework for your course page, highlighting your role, the structured learning path, the importance of practical exercises, and the culmination in a significant course project.
