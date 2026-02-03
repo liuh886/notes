@@ -14,7 +14,7 @@
   type: time_table
   contents:
     - title: Business Development Manager (Energy)
-      institution: BGP Offshore (CNPC)
+      institution: BGP CNPC
       year: 2024.07 - Present
       description:
         - Client-facing work translating technical constraints into commercial proposals and delivery plans; strengthens my data-to-decision product mindset.
@@ -54,14 +54,14 @@
       institution: University of Oslo (Norway)
       year: 2021 - 2023
       description:
-        - Thesis: Snow depth retrieval and downscaling using satellite laser altimetry, machine learning, and climate reanalysis.
-        - GPA: 3.9/4.0.
+        - "Thesis: Snow depth retrieval and downscaling using satellite laser altimetry, machine learning, and climate reanalysis."
+        - "GPA: 3.9/4.0."
 
     - title: B.Sc. Geodesy & Geomatics
       institution: Southwest Petroleum University (China)
       year: 2010 - 2014
       description:
-        - Thesis: A WebGIS system for urban infrastructure management.
+        - "Thesis: A WebGIS system for urban infrastructure management."
 
 - title: Publications, Workshops and Patents
   layer: additional
@@ -82,7 +82,7 @@
   type: time_table
   contents:
     - title: Geomatics Engineer & Assistant Project Manager
-      institution: BGP Offshore (CNPC)
+      institution: BGP CNPC
       year: 2014.07 - 2021.07
       description:
         - Delivered offshore geophysical survey data products; built QC/reporting automation to reduce manual workload.
@@ -105,4 +105,3 @@
     - Writing on climate change and energy transition.
     - Endurance sports (running, skiing).
     - Open source geospatial tooling and scientific workflows.
-
