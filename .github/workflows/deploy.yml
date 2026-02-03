@@ -54,66 +54,21 @@ jobs:
           export JEKYLL_ENV=production
           bundle exec jekyll build --lsi
 
-      # Debug CV page rendering in CI (kept lightweight; does not affect deployed artifact)
-      - name: Debug CV inputs 🧪
+      # Keep a lightweight guardrail so CV doesn't silently deploy as an empty page.
+      - name: Verify CV output 🧪
         run: |
           set -euo pipefail
-          echo "::group::CV source files (existence + first lines)"
-          ls -la cv.md _layouts/cv.html _data/cv.yml
-          echo "--- cv.md ---"
-          sed -n '1,140p' cv.md
-          echo "--- _layouts/cv.html (head) ---"
-          sed -n '1,180p' _layouts/cv.html
-          echo "::endgroup::"
-
-      - name: Debug CV output 🧪
-        run: |
-          set -euo pipefail
-          echo "::group::CV output in _site"
-          if [ -f "_site/cv/index.html" ]; then
-            ls -la _site/cv/index.html
-            echo "bytes=$(stat -c %s _site/cv/index.html)"
-            echo "--- head ---"
-            head -n 60 _site/cv/index.html || true
-            if command -v xxd >/dev/null 2>&1; then
-              echo "--- hex(head 64 bytes) ---"
-              head -c 64 _site/cv/index.html | xxd -g 1 || true
-            else
-              echo "xxd not available"
-            fi
-          else
+          if [ ! -f "_site/cv/index.html" ]; then
             echo "Missing: _site/cv/index.html"
+            exit 1
           fi
-          echo "::endgroup::"
-
-      - name: Debug CV strict rebuild (does not affect deploy) 🧪
-        continue-on-error: true
-        run: |
-          set -uo pipefail
-          export JEKYLL_ENV=production
-
-          cat > _config-ci-strict.yml <<'YML'
-          liquid:
-            error_mode: strict
-          YML
-
-          echo "::group::Strict rebuild logs"
-          set +e
-          bundle exec jekyll build --lsi --trace --config _config.yml,_config-ci-strict.yml --destination _site_strict
-          rc=$?
-          set -e
-          echo "strict_build_exit_code=$rc"
-          echo "::endgroup::"
-
-          echo "::group::Strict rebuild output check"
-          if [ -f "_site_strict/cv/index.html" ]; then
-            ls -la _site_strict/cv/index.html
-            echo "bytes=$(stat -c %s _site_strict/cv/index.html)"
-            head -n 60 _site_strict/cv/index.html || true
-          else
-            echo "Missing: _site_strict/cv/index.html"
+          bytes=$(stat -c %s _site/cv/index.html)
+          echo "cv_index_bytes=$bytes"
+          if [ "$bytes" -lt 1000 ]; then
+            echo "CV page output too small (< 1000 bytes)."
+            head -n 40 _site/cv/index.html || true
+            exit 1
           fi
-          echo "::endgroup::"
 
       - name: PurgeCSS 🔧
         run: |
