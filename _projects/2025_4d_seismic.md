@@ -2,7 +2,7 @@
 layout: page
 title: 4D Seismic
 description: Screening good practive of time-lapse seismic
-img: https://cdn.jsdelivr.net/gh/liuh886/pic-obsidian@main/img/20251121000345.png
+img: assets/img/4d_seismic_logo.svg
 bibliography: lib.bib
 importance: 1
 year: 2025-2026
@@ -17,7 +17,7 @@ category: work
 > - **Impact:** Faster onboarding and pattern discovery for time-lapse project design/interpretation.
 > - **Links:** [4d-seismic-hub](https://liuh886.github.io/4d-seismic-hub).
 
-![](https://cdn.jsdelivr.net/gh/liuh886/pic-obsidian@main/img/20251121000345.png)
+![]({{ '/assets/img/4d_seismic_logo.svg' | relative_url }})
 
 ## Screening good practive of time-lapse seismic
 
