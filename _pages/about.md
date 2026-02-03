@@ -23,17 +23,17 @@ home_cta: true
 Throughout my career, I've worked at the intersection of climate, geospatial data, and applied machine learning.
 I build reusable decision tools from climate and geophysical data, with a bias toward workflows that can be reviewed, reproduced, and shipped.
 
-<div class="home-proof row">
-  <div class="col-12 home-proof__item">
-    <h2>Research credibility</h2>
+<div class="home-proof">
+  <div class="home-proof__item">
+    <h2><i class="fas fa-graduation-cap"></i> Research credibility</h2>
     <p>Peer-reviewed work on snow distribution from satellite laser altimetry (2025). See <a href="{{ '/publications/' | relative_url }}">publications</a>.</p>
   </div>
-  <div class="col-12 home-proof__item">
-    <h2>Climate/energy relevance</h2>
+  <div class="home-proof__item">
+    <h2><i class="fas fa-globe-europe"></i> Climate relevance</h2>
     <p>Bias correction and spatial downscaling for climate and energy datasets, with uncertainty-aware evaluation.</p>
   </div>
-  <div class="col-12 home-proof__item">
-    <h2>Shipping ability</h2>
+  <div class="home-proof__item">
+    <h2><i class="fas fa-rocket"></i> Shipping ability</h2>
     <p>Real-time estimation prototype: Unscented Kalman Filter + FastAPI + PostgreSQL, designed as a blueprint for B2B decision tooling.</p>
   </div>
 </div>
