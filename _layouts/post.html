@@ -2,6 +2,11 @@
 layout: default
 ---
 <!-- _layouts/post.html -->
+{% if page.redirect %}
+<script type="text/javascript">
+  window.location.href = "{{ page.redirect | relative_url }}";
+</script>
+{% endif %}
 {%- assign year = page.date | date: "%Y" -%}
 {%- assign tags = page.tags | join: "" -%}
 {%- assign categories = page.categories | join: "" -%}

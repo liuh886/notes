@@ -30,7 +30,7 @@ category: work
 
 <br>
 
-![]({{ '/assets/img/4d_seismic_logo.svg' | relative_url }})
+![]({{ '/assets/img/4d_seismic_logo.svg' | relative_url }}){: width="20%"}
 
 ## 4D Seismic Hub (time-lapse seismic + OBN)
 

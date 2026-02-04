@@ -61,7 +61,8 @@ max_width: 920px
 # Display links to the page with a preview object on social media.
 serve_og_meta: true # Include Open Graph meta tags in the HTML head
 serve_schema_org: true # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+og_image: blog_pic.jpg # The site-wide (default for all links) Open Graph preview image
+lazy_load_posts: true # Custom flag for our optimizations
 
 # -----------------------------------------------------------------------------
 # Social integration
