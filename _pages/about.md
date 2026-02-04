@@ -26,15 +26,15 @@ I build reusable decision tools from climate and geophysical data, with a bias t
 <div class="home-proof">
   <div class="home-proof__item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; transition: transform 0.2s ease;">
     <h2 style="color: #B509AC; font-size: 1.25rem;"><i class="fas fa-graduation-cap"></i> Research Credibility</h2>
-    <p style="font-size: 0.95rem; line-height: 1.6;">Peer-reviewed work on snow distribution from satellite laser altimetry (2025). See <a href="{{ '/publications/' | relative_url }}" style="color: #B509AC; font-weight: 600;">publications</a>.</p>
+    <p style="font-size: 0.95rem; line-height: 1.6;">Peer-reviewed work on satellite laser altimetry and snow modeling (2025). High-precision geophysical modeling for remote and harsh environments. See <a href="{{ '/publications/' | relative_url }}" style="color: #B509AC; font-weight: 600;">publications</a>.</p>
   </div>
   <div class="home-proof__item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; transition: transform 0.2s ease;">
-    <h2 style="color: #B509AC; font-size: 1.25rem;"><i class="fas fa-globe-europe"></i> Climate Relevance</h2>
-    <p style="font-size: 0.95rem; line-height: 1.6;">Bias correction and spatial downscaling for climate and energy datasets, with uncertainty-aware evaluation.</p>
+    <h2 style="color: #B509AC; font-size: 1.25rem;"><i class="fas fa-bolt"></i> Climate & Energy</h2>
+    <p style="font-size: 0.95rem; line-height: 1.6;">At the intersection of ML and energy assets: from 4D seismic monitoring for CCUS/Reservoirs to bias correction for climate-energy datasets.</p>
   </div>
   <div class="home-proof__item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; transition: transform 0.2s ease;">
     <h2 style="color: #B509AC; font-size: 1.25rem;"><i class="fas fa-rocket"></i> Shipping Ability</h2>
-    <p style="font-size: 0.95rem; line-height: 1.6;">Real-time estimation prototype: Unscented Kalman Filter + FastAPI + PostgreSQL, designed for B2B decision tooling.</p>
+    <p style="font-size: 0.95rem; line-height: 1.6;">Building shippable decision tools: from UKF-based real-time estimation to modern web hubs, with a focus on reproducibility and production-ready code.</p>
   </div>
 </div>
 
@@ -44,9 +44,23 @@ I build reusable decision tools from climate and geophysical data, with a bias t
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
+  margin-bottom: 3rem;
 }
 .home-proof__item:hover {
   transform: translateY(-5px);
   border-color: #B509AC !important;
+}
+
+/* Fix News Emoji Wrapping */
+.news img.emoji {
+  display: inline-block !important;
+  height: 1.2em;
+  width: 1.2em;
+  margin: 0 0.1em;
+  vertical-align: text-top;
+}
+
+.news table th {
+  white-space: nowrap; /* Prevent date from wrapping */
 }
 </style>

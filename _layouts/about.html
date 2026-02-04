@@ -51,6 +51,12 @@ layout: default
             {{ content }}
           </div>
           
+          <!-- News -->
+          {% if page.news and site.announcements.enabled -%}
+            <h2 style="margin-top: 3rem;"><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h2>
+            {%- include news.html limit=true %}
+          {%- endif %}
+
           <!-- Latest posts -->
           {% if page.latest_posts -%}
             <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a></h2>
@@ -116,13 +122,6 @@ layout: default
           {%- endif %}
           
           {%- if page.social %}
-
-          <!-- News -->
-            {% if page.news and site.announcements.enabled -%}
-              <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h2>
-              {%- include news.html limit=true %}
-          {%- endif %}
-
           <!-- Social -->
           <div class="social">
             <div class="contact-icons">
