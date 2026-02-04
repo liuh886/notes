@@ -3,6 +3,7 @@ layout: page
 title: 4D Seismic
 description: A curated knowledge hub for 4D (time-lapse) seismic best practices and case studies.
 img: assets/img/4d_seismic_logo.svg
+keywords: "4D seismic, time-lapse seismic, OBN, ocean bottom nodes, reservoir monitoring, geophysics"
 bibliography: lib.bib
 importance: 1
 year: 2025-2026
@@ -11,11 +12,23 @@ category: work
 
 > **TL;DR**
 > - **Problem:** High-quality 4D seismic know-how is scattered across papers/talks; teams repeat screening work.
-> - **Data:** Open-access 4D/OBN case studies, classic references, and reusable notes.
-> - **Method:** Curate + standardize summaries (what/why/how/so-what) and keep everything link-back-to-source.
-> - **Output:** A public hub (resources + case studies + working-group docs + contribution workflow).
-> - **Impact:** Faster screening and onboarding; a shared, citable baseline for time-lapse program design (incl. CCS monitoring examples).
-> - **Links:** Website: [4d-seismic-hub](https://liuh886.github.io/4d-seismic-hub) | Repo: [4d-seismic-hub](https://github.com/liuh886/4d-seismic-hub)
+> - **Method:** Curate + standardize summaries (what/why/how/so-what) pointing back to source.
+> - **Impact:** Faster screening and onboarding for time-lapse program design.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <a href="https://liuh886.github.io/4d-seismic-hub" target="_blank" class="btn btn-primary w-100">
+            <i class="fas fa-external-link-alt"></i> Enter Interactive Hub
+        </a>
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        <a href="https://github.com/liuh886/4d-seismic-hub" target="_blank" class="btn btn-outline-secondary w-100">
+            <i class="fab fa-github"></i> View Source Code
+        </a>
+    </div>
+</div>
+
+<br>
 
 ![]({{ '/assets/img/4d_seismic_logo.svg' | relative_url }})
 
