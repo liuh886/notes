@@ -70,6 +70,26 @@ img {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
+.post img.emoji {
+  display: inline-block;
+  margin: 0 0.1rem;
+  vertical-align: text-bottom;
+  height: 1.1em;
+  width: 1.1em;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.news img {
+  display: inline !important;
+  margin: 0 !important;
+  vertical-align: middle;
+  height: 1.2em;
+  width: auto;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
 @media (max-width: 800px) {
   .post img {
     max-width: 100%;

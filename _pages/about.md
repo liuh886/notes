@@ -34,7 +34,7 @@ I build reusable decision tools from climate and geophysical data, with a bias t
   </div>
   <div class="home-proof__item" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; transition: transform 0.2s ease;">
     <h2 style="color: #B509AC; font-size: 1.25rem;"><i class="fas fa-rocket"></i> Shipping Ability</h2>
-    <p style="font-size: 0.95rem; line-height: 1.6;">Building shippable decision tools: from UKF-based real-time estimation to modern web hubs, with a focus on reproducibility and production-ready code.</p>
+    <p style="font-size: 0.95rem; line-height: 1.6;">Building shippable decision tools: from Bayesian Models to AI Agents, with a focus on reproducibility and production-ready code.</p>
   </div>
 </div>
 
