@@ -1,6 +1,6 @@
 ---
 layout: page
-title: CCUS dMRV
+title: dMRV is the key;
 description: Digital MRV and disclosure framework design for CCUS clusters.
 img: assets/img/ccus-dmrv.svg
 importance: 0
