@@ -3,9 +3,16 @@ layout: post
 title: 'The Agentic Brain: A Blueprint for Personal AI OS with LifeOS 5.0'
 date: 2026-03-08
 categories: [AI, LifeOS, Architecture]
+thumbnail: assets/img/lifeos-5-logo.svg
 img: assets/img/lifeos-5-logo.svg
+og_image: assets/img/lifeos-5-logo.svg
+description: >
+  LifeOS 5.0 transitions from passive digital hoarding to an active agentic brain, 
+  utilizing ULID anchors and cognitive pruning to mimic human memory consolidation.
 mermaid: true
 ---
+
+![LifeOS 5.0 Logo]({{ 'assets/img/lifeos-5-logo.svg' | relative_url }}){: .img-fluid .rounded .z-depth-1}
 
 The dream of a "Second Brain" has long been synonymous with digital hoarding—a static warehouse of notes, PDFs, and half-remembered ideas. But in the era of Large Language Models (LLMs), **the archive is dead**. A brain that only stores is not a brain; it is a graveyard. For a personal operating system to be truly "alive," it must evolve from passive storage to **active agency**. 
 
@@ -18,7 +25,7 @@ LifeOS 5.0 is designed as a high-fidelity emulation of human cognitive loops. In
 ```mermaid
 graph TD
     subgraph "Perception Layer (Sensing)"
-        A[Obsidain Vault / System Events] -->|Continuous Scan| B(Sensory Input)
+        A[Obsidian Vault / System Events] -->|Continuous Scan| B(Sensory Input)
     end
 
     subgraph "Cognitive Kernel (Reasoning)"

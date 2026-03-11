@@ -5,5 +5,28 @@
       startOnLoad: true,
       theme: 'default'
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Find all code blocks with language-mermaid class
+      const mermaidBlocks = document.querySelectorAll('.language-mermaid');
+      mermaidBlocks.forEach(function(block) {
+        // Extract the code content
+        const codeBlock = block.querySelector('pre.highlight code');
+        if (codeBlock) {
+          const code = codeBlock.textContent;
+
+          // Create a new div for mermaid
+          const mermaidDiv = document.createElement('div');
+          mermaidDiv.className = 'mermaid';
+          mermaidDiv.textContent = code;
+
+          // Replace the entire highlighter-rouge container with the new mermaid div
+          block.parentNode.replaceChild(mermaidDiv, block);
+        }
+      });
+      
+      // Tell mermaid to render the new divs
+      mermaid.run();
+    });
   </script>
 {% endif %}
