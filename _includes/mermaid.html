@@ -1,16 +1,23 @@
 {% if page.mermaid %}
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    
+    // Initialize mermaid with startOnLoad: true to catch any already existing .mermaid divs
     mermaid.initialize({
       startOnLoad: true,
       theme: 'default'
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-      // Find all code blocks with language-mermaid class
+    // Main function to find mermaid code blocks and render them
+    const renderMermaid = async () => {
+      // Find all code blocks with language-mermaid class (Jekyll kramdown output)
       const mermaidBlocks = document.querySelectorAll('.language-mermaid');
+      let needsRun = false;
+
       mermaidBlocks.forEach(function(block) {
-        // Extract the code content
+        // Extract the code content from the highlight structure
+        // Jekyll's kramdown rouge output typically looks like:
+        // <div class="language-mermaid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...</code></pre></div></div>
         const codeBlock = block.querySelector('pre.highlight code');
         if (codeBlock) {
           const code = codeBlock.textContent;
@@ -21,12 +28,25 @@
           mermaidDiv.textContent = code;
 
           // Replace the entire highlighter-rouge container with the new mermaid div
+          // We use block.parentNode to reach the outer div if block is the inner one, 
+          // but document.querySelectorAll('.language-mermaid') usually returns the outer div.
           block.parentNode.replaceChild(mermaidDiv, block);
+          needsRun = true;
         }
       });
       
-      // Tell mermaid to render the new divs
-      mermaid.run();
-    });
+      // If we transformed any blocks, tell mermaid to render them
+      if (needsRun) {
+        await mermaid.run();
+      }
+    };
+
+    // Ensure the script runs after the DOM is fully interactive
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', renderMermaid);
+    } else {
+      // If DOM is already interactive or complete, run immediately
+      renderMermaid();
+    }
   </script>
 {% endif %}
