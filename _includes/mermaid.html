@@ -1,52 +1,76 @@
 {% if page.mermaid %}
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-    
-    // Initialize mermaid with startOnLoad: true to catch any already existing .mermaid divs
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'default'
-    });
-
-    // Main function to find mermaid code blocks and render them
-    const renderMermaid = async () => {
-      // Find all code blocks with language-mermaid class (Jekyll kramdown output)
-      const mermaidBlocks = document.querySelectorAll('.language-mermaid');
-      let needsRun = false;
-
-      mermaidBlocks.forEach(function(block) {
-        // Extract the code content from the highlight structure
-        // Jekyll's kramdown rouge output typically looks like:
-        // <div class="language-mermaid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...</code></pre></div></div>
-        const codeBlock = block.querySelector('pre.highlight code');
-        if (codeBlock) {
-          const code = codeBlock.textContent;
-
-          // Create a new div for mermaid
-          const mermaidDiv = document.createElement('div');
-          mermaidDiv.className = 'mermaid';
-          mermaidDiv.textContent = code;
-
-          // Replace the entire highlighter-rouge container with the new mermaid div
-          // We use block.parentNode to reach the outer div if block is the inner one, 
-          // but document.querySelectorAll('.language-mermaid') usually returns the outer div.
-          block.parentNode.replaceChild(mermaidDiv, block);
-          needsRun = true;
-        }
+  <!-- Load Mermaid classic script for broader compatibility -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    /**
+     * Mermaid Initialization and Rendering Fix
+     * Addresses rendering issues with jekyll-diagrams and ensures DOM is ready.
+     * Support for both standard Markdown code fences and jekyll-diagrams liquid tags.
+     */
+    (async function() {
+      // 1. Basic initialization
+      mermaid.initialize({
+        startOnLoad: true, // Automatically render any <div class="mermaid">
+        theme: 'default',
+        securityLevel: 'loose'
       });
-      
-      // If we transformed any blocks, tell mermaid to render them
-      if (needsRun) {
-        await mermaid.run();
-      }
-    };
 
-    // Ensure the script runs after the DOM is fully interactive
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', renderMermaid);
-    } else {
-      // If DOM is already interactive or complete, run immediately
-      renderMermaid();
-    }
+      // 2. Main processing function
+      const renderMermaid = async () => {
+        // Find all mermaid-related blocks
+        // .language-mermaid: standard Jekyll/kramdown highlight
+        // .jekyll-diagrams-mermaid: output from jekyll-diagrams plugin
+        // .jekyll-diagrams: generic wrapper for other jekyll-diagrams blocks
+        const selectors = '.language-mermaid, .jekyll-diagrams-mermaid, .jekyll-diagrams';
+        const mermaidBlocks = document.querySelectorAll(selectors);
+        let needsRun = false;
+
+        mermaidBlocks.forEach(function(block) {
+          // Check if this block has already been processed (has .mermaid class)
+          if (block.classList.contains('mermaid') || block.querySelector('.mermaid')) return;
+
+          // Extract the code content
+          let code = "";
+          
+          // Case 1: Standard Jekyll highlight (pre.highlight code)
+          const codeElement = block.querySelector('pre.highlight code');
+          if (codeElement) {
+            code = codeElement.textContent;
+          } 
+          // Case 2: Direct text content (common for jekyll-diagrams output or raw blocks)
+          else {
+            // Check if it's a jekyll-diagrams block that might have a specific structure
+            code = block.textContent.trim();
+          }
+
+          if (code && (code.includes('graph ') || code.includes('sequenceDiagram') || code.includes('gantt') || code.includes('classDiagram') || code.includes('stateDiagram') || code.includes('pie') || code.includes('erDiagram'))) {
+            // Create a new div for mermaid
+            const mermaidDiv = document.createElement('div');
+            mermaidDiv.className = 'mermaid';
+            mermaidDiv.textContent = code;
+
+            // Replace the entire container with the new mermaid div
+            block.parentNode.replaceChild(mermaidDiv, block);
+            needsRun = true;
+          }
+        });
+        
+        // If we transformed any blocks, tell mermaid to render them
+        if (needsRun) {
+          try {
+            await mermaid.run();
+          } catch (e) {
+            console.error("Mermaid rendering error:", e);
+          }
+        }
+      };
+
+      // 3. Execution timing (Wait for the DOM to be fully interactive)
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', renderMermaid);
+      } else {
+        renderMermaid();
+      }
+    })();
   </script>
 {% endif %}
