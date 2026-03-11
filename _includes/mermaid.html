@@ -1,6 +1,10 @@
 {% if page.mermaid %}
   <!-- Load Mermaid classic script for broader compatibility -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    .mermaid { display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px; }
+    .mermaid svg { max-width: 100% !important; height: auto !important; }
+  </style>
   <script>
     /**
      * Mermaid Initialization and Rendering Fix
@@ -9,9 +13,11 @@
      */
     (async function() {
       // 1. Basic initialization
-      mermaid.initialize({
-        startOnLoad: true, // Automatically render any <div class="mermaid">
-        theme: 'default',
+      mermaid.initialize({ 
+        startOnLoad: true, 
+        theme: 'default', 
+        flowchart: { useMaxWidth: true }, 
+        sequence: { useMaxWidth: true },
         securityLevel: 'loose'
       });
 
