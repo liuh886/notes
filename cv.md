@@ -5,7 +5,7 @@ title: CV
 nav: false
 nav_order: 5
 cv_pdf: CV_Zhihao_geoscience.pdf
-description: "Climate & Energy Data Scientist"
+description: "Climate & Energy Data Scientist | Caixin ESG30 Young Scholar"
 toc:
   sidebar: left
 ---

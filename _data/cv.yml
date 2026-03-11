@@ -2,9 +2,9 @@
   type: map
   contents:
     - name: Focus
-      value: Climate & energy data science; turning geospatial/climate data + ML into reusable decision tooling.
+      value: AI Agent for Energy & Climate
     - name: Strengths
-      value: Uncertainty-aware modeling, remote sensing, prototype-to-product workflows (APIs, data pipelines).
+      value: Uncertainty-aware modeling, specializing in the digitalization of MRV and 4D seismic monitoring for CCUS cluster governance.
     - name: Book a chat
       links:
         - name: Google Calendar
@@ -13,18 +13,19 @@
 - title: Experience
   type: time_table
   contents:
-    - title: Business Development Manager (Energy)
+    - title: Business Development Manager (New Energy)
       institution: BGP CNPC
       year: 2024.07 - Present
       description:
-        - Client-facing work translating technical constraints into commercial proposals and delivery plans; strengthens my data-to-decision product mindset.
+        - Client-facing work translating technical constraints into commercial proposals and delivery plans; architecting Digital Carbon Monitoring & MRV frameworks to strengthen a data-to-decision mindset.
 
-    - title: Data Scientist (Freelance)
-      institution: Eurostar / IKOS
-      year: 2024.02 - 2024.05
+    - title: Principal
+      institution: LIU GEOCONSULTING
+      year: 2023.12 - 2024.06
       description:
         - Built a real-time state-estimation prototype (Unscented Kalman Filter) with FastAPI + PostgreSQL.
         - Converted modeling output into user-facing service features as a blueprint for scalable B2B decision tools.
+        - Consulting service for Eurostar.
 
     - title: Research Assistant (Energy & Climate Data Science)
       institution: University of Oslo
@@ -45,7 +46,7 @@
     - name: Geospatial
       value: Xarray, GeoPandas, Rasterio, Shapely, GIS automation
     - name: Domains
-      value: Climate & energy datasets, remote sensing, geophysical data
+      value: CCUS, AI Agent, Climate & energy datasets, remote sensing, geophysical data
 
 - title: Education
   type: time_table
@@ -67,6 +68,9 @@
   layer: additional
   type: nested_list
   contents:
+    - title: AI Agent for Climate and Energy
+      items:
+        - "AI Agent in CCUS: Toward autonomous MRV and cluster monitoring · In Progress · 2026."
     - title: Cryosphere x Remote Sensing
       items:
         - Retrieving snow depth distribution by downscaling ERA5 reanalysis with ICESat-2 laser altimetry · Cold Regions Science and Technology · 2025.

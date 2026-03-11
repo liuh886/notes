@@ -4,8 +4,9 @@ github_users:
 github_repos:
   - liuh886/4d-seismic-hub
   - liuh886/ccus-policy-hub
-  - GlacioHack/xdem
+  - liuh886/GhostCam
+  - liuh886/http-to-obsidian-cli-gateway
+  - PleasePrompto/ductor
   - liuh886/the_ice_block_expedition_1959
   - liuh886/open_phrasebank
-  - GlacioHack/geoutils
   - liuh886/GEO4300_2023/
