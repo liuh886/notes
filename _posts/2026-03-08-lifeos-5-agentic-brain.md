@@ -20,29 +20,30 @@ LifeOS 5.0 marks this transition. It is no longer a tool for Personal Knowledge 
 
 ### Mimicking the Human Loop: The Cognitive Architecture
 
-LifeOS 5.0 is designed as a high-fidelity emulation of human cognitive loops. Instead of linear retrieval, it operates on a circular, self-reinforcing topology of **Active Inference**.
+The architectural novelty of LifeOS 5.0 does not lie in adding yet another retrieval layer. It lies in **redefining what memory is**. Conventional agent memory systems treat memory as an external resource that the agent retrieves in order to maintain response continuity. LifeOS-AMEM proposes a different model: memory as a **co-evolving shared brain** jointly inhabited by the human and the agent.
 
 ```mermaid
-graph TD
-    subgraph "Perception Layer (Sensing)"
-        A[Obsidian Vault / System Events] -->|Continuous Scan| B(Sensory Input)
+flowchart LR
+    subgraph O["Agent-Centric Memory"]
+        O1[Human] --> O2[Agent]
+        O2 --> O3[Retrieve Memory]
+        O3 --> O2
+        O2 --> O4[Response]
     end
 
-    subgraph "Cognitive Kernel (Reasoning)"
-        B --> C{Agentic Kernel}
-        D[(A-MEM: Semantic Memory)] <-->|Proactive Association| C
-        E[(SQLite: Structured Memory)] <-->|Identity Anchoring| C
+    subgraph L["LifeOS-AMEM"]
+        L1[Human] <--> L2[Shared Brain<br/>living markdown memory]
+        L3[Agent] <--> L2
+        L2 --> L4[sense / recall]
+        L4 --> L3
+        L3 --> L5[commit / maintain]
+        L5 --> L2
     end
-
-    subgraph "Actuation Layer (Execution)"
-        C -->|Context Pruning| F[Decision Synthesis]
-        F -->|Governance Distillation| G(Action: Vault Refinement)
-        G -->|Self-Evolution| A
-    end
-
-    style C fill:#f9f,stroke:#333,stroke-width:4px
-    style D fill:#bbf,stroke:#333
 ```
+
+*Figure X. LifeOS-AMEM transforms memory from an agent-centric retrieval target into a co-evolving human-agent shared brain.*
+
+*Conventional agent memory systems treat memory as an external resource retrieved by the agent to improve response continuity. In contrast, LifeOS-AMEM models memory as a shared cognitive substrate jointly inhabited by the human and the agent. Through `sense` and `recall`, the agent reads the current and historical state of this shared brain; through `commit` and `maintain`, it writes back governed updates, allowing memory to co-evolve as a digital twin rather than remain a passive retrieval store.*
 
 ### Mimicking the Human Neural: ULID as Semantic Identity
 
