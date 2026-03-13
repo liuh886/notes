@@ -22,7 +22,18 @@ LifeOS 5.0 marks this transition. It is no longer a tool for Personal Knowledge 
 
 The architectural novelty of LifeOS 5.0 does not lie in adding yet another retrieval layer. It lies in **redefining what memory is**. Conventional agent memory systems treat memory as an external resource that the agent retrieves in order to maintain response continuity. LifeOS-AMEM proposes a different model: memory as a **co-evolving shared brain** jointly inhabited by the human and the agent.
 
-<div style="max-width: 25%; margin: 0 auto;">
+<style>
+  .mermaid {
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mermaid svg {
+    width: 100% !important;
+    height: auto !important;
+  }
+</style>
 
 ```mermaid
 flowchart LR
@@ -42,8 +53,6 @@ flowchart LR
         L5 --> L2
     end
 ```
-
-</div>
 
 *Figure X. LifeOS-AMEM transforms memory from an agent-centric retrieval target into a co-evolving human-agent shared brain.*
 
