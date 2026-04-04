@@ -33,35 +33,23 @@
   margin: 2.5rem 0 3.5rem;
 
   .home-proof__item {
-    padding: 1.5rem 1.75rem;
+    padding: 1.25rem 1.5rem;
     border: 1px solid var(--global-divider-color);
     background: var(--global-bg-color);
-    border-radius: 12px;
+    border-radius: 10px;
     position: relative;
     transition: all 0.25s ease;
-    border-left: 4px solid var(--global-theme-color); /* Strong vertical accent */
+    border-left: 3px solid var(--global-theme-color);
 
     &:hover {
       border-color: var(--global-theme-color);
-      background: rgba(181, 9, 172, 0.02);
-      transform: translateX(4px); /* Subtle horizontal shift instead of lift */
-    }
-
-    .data-tag {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--global-theme-color);
-      margin-bottom: 0.8rem;
-      opacity: 0.7;
-      display: inline-block;
-      text-transform: uppercase;
+      background: rgba(181, 9, 172, 0.015);
+      transform: translateX(3px);
     }
 
     h2 {
-      font-size: 1.2rem;
-      margin: 0 0 0.8rem 0;
+      font-size: 1.15rem;
+      margin: 0 0 0.6rem 0;
       color: var(--global-text-color);
       display: flex;
       align-items: center;
@@ -70,24 +58,24 @@
       border-bottom: none;
 
       i {
-        font-size: 1.1rem;
+        font-size: 1rem;
         color: var(--global-theme-color);
-        opacity: 0.9;
+        opacity: 0.85;
       }
     }
 
     p {
       margin-bottom: 0;
       font-size: 0.95rem;
-      line-height: 1.65;
+      line-height: 1.6;
       color: var(--global-text-color);
-      opacity: 0.9;
+      opacity: 0.85;
 
       a {
         color: var(--global-theme-color);
         font-weight: 600;
         text-decoration: none;
-        border-bottom: 1px solid rgba(181, 9, 172, 0.3);
+        border-bottom: 1px solid rgba(181, 9, 172, 0.2);
         
         &:hover {
           border-bottom-color: var(--global-theme-color);
@@ -101,7 +89,7 @@ html[data-theme='dark'] .home-proof .home-proof__item {
   background: var(--global-card-bg-color);
   
   &:hover {
-    background: rgba(181, 9, 172, 0.05);
+    background: rgba(181, 9, 172, 0.04);
   }
 }
 

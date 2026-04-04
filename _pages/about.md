@@ -3,7 +3,7 @@ layout: about
 title: about
 permalink: /
 subtitle: Climate & Energy Data Scientist
-subtitle_extra: "<a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc."
+subtitle_extra: "Caixin ESG30 Young Scholar | Independent Researcher | BGP CNPC"
 
 profile:
   align: right
@@ -26,17 +26,14 @@ I build reusable decision tools from climate and geophysical data, with a bias t
 
 <div class="home-proof">
   <div class="home-proof__item">
-    <span class="data-tag">CORE PILLAR 01</span>
     <h2><i class="fas fa-graduation-cap"></i> Research Credibility</h2>
     <p>Peer-reviewed work on satellite laser altimetry and snow modeling (2025). High-precision geophysical modeling for remote and harsh environments. See <a href="{{ '/publications/' | relative_url }}">publications</a>.</p>
   </div>
   <div class="home-proof__item">
-    <span class="data-tag">CORE PILLAR 02</span>
     <h2><i class="fas fa-bolt"></i> Climate & Energy</h2>
     <p>At the intersection of ML and energy assets: from 4D seismic monitoring for CCUS/Reservoirs to bias correction for climate-energy datasets.</p>
   </div>
   <div class="home-proof__item">
-    <span class="data-tag">CORE PILLAR 03</span>
     <h2><i class="fas fa-rocket"></i> Shipping Ability</h2>
     <p>Building shippable decision tools: from Bayesian Models to AI Agents, with a focus on reproducibility and production-ready code.</p>
   </div>

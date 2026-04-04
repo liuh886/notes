@@ -18,8 +18,10 @@ layout: default
               {%- endif -%}
             {%- endif %}
           </h1>
-          <p class="desc">{{ page.subtitle }}</p>
-          {% if page.subtitle_extra %}<p class="desc">{{ page.subtitle_extra }}</p>{% endif %}
+          <p class="desc">
+            {{ page.subtitle }}
+            {% if page.subtitle_extra %}<span class="mx-2">|</span>{{ page.subtitle_extra }}{% endif %}
+          </p>
         </header>
 
         <article>
