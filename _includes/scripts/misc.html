@@ -1,7 +1,11 @@
 {% if site.enable_tooltips %}
   <!-- Enable Tooltips -->
   <script type="text/javascript">
-  $(function () {$('[data-toggle="tooltip"]').tooltip()})
+    document.addEventListener("DOMContentLoaded", function() {
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    });
   </script>
 {%- endif %}
 
@@ -20,7 +24,7 @@
   <script defer src="https://unpkg.com/bootstrap-table@{{ site.bootstrap-table.version }}/dist/bootstrap-table.min.js"></script>
 
   <!-- Load Common JS -->
-  <script src="{{ '/assets/js/no_defer.js' | relative_url | bust_file_cache }}"></script>
+  <script defer src="{{ '/assets/js/no_defer.js' | relative_url | bust_file_cache }}"></script>
   <script defer src="{{ '/assets/js/common.js' | relative_url | bust_file_cache }}"></script>
   <script defer src="{{ '/assets/js/copy_code.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
 
