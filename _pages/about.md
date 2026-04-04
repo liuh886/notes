@@ -25,7 +25,7 @@ Throughout my career, I've worked at the intersection of climate, geospatial dat
 I build reusable decision tools from climate and geophysical data, with a bias toward workflows that can be reviewed, reproduced, and shipped.
 
 <div class="home-proof">
-  <div class="home-proof__item home-proof__item--large">
+  <div class="home-proof__item">
     <span class="data-tag">CORE PILLAR 01</span>
     <h2><i class="fas fa-graduation-cap"></i> Research Credibility</h2>
     <p>Peer-reviewed work on satellite laser altimetry and snow modeling (2025). High-precision geophysical modeling for remote and harsh environments. See <a href="{{ '/publications/' | relative_url }}">publications</a>.</p>

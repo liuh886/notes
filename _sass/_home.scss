@@ -25,78 +25,63 @@
   margin-top: 1rem;
 }
 
-/* Bento Grid: Value Proposition */
+/* Vertical Proof Blocks: Value Proposition */
 .home-proof {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin: 2rem 0 3rem;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: minmax(140px, auto);
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 2.5rem 0 3.5rem;
 
   .home-proof__item {
-    padding: 1.5rem;
+    padding: 1.5rem 1.75rem;
     border: 1px solid var(--global-divider-color);
     background: var(--global-bg-color);
     border-radius: 12px;
     position: relative;
     transition: all 0.25s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    border-left: 4px solid var(--global-theme-color); /* Strong vertical accent */
 
     &:hover {
       border-color: var(--global-theme-color);
       background: rgba(181, 9, 172, 0.02);
-    }
-
-    &--large {
-      @media (min-width: 768px) {
-        grid-column: span 2;
-        grid-row: span 2;
-        padding: 2rem;
-      }
+      transform: translateX(4px); /* Subtle horizontal shift instead of lift */
     }
 
     .data-tag {
       font-family: "JetBrains Mono", monospace;
       font-size: 0.65rem;
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: var(--global-theme-color);
-      margin-bottom: 1rem;
-      opacity: 0.8;
+      margin-bottom: 0.8rem;
+      opacity: 0.7;
       display: inline-block;
-      border-left: 2px solid var(--global-theme-color);
-      padding-left: 0.5rem;
+      text-transform: uppercase;
     }
 
     h2 {
-      font-size: 1.15rem;
-      margin: 0 0 0.75rem 0;
+      font-size: 1.2rem;
+      margin: 0 0 0.8rem 0;
       color: var(--global-text-color);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
       font-weight: 700;
       border-bottom: none;
 
       i {
-        font-size: 1rem;
+        font-size: 1.1rem;
         color: var(--global-theme-color);
-        opacity: 0.8;
+        opacity: 0.9;
       }
     }
 
     p {
       margin-bottom: 0;
-      font-size: 0.9rem;
-      line-height: 1.6;
+      font-size: 0.95rem;
+      line-height: 1.65;
       color: var(--global-text-color);
-      opacity: 0.85;
+      opacity: 0.9;
 
       a {
         color: var(--global-theme-color);
