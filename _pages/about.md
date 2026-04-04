@@ -2,11 +2,8 @@
 layout: about
 title: about
 permalink: /
-<<<<<<< HEAD
 subtitle: Climate & Energy Data Scientist
-=======
 subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
->>>>>>> af82cce72a2b6a46ba80ed89e8f13bf82b60890d
 
 profile:
   align: right
@@ -15,7 +12,6 @@ profile:
   more_info: >
     <p>📍Offshore Bergen, 2020 Aug</p>
 
-<<<<<<< HEAD
 news: true # includes a list of news items
 latest_posts: false # recent blog
 selected_papers: true # includes a list of papers marked as "selected={true}"
@@ -45,7 +41,6 @@ I build reusable decision tools from climate and geophysical data, with a bias t
     <p>Building shippable decision tools: from Bayesian Models to AI Agents, with a focus on reproducibility and production-ready code.</p>
   </div>
 </div>
-=======
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
@@ -65,4 +60,3 @@ Write your biography here. Tell the world about yourself. Link to your favorite 
 Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
 
 Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
->>>>>>> af82cce72a2b6a46ba80ed89e8f13bf82b60890d
