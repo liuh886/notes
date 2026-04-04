@@ -3,7 +3,7 @@ layout: about
 title: about
 permalink: /
 subtitle: Climate & Energy Data Scientist
-subtitle_extra: "Caixin ESG30 Young Scholar | Independent Researcher | BGP CNPC"
+subtitle_extra: "Caixin ESG30 Young Scholar"
 
 profile:
   align: right
