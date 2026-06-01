@@ -65,7 +65,7 @@ In OffshoreOrient Studio v1.0.3 toolbox, _NavPy_ focuses on the shot-by-shot** o
 </div>
 
 
-## QcPy: a click QC, seimic lazily
+## QcPy: a click QC, seismic lazily
 
 QcPy could be used for RMS analysis, noise test, sensitivity normalization, and trace edit, Fresnel chart
 
