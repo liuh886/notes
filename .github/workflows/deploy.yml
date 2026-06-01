@@ -30,7 +30,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1.4'      # or 3.2.x if you run Jekyll ≥ 4.3.3
+          ruby-version: '3.2.2'      # aligned with upstream al-folio; required for sass-embedded 1.100
           bundler-cache: true
 
       # 4. Patch your _config.yml (giscus.repo) without committing
