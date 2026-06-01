@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 group :jekyll_plugins do
     gem 'classifier-reborn'
-    gem 'jekyll'
+    gem 'jekyll', '~> 4.4'
     gem 'jekyll-archives'
     gem 'jekyll-diagrams'
     gem 'jekyll-email-protect'
@@ -16,7 +16,7 @@ group :jekyll_plugins do
     gem 'jekyll-scholar'
     gem 'jekyll-sitemap'
     gem 'jekyll-toc'
-    gem 'jekyll-seo-tag', "~> 2.8"
+    gem 'jekyll-seo-tag', '~> 2.8'
     gem 'jekyll-twitter-plugin'
     gem 'jemoji'
     gem 'mini_racer'
