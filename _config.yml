@@ -7,8 +7,7 @@ first_name: Zhihao
 middle_name:
 last_name: LIU
 tab_title: "Zhihao LIU | Climate & Energy Data Scientist" # preserves the previous browser-tab title customization
-contact_note: >
-  feel free to reach me.
+contact_note:
 description: >
   Climate & energy data scientist building reproducible ML workflows and decision tools from climate and geospatial data.
 footer_text: >

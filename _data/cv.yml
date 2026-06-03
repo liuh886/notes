@@ -59,12 +59,37 @@ cv:
         highlights:
           - "Thesis: A WebGIS system for urban infrastructure management."
 
-    "Publications & Patent":
-      - "Retrieving snow depth distribution by downscaling ERA5 reanalysis with ICESat-2 laser altimetry - Cold Regions Science and Technology, 2025."
-      - "Snow depth retrieval and downscaling using satellite laser altimetry, machine learning and climate reanalysis - IUGG 2023 Berlin, 2023."
-      - "Unlocking the Secrets of Snow Depth - Student presentation at SDG Conference, University of Oslo, 2023."
-      - "An identification system for underwater seismic devices - Patent, PRC, 2022."
-      - "Offshoreorient v1.0 - Software Copyright, 2020."
+    Publications:
+      - title: Retrieving snow depth distribution by downscaling ERA5 reanalysis with ICESat-2 laser altimetry
+        authors:
+          - Zhihao Liu
+        publisher: Cold Regions Science and Technology
+        releaseDate: 2025
+        summary: Cryosphere remote sensing and machine learning.
+
+      - title: Snow depth retrieval and downscaling using satellite laser altimetry, machine learning and climate reanalysis
+        authors:
+          - Zhihao Liu
+        publisher: IUGG 2023 Berlin
+        releaseDate: 2023
+
+      - title: Unlocking the Secrets of Snow Depth
+        authors:
+          - Zhihao Liu
+        publisher: Student presentation at SDG Conference, University of Oslo
+        releaseDate: 2023
+
+      - title: An identification system for underwater seismic devices
+        authors:
+          - Zhihao Liu
+        publisher: Patent, PRC
+        releaseDate: 2022
+
+      - title: Offshoreorient v1.0
+        authors:
+          - Zhihao Liu
+        publisher: Software Copyright
+        releaseDate: 2020
 
     Skills:
       - name: Programming

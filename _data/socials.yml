@@ -1,8 +1,7 @@
 # Social links displayed by jekyll-socials in al-folio v1.
 custom_social:
-  logo: /assets/img/cv-icon.svg
+  logo: cv-social-text
   title: CV
   url: /cv/
 github_username: liuh886
 linkedin_username: liuzhihao
-rss_icon: false
