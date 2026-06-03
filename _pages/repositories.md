@@ -57,8 +57,8 @@ _styles: >
     display: block;
     padding: 0.6rem;
   }
-  .repo-profile-card img,
-  .repo-trophy-card img,
+  .repo-profile-card__media img,
+  .repo-trophy-card__media img,
   .repo-card__stats img {
     display: block;
     width: 100%;
@@ -73,6 +73,7 @@ _styles: >
     border-top: 1px solid var(--global-divider-color);
   }
   .repo-profile-card__avatar {
+    display: block;
     width: 2.8rem;
     height: 2.8rem;
     border-radius: 8px;
@@ -115,11 +116,9 @@ _styles: >
   .repo-card__stats {
     display: block;
     padding: 0.6rem 0.6rem 0;
-    min-height: 8rem;
-    background: linear-gradient(180deg, rgba(127, 127, 127, 0.06), transparent);
   }
   .repo-card__body {
-    padding: 0.85rem 1rem 1rem;
+    padding: 1rem;
   }
   .repo-card__title-row {
     display: flex;
@@ -136,6 +135,15 @@ _styles: >
     flex-wrap: wrap;
     gap: 0.45rem;
     margin-top: 0.75rem;
+  }
+  .repo-card__summary {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--global-divider-color);
+  }
+  .repo-card__summary p {
+    margin: 0;
+    line-height: 1.55;
   }
   .repo-chip {
     display: inline-flex;
@@ -164,9 +172,6 @@ _styles: >
   html[data-theme='dark'] .repo-light,
   html:not([data-theme='dark']) .repo-dark {
     display: none !important;
-  }
-  .repo-image-fallback {
-    min-height: 0;
   }
 ---
 
@@ -285,6 +290,9 @@ _styles: >
           <div class="repo-card__chips">
             <span class="repo-chip"><i class="fa-solid fa-code-branch"></i> Repository</span>
             <span class="repo-chip">{{ owner }}/{{ name }}</span>
+          </div>
+          <div class="repo-card__summary">
+            <p>Selected source code and project artifacts from {{ owner }}.</p>
           </div>
           <a class="repo-card__cta" href="https://github.com/{{ repo }}" target="_blank" rel="noopener noreferrer">
             View repository <i class="fa-solid fa-arrow-up-right-from-square"></i>
