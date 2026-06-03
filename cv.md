@@ -31,6 +31,13 @@ _styles: >
     font-size: 1.12rem;
     letter-spacing: 0;
   }
+  .cv #publications + .card .card-title {
+    font-size: 0;
+  }
+  .cv #publications + .card .card-title::after {
+    content: 'Publications & Patent';
+    font-size: 1.12rem;
+  }
   .cv .list-group-item {
     border-color: var(--global-divider-color);
     padding: 0.95rem 0;
