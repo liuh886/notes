@@ -81,6 +81,7 @@ jobs:
 
   # 2️⃣ DEPLOY the uploaded artifact to Pages
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:
