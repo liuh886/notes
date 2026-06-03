@@ -72,7 +72,7 @@ Now, hydropower produces large amounts (**>90%**) of clean and cheap electrical 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/wu88I4P.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/wu88I4P.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption"> Figure 1. The glacier stories in town Odda
@@ -107,7 +107,7 @@ Earth is estimated to be 4.5 billion years old. The IPCC AR6 report described hi
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/selcXrM.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/selcXrM.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption"> Figure 2. The time scale, temperature and deglaciation from pre-Quaternary to the present.<d-cite key="alley_2000, moore.une_2016"></d-cite>
@@ -160,7 +160,7 @@ When we walk towards a glacier, frequently we see the sediments concentrated in 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/yzAooqj.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/yzAooqj.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 3. The west tongue of the Glacier Storbreen
@@ -178,7 +178,7 @@ If the water cannot reach the bed, perhaps because the glacier is frozen to its 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/2vVBuZY.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/2vVBuZY.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 4. The marginal meltwater channels
@@ -199,7 +199,7 @@ Subglacial exhibit a variety of landforms as a result of glacier, glaciofluvial 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/qu8C3Kl.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/qu8C3Kl.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 5. The abrasion and quarrying process
@@ -207,7 +207,7 @@ Subglacial exhibit a variety of landforms as a result of glacier, glaciofluvial 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/B2FFj5x.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/B2FFj5x.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 6. Rock drumlin(a), Drumlin(b), Fluting(c) and transformation between Rogen moraine and drumlins<d-cite key="lundqvist_1989"></d-cite> (d).
@@ -230,7 +230,7 @@ The shorelines and delta prove the lake's existence and reflect the water level 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/ytlo6IF.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/ytlo6IF.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 7. Ice divide and ice dammed lake Nedre Glomsjø <d-cite key="hogaas.longva_2018, stroeven.etal_2015"></d-cite>
@@ -238,7 +238,7 @@ The shorelines and delta prove the lake's existence and reflect the water level 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/MfmksrF.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/MfmksrF.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 8. Grimsmoen delta marked a big lake in the past
@@ -249,7 +249,7 @@ The failure of the dam is triggered by ice retreat, rock avalanche or seismic sh
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/0UzSigu.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/0UzSigu.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 9. Jutulhogget canyon
@@ -260,7 +260,7 @@ The failure of the dam is triggered by ice retreat, rock avalanche or seismic sh
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/AOXGOIm.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/AOXGOIm.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 10. Permafrost-related periglacial landforms. Photos are taken at Juvvatnet (a: a thermokarst lake upon ice-cored moraine, b: large ice-cored moraines in front of small cirque glacier, c: polygons nets ), Dombas (d: palsa).
@@ -290,7 +290,7 @@ In southern Norway, from the western coast to the eastern inland, the ELA is fro
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/V0u0qJ1.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/V0u0qJ1.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 11. The comparison of ELA and permafrost limit <d-cite key="etzelmuller.etal_2003"></d-cite>.
@@ -311,7 +311,7 @@ During the winter, low temperatures and low melting water reduce sliding, erosio
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/7MqJHzy.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/7MqJHzy.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 12. The glacier debris transport
@@ -339,7 +339,7 @@ The rebound (R) values generated by the Schmidt hammer mirror the rebound veloci
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/QwQeUwC.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/QwQeUwC.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 13. The SHD results in the foreland of glacier Storbreen. Each group contains 10 samples. The elevation profile could be found at Figure 3.
@@ -359,7 +359,7 @@ During the field trip, we visited boreholes (129 m and 20 m) at Juvvasshøe on 1
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/IDnpt3a.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/IDnpt3a.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 14. The location of ERT profile and boreholes at Juvvasshøe.
@@ -374,7 +374,7 @@ Figure 15 shows the profile from 2009 and 2019 with notable differences. The pur
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/ftMEa6o.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/ftMEa6o.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 15. ERT profile comparison of 2009 and 2022.
@@ -389,7 +389,7 @@ The observations and model suggest that the permafrost exists from -2.89 m to > 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/q7JFzuO.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/q7JFzuO.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 16. Juvvasshøe borehole records from 2008 to 2019. (a: Ground surface temperature, b: average temperature curve, c: temperature profile over time, gray is no data)
@@ -402,7 +402,7 @@ There were not only approximately 40 glacial cycles in Quaternary but also numer
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/pXvTAgj.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/pXvTAgj.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 17. The deglaciation patterns and chronology for the Fennoscandian Ice Sheet <d-cite key="stroeven.etal_2015"></d-cite>.
@@ -427,7 +427,7 @@ As permafrost is a thermal concept, permafrost loss can be regarded as a functio
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/Z0hoH1K.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/Z0hoH1K.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 18. Permafrost peat carbon approaching a climatic tipping point  <d-cite key="fewster.etal_2022"></d-cite>.
@@ -479,7 +479,7 @@ This field trip and the related lab exercise give a good description of the proc
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/rzYp7VD.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/rzYp7VD.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption">Figure 19. The overview map of the field trip
