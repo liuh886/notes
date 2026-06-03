@@ -8,5 +8,47 @@ github_repos:
   - liuh886/http-to-obsidian-cli-gateway
   - PleasePrompto/ductor
   - liuh886/the_ice_block_expedition_1959
-  - liuh886/open_phrasebank
+  - liuh886/open-phrasebank
   - liuh886/GEO4300_2023
+
+repo_metadata:
+  liuh886/4d-seismic-hub:
+    description: Best-practice 4D seismic exploration knowledge base with an AI-agent website interface.
+    language: Python
+    stars: 2
+    forks: 0
+  liuh886/ccus-policy-hub:
+    description: Global CCUS policy hub for tracking policy, regulation, and energy-transition context.
+    language: JavaScript
+    stars: 3
+    forks: 1
+  liuh886/GhostCam:
+    description: Ultra-light Windows virtual camera for real-time background replacement, blur, and solid-color backgrounds.
+    language: C++
+    stars: 1
+    forks: 0
+  liuh886/http-to-obsidian-cli-gateway:
+    description: Lightweight HTTP proxy gateway that lets sandboxed AI agents reach a host Obsidian CLI safely.
+    language: JavaScript
+    stars: 1
+    forks: 0
+  PleasePrompto/ductor:
+    description: Telegram control layer for Claude Code, Codex CLI, and Gemini CLI with streaming, memory, cron, webhooks, and Docker sandboxing.
+    language: Python
+    stars: 390
+    forks: 68
+  liuh886/the_ice_block_expedition_1959:
+    description: Energy-balance and heat-equation simulation of the 1959 ice block expedition.
+    language: Jupyter Notebook
+    stars: 3
+    forks: 0
+  liuh886/open-phrasebank:
+    description: Custom phrasebank generation from selected texts and corpora.
+    language: Python
+    stars: 12
+    forks: 0
+  liuh886/GEO4300_2023:
+    description: Exercise template for GEO4300 Geophysical Data Science.
+    language: Jupyter Notebook
+    stars: 0
+    forks: 0

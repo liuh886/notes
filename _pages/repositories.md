@@ -145,6 +145,20 @@ _styles: >
     margin: 0;
     line-height: 1.55;
   }
+  .repo-card__metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 0.8rem;
+    color: var(--global-text-color);
+    opacity: 0.72;
+    font-size: 0.85rem;
+  }
+  .repo-card__metrics span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.32rem;
+  }
   .repo-chip {
     display: inline-flex;
     align-items: center;
@@ -256,6 +270,7 @@ _styles: >
       {% assign repo_parts = repo | split: "/" %}
       {% assign owner = repo_parts[0] %}
       {% assign name = repo_parts[1] %}
+      {% assign meta = site.data.repositories.repo_metadata[repo] %}
       {% assign show_owner = true %}
       {% if site.data.repositories.github_users contains owner %}
         {% assign show_owner = false %}
@@ -289,10 +304,27 @@ _styles: >
           </div>
           <div class="repo-card__chips">
             <span class="repo-chip"><i class="fa-solid fa-code-branch"></i> Repository</span>
+            {% if meta.language %}
+              <span class="repo-chip">{{ meta.language }}</span>
+            {% endif %}
             <span class="repo-chip">{{ owner }}/{{ name }}</span>
           </div>
           <div class="repo-card__summary">
-            <p>Selected source code and project artifacts from {{ owner }}.</p>
+            {% if meta.description %}
+              <p>{{ meta.description }}</p>
+            {% else %}
+              <p>Selected source code and project artifacts from {{ owner }}.</p>
+            {% endif %}
+            {% if meta.stars or meta.forks %}
+              <div class="repo-card__metrics" aria-label="{{ repo }} GitHub metrics">
+                {% if meta.stars != nil %}
+                  <span><i class="fa-regular fa-star"></i> {{ meta.stars }}</span>
+                {% endif %}
+                {% if meta.forks != nil %}
+                  <span><i class="fa-solid fa-code-fork"></i> {{ meta.forks }}</span>
+                {% endif %}
+              </div>
+            {% endif %}
           </div>
           <a class="repo-card__cta" href="https://github.com/{{ repo }}" target="_blank" rel="noopener noreferrer">
             View repository <i class="fa-solid fa-arrow-up-right-from-square"></i>
