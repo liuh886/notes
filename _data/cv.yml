@@ -1,111 +1,150 @@
-- title: Summary
-  type: map
-  contents:
-    - name: Focus
-      value: AI Agent for Energy & Climate
-    - name: Strengths
-      value: Uncertainty-aware modeling, specializing in the digitalization of MRV and 4D seismic monitoring for CCUS cluster governance.
-    - name: Book a chat
-      links:
-        - name: Google Calendar
-          link: https://calendar.app.google/UQ267iEs4MTAGFSd7
+cv:
+  name: Zhihao LIU
+  label: Climate & Energy Data Scientist
+  email: zhihaol[at]uio.com
+  location: Oslo / Bergen, Norway
+  image: ""
+  summary: Climate and energy data scientist building uncertainty-aware, reproducible ML workflows and decision tools from climate, geospatial, and geophysical data.
 
-- title: Experience
-  type: time_table
-  contents:
-    - title: Business Development Manager (New Energy)
-      institution: BGP CNPC
-      year: 2024.07 - Present
-      description:
-        - Client-facing work translating technical constraints into commercial proposals and delivery plans; architecting Digital Carbon Monitoring & MRV frameworks to strengthen a data-to-decision mindset.
+  social_networks:
+    - network: GitHub
+      username: liuh886
+    - network: LinkedIn
+      username: liuzhihao
 
-    - title: Principal
-      institution: LIU GEOCONSULTING
-      year: 2023.12 - 2024.06
-      description:
-        - Built a real-time state-estimation prototype (Unscented Kalman Filter) with FastAPI + PostgreSQL.
-        - Converted modeling output into user-facing service features as a blueprint for scalable B2B decision tools.
-        - Consulting service for Eurostar.
+  sections:
+    Summary:
+      - name: Focus
+        summary: AI Agent for Energy & Climate
+      - name: Strengths
+        summary: Uncertainty-aware modeling, specializing in the digitalization of MRV and 4D seismic monitoring for CCUS cluster governance.
+      - name: Book a chat
+        url: https://calendar.app.google/UQ267iEs4MTAGFSd7
+        summary: Google Calendar
 
-    - title: Research Assistant (Energy & Climate Data Science)
-      institution: University of Oslo
-      year: 2021.11 - 2023.12
-      description:
-        - Bias correction and spatial downscaling workflows for climate/weather data with energy applications in mind.
-        - Remote sensing + ML for seasonal snow; contributed to reproducible research workflows and open-source tooling.
+    Experience:
+      - company: BGP CNPC
+        position: Business Development Manager (New Energy)
+        start_date: 2024-07
+        end_date: present
+        summary: Client-facing work translating technical constraints into commercial proposals and delivery plans; architecting Digital Carbon Monitoring & MRV frameworks to strengthen a data-to-decision mindset.
 
-- title: Skills
-  type: map
-  contents:
-    - name: Programming
-      value: Python, SQL, Git
-    - name: ML & Statistics
-      value: Bayesian inference, Kalman filtering, machine learning, evaluation under uncertainty
-    - name: Data & Engineering
-      value: FastAPI, PostgreSQL, Docker, ETL, REST APIs
-    - name: Geospatial
-      value: Xarray, GeoPandas, Rasterio, Shapely, GIS automation
-    - name: Domains
-      value: CCUS, AI Agent, Climate & energy datasets, remote sensing, geophysical data
+      - company: LIU GEOCONSULTING
+        position: Principal
+        start_date: 2023-12
+        end_date: 2024-06
+        highlights:
+          - Built a real-time state-estimation prototype with Unscented Kalman Filter, FastAPI, and PostgreSQL.
+          - Converted modeling output into user-facing service features as a blueprint for scalable B2B decision tools.
+          - Consulting service for Eurostar.
 
-- title: Education
-  type: time_table
-  contents:
-    - title: M.Sc. Geoscience
-      institution: University of Oslo (Norway)
-      year: 2021 - 2023
-      description:
-        - "Thesis: Snow depth retrieval and downscaling using satellite laser altimetry, machine learning, and climate reanalysis."
-        - "GPA: 3.9/4.0."
+      - company: University of Oslo
+        position: Research Assistant (Energy & Climate Data Science)
+        location: Oslo, Norway
+        start_date: 2021-11
+        end_date: 2023-12
+        highlights:
+          - Bias correction and spatial downscaling workflows for climate/weather data with energy applications in mind.
+          - Remote sensing and ML for seasonal snow; contributed to reproducible research workflows and open-source tooling.
 
-    - title: B.Sc. Geodesy & Geomatics
-      institution: Southwest Petroleum University (China)
-      year: 2010 - 2014
-      description:
-        - "Thesis: A WebGIS system for urban infrastructure management."
+    Skills:
+      - name: Programming
+        keywords: Python, SQL, Git
+      - name: ML & Statistics
+        keywords: Bayesian inference, Kalman filtering, machine learning, evaluation under uncertainty
+      - name: Data & Engineering
+        keywords: FastAPI, PostgreSQL, Docker, ETL, REST APIs
+      - name: Geospatial
+        keywords: Xarray, GeoPandas, Rasterio, Shapely, GIS automation
+      - name: Domains
+        keywords: CCUS, AI Agent, climate and energy datasets, remote sensing, geophysical data
 
-- title: Publications, Workshops and Patents
-  layer: additional
-  type: nested_list
-  contents:
-    - title: AI Agent for Climate and Energy
-      items:
-        - "AI Agent in CCUS: Toward autonomous MRV and cluster monitoring · In Progress · 2026."
-    - title: Cryosphere x Remote Sensing
-      items:
-        - Retrieving snow depth distribution by downscaling ERA5 reanalysis with ICESat-2 laser altimetry · Cold Regions Science and Technology · 2025.
-        - Snow depth retrieval and downscaling using satellite laser altimetry, machine learning and climate reanalysis · IUGG 2023 Berlin · 2023.
-        - Unlocking the Secrets of Snow Depth · Student presentation at SDG Conference (UiO) · 2023.
-    - title: Offshore / Geophysics
-      items:
-        - An identification system for underwater seismic devices · Patent (PRC) · 2022.
-        - Offshoreorient v1.0 · Software Copyright · 2020.
+    Education:
+      - institution: University of Oslo
+        location: Norway
+        area: Geoscience
+        studyType: M.Sc.
+        start_date: 2021
+        end_date: 2023
+        score: GPA 3.9/4.0
+        highlights:
+          - "Thesis: Snow depth retrieval and downscaling using satellite laser altimetry, machine learning, and climate reanalysis."
 
-- title: Additional Experience & Volunteering
-  layer: additional
-  type: time_table
-  contents:
-    - title: Geomatics Engineer & Assistant Project Manager
-      institution: BGP CNPC
-      year: 2014.07 - 2021.07
-      description:
-        - Delivered offshore geophysical survey data products; built QC/reporting automation to reduce manual workload.
-        - Licensed Registered Surveyor (2018); promoted to Assistant Project Manager (2021).
+      - institution: Southwest Petroleum University
+        location: China
+        area: Geodesy & Geomatics
+        studyType: B.Sc.
+        start_date: 2010
+        end_date: 2014
+        highlights:
+          - "Thesis: A WebGIS system for urban infrastructure management."
 
-    - title: Summer Research Assistant
-      year: 2023.05 - 2023.07
-      description:
-        - Bias correction and spatial downscaling of weather/climate datasets for energy-system modeling.
+    Publications:
+      - title: "AI Agent in CCUS: Toward autonomous MRV and cluster monitoring"
+        authors:
+          - Zhihao Liu
+        publisher: In Progress
+        releaseDate: 2026
+        summary: AI Agent for Climate and Energy.
 
-    - title: Teaching Assistant (Geophysical Data Science)
-      year: 2023
-      description:
-        - Taught Python labs and supported students with scientific programming and data analysis workflows.
+      - title: Retrieving snow depth distribution by downscaling ERA5 reanalysis with ICESat-2 laser altimetry
+        authors:
+          - Zhihao Liu
+        publisher: Cold Regions Science and Technology
+        releaseDate: 2025
+        summary: Cryosphere remote sensing and machine learning.
 
-- title: Other Interests
-  layer: additional
-  type: list
-  contents:
-    - Writing on climate change and energy transition.
-    - Endurance sports (running, skiing).
-    - Open source geospatial tooling and scientific workflows.
+      - title: Snow depth retrieval and downscaling using satellite laser altimetry, machine learning and climate reanalysis
+        authors:
+          - Zhihao Liu
+        publisher: IUGG 2023 Berlin
+        releaseDate: 2023
+
+      - title: Unlocking the Secrets of Snow Depth
+        authors:
+          - Zhihao Liu
+        publisher: Student presentation at SDG Conference, University of Oslo
+        releaseDate: 2023
+
+      - title: An identification system for underwater seismic devices
+        authors:
+          - Zhihao Liu
+        publisher: Patent, PRC
+        releaseDate: 2022
+
+      - title: Offshoreorient v1.0
+        authors:
+          - Zhihao Liu
+        publisher: Software Copyright
+        releaseDate: 2020
+
+    Additional Experience & Volunteering:
+      - company: BGP CNPC
+        position: Geomatics Engineer & Assistant Project Manager
+        start_date: 2014-07
+        end_date: 2021-07
+        highlights:
+          - Delivered offshore geophysical survey data products; built QC/reporting automation to reduce manual workload.
+          - Licensed Registered Surveyor (2018); promoted to Assistant Project Manager (2021).
+
+      - company: University of Oslo
+        position: Summer Research Assistant
+        location: Oslo, Norway
+        start_date: 2023-05
+        end_date: 2023-07
+        summary: Bias correction and spatial downscaling of weather/climate datasets for energy-system modeling.
+
+      - company: University of Oslo
+        position: Teaching Assistant (Geophysical Data Science)
+        location: Oslo, Norway
+        start_date: 2023
+        end_date: 2023
+        summary: Taught Python labs and supported students with scientific programming and data analysis workflows.
+
+    Interests:
+      - name: Writing
+        keywords: climate change, energy transition
+      - name: Endurance sports
+        keywords: running, skiing
+      - name: Open source
+        keywords: geospatial tooling, scientific workflows
