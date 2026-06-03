@@ -10,7 +10,7 @@ category: fun
 
 <div class="row">
     <div class="col-s mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/gis6_price.jpg" title="oslo_finn_unit_price" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/gis6_price.jpg" title="oslo_finn_unit_price" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -30,12 +30,12 @@ This is a demonstration model that could be extended to other cities easily. The
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/mca1.png" title="mca_step1" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/mca1.png" title="mca_step1" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/mca2.png" title="mca_step2" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/mca2.png" title="mca_step2" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -48,7 +48,7 @@ Oslo County polygon was resampled into a 50x50 meters grid first. All spatial in
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/workflows.png" title="mca_workflows" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/workflows.png" title="mca_workflows" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -84,10 +84,10 @@ The parameters used in the demo model:
 Taking public transportation or driving? Or half-half.
 <div class="row justify-content-sm-center">
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/result_pt.jpg" title="result_public_transportation" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/result_pt.jpg" title="result_public_transportation" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/result_parking.jpg" title="result_parking" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/result_parking.jpg" title="result_parking" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -98,10 +98,10 @@ Shops and supermarkets.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/result_s.jpg" title="result_shops" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/result_s.jpg" title="result_shops" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/result_sm.jpg" title="result_supermarket" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/result_sm.jpg" title="result_supermarket" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -112,7 +112,7 @@ When we use NDVI as a criterion, there is an obvious underestimation for units l
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/result_NDVI.jpg" title="result_NDVI" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/result_NDVI.jpg" title="result_NDVI" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -123,7 +123,7 @@ The average noise level below 55db over 24 hours would be thought harmless, 10 p
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/result_noise.jpg" title="result_noise" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/result_noise.jpg" title="result_noise" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -134,7 +134,7 @@ The average noise level below 55db over 24 hours would be thought harmless, 10 p
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/result.jpg" title="result_aggregation" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/result.jpg" title="result_aggregation" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -143,7 +143,7 @@ The average noise level below 55db over 24 hours would be thought harmless, 10 p
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/plot.png" title="result_scores_price" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/plot.png" title="result_scores_price" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -186,7 +186,7 @@ There is a sensitivity test, using the second group of parameters:
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/result2.jpg" title="result_aggregation_2" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/result2.jpg" title="result_aggregation_2" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -205,10 +205,10 @@ In general, the housing price MCDA model could provide the best-fitting options 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/plot2.png" title="plot2" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/plot2.png" title="plot2" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/MCA/plot3.png" title="plot3" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/MCA/plot3.png" title="plot3" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">

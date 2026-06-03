@@ -18,12 +18,12 @@ category: work
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         <a href="https://liuh886.github.io/4d-seismic-hub" target="_blank" class="btn btn-primary w-100">
-            <i class="fas fa-external-link-alt"></i> Enter Interactive Hub
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Enter Interactive Hub
         </a>
     </div>
     <div class="col-sm mt-3 mt-md-0">
         <a href="https://github.com/liuh886/4d-seismic-hub" target="_blank" class="btn btn-outline-secondary w-100">
-            <i class="fab fa-github"></i> View Source Code
+            <i class="fa-brands fa-github"></i> View Source Code
         </a>
     </div>
 </div>

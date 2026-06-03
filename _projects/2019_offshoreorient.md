@@ -31,13 +31,13 @@ In OffshoreOrient Studio v1.0.3 toolbox, _NavPy_ focuses on the shot-by-shot** o
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/OOS/oos_attributemap.png" title="Attribute Map by NavPy" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/OOS/oos_attributemap.png" title="Attribute Map by NavPy" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/OOS/oos_feather.png" title="Feather Map by NavPy" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/OOS/oos_feather.png" title="Feather Map by NavPy" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/OOS/oos_surveywide2.png" title="Surveywide by NavPy" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/OOS/oos_surveywide2.png" title="Surveywide by NavPy" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -47,7 +47,7 @@ In OffshoreOrient Studio v1.0.3 toolbox, _NavPy_ focuses on the shot-by-shot** o
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/OOS/tow.png" title="Wide-tow modelling" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/OOS/tow.png" title="Wide-tow modelling" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -57,7 +57,7 @@ In OffshoreOrient Studio v1.0.3 toolbox, _NavPy_ focuses on the shot-by-shot** o
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/OOS/oos_surveywide.png" title="Surveywide by NavPy" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/OOS/oos_surveywide.png" title="Surveywide by NavPy" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -76,7 +76,7 @@ QcPy could be used for RMS analysis, noise test, sensitivity normalization, and 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/OOS/oos_rms.png" title="RMS Analysis, stack in channel/streamer/shots by QcPy" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/OOS/oos_rms.png" title="RMS Analysis, stack in channel/streamer/shots by QcPy" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -86,7 +86,7 @@ QcPy could be used for RMS analysis, noise test, sensitivity normalization, and 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/OOS/oos_polyfit.png" title="Polyfit for sensitivity normalization by QcPy" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/OOS/oos_polyfit.png" title="Polyfit for sensitivity normalization by QcPy" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -99,10 +99,10 @@ SourcePy is checking header files by Gun Controller in real time. You can self-d
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/OOS/oos_sourcepy.png" title="oos_sourcepy" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/OOS/oos_sourcepy.png" title="oos_sourcepy" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/OOS/oos_mainpage.png" title="oos_mainpage" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/OOS/oos_mainpage.png" title="oos_mainpage" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -121,13 +121,13 @@ v.1.0.0 beta 01 Mar 2019: NavPy
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/OOS/NavPy_SurveyWide_Cross-line_QC_package_Introduction-1024x576.png" title="oos_1" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/OOS/NavPy_SurveyWide_Cross-line_QC_package_Introduction-1024x576.png" title="oos_1" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/OOS/NavPy_SurveyWide_Cross-line_QC_package_Introduction1-1024x576.png" title="oos_1" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/OOS/NavPy_SurveyWide_Cross-line_QC_package_Introduction1-1024x576.png" title="oos_1" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/OOS/NavPy_SurveyWide_Cross-line_QC_package_Introduction2-1024x576.png" title="oos_1" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/OOS/NavPy_SurveyWide_Cross-line_QC_package_Introduction2-1024x576.png" title="oos_1" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">

@@ -24,7 +24,7 @@ Can machine learning help accurately predicting radiation and wind fields at fin
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iAH_7MXInyfg/v0/1200x715.png" title="Sub-Zero Power" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iAH_7MXInyfg/v0/1200x715.png" title="Sub-Zero Power" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -82,7 +82,7 @@ Table: Data setting {#tbl:dataset}
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="https://i.imgur.com/Z844paa.jpg" style="width:100.0%" alt="The windspeed from CMIP6 and ERA5 (a)CMCC-CM2 weekly mean 1980-2060,(b) CMCC-ESM2 weekly mean 1980-2060,(c) ERA5 weekly mean 1999-2014,(d) average windspeed of CMCC-CM2 1999-2014,(e)average windspeed of CMCC-ESM2 1999-2014,(f) average windspeed of ERA5 coarsen 1999-2014.The left black box indicates the baseline (1980-1999) and the right black box represents where the time windows from. All windspeed is at height 60m above the ground." class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="https://i.imgur.com/Z844paa.jpg" style="width:100.0%" alt="The windspeed from CMIP6 and ERA5 (a)CMCC-CM2 weekly mean 1980-2060,(b) CMCC-ESM2 weekly mean 1980-2060,(c) ERA5 weekly mean 1999-2014,(d) average windspeed of CMCC-CM2 1999-2014,(e)average windspeed of CMCC-ESM2 1999-2014,(f) average windspeed of ERA5 coarsen 1999-2014.The left black box indicates the baseline (1980-1999) and the right black box represents where the time windows from. All windspeed is at height 60m above the ground." class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">The windspeed from CMIP6 and ERA5 (a)CMCC-CM2 weekly mean 1980-2060,(b) CMCC-ESM2 weekly mean 1980-2060,(c) ERA5 weekly mean 1999-2014,(d) average windspeed of CMCC-CM2 1999-2014,(e)average windspeed of CMCC-ESM2 1999-2014,(f) average windspeed of ERA5 coarsen 1999-2014.The left black box indicates the baseline (1980-1999) and the right black box represents where the time windows from. All windspeed is at height 60m above the ground.
@@ -120,7 +120,7 @@ $$
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="https://i.imgur.com/g708yFh.jpg" style="width:100.0%" alt="Theschematicoftwoquantile-basedmethod.(a)Howtogetdownscaledandbias-freesimulationsinfuture.(b)QDMusesquantilesdescribingthechangesignals(\Delta W_{s})(c)EDCDFmusesquantilescapturethebiasbetweenmodelsimulationandobservations.InthisstudymodelisfromCMIP6,andobserveddatasetisERA5." class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="https://i.imgur.com/g708yFh.jpg" style="width:100.0%" alt="Theschematicoftwoquantile-basedmethod.(a)Howtogetdownscaledandbias-freesimulationsinfuture.(b)QDMusesquantilesdescribingthechangesignals(\Delta W_{s})(c)EDCDFmusesquantilescapturethebiasbetweenmodelsimulationandobservations.InthisstudymodelisfromCMIP6,andobserveddatasetisERA5." class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -150,7 +150,7 @@ The evaluation will follow the steps: (1) comparing the changing signals from CM
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="https://i.imgur.com/e4o8JoM.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+        {% include figure.liquid path="https://i.imgur.com/e4o8JoM.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
 <div class="caption">
@@ -166,7 +166,7 @@ Figure @fig:trend_map demonstrates the wind speed trends over the Scandinavian P
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/S2T0bpn.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/S2T0bpn.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
 <div class="caption">
@@ -178,7 +178,7 @@ Specific to the period from 2050 to 2060, Figure @fig:trend_chart shows the chan
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/6g1Kslx.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/6g1Kslx.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
 <div class="caption">
@@ -195,7 +195,7 @@ The windspeed project of CMCC-CM2 and CMCC-ESM2 exhibit inconsistencies when com
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/GB39Q0T.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/GB39Q0T.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption"> Comparison of downscaled windspeeds at coordinates 011° E and 60° N using QDM and EDCDFm methods from 2050 to 2060 (a) Oslo, Norway (b) Bergen, Norway. The reference dataset for downscaling is ERA5 (1999-2014)
@@ -209,7 +209,7 @@ The validation results for the year 2014 using three different timespans indicat
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.html path="https://i.imgur.com/p4h0m7y.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    {% include figure.liquid path="https://i.imgur.com/p4h0m7y.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
 	</div>
 </div>
 <div class="caption"> Downscale windspeed from ERA5 Coarsen and CMCC-CM2 and validation by ERA5. (a) mean windspeed 2014.01.01 to 2014.01.30 (b) mean windspeed 2014.01.01-2014.03.30 (c) mean windspeed 2014.01.01-2014.12.31. The training dataset is ERA5 between 1999 and 2013.

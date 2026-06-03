@@ -49,7 +49,7 @@ For more information please refer to RAMMS_AVAL_Manual.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/Avalanche/workflows.jpg" title="workflows" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/Avalanche/workflows.jpg" title="workflows" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -58,7 +58,7 @@ For more information please refer to RAMMS_AVAL_Manual.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/Avalanche/overview.jpg" title="overview" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/Avalanche/overview.jpg" title="overview" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -84,7 +84,7 @@ And we also compared the results with NVE's evaluation.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/Avalanche/export_pressure.jpg" title="export_pressure" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/Avalanche/export_pressure.jpg" title="export_pressure" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -93,7 +93,7 @@ And we also compared the results with NVE's evaluation.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/Avalanche/VS.jpg" title="export_velocity" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/Avalanche/VS.jpg" title="export_velocity" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -107,7 +107,7 @@ When release depth increases to 5 m, using mu/xi files *300L_150_50*, the 10kPa 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/Avalanche/3d_500_.jpg" title="5m release depth scenario" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/Avalanche/3d_500_.jpg" title="5m release depth scenario" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -122,7 +122,7 @@ Compared to an extreme-release-depth-event, an extreme-release-size-event is mor
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/post/Avalanche/3d_220_all.jpg" title="2.2m release depth scenario" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/post/Avalanche/3d_220_all.jpg" title="2.2m release depth scenario" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
