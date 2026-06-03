@@ -4,7 +4,6 @@ cv:
   email: zhihaol[at]uio.com
   location: Oslo / Bergen, Norway
   image: ""
-  summary: Climate and energy data scientist building uncertainty-aware, reproducible ML workflows and decision tools from climate, geospatial, and geophysical data.
 
   social_networks:
     - network: GitHub
@@ -13,24 +12,17 @@ cv:
       username: liuzhihao
 
   sections:
-    Summary:
-      - name: Focus
-        summary: AI Agent for Energy & Climate
-      - name: Strengths
-        summary: Uncertainty-aware modeling, specializing in the digitalization of MRV and 4D seismic monitoring for CCUS cluster governance.
-      - name: Book a chat
-        url: https://calendar.app.google/UQ267iEs4MTAGFSd7
-        summary: Google Calendar
-
     Experience:
       - company: BGP CNPC
         position: Business Development Manager (New Energy)
+        location: China
         start_date: 2024-07
         end_date: present
         summary: Client-facing work translating technical constraints into commercial proposals and delivery plans; architecting Digital Carbon Monitoring & MRV frameworks to strengthen a data-to-decision mindset.
 
       - company: LIU GEOCONSULTING
         position: Principal
+        location: Norway
         start_date: 2023-12
         end_date: 2024-06
         highlights:
@@ -46,18 +38,6 @@ cv:
         highlights:
           - Bias correction and spatial downscaling workflows for climate/weather data with energy applications in mind.
           - Remote sensing and ML for seasonal snow; contributed to reproducible research workflows and open-source tooling.
-
-    Skills:
-      - name: Programming
-        keywords: Python, SQL, Git
-      - name: ML & Statistics
-        keywords: Bayesian inference, Kalman filtering, machine learning, evaluation under uncertainty
-      - name: Data & Engineering
-        keywords: FastAPI, PostgreSQL, Docker, ETL, REST APIs
-      - name: Geospatial
-        keywords: Xarray, GeoPandas, Rasterio, Shapely, GIS automation
-      - name: Domains
-        keywords: CCUS, AI Agent, climate and energy datasets, remote sensing, geophysical data
 
     Education:
       - institution: University of Oslo
@@ -79,14 +59,7 @@ cv:
         highlights:
           - "Thesis: A WebGIS system for urban infrastructure management."
 
-    Publications:
-      - title: "AI Agent in CCUS: Toward autonomous MRV and cluster monitoring"
-        authors:
-          - Zhihao Liu
-        publisher: In Progress
-        releaseDate: 2026
-        summary: AI Agent for Climate and Energy.
-
+    "Publications & Patent":
       - title: Retrieving snow depth distribution by downscaling ERA5 reanalysis with ICESat-2 laser altimetry
         authors:
           - Zhihao Liu
@@ -118,33 +91,14 @@ cv:
         publisher: Software Copyright
         releaseDate: 2020
 
-    Additional Experience & Volunteering:
-      - company: BGP CNPC
-        position: Geomatics Engineer & Assistant Project Manager
-        start_date: 2014-07
-        end_date: 2021-07
-        highlights:
-          - Delivered offshore geophysical survey data products; built QC/reporting automation to reduce manual workload.
-          - Licensed Registered Surveyor (2018); promoted to Assistant Project Manager (2021).
-
-      - company: University of Oslo
-        position: Summer Research Assistant
-        location: Oslo, Norway
-        start_date: 2023-05
-        end_date: 2023-07
-        summary: Bias correction and spatial downscaling of weather/climate datasets for energy-system modeling.
-
-      - company: University of Oslo
-        position: Teaching Assistant (Geophysical Data Science)
-        location: Oslo, Norway
-        start_date: 2023
-        end_date: 2023
-        summary: Taught Python labs and supported students with scientific programming and data analysis workflows.
-
-    Interests:
-      - name: Writing
-        keywords: climate change, energy transition
-      - name: Endurance sports
-        keywords: running, skiing
-      - name: Open source
-        keywords: geospatial tooling, scientific workflows
+    Skills:
+      - name: Programming
+        keywords: Python, SQL, Git
+      - name: ML & Statistics
+        keywords: Bayesian inference, Kalman filtering, machine learning, evaluation under uncertainty
+      - name: Data & Engineering
+        keywords: FastAPI, PostgreSQL, Docker, ETL, REST APIs
+      - name: Geospatial
+        keywords: Xarray, GeoPandas, Rasterio, Shapely, GIS automation
+      - name: Domains
+        keywords: CCUS, climate and energy datasets, remote sensing, geophysical data

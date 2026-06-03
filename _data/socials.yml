@@ -1,9 +1,8 @@
 # Social links displayed by jekyll-socials in al-folio v1.
-cv_pdf: /assets/pdf/CV_Zhihao_geoscience.pdf
-email: zhihaol[at]uio.com
+custom_social:
+  logo: /assets/img/cv-icon.svg
+  title: CV
+  url: /cv/
 github_username: liuh886
 linkedin_username: liuzhihao
-orcid_id: 0000-0002-4996-2521
 rss_icon: false
-scholar_userid: usxQ4tcAAAAJ
-x_username: liuh886qw
