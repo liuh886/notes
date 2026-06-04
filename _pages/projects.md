@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Projects
-nav_title: projects
+nav_title: Projects
 permalink: /projects/
 description: Selected projects in climate, geospatial ML, and decision tooling. Focused on high-stakes energy transition applications.
 nav: true
-nav_order: 1
+nav_order: 2
 year_categories: [2025-2026, 2023-2024, 2022, 2019-2020]
 horizontal: false
 ---
