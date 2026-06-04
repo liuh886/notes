@@ -36,71 +36,22 @@ home_cta: true
     max-width: 42rem;
   }
 
-  .home-focus {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    margin: 1.75rem 0 2.65rem;
-    max-width: 48rem;
-    border-top: 1px solid var(--global-divider-color);
-  }
-
-  .home-focus__item {
-    display: grid;
-    grid-template-columns: minmax(7.5rem, 0.34fr) 1fr;
-    gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--global-divider-color);
-  }
-
-  .home-focus__label {
-    margin: 0;
-    font-size: 0.82rem;
-    line-height: 1.5;
-    font-weight: 700;
-    color: var(--global-text-color);
-    text-transform: uppercase;
-  }
-
-  .home-focus__label::before {
-    content: "";
-    display: inline-block;
-    width: 1.35rem;
-    height: 1px;
-    margin-right: 0.55rem;
-    vertical-align: middle;
-    background: var(--global-theme-color);
-    opacity: 0.7;
-  }
-
-  .home-focus__item p {
-    margin-bottom: 0;
-    font-size: 0.95rem;
-    line-height: 1.62;
+  .home-intro p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.72;
     color: var(--global-text-color);
   }
 
-  .home-focus__item p a {
+  .home-intro a {
     color: var(--global-theme-color);
     font-weight: 600;
     text-decoration: none;
   }
 
-  .home-focus__item p a:hover {
+  .home-intro a:hover {
     text-decoration: underline;
     text-underline-offset: 4px;
-  }
-
-  .contact-icons .cv-social-text::before {
-    content: "CV";
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 1.25em;
-    font-size: 0.82em;
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 1;
   }
 
   .contact-icons a[title="Rss icon"] {
@@ -173,11 +124,6 @@ home_cta: true
   }
 
   @media (max-width: 575px) {
-    .home-focus__item {
-      grid-template-columns: 1fr;
-      gap: 0.25rem;
-    }
-
     .home-social-cta__primary {
       width: min(100%, 16rem);
     }
@@ -185,21 +131,7 @@ home_cta: true
 </style>
 
 <div class="home-intro">
-  <p>I turn climate, geospatial, and energy-system data into reproducible models, monitoring workflows, and decision tools.</p>
-  <p>My recent work spans CCUS MRV, 4D seismic monitoring, remote sensing, and climate-data downscaling, with an emphasis on systems that can be audited, shipped, and used beyond a research notebook.</p>
-</div>
-
-<div class="home-focus">
-  <div class="home-focus__item">
-    <p class="home-focus__label">Research</p>
-    <p>Peer-reviewed work on satellite laser altimetry and snow modeling (2025). High-precision geophysical modeling for remote and harsh environments. See <a href="{{ '/publications/' | relative_url }}">publications</a>.</p>
-  </div>
-  <div class="home-focus__item">
-    <p class="home-focus__label">Climate & Energy</p>
-    <p>At the intersection of ML and energy assets: from 4D seismic monitoring for CCUS/Reservoirs to bias correction for climate-energy datasets.</p>
-  </div>
-  <div class="home-focus__item">
-    <p class="home-focus__label">Decision Tools</p>
-    <p>Building shippable decision tools: from Bayesian Models to AI Agents, with a focus on reproducibility and production-ready code.</p>
-  </div>
+  <p>I work with climate, geospatial, and energy-system data, with a particular interest in how research-grade models can become tools that people can inspect, reproduce, and use in real decisions.</p>
+  <p>My recent work connects remote sensing, snow and climate-data downscaling, CCUS MRV, and 4D seismic monitoring. I care less about isolated demos and more about the full path from messy scientific data to a workflow that is technically credible, auditable, and useful outside a notebook.</p>
+  <p>This site is where I keep notes, projects, publications, and selected engineering work across climate data science, geophysical monitoring, Bayesian modeling, and applied machine learning. You can find formal research outputs in <a href="{{ '/publications/' | relative_url }}">publications</a>, code and tools in <a href="{{ '/repositories/' | relative_url }}">repositories</a>, and working notes on the <a href="{{ '/blog/' | relative_url }}">blog</a>.</p>
 </div>
