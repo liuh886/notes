@@ -1,7 +1,8 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
+nav_order: 0
 subtitle: Climate & Energy Data Scientist
 subtitle_extra: "Caixin ESG30 Young Scholar"
 
@@ -28,31 +29,13 @@ projects: false # includes projects
 display_categories: [work] # Projects show in about page
 social: true # rendered from _data/socials.yml
 home_cta: true
-_styles: >
+---
+
+<style id="home-page-polish">
   .home-intro {
     max-width: 42rem;
   }
-  .home-links {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.45rem;
-    margin: 1.15rem 0 2rem;
-    color: var(--global-text-color-light);
-    font-size: 0.95rem;
-  }
-  .home-links a {
-    color: var(--global-theme-color);
-    font-weight: 600;
-    text-decoration: none;
-  }
-  .home-links a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-  .home-links span {
-    opacity: 0.45;
-  }
+
   .home-focus {
     display: grid;
     grid-template-columns: 1fr;
@@ -61,6 +44,7 @@ _styles: >
     max-width: 48rem;
     border-top: 1px solid var(--global-divider-color);
   }
+
   .home-focus__item {
     display: grid;
     grid-template-columns: minmax(7.5rem, 0.34fr) 1fr;
@@ -68,6 +52,7 @@ _styles: >
     padding: 1rem 0;
     border-bottom: 1px solid var(--global-divider-color);
   }
+
   .home-focus__label {
     margin: 0;
     font-size: 0.82rem;
@@ -76,8 +61,9 @@ _styles: >
     color: var(--global-text-color);
     text-transform: uppercase;
   }
+
   .home-focus__label::before {
-    content: '';
+    content: "";
     display: inline-block;
     width: 1.35rem;
     height: 1px;
@@ -86,23 +72,27 @@ _styles: >
     background: var(--global-theme-color);
     opacity: 0.7;
   }
+
   .home-focus__item p {
     margin-bottom: 0;
     font-size: 0.95rem;
     line-height: 1.62;
     color: var(--global-text-color);
   }
+
   .home-focus__item p a {
     color: var(--global-theme-color);
     font-weight: 600;
     text-decoration: none;
   }
+
   .home-focus__item p a:hover {
     text-decoration: underline;
     text-underline-offset: 4px;
   }
+
   .contact-icons .cv-social-text::before {
-    content: 'CV';
+    content: "CV";
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -112,16 +102,20 @@ _styles: >
     letter-spacing: 0;
     line-height: 1;
   }
-  .contact-icons a[title='Rss icon'] {
+
+  .contact-icons a[title="Rss icon"] {
     display: none !important;
   }
+
   .social {
     margin-top: 2.25rem;
   }
+
   .contact-note {
     display: block;
     margin-top: 0.75rem;
   }
+
   .home-social-cta {
     display: flex;
     flex-direction: column;
@@ -129,6 +123,7 @@ _styles: >
     gap: 0.65rem;
     margin-top: 1rem;
   }
+
   .home-social-cta__primary {
     display: inline-flex;
     align-items: center;
@@ -143,12 +138,14 @@ _styles: >
     line-height: 1;
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
   }
+
   .home-social-cta__primary:hover {
     color: var(--global-bg-color);
     background: var(--global-theme-color);
     text-decoration: none;
     transform: translateY(-1px);
   }
+
   .home-social-cta__secondary {
     display: inline-flex;
     flex-wrap: wrap;
@@ -157,40 +154,39 @@ _styles: >
     color: var(--global-text-color-light);
     font-size: 0.9rem;
   }
+
   .home-social-cta__secondary a {
     color: var(--global-text-color);
     opacity: 0.78;
     text-decoration: none;
   }
+
   .home-social-cta__secondary a:hover {
     color: var(--global-theme-color);
     opacity: 1;
     text-decoration: underline;
     text-underline-offset: 4px;
   }
+
   .home-social-cta__secondary span {
     opacity: 0.42;
   }
+
   @media (max-width: 575px) {
     .home-focus__item {
       grid-template-columns: 1fr;
       gap: 0.25rem;
     }
+
     .home-social-cta__primary {
       width: min(100%, 16rem);
     }
   }
----
+</style>
 
 <div class="home-intro">
-  <p>Throughout my career, I've worked at the intersection of climate, geospatial data, and applied machine learning.</p>
-  <p>I build reusable decision tools from climate and geophysical data, with a bias toward workflows that can be reviewed, reproduced, and shipped.</p>
-</div>
-
-<div class="home-links" aria-label="Selected links">
-  <a href="{{ '/portfolio/' | relative_url }}">Market Insights</a>
-  <span>/</span>
-  <a href="{{ '/cv/' | relative_url }}">CV</a>
+  <p>I turn climate, geospatial, and energy-system data into reproducible models, monitoring workflows, and decision tools.</p>
+  <p>My recent work spans CCUS MRV, 4D seismic monitoring, remote sensing, and climate-data downscaling, with an emphasis on systems that can be audited, shipped, and used beyond a research notebook.</p>
 </div>
 
 <div class="home-focus">
