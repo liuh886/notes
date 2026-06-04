@@ -7,7 +7,15 @@ first_name: Zhihao
 middle_name:
 last_name: LIU
 tab_title: "Zhihao LIU | Climate & Energy Data Scientist" # preserves the previous browser-tab title customization
-contact_note:
+contact_note: >
+  <div class="home-social-cta" aria-label="Primary contact">
+    <a class="home-social-cta__primary" href="https://calendar.app.google/UQ267iEs4MTAGFSd7" target="_blank" rel="noopener noreferrer">Book a chat</a>
+    <div class="home-social-cta__secondary">
+      <a href="/portfolio/">Market Insights</a>
+      <span>/</span>
+      <a href="/cv/">CV</a>
+    </div>
+  </div>
 description: >
   Climate & energy data scientist building reproducible ML workflows and decision tools from climate and geospatial data.
 footer_text: >
