@@ -8,6 +8,13 @@ module SiteVisualPolish
     "cv.md"
   ].freeze
 
+  TARGET_URLS = [
+    "/",
+    "/portfolio/",
+    "/repositories/",
+    "/cv/"
+  ].freeze
+
   def self.apply_cv_title(page)
     return unless page.relative_path == "cv.md"
 
@@ -18,7 +25,7 @@ module SiteVisualPolish
   end
 
   def self.apply_stylesheet(page)
-    return unless TARGET_PAGES.include?(page.relative_path)
+    return unless TARGET_PAGES.include?(page.relative_path) || TARGET_URLS.include?(page.url.to_s)
     return unless page.output.include?("</head>")
     return if page.output.include?("site-polish.css")
 
