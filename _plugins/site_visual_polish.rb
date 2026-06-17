@@ -15,17 +15,26 @@ module SiteVisualPolish
     "/cv/"
   ].freeze
 
+  def self.cv_page?(page)
+    page.relative_path == "cv.md" || page.url.to_s == "/cv/"
+  end
+
   def self.apply_cv_title(page)
-    return unless page.relative_path == "cv.md"
+    return unless cv_page?(page)
 
     page.output = page.output.sub(
       %r{(<a class="anchor" id="publications"></a>\s*<div class="card mt-3 p-3">\s*<h3 class="card-title font-weight-medium">)Publications(</h3>)},
       "\\1Publications &amp; Patent\\2"
     )
+  end
+
+  def self.apply_cv_pdf_link(page)
+    return unless cv_page?(page)
+    return if page.output.include?("cv-pdf-link")
 
     page.output = page.output.sub(
-      %r{(<a href="[^"]+\.pdf"[^>]*class=")float-right("[^>]*>\s*<i class="fa-solid fa-file-pdf"></i>\s*</a>)},
-      "\\1float-right cv-pdf-link\\2"
+      %r{(<h1 class="post-title">[\s\S]*?<a [^>]*href="[^"]+\.pdf"[^>]*class=")([^"]*)("[^>]*>\s*<i class="fa-solid fa-file-pdf"></i>\s*</a>)},
+      "\\1\\2 cv-pdf-link\\3"
     )
   end
 
@@ -45,6 +54,7 @@ end
 [:pages, :documents].each do |hook_owner|
   Jekyll::Hooks.register hook_owner, :post_render do |page|
     SiteVisualPolish.apply_cv_title(page)
+    SiteVisualPolish.apply_cv_pdf_link(page)
     SiteVisualPolish.apply_stylesheet(page)
   end
 end
