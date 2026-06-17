@@ -1,0 +1,467 @@
+:root {
+  --note-radius: 8px;
+  --note-border: var(--global-divider-color);
+  --note-muted: var(--global-text-color-light);
+  --note-muted: color-mix(in srgb, var(--global-text-color) 68%, transparent);
+  --note-shadow: 0 12px 30px rgba(0, 0, 0, 0.055);
+}
+
+html[data-theme="dark"] {
+  --note-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+}
+
+.post-header {
+  margin-bottom: 1.35rem;
+}
+
+.post-header .post-title {
+  margin-bottom: 0.35rem;
+  letter-spacing: 0;
+  line-height: 1.08;
+}
+
+.post-header .post-description {
+  max-width: 46rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--note-muted);
+}
+
+.home-intro {
+  max-width: 43.5rem;
+  margin-top: 0.35rem;
+}
+
+.home-intro p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.76;
+  color: var(--global-text-color);
+}
+
+.home-intro p:first-child {
+  font-size: 1.06rem;
+  line-height: 1.68;
+  color: var(--global-text-color);
+}
+
+.home-intro a,
+.repo-card__cta,
+.repo-page-intro a {
+  color: var(--global-theme-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.home-intro a:hover,
+.repo-card__cta:hover,
+.repo-page-intro a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contact-icons a[title="Rss icon"] {
+  display: none !important;
+}
+
+.social {
+  margin-top: 2rem;
+}
+
+.contact-note {
+  display: block;
+  margin-top: 0.75rem;
+}
+
+.home-social-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.home-social-cta__primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.35rem;
+  padding: 0.54rem 1rem;
+  border: 1px solid var(--global-theme-color);
+  border-radius: var(--note-radius);
+  color: var(--global-theme-color);
+  font-weight: 650;
+  text-decoration: none;
+  line-height: 1;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.home-social-cta__primary:hover {
+  color: var(--global-bg-color);
+  background: var(--global-theme-color);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.home-social-cta__secondary {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+  color: var(--note-muted);
+  font-size: 0.9rem;
+}
+
+.home-social-cta__secondary a {
+  color: var(--global-text-color);
+  opacity: 0.78;
+  text-decoration: none;
+}
+
+.home-social-cta__secondary a:hover {
+  color: var(--global-theme-color);
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.repo-page-intro {
+  max-width: 45rem;
+  margin-bottom: 1.9rem;
+  color: var(--note-muted);
+  line-height: 1.7;
+}
+
+.repo-section {
+  margin: 2rem 0 2.75rem;
+}
+
+.repo-section__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.95rem;
+  border-bottom: 1px solid var(--note-border);
+  padding-bottom: 0.6rem;
+}
+
+.repo-section__header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: 0;
+}
+
+.repo-section__header span {
+  color: var(--note-muted);
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.repo-profile-grid,
+.repo-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.repo-profile-card,
+.repo-trophy-card,
+.repo-card {
+  overflow: hidden;
+  border: 1px solid var(--note-border);
+  border-radius: var(--note-radius);
+  background: var(--global-bg-color);
+}
+
+html[data-theme="dark"] .repo-profile-card,
+html[data-theme="dark"] .repo-trophy-card,
+html[data-theme="dark"] .repo-card {
+  background: var(--global-card-bg-color);
+}
+
+.repo-card {
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.repo-card:hover {
+  border-color: var(--global-theme-color);
+  transform: translateY(-2px);
+  box-shadow: var(--note-shadow);
+}
+
+.repo-profile-card__media,
+.repo-trophy-card__media,
+.repo-card__stats {
+  display: block;
+  padding: 0.6rem;
+}
+
+.repo-profile-card__media img,
+.repo-trophy-card__media img,
+.repo-card__stats img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.repo-profile-card__fallback {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.9rem 1rem;
+  border-top: 1px solid var(--note-border);
+}
+
+.repo-profile-card__avatar {
+  display: block;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: var(--note-radius);
+  border: 1px solid var(--note-border);
+}
+
+.repo-profile-card__fallback h3,
+.repo-card h3 {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+.repo-profile-card__fallback p,
+.repo-card p {
+  margin: 0.15rem 0 0;
+  color: var(--note-muted);
+  font-size: 0.9rem;
+}
+
+.repo-card__body {
+  padding: 1rem;
+}
+
+.repo-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.repo-card__owner {
+  color: var(--note-muted);
+}
+
+.repo-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.repo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--note-border);
+  border-radius: 999px;
+  padding: 0.22rem 0.55rem;
+  font-size: 0.82rem;
+  color: var(--note-muted);
+}
+
+.repo-card__summary {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--note-border);
+}
+
+.repo-card__summary p {
+  margin: 0;
+  line-height: 1.58;
+}
+
+.repo-card__metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+  color: var(--note-muted);
+  font-size: 0.85rem;
+}
+
+.repo-card__metrics span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+}
+
+.repo-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+}
+
+html[data-theme="dark"] .repo-light,
+html[data-theme="dark"] .stock-widget-light,
+html:not([data-theme="dark"]) .repo-dark,
+html:not([data-theme="dark"]) .stock-widget-dark {
+  display: none !important;
+}
+
+.portfolio-widgets {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.stock-widget {
+  overflow: hidden;
+}
+
+.stock-widget--story .tradingview-widget-container,
+.stock-widget--analysis .tradingview-widget-container {
+  min-height: 520px;
+}
+
+.stock-widget--overview .tradingview-widget-container {
+  min-height: 420px;
+}
+
+.stock-analysis__selector {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.stock-analysis__label {
+  color: var(--note-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.stock-analysis__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.stock-analysis__pill {
+  border: 1px solid var(--note-border);
+  background: transparent;
+  color: var(--global-text-color);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.stock-analysis__pill:hover,
+.stock-analysis__pill:focus-visible {
+  border-color: var(--global-theme-color);
+  color: var(--global-theme-color);
+  outline: none;
+}
+
+.stock-analysis__pill.is-active {
+  background: var(--global-theme-color);
+  color: var(--global-bg-color);
+  border-color: var(--global-theme-color);
+}
+
+.stock-analysis__panel {
+  display: none;
+}
+
+.stock-analysis__panel.is-active {
+  display: block;
+}
+
+.cv .card {
+  border: 1px solid var(--note-border);
+  border-radius: var(--note-radius);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
+  padding: 1.15rem !important;
+}
+
+html[data-theme="dark"] .cv .card {
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+}
+
+.cv .card-title {
+  margin-bottom: 0.9rem;
+  font-size: 1.12rem;
+  letter-spacing: 0;
+}
+
+.cv .list-group-item {
+  border-color: var(--note-border);
+  padding: 0.95rem 0;
+}
+
+.cv .badge {
+  border-radius: 6px;
+  letter-spacing: 0;
+  text-transform: none !important;
+}
+
+.cv h6.title {
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.cv ul.items {
+  margin-top: 0.45rem;
+}
+
+.cv ul.items li {
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .repo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .portfolio-widgets {
+    grid-template-columns: minmax(0, 1.45fr) minmax(20rem, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .post-header {
+    margin-bottom: 1rem;
+  }
+
+  .home-intro p,
+  .home-intro p:first-child {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .home-social-cta__primary {
+    width: min(100%, 16rem);
+  }
+
+  .repo-section__header {
+    display: block;
+  }
+
+  .repo-section__header span {
+    display: block;
+    margin-top: 0.2rem;
+  }
+}
