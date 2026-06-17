@@ -37,7 +37,9 @@ module SiteVisualPolish
   end
 end
 
-Jekyll::Hooks.register :pages, :post_render do |page|
-  SiteVisualPolish.apply_cv_title(page)
-  SiteVisualPolish.apply_stylesheet(page)
+[:pages, :documents].each do |hook_owner|
+  Jekyll::Hooks.register hook_owner, :post_render do |page|
+    SiteVisualPolish.apply_cv_title(page)
+    SiteVisualPolish.apply_stylesheet(page)
+  end
 end
