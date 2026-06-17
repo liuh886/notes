@@ -31,16 +31,18 @@ html[data-theme="dark"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.35rem;
-  height: 2.35rem;
+  width: 2.35rem !important;
+  height: 2.35rem !important;
   margin-top: 0.2rem;
   color: var(--global-theme-color);
   text-decoration: none;
+  font-size: 1.55rem !important;
+  line-height: 1 !important;
 }
 
 .post-header .post-title a.float-right[href$=".pdf"] i {
-  font-size: 1.55rem;
-  line-height: 1;
+  font-size: 1.55rem !important;
+  line-height: 1 !important;
 }
 
 .home-intro {
