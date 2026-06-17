@@ -27,7 +27,7 @@ html[data-theme="dark"] {
   color: var(--note-muted);
 }
 
-.post-header .post-title a.float-right[href$=".pdf"] {
+.post-header .post-title .cv-pdf-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -40,7 +40,7 @@ html[data-theme="dark"] {
   line-height: 1 !important;
 }
 
-.post-header .post-title a.float-right[href$=".pdf"] i {
+.post-header .post-title .cv-pdf-link i {
   font-size: 1.55rem !important;
   line-height: 1 !important;
 }

@@ -22,6 +22,11 @@ module SiteVisualPolish
       %r{(<a class="anchor" id="publications"></a>\s*<div class="card mt-3 p-3">\s*<h3 class="card-title font-weight-medium">)Publications(</h3>)},
       "\\1Publications &amp; Patent\\2"
     )
+
+    page.output = page.output.sub(
+      %r{(<a href="[^"]+\.pdf"[^>]*class=")float-right("[^>]*>\s*<i class="fa-solid fa-file-pdf"></i>\s*</a>)},
+      "\\1float-right cv-pdf-link\\2"
+    )
   end
 
   def self.apply_stylesheet(page)
