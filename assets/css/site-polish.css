@@ -446,6 +446,23 @@ html[data-theme="dark"] .cv .card {
     margin-bottom: 1rem;
   }
 
+  .profile.float-right {
+    float: none !important;
+    width: min(100%, 17rem);
+    margin: 0 auto 1.35rem;
+  }
+
+  .profile.float-right img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+
+  .profile .more-info {
+    margin-top: 0.55rem;
+    text-align: center;
+  }
+
   .home-intro p,
   .home-intro p:first-child {
     font-size: 1rem;
