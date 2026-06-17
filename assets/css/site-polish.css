@@ -27,6 +27,22 @@ html[data-theme="dark"] {
   color: var(--note-muted);
 }
 
+.post-header .post-title a.float-right[href$=".pdf"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  margin-top: 0.2rem;
+  color: var(--global-theme-color);
+  text-decoration: none;
+}
+
+.post-header .post-title a.float-right[href$=".pdf"] i {
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
 .home-intro {
   max-width: 43.5rem;
   margin-top: 0.35rem;
@@ -254,7 +270,7 @@ article > .clearfix:has(.home-intro) ~ .publications .links .btn {
 }
 
 .repo-section {
-  margin: 2rem 0 2.75rem;
+  margin: 2.15rem 0 2.85rem;
 }
 
 .repo-section__header {
@@ -270,6 +286,7 @@ article > .clearfix:has(.home-intro) ~ .publications .links .btn {
 .repo-section__header h2 {
   margin: 0;
   font-size: 1.15rem;
+  font-weight: 420;
   letter-spacing: 0;
 }
 
@@ -318,7 +335,9 @@ html[data-theme="dark"] .repo-card {
 .repo-trophy-card__media,
 .repo-card__stats {
   display: block;
-  padding: 0.6rem;
+  padding: 0.7rem;
+  background: color-mix(in srgb, var(--global-text-color) 3%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--note-border) 72%, transparent);
 }
 
 .repo-profile-card__media img,
@@ -328,14 +347,14 @@ html[data-theme="dark"] .repo-card {
   width: 100%;
   height: auto;
   border-radius: 6px;
+  background: var(--global-bg-color);
 }
 
 .repo-profile-card__fallback {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  padding: 0.9rem 1rem;
-  border-top: 1px solid var(--note-border);
+  padding: 0.9rem 1rem 1rem;
 }
 
 .repo-profile-card__avatar {
@@ -350,6 +369,7 @@ html[data-theme="dark"] .repo-card {
 .repo-card h3 {
   margin: 0;
   font-size: 1rem;
+  font-weight: 500;
   letter-spacing: 0;
 }
 
@@ -361,7 +381,7 @@ html[data-theme="dark"] .repo-card {
 }
 
 .repo-card__body {
-  padding: 1rem;
+  padding: 1.05rem 1rem 1.1rem;
 }
 
 .repo-card__title-row {
@@ -396,7 +416,7 @@ html[data-theme="dark"] .repo-card {
 .repo-card__summary {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--note-border);
+  border-top: 1px solid color-mix(in srgb, var(--note-border) 72%, transparent);
 }
 
 .repo-card__summary p {
@@ -440,6 +460,21 @@ html:not([data-theme="dark"]) .stock-widget-dark {
   margin-top: 1rem;
 }
 
+article:has(.stock-widget) > h2,
+article:has(.portfolio-widgets) > h2 {
+  margin-top: 2.35rem;
+  margin-bottom: 1rem;
+  padding-top: 1.05rem;
+  border-top: 1px solid var(--note-border);
+  font-size: 1.45rem;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.stock-widget {
+  border-radius: var(--note-radius);
+}
+
 .stock-widget {
   overflow: hidden;
 }
@@ -458,13 +493,13 @@ html:not([data-theme="dark"]) .stock-widget-dark {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-bottom: 1rem;
+  margin: 0.15rem 0 0.95rem;
 }
 
 .stock-analysis__label {
   color: var(--note-muted);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .stock-analysis__buttons {
@@ -478,8 +513,8 @@ html:not([data-theme="dark"]) .stock-widget-dark {
   background: transparent;
   color: var(--global-text-color);
   border-radius: 999px;
-  padding: 0.4rem 0.85rem;
-  font-size: 0.95rem;
+  padding: 0.34rem 0.75rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition:
     border-color 0.2s ease,
@@ -509,29 +544,31 @@ html:not([data-theme="dark"]) .stock-widget-dark {
 }
 
 .cv .card {
-  border: 1px solid var(--note-border);
+  border: 1px solid color-mix(in srgb, var(--note-border) 82%, transparent);
   border-radius: var(--note-radius);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
-  padding: 1.15rem !important;
+  box-shadow: none;
+  padding: 1.22rem !important;
 }
 
 html[data-theme="dark"] .cv .card {
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+  box-shadow: none;
 }
 
 .cv .card-title {
-  margin-bottom: 0.9rem;
+  margin-bottom: 1.05rem;
   font-size: 1.12rem;
+  font-weight: 440;
   letter-spacing: 0;
 }
 
 .cv .list-group-item {
-  border-color: var(--note-border);
-  padding: 0.95rem 0;
+  border-color: color-mix(in srgb, var(--note-border) 72%, transparent);
+  padding: 1.05rem 0;
 }
 
 .cv .badge {
   border-radius: 6px;
+  padding: 0.32rem 0.45rem;
   letter-spacing: 0;
   text-transform: none !important;
 }
@@ -539,14 +576,17 @@ html[data-theme="dark"] .cv .card {
 .cv h6.title {
   font-size: 1rem;
   line-height: 1.35;
+  font-weight: 650;
 }
 
 .cv ul.items {
-  margin-top: 0.45rem;
+  margin-top: 0.5rem;
+  padding-left: 1.15rem;
 }
 
 .cv ul.items li {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.32rem;
+  line-height: 1.48;
 }
 
 @media (min-width: 768px) {
@@ -637,5 +677,32 @@ html[data-theme="dark"] .cv .card {
   .repo-section__header span {
     display: block;
     margin-top: 0.2rem;
+  }
+
+  .repo-profile-card__media,
+  .repo-card__stats {
+    padding: 0.55rem;
+  }
+
+  .repo-card__body {
+    padding: 0.95rem;
+  }
+
+  article:has(.stock-widget) > h2,
+  article:has(.portfolio-widgets) > h2 {
+    margin-top: 2rem;
+    font-size: 1.25rem;
+  }
+
+  .stock-analysis__selector {
+    align-items: flex-start;
+  }
+
+  .stock-analysis__label {
+    width: 100%;
+  }
+
+  .cv .card {
+    padding: 1rem !important;
   }
 }
