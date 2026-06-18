@@ -3,16 +3,25 @@
 module SiteVisualPolish
   TARGET_PAGES = [
     "_pages/about.md",
+    "_pages/blog.md",
     "_pages/portfolio.md",
+    "_pages/projects.md",
     "_pages/repositories.md",
     "cv.md"
   ].freeze
 
   TARGET_URLS = [
     "/",
+    "/blog/",
     "/portfolio/",
+    "/projects/",
     "/repositories/",
     "/cv/"
+  ].freeze
+
+  TARGET_URL_PREFIXES = [
+    "/blog/",
+    "/projects/"
   ].freeze
 
   def self.apply_cv_title(page)
@@ -24,8 +33,16 @@ module SiteVisualPolish
     )
   end
 
+  def self.target_page?(page)
+    url = page.url.to_s
+
+    TARGET_PAGES.include?(page.relative_path) ||
+      TARGET_URLS.include?(url) ||
+      TARGET_URL_PREFIXES.any? { |prefix| url.start_with?(prefix) }
+  end
+
   def self.apply_stylesheet(page)
-    return unless TARGET_PAGES.include?(page.relative_path) || TARGET_URLS.include?(page.url.to_s)
+    return unless target_page?(page)
     return unless page.output.include?("</head>")
     return if page.output.include?("site-polish.css")
 
