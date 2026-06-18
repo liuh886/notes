@@ -49,6 +49,12 @@ module SiteVisualPolish
 
     page.output = page.output.sub("</head>", "#{tag}</head>")
   end
+
+  def self.apply_final_cv_polish(site)
+    (site.pages + site.documents).each do |page|
+      apply_cv_pdf_link(page)
+    end
+  end
 end
 
 [:pages, :documents].each do |hook_owner|
@@ -57,4 +63,8 @@ end
     SiteVisualPolish.apply_cv_pdf_link(page)
     SiteVisualPolish.apply_stylesheet(page)
   end
+end
+
+Jekyll::Hooks.register :site, :post_render do |site|
+  SiteVisualPolish.apply_final_cv_polish(site)
 end
