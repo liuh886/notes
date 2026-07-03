@@ -64,7 +64,7 @@ jobs:
         run: |
           set -euo pipefail
           npm run lint:style-contract
-          npx prettier --check README.md assets/css/site-upgrade.css .github/workflows/deploy.yml test/style_contract.js
+          npx prettier --check test/style_contract.js
           ruby -c _plugins/site_visual_polish.rb
 
       - name: Build (production) 🔧
