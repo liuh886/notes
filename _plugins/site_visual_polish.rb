@@ -24,6 +24,11 @@ module SiteVisualPolish
     "/projects/"
   ].freeze
 
+  STYLESHEETS = [
+    "site-polish.css",
+    "site-upgrade.css"
+  ].freeze
+
   def self.apply_cv_title(page)
     return unless page.relative_path == "cv.md"
 
@@ -44,13 +49,16 @@ module SiteVisualPolish
   def self.apply_stylesheet(page)
     return unless target_page?(page)
     return unless page.output.include?("</head>")
-    return if page.output.include?("site-polish.css")
 
     baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
-    href = "#{baseurl}/assets/css/site-polish.css"
-    tag = %(<link rel="stylesheet" href="#{href}">)
 
-    page.output = page.output.sub("</head>", "#{tag}</head>")
+    STYLESHEETS.each do |stylesheet|
+      next if page.output.include?(stylesheet)
+
+      href = "#{baseurl}/assets/css/#{stylesheet}"
+      tag = %(<link rel="stylesheet" href="#{href}">)
+      page.output = page.output.sub("</head>", "#{tag}</head>")
+    end
   end
 
 end
