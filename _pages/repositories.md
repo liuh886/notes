@@ -145,9 +145,21 @@ nav_order: 3
               </div>
             {% endif %}
           </div>
-          <a class="repo-card__cta" href="https://github.com/{{ repo }}" target="_blank" rel="noopener noreferrer">
-            View repository <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
+          <div class="repo-card__actions">
+            {% if meta.live_url %}
+              <a class="repo-card__cta repo-card__cta--primary" href="{{ meta.live_url }}" target="_blank" rel="noopener noreferrer">
+                {{ meta.live_label | default: "Open app" }} <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            {% endif %}
+            {% if meta.secondary_url %}
+              <a class="repo-card__cta" href="{{ meta.secondary_url }}" target="_blank" rel="noopener noreferrer">
+                {{ meta.secondary_label | default: "Open link" }} <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            {% endif %}
+            <a class="repo-card__cta" href="https://github.com/{{ repo }}" target="_blank" rel="noopener noreferrer">
+              View repository <i class="fa-brands fa-github"></i>
+            </a>
+          </div>
         </div>
       </article>
     {% endfor %}

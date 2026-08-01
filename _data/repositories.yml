@@ -2,6 +2,10 @@ github_users:
   - liuh886
 
 github_repos:
+  - liuh886/RhythmCoach
+  - liuh886/FlappyK
+  - liuh886/ownly
+  - liuh886/obsidian-ical-plugin-pro
   - liuh886/4d-seismic-hub
   - liuh886/ccus-policy-hub
   - liuh886/GhostCam
@@ -12,6 +16,36 @@ github_repos:
   - liuh886/GEO4300_2023
 
 repo_metadata:
+  liuh886/RhythmCoach:
+    description: Local-first, lightweight web coach for timed speech practice, rhythm control, recording, and post-session review.
+    language: TypeScript
+    live_url: https://liuh886.github.io/RhythmCoach/
+    live_label: Open app
+    stars: 0
+    forks: 0
+  liuh886/FlappyK:
+    description: Browser trading game built around one rule：beat an unknown historical market by achieving positive excess return.
+    language: JavaScript
+    live_url: https://liuh886.github.io/FlappyK/
+    live_label: Play game
+    stars: 0
+    forks: 0
+  liuh886/ownly:
+    description: Local-first ownership memory for humans and AI agents, with Obsidian, Web, and stable JSON CLI surfaces.
+    language: TypeScript
+    live_url: https://liuh886.github.io/ownly/
+    live_label: Open app
+    secondary_url: https://obsidian.md/plugins?id=ownly
+    secondary_label: Obsidian plugin
+    stars: 0
+    forks: 0
+  liuh886/obsidian-ical-plugin-pro:
+    description: Obsidian plugin that turns Markdown tasks into standards-compliant iCalendar feeds for Google, Apple, and Outlook.
+    language: TypeScript
+    live_url: https://community.obsidian.md/plugins/ical-plugin-pro
+    live_label: Open plugin
+    stars: 0
+    forks: 0
   liuh886/4d-seismic-hub:
     description: Best-practice 4D seismic exploration knowledge base with an AI-agent website interface.
     language: Python

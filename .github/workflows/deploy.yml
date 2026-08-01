@@ -54,11 +54,18 @@ jobs:
           propertyPath: giscus.repo
           value: ${{ github.repository }}
 
-      # 5. Install extra tools + build
+      # 5. Install extra tools and verify local contracts
       - name: Install CLI helpers 🔧
         run: |
           pip install --upgrade pip nbconvert
           npm ci
+
+      - name: Verify frontend contracts 🔎
+        run: |
+          set -euo pipefail
+          npm run lint:style-contract
+          npx prettier --check test/style_contract.js
+          ruby -c _plugins/site_visual_polish.rb
 
       - name: Build (production) 🔧
         run: |
@@ -77,7 +84,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site   # explicit path = safer
+          path: ./_site # explicit path = safer
 
   # 2️⃣ DEPLOY the uploaded artifact to Pages
   deploy:

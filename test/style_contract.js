@@ -42,7 +42,7 @@ for (const libraryKey of ["fontawesome", "academicons", "scholar-icons"]) {
     failures.push(`\`_config.yml\` must define \`third_party_libraries.${libraryKey}\` for al_icons runtime wiring.`);
     continue;
   }
-  if (!new RegExp(`^\\s{2}${escapeRegExp(libraryKey)}:[\\s\\S]*?^\\s{4}integrity:\\s*$[\\s\\S]*?^\\s{6}css:\\s*\"sha`, "m").test(config)) {
+  if (!new RegExp(`^\\s{2}${escapeRegExp(libraryKey)}:[\\s\\S]*?^\\s{4}integrity:\\s*$[\\s\\S]*?^\\s{6}css:\\s*"sha`, "m").test(config)) {
     failures.push(`\`_config.yml\` should define an SRI hash for \`third_party_libraries.${libraryKey}.integrity.css\`.`);
   }
 }
@@ -81,6 +81,30 @@ for (const forbiddenGlobPath of [
 for (const requiredPath of ["test/visual", "test/integration_plugin_toggles.sh", "test/integration_distill.sh"]) {
   if (!exists(requiredPath)) {
     failures.push(`Starter integration/visual contract missing required path: \`${requiredPath}\`.`);
+  }
+}
+
+const visualPlugin = read("_plugins/site_visual_polish.rb");
+for (const stylesheet of ["site-polish.css", "site-upgrade.css"]) {
+  if (!visualPlugin.includes(stylesheet)) {
+    failures.push(`Site visual polish plugin must inject \`${stylesheet}\`.`);
+  }
+}
+
+if (!exists("assets/css/site-upgrade.css")) {
+  failures.push("Frontend upgrade layer missing: `assets/css/site-upgrade.css`.");
+} else {
+  const upgradeCss = read("assets/css/site-upgrade.css");
+  for (const requiredSelector of [
+    "article:has(.header-bar) .post-list",
+    "article:has(.header-bar) .featured-posts .row",
+    "body:has(.cv) .sticky-top::-webkit-scrollbar",
+    "content-visibility: auto",
+    "prefers-reduced-motion",
+  ]) {
+    if (!upgradeCss.includes(requiredSelector)) {
+      failures.push(`Frontend upgrade CSS must keep selector/contract: \`${requiredSelector}\`.`);
+    }
   }
 }
 
