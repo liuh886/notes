@@ -158,7 +158,7 @@ home_cta: true
             <p>{{ record.summary }}</p>
             <div class="research-record__actions">
               {% if record.href %}
-                <a href="{{ record.href }}" {% unless record.href contains site.url or record.href contains '/' and record.href.size < 2 %}target="_blank" rel="noopener noreferrer"{% endunless %}>{{ record.label | default: "Open" }} →</a>
+                <a href="{{ record.href }}" target="_blank" rel="noopener noreferrer">{{ record.label | default: "Open" }} →</a>
               {% endif %}
               {% if record.secondary_href %}
                 <a href="{{ record.secondary_href }}">{{ record.secondary_label | default: "More" }} →</a>
