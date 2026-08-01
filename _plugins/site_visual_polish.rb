@@ -27,7 +27,8 @@ module SiteVisualPolish
   STYLESHEETS = [
     "site-polish.css",
     "site-upgrade.css",
-    "hao-design.css"
+    "hao-design.css",
+    "mission-log-deployments.css"
   ].freeze
 
   def self.apply_cv_title(page)

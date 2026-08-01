@@ -24,8 +24,8 @@ latest_posts:
   scrollable: true
   limit: 4
 
-selected_papers: true # Step 3 will reframe this as RESEARCH RECORD / 05
-projects: false # Step 4 will selectively compose projects and repositories into SELECTED DEPLOYMENTS / 02-04
+selected_papers: true # Step 4 will reframe this as RESEARCH RECORD / 05
+projects: false # selected deployments are now composed manually below
 display_categories: [work]
 social: true # rendered from _data/socials.yml
 home_cta: true
@@ -53,7 +53,7 @@ home_cta: true
         <span>CURRENT OPERATIONS / 01</span>
         <strong>Active task log</strong>
       </a>
-      <a class="mission-index__item" href="{{ '/projects/' | relative_url }}">
+      <a class="mission-index__item" href="#selected-deployments">
         <span>SELECTED DEPLOYMENTS / 02-04</span>
         <strong>Systems and tools</strong>
       </a>
@@ -96,6 +96,48 @@ home_cta: true
           </div>
         </article>
       {% endfor %}
+    </div>
+  </section>
+
+  <section id="selected-deployments" class="mission-section mission-section--deployments" aria-labelledby="selected-deployments-title">
+    <div class="mission-section-kicker">SELECTED DEPLOYMENTS / 02-04</div>
+    <h2 id="selected-deployments-title">Manually prioritized systems and technical assets</h2>
+    <p class="mission-section__intro">Selected deployments are ordered by importance rather than repository chronology. Full project and repository archives remain available as supporting records.</p>
+    <div class="deployments-log">
+      {% for group in site.data.selected_deployments.groups %}
+        <section class="deployments-group" aria-labelledby="deployment-group-{{ group.id }}">
+          <div class="deployments-group__header">
+            <span>{{ group.kicker }}</span>
+            <h3 id="deployment-group-{{ group.id }}">{{ group.title }}</h3>
+            <p>{{ group.summary }}</p>
+          </div>
+          <div class="deployments-grid">
+            {% for deployment in group.deployments %}
+              <article class="deployment-card">
+                <div class="deployment-card__meta">
+                  <span>{{ deployment.ref }}</span>
+                  <strong>{{ deployment.status }}</strong>
+                </div>
+                <h4>{{ deployment.title }}</h4>
+                <p class="deployment-card__kind">{{ deployment.kind }}</p>
+                <p>{{ deployment.summary }}</p>
+                <div class="deployment-card__actions">
+                  {% if deployment.href %}
+                    <a href="{{ deployment.href }}" target="_blank" rel="noopener noreferrer">{{ deployment.primary_label | default: "Open" }} →</a>
+                  {% endif %}
+                  {% if deployment.secondary_href %}
+                    <a href="{{ deployment.secondary_href }}" target="_blank" rel="noopener noreferrer">{{ deployment.secondary_label | default: "Repository" }} →</a>
+                  {% endif %}
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+    </div>
+    <div class="mission-archive-links" aria-label="Full archives">
+      <a href="{{ '/projects/' | relative_url }}">Full project archive →</a>
+      <a href="{{ '/repositories/' | relative_url }}">Repository archive →</a>
     </div>
   </section>
 
