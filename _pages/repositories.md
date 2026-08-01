@@ -4,7 +4,7 @@ permalink: /repositories/
 title: Repositories
 nav_title: Repositories
 description: Selected open-source repositories and code projects.
-nav: true
+nav: false
 nav_order: 3
 ---
 
