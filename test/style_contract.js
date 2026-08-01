@@ -143,7 +143,9 @@ for (const requiredHomeMarker of [
   "CONTACT / BACK COVER",
 ]) {
   if (!aboutPage.includes(requiredHomeMarker)) {
-    failures.push(`Mission Log homepage must keep marker: \`${requiredHomeMarker}\`.`);
+    failures.push(
+      `Mission Log homepage must keep marker: \`${requiredHomeMarker}\`.`,
+    );
   }
 }
 
@@ -153,7 +155,9 @@ for (const hiddenNavPage of [
   "cv.md",
 ]) {
   if (!/^nav:\s*false$/m.test(read(hiddenNavPage))) {
-    failures.push(`Mission Log nav strategy requires \`${hiddenNavPage}\` to keep \`nav: false\`.`);
+    failures.push(
+      `Mission Log nav strategy requires \`${hiddenNavPage}\` to keep \`nav: false\`.`,
+    );
   }
 }
 
@@ -163,7 +167,9 @@ for (const requiredDoc of [
   "docs/MISSION_LOG_PLAN.md",
 ]) {
   if (!exists(requiredDoc)) {
-    failures.push(`Hao redesign documentation missing required path: \`${requiredDoc}\`.`);
+    failures.push(
+      `Hao redesign documentation missing required path: \`${requiredDoc}\`.`,
+    );
   }
 }
 
