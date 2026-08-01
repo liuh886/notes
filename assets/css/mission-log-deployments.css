@@ -1,0 +1,125 @@
+/*
+ * Mission Log deployments layer
+ *
+ * Focused styles for SELECTED DEPLOYMENTS / 02-04. Kept separate from
+ * hao-design.css so the base design-system layer remains readable.
+ */
+
+.deployments-log {
+  display: grid;
+  gap: 1.15rem;
+  margin-top: 1.25rem;
+}
+
+.deployments-group {
+  border-top: 1px solid var(--hao-mission-line);
+  padding-top: 1.1rem;
+}
+
+.deployments-group:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.deployments-group__header {
+  max-width: var(--hao-reading-max);
+}
+
+.deployments-group__header span,
+.deployment-card__meta span {
+  color: var(--hao-mission-accent);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.deployments-group__header h3 {
+  margin: 0.25rem 0 0.35rem;
+  font-size: clamp(1.1rem, 2.3vw, 1.45rem);
+}
+
+.deployments-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.9rem;
+}
+
+.deployment-card {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  border: 1px solid var(--hao-border-subtle);
+  border-radius: var(--hao-radius-md);
+  padding: 0.95rem;
+  background:
+    radial-gradient(circle at 0% 0%, var(--hao-mission-soft), transparent 34%),
+    color-mix(in srgb, var(--hao-surface-base) 88%, var(--hao-mission-soft));
+}
+
+.deployment-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.7rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.deployment-card__meta strong {
+  border: 1px solid var(--hao-mission-line);
+  border-radius: 999px;
+  padding: 0.14rem 0.45rem;
+  color: var(--hao-mission-accent);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.deployment-card h4 {
+  margin: 0.65rem 0 0.2rem;
+  font-size: 1.06rem;
+}
+
+.deployment-card__kind {
+  margin: 0 0 0.35rem;
+  color: var(--global-text-color, #111827) !important;
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+.deployment-card > p:not(.deployment-card__kind) {
+  flex: 1 1 auto;
+}
+
+.deployment-card__actions,
+.mission-archive-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.9rem;
+  margin-top: 0.75rem;
+}
+
+.deployment-card__actions a,
+.mission-archive-links a {
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.mission-archive-links {
+  border-top: 1px solid var(--hao-border-subtle);
+  padding-top: 1rem;
+}
+
+@media (max-width: 767px) {
+  .deployments-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deployment-card {
+    transition: none !important;
+  }
+}
