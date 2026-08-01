@@ -30,7 +30,8 @@ module SiteVisualPolish
     "hao-design.css",
     "mission-log-deployments.css",
     "mission-log-records.css",
-    "mission-log-observations.css"
+    "mission-log-observations.css",
+    "mission-log-trajectory.css"
   ].freeze
 
   def self.apply_cv_title(page)
