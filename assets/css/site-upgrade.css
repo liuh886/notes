@@ -92,6 +92,33 @@ article:has(.header-bar) .post-list img.card-img {
   object-fit: cover;
 }
 
+/* Repository cards: distinguish live product entry points from source-code links. */
+.repo-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.75rem;
+  align-items: center;
+  margin-top: 0.9rem;
+}
+
+.repo-card__actions .repo-card__cta {
+  margin-top: 0;
+}
+
+.repo-card__cta--primary {
+  border: 1px solid var(--global-theme-color);
+  border-radius: 999px;
+  padding: 0.28rem 0.68rem;
+  color: var(--global-theme-color);
+  line-height: 1.2;
+}
+
+.repo-card__cta--primary:hover {
+  background: var(--global-theme-color);
+  color: var(--global-bg-color);
+  text-decoration: none;
+}
+
 /* CV page: refine the left in-page navigation and replace the heavy native scrollbar. */
 body:has(.cv) #toc-sidebar,
 body:has(.cv) .toc-sidebar,
