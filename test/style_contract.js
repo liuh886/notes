@@ -85,7 +85,12 @@ for (const requiredPath of ["test/visual", "test/integration_plugin_toggles.sh",
 }
 
 const visualPlugin = read("_plugins/site_visual_polish.rb");
-for (const stylesheet of ["site-polish.css", "site-upgrade.css", "hao-design.css"]) {
+for (const stylesheet of [
+  "site-polish.css",
+  "site-upgrade.css",
+  "hao-design.css",
+  "mission-log-deployments.css",
+]) {
   if (!visualPlugin.includes(stylesheet)) {
     failures.push(`Site visual polish plugin must inject \`${stylesheet}\`.`);
   }
@@ -131,6 +136,18 @@ if (!exists("assets/css/hao-design.css")) {
   }
 }
 
+if (!exists("assets/css/mission-log-deployments.css")) {
+  failures.push("Mission Log deployments style layer missing: `assets/css/mission-log-deployments.css`.");
+} else {
+  const deploymentsCss = read("assets/css/mission-log-deployments.css");
+  // prettier-ignore
+  for (const requiredSelector of [".deployments-log", ".deployments-group", ".deployment-card", ".mission-archive-links"]) {
+    if (!deploymentsCss.includes(requiredSelector)) {
+      failures.push(`Deployments CSS must keep selector: \`${requiredSelector}\`.`);
+    }
+  }
+}
+
 const aboutPage = read("_pages/about.md");
 // prettier-ignore
 for (const requiredHomeMarker of [
@@ -144,6 +161,8 @@ for (const requiredHomeMarker of [
   "CAREER TRAJECTORY / 07",
   "CONTACT / BACK COVER",
   "operations-log",
+  "selected-deployments",
+  "deployments-log",
 ]) {
   if (!aboutPage.includes(requiredHomeMarker)) {
     failures.push(
@@ -164,6 +183,20 @@ if (!exists("_data/current_operations.yml")) {
     if (!currentOperations.includes(requiredOperation)) {
       failures.push(
         `Current operations log must keep operation marker: \`${requiredOperation}\`.`,
+      );
+    }
+  }
+}
+
+if (!exists("_data/selected_deployments.yml")) {
+  failures.push("Mission Log selected deployments data missing: `_data/selected_deployments.yml`.");
+} else {
+  const selectedDeployments = read("_data/selected_deployments.yml");
+  // prettier-ignore
+  for (const requiredDeployment of ["D-02.01", "CCUS Policy Hub", "Ownly", "FlappyK", "RhythmCoach", "D-03.01", "iCal Pro", "4D Seismic Hub", "D-04.01", "GhostCam"]) {
+    if (!selectedDeployments.includes(requiredDeployment)) {
+      failures.push(
+        `Selected deployments log must keep deployment marker: \`${requiredDeployment}\`.`,
       );
     }
   }
