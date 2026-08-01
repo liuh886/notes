@@ -1,0 +1,25 @@
+observations:
+  - id: F-06.01
+    title: The Agentic Brain: A Blueprint for Personal AI OS with LifeOS 5.0
+    status: AI / ARCHITECTURE
+    summary: A systems note on moving from passive digital hoarding to an active agentic brain for personal knowledge and memory workflows.
+    href: /blog/2026/lifeos-5-agentic-brain/
+    label: Read note
+  - id: F-06.02
+    title: 让 AI 看见你的大脑：Obsidian CLI 的价值与意义
+    status: AI / OBSIDIAN
+    summary: A short note on why an Obsidian CLI can turn a local knowledge base into an agent-readable working surface.
+    href: /blog/2026/obsidian-graph-rag/
+    label: Read note
+  - id: F-06.03
+    title: A tabular dataset ready for machine learning applications
+    status: GEOSPATIAL / DATASET
+    summary: A field note on retrieved snow depth in mainland Norway based on ICESat-2 ATL08, DEMs, and machine-learning-ready tabular data.
+    href: /blog/2023/subgrid/
+    label: Read note
+  - id: F-06.04
+    title: ICESat-2 vs DTM1, DTM10, Copernicus30, FABDEM
+    status: GEOSPATIAL / DEM
+    summary: A technical observation on DEM comparison, co-registration, bias correction, and ICESat-2 snow-free segments.
+    href: /blog/2023/dataset/
+    label: Read note
