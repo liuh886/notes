@@ -1,0 +1,103 @@
+groups:
+  - id: "02"
+    kicker: SELECTED DEPLOYMENTS / 02
+    title: Primary systems
+    summary: Public-facing systems and products that best represent the current direction of Hao's Notes.
+    deployments:
+      - ref: D-02.01
+        title: CCUS Policy Hub
+        status: LIVE
+        kind: Climate intelligence / public data product
+        summary: A policy and project knowledge layer for CCUS deployment, regulation, and dMRV evidence.
+        href: https://liuh886.github.io/ccus-policy-hub/
+        primary_label: Open system
+        secondary_href: https://github.com/liuh886/ccus-policy-hub
+        secondary_label: Repository
+      - ref: D-02.02
+        title: Ownly
+        status: IN PROGRESS
+        kind: Local-first memory / personal systems
+        summary: Ownership memory for humans and AI agents, spanning Obsidian, web, and stable CLI JSON surfaces.
+        href: https://liuh886.github.io/ownly/
+        primary_label: Open app
+        secondary_href: https://github.com/liuh886/ownly
+        secondary_label: Repository
+      - ref: D-02.03
+        title: FlappyK
+        status: LIVE / ITERATING
+        kind: Market intuition game
+        summary: A browser game built around hidden historical K-lines, positive excess return, and lightweight decision practice.
+        href: https://liuh886.github.io/FlappyK/
+        primary_label: Play game
+        secondary_href: https://github.com/liuh886/FlappyK
+        secondary_label: Repository
+      - ref: D-02.04
+        title: RhythmCoach
+        status: BETA
+        kind: Speech rhythm / PWA practice tool
+        summary: A local-first speaking practice tool focused on rhythm, timing, recording, and post-session review.
+        href: https://liuh886.github.io/RhythmCoach/
+        primary_label: Open app
+        secondary_href: https://github.com/liuh886/RhythmCoach
+        secondary_label: Repository
+  - id: "03"
+    kicker: SELECTED DEPLOYMENTS / 03
+    title: Supporting tools and infrastructure
+    summary: Smaller systems, plugins, and research engines that support the wider one-person operating surface.
+    deployments:
+      - ref: D-03.01
+        title: iCal Pro for Obsidian
+        status: PLUGIN
+        kind: Markdown tasks to iCalendar feeds
+        summary: An Obsidian plugin that turns Markdown tasks into standards-compliant feeds for Google, Apple, Outlook, and other calendar clients.
+        href: https://obsidian.md/plugins?id=ical-plugin-pro
+        primary_label: Open plugin
+        secondary_href: https://github.com/liuh886/obsidian-ical-plugin-pro
+        secondary_label: Repository
+      - ref: D-03.02
+        title: AlphaEngine
+        status: RESEARCH
+        kind: Quant research / strategy records
+        summary: A research engine for factor experiments, backtests, strategy persistence, and reproducible alpha-discovery workflows.
+        href: https://github.com/liuh886/alpha_engine
+        primary_label: Repository
+      - ref: D-03.03
+        title: 4D Seismic Hub
+        status: KNOWLEDGE SYSTEM
+        kind: Geophysical monitoring knowledge base
+        summary: A best-practice 4D seismic exploration and monitoring knowledge base with AI-agent oriented interfaces.
+        href: https://github.com/liuh886/4d-seismic-hub
+        primary_label: Repository
+      - ref: D-03.04
+        title: HTTP to Obsidian CLI Gateway
+        status: TOOL
+        kind: Agent-to-vault bridge
+        summary: A lightweight HTTP proxy that lets sandboxed AI agents safely reach a host Obsidian CLI.
+        href: https://github.com/liuh886/http-to-obsidian-cli-gateway
+        primary_label: Repository
+  - id: "04"
+    kicker: SELECTED DEPLOYMENTS / 04
+    title: Open-source footprint
+    summary: Selected repositories and public artifacts that show the technical substrate behind the main systems.
+    deployments:
+      - ref: D-04.01
+        title: GhostCam
+        status: WINDOWS TOOL
+        kind: Virtual camera / real-time background replacement
+        summary: An ultra-light Windows virtual camera for background replacement, blur, and solid-color background workflows.
+        href: https://github.com/liuh886/GhostCam
+        primary_label: Repository
+      - ref: D-04.02
+        title: Open Phrasebank
+        status: OPEN SOURCE
+        kind: Writing system / phrase extraction
+        summary: A custom phrasebank generation workflow built from selected texts and corpora.
+        href: https://github.com/liuh886/open-phrasebank
+        primary_label: Repository
+      - ref: D-04.03
+        title: GEO4300 2023
+        status: TEACHING
+        kind: Geophysical data science exercises
+        summary: Exercise templates and learning artifacts for GEO4300 Geophysical Data Science.
+        href: https://github.com/liuh886/GEO4300_2023
+        primary_label: Repository
