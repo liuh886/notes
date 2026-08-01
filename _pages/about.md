@@ -33,21 +33,51 @@ home_cta: true
 
 <div class="mission-log-home">
   <section class="mission-cover" aria-labelledby="mission-cover-title">
-    <div class="mission-section-kicker">COVER / 00</div>
-    <h1 id="mission-cover-title">Small systems, field notes, and decision tools.</h1>
-    <p class="mission-cover__subtitle">Recorded from the edge of climate, geospatial intelligence, and AI productivity.</p>
-    <p class="mission-cover__note">A continuous mission log of what I am building, researching, and observing across data systems, energy transition questions, and AI-native personal tools.</p>
-    <div class="mission-cover__actions" aria-label="Mission log shortcuts">
-      <a class="mission-button mission-button--primary" href="#current-operations">Enter log</a>
-      <a class="mission-button" href="{{ '/blog/' | relative_url }}">Read notes</a>
-      <a class="mission-button" href="{{ '/repositories/' | relative_url }}">Repository archive</a>
+    <div class="mission-cover__layout">
+      <div class="mission-cover__copy">
+        <div class="mission-section-kicker">COVER / 00</div>
+        <h1 id="mission-cover-title">Small systems, field notes, and decision tools.</h1>
+        <p class="mission-cover__subtitle">Recorded from the edge of climate, geospatial intelligence, and AI productivity.</p>
+        <p class="mission-cover__note">A personal mission log for the systems I build, the research I keep, and the observations that shape my work.</p>
+        <div class="mission-cover__actions" aria-label="Mission log shortcuts">
+          <a class="mission-button mission-button--primary" href="#current-operations">Enter log</a>
+          <a class="mission-button" href="{{ '/blog/' | relative_url }}">Read notes</a>
+          <a class="mission-button" href="{{ '/repositories/' | relative_url }}">Repository archive</a>
+        </div>
+      </div>
+      <aside class="mission-cover__visual" aria-label="Mission metadata">
+        <div class="mission-orbit" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <dl class="mission-cover__metadata">
+          <div>
+            <dt>LOG STATUS</dt>
+            <dd>ACTIVE</dd>
+          </div>
+          <div>
+            <dt>FIELD</dt>
+            <dd>CLIMATE · GEO · AI</dd>
+          </div>
+          <div>
+            <dt>MAINTAINED BY</dt>
+            <dd>ZHIHAO LIU</dd>
+          </div>
+        </dl>
+        <div class="mission-cover__chips" aria-hidden="true">
+          <span>systems</span>
+          <span>field notes</span>
+          <span>decision tools</span>
+        </div>
+      </aside>
     </div>
   </section>
 
   <section class="mission-index" aria-labelledby="mission-index-title">
     <div class="mission-section-kicker">MISSION INDEX</div>
-    <h2 id="mission-index-title">A long-form homepage in progress</h2>
-    <p>The home page is being rebuilt as the primary narrative surface for Hao's Notes. It now organizes current operations, deployed systems, research outputs, field observations, career trajectory, and contact paths while keeping full archive pages available in the background.</p>
+    <h2 id="mission-index-title">Reading sequence</h2>
+    <p>A compact route through current work, deployed systems, research records, field observations, career trajectory, and contact paths.</p>
     <div class="mission-index__grid">
       <a class="mission-index__item" href="#current-operations">
         <span>CURRENT OPERATIONS / 01</span>
@@ -79,7 +109,7 @@ home_cta: true
   <section id="current-operations" class="mission-section mission-section--operations" aria-labelledby="current-operations-title">
     <div class="mission-section-kicker">CURRENT OPERATIONS / 01</div>
     <h2 id="current-operations-title">Active tasks and systems in motion</h2>
-    <p class="mission-section__intro">A compact task log of the systems that are live, in progress, or under research right now.</p>
+    <p class="mission-section__intro">A task log of live, in-progress, and research systems.</p>
     <div class="operations-log" aria-label="Current operations">
       {% for operation in site.data.current_operations.operations %}
         <article class="operations-log__entry">
@@ -102,7 +132,7 @@ home_cta: true
   <section id="selected-deployments" class="mission-section mission-section--deployments" aria-labelledby="selected-deployments-title">
     <div class="mission-section-kicker">SELECTED DEPLOYMENTS / 02-04</div>
     <h2 id="selected-deployments-title">Manually prioritized systems and technical assets</h2>
-    <p class="mission-section__intro">Selected deployments are ordered by importance rather than repository chronology. Full project and repository archives remain available as supporting records.</p>
+    <p class="mission-section__intro">Selected systems ordered by importance rather than repository chronology.</p>
     <div class="deployments-log">
       {% for group in site.data.selected_deployments.groups %}
         <section class="deployments-group" aria-labelledby="deployment-group-{{ group.id }}">
@@ -144,7 +174,7 @@ home_cta: true
   <section id="research-record" class="mission-section mission-section--research" aria-labelledby="research-record-title">
     <div class="mission-section-kicker">RESEARCH RECORD / 05</div>
     <h2 id="research-record-title">Selected research outputs and knowledge records</h2>
-    <p class="mission-section__intro">This section replaces the old selected-publications block with a tighter research record: formal publication, research systems, and field-oriented technical artifacts.</p>
+    <p class="mission-section__intro">Formal publication, research systems, and field-oriented technical records.</p>
     <div class="research-records">
       {% for record in site.data.research_records.records %}
         <article class="research-record">
@@ -173,7 +203,7 @@ home_cta: true
   <section id="field-observations" class="mission-section mission-section--observations" aria-labelledby="field-observations-title">
     <div class="mission-section-kicker">FIELD OBSERVATIONS / 06</div>
     <h2 id="field-observations-title">Selected notes from the field</h2>
-    <p class="mission-section__intro">A curated layer of observations, build notes, and technical records. This is not the full blog; it is the reading path that best supports the Mission Log.</p>
+    <p class="mission-section__intro">A curated reading path through observations, build notes, and technical records.</p>
     <div class="field-observations">
       {% for observation in site.data.field_observations.observations %}
         <article class="field-observation">
@@ -197,7 +227,7 @@ home_cta: true
   <section id="career-trajectory" class="mission-section mission-section--trajectory" aria-labelledby="career-trajectory-title">
     <div class="mission-section-kicker">CAREER TRAJECTORY / 07</div>
     <h2 id="career-trajectory-title">How this path formed</h2>
-    <p class="mission-section__intro">A phase narrative rather than a full CV. The complete formal record remains available in the CV archive.</p>
+    <p class="mission-section__intro">A phase narrative; the complete formal record remains in the CV archive.</p>
     <div class="career-trajectory">
       {% for phase in site.data.career_trajectory.phases %}
         <article class="career-phase">
