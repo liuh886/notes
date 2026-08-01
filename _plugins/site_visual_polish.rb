@@ -32,7 +32,8 @@ module SiteVisualPolish
     "mission-log-records.css",
     "mission-log-observations.css",
     "mission-log-trajectory.css",
-    "mission-log-visual-pass.css"
+    "mission-log-visual-pass.css",
+    "mission-log-canvas-reset.css"
   ].freeze
 
   def self.apply_cv_title(page)
