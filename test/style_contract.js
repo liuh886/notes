@@ -147,13 +147,21 @@ for (const requiredHomeMarker of [
   }
 }
 
-for (const hiddenNavPage of ["_pages/projects.md", "_pages/repositories.md", "cv.md"]) {
+for (const hiddenNavPage of [
+  "_pages/projects.md",
+  "_pages/repositories.md",
+  "cv.md",
+]) {
   if (!/^nav:\s*false$/m.test(read(hiddenNavPage))) {
     failures.push(`Mission Log nav strategy requires \`${hiddenNavPage}\` to keep \`nav: false\`.`);
   }
 }
 
-for (const requiredDoc of ["docs/DESIGN_SYSTEM.md", "docs/REDESIGN_ROADMAP.md", "docs/MISSION_LOG_PLAN.md"]) {
+for (const requiredDoc of [
+  "docs/DESIGN_SYSTEM.md",
+  "docs/REDESIGN_ROADMAP.md",
+  "docs/MISSION_LOG_PLAN.md",
+]) {
   if (!exists(requiredDoc)) {
     failures.push(`Hao redesign documentation missing required path: \`${requiredDoc}\`.`);
   }
