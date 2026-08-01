@@ -116,6 +116,10 @@ if (!exists("assets/css/hao-design.css")) {
     "--hao-page-max",
     "--hao-reading-max",
     "--hao-focus-ring",
+    "--hao-mission-accent",
+    ".mission-log-home",
+    ".mission-section-kicker",
+    ".mission-index__grid",
     "body:has(.cv) .sticky-top::-webkit-scrollbar",
     "scrollbar-width: none",
     "prefers-reduced-motion",
@@ -126,7 +130,30 @@ if (!exists("assets/css/hao-design.css")) {
   }
 }
 
-for (const requiredDoc of ["docs/DESIGN_SYSTEM.md", "docs/REDESIGN_ROADMAP.md"]) {
+const aboutPage = read("_pages/about.md");
+for (const requiredHomeMarker of [
+  "COVER / 00",
+  "Small systems, field notes, and decision tools.",
+  "Recorded from the edge of climate, geospatial intelligence, and AI productivity.",
+  "CURRENT OPERATIONS / 01",
+  "SELECTED DEPLOYMENTS / 02-04",
+  "RESEARCH RECORD / 05",
+  "FIELD OBSERVATIONS / 06",
+  "CAREER TRAJECTORY / 07",
+  "CONTACT / BACK COVER",
+]) {
+  if (!aboutPage.includes(requiredHomeMarker)) {
+    failures.push(`Mission Log homepage must keep marker: \`${requiredHomeMarker}\`.`);
+  }
+}
+
+for (const hiddenNavPage of ["_pages/projects.md", "_pages/repositories.md", "cv.md"]) {
+  if (!/^nav:\s*false$/m.test(read(hiddenNavPage))) {
+    failures.push(`Mission Log nav strategy requires \`${hiddenNavPage}\` to keep \`nav: false\`.`);
+  }
+}
+
+for (const requiredDoc of ["docs/DESIGN_SYSTEM.md", "docs/REDESIGN_ROADMAP.md", "docs/MISSION_LOG_PLAN.md"]) {
   if (!exists(requiredDoc)) {
     failures.push(`Hao redesign documentation missing required path: \`${requiredDoc}\`.`);
   }
