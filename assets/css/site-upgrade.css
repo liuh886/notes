@@ -137,6 +137,22 @@ article:has(.header-bar) .post-list img.card-img {
 }
 
 /* Repository cards: distinguish live product entry points from source-code links. */
+.repo-section--group {
+  margin-top: 2.6rem;
+}
+
+.repo-section--group:first-of-type {
+  margin-top: 2rem;
+}
+
+.repo-section__description {
+  max-width: 46rem;
+  margin: -0.35rem 0 1rem;
+  color: var(--note-muted);
+  font-size: 0.95rem;
+  line-height: 1.62;
+}
+
 .repo-grid {
   gap: 1.05rem;
 }
