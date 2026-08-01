@@ -24,7 +24,7 @@ latest_posts:
   scrollable: true
   limit: 4
 
-selected_papers: true # Step 4 will reframe this as RESEARCH RECORD / 05
+selected_papers: false # replaced by RESEARCH RECORD / 05 mission log
 projects: false # selected deployments are now composed manually below
 display_categories: [work]
 social: true # rendered from _data/socials.yml
@@ -57,7 +57,7 @@ home_cta: true
         <span>SELECTED DEPLOYMENTS / 02-04</span>
         <strong>Systems and tools</strong>
       </a>
-      <a class="mission-index__item" href="{{ '/publications/' | relative_url }}">
+      <a class="mission-index__item" href="#research-record">
         <span>RESEARCH RECORD / 05</span>
         <strong>Research outputs</strong>
       </a>
@@ -138,6 +138,35 @@ home_cta: true
     <div class="mission-archive-links" aria-label="Full archives">
       <a href="{{ '/projects/' | relative_url }}">Full project archive →</a>
       <a href="{{ '/repositories/' | relative_url }}">Repository archive →</a>
+    </div>
+  </section>
+
+  <section id="research-record" class="mission-section mission-section--research" aria-labelledby="research-record-title">
+    <div class="mission-section-kicker">RESEARCH RECORD / 05</div>
+    <h2 id="research-record-title">Selected research outputs and knowledge records</h2>
+    <p class="mission-section__intro">This section replaces the old selected-publications block with a tighter research record: formal publication, research systems, and field-oriented technical artifacts.</p>
+    <div class="research-records">
+      {% for record in site.data.research_records.records %}
+        <article class="research-record">
+          <div class="research-record__meta">
+            <span>{{ record.id }}</span>
+            <strong>{{ record.status }}</strong>
+          </div>
+          <div class="research-record__body">
+            <h3>{{ record.title }}</h3>
+            <p class="research-record__kind">{{ record.kind }}</p>
+            <p>{{ record.summary }}</p>
+            <div class="research-record__actions">
+              {% if record.href %}
+                <a href="{{ record.href }}" {% unless record.href contains site.url or record.href contains '/' and record.href.size < 2 %}target="_blank" rel="noopener noreferrer"{% endunless %}>{{ record.label | default: "Open" }} →</a>
+              {% endif %}
+              {% if record.secondary_href %}
+                <a href="{{ record.secondary_href }}">{{ record.secondary_label | default: "More" }} →</a>
+              {% endif %}
+            </div>
+          </div>
+        </article>
+      {% endfor %}
     </div>
   </section>
 
