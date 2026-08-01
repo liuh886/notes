@@ -61,7 +61,7 @@ home_cta: true
         <span>RESEARCH RECORD / 05</span>
         <strong>Research outputs</strong>
       </a>
-      <a class="mission-index__item" href="{{ '/blog/' | relative_url }}">
+      <a class="mission-index__item" href="#field-observations">
         <span>FIELD OBSERVATIONS / 06</span>
         <strong>Notes and essays</strong>
       </a>
@@ -167,6 +167,30 @@ home_cta: true
           </div>
         </article>
       {% endfor %}
+    </div>
+  </section>
+
+  <section id="field-observations" class="mission-section mission-section--observations" aria-labelledby="field-observations-title">
+    <div class="mission-section-kicker">FIELD OBSERVATIONS / 06</div>
+    <h2 id="field-observations-title">Selected notes from the field</h2>
+    <p class="mission-section__intro">A curated layer of observations, build notes, and technical records. This is not the full blog; it is the reading path that best supports the Mission Log.</p>
+    <div class="field-observations">
+      {% for observation in site.data.field_observations.observations %}
+        <article class="field-observation">
+          <div class="field-observation__meta">
+            <span>{{ observation.id }}</span>
+            <strong>{{ observation.status }}</strong>
+          </div>
+          <h3>{{ observation.title }}</h3>
+          <p>{{ observation.summary }}</p>
+          {% if observation.href %}
+            <a href="{{ observation.href }}">{{ observation.label | default: "Read" }} →</a>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+    <div class="mission-archive-links" aria-label="Notes archive">
+      <a href="{{ '/blog/' | relative_url }}">Full notes archive →</a>
     </div>
   </section>
 
