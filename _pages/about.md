@@ -47,7 +47,7 @@ home_cta: true
   <section class="mission-index" aria-labelledby="mission-index-title">
     <div class="mission-section-kicker">MISSION INDEX</div>
     <h2 id="mission-index-title">A long-form homepage in progress</h2>
-    <p>The home page is being rebuilt as the primary narrative surface for Hao's Notes. It will absorb selected projects, repositories, research outputs, field observations, career trajectory, and contact paths while keeping the full archive pages available in the background.</p>
+    <p>The home page is being rebuilt as the primary narrative surface for Hao's Notes. It now organizes current operations, deployed systems, research outputs, field observations, career trajectory, and contact paths while keeping full archive pages available in the background.</p>
     <div class="mission-index__grid">
       <a class="mission-index__item" href="#current-operations">
         <span>CURRENT OPERATIONS / 01</span>
@@ -65,9 +65,9 @@ home_cta: true
         <span>FIELD OBSERVATIONS / 06</span>
         <strong>Notes and essays</strong>
       </a>
-      <a class="mission-index__item" href="{{ '/cv/' | relative_url }}">
+      <a class="mission-index__item" href="#career-trajectory">
         <span>CAREER TRAJECTORY / 07</span>
-        <strong>Full CV archive</strong>
+        <strong>Path formation</strong>
       </a>
       <a class="mission-index__item" href="#contact-back-cover">
         <span>CONTACT / BACK COVER</span>
@@ -194,9 +194,38 @@ home_cta: true
     </div>
   </section>
 
-  <section id="contact-back-cover" class="mission-section mission-section--placeholder" aria-labelledby="contact-back-cover-title">
+  <section id="career-trajectory" class="mission-section mission-section--trajectory" aria-labelledby="career-trajectory-title">
+    <div class="mission-section-kicker">CAREER TRAJECTORY / 07</div>
+    <h2 id="career-trajectory-title">How this path formed</h2>
+    <p class="mission-section__intro">A phase narrative rather than a full CV. The complete formal record remains available in the CV archive.</p>
+    <div class="career-trajectory">
+      {% for phase in site.data.career_trajectory.phases %}
+        <article class="career-phase">
+          <div class="career-phase__meta">
+            <span>{{ phase.id }}</span>
+            <strong>{{ phase.status }}</strong>
+          </div>
+          <h3>{{ phase.title }}</h3>
+          <p>{{ phase.summary }}</p>
+        </article>
+      {% endfor %}
+    </div>
+    <div class="mission-archive-links" aria-label="CV archive">
+      <a href="{{ '/cv/' | relative_url }}">Full CV archive →</a>
+    </div>
+  </section>
+
+  <section id="contact-back-cover" class="mission-section mission-back-cover" aria-labelledby="contact-back-cover-title">
     <div class="mission-section-kicker">CONTACT / BACK COVER</div>
     <h2 id="contact-back-cover-title">End of log</h2>
-    <p>For collaboration, project questions, research discussions, or independent-tool support, use the contact and archive links below.</p>
+    <p>If something here resonates, use the links below for code, records, archives, support, or direct contact.</p>
+    <div class="back-cover-links" aria-label="Contact and archive links">
+      <a href="https://github.com/liuh886" target="_blank" rel="noopener noreferrer">GitHub →</a>
+      <a href="https://www.linkedin.com/in/liuzhihao" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
+      <a href="{{ '/cv/' | relative_url }}">CV →</a>
+      <a href="{{ '/publications/' | relative_url }}">Publications →</a>
+      <a href="{{ '/blog/' | relative_url }}">Notes archive →</a>
+      <a href="https://ko-fi.com/F1F7WYJ6B" target="_blank" rel="noopener noreferrer">Ko-fi →</a>
+    </div>
   </section>
 </div>
