@@ -85,7 +85,7 @@ for (const requiredPath of ["test/visual", "test/integration_plugin_toggles.sh",
 }
 
 const visualPlugin = read("_plugins/site_visual_polish.rb");
-for (const stylesheet of ["site-polish.css", "site-upgrade.css"]) {
+for (const stylesheet of ["site-polish.css", "site-upgrade.css", "hao-design.css"]) {
   if (!visualPlugin.includes(stylesheet)) {
     failures.push(`Site visual polish plugin must inject \`${stylesheet}\`.`);
   }
@@ -105,6 +105,30 @@ if (!exists("assets/css/site-upgrade.css")) {
     if (!upgradeCss.includes(requiredSelector)) {
       failures.push(`Frontend upgrade CSS must keep selector/contract: \`${requiredSelector}\`.`);
     }
+  }
+}
+
+if (!exists("assets/css/hao-design.css")) {
+  failures.push("Hao design system layer missing: `assets/css/hao-design.css`.");
+} else {
+  const haoDesignCss = read("assets/css/hao-design.css");
+  for (const requiredSelector of [
+    "--hao-page-max",
+    "--hao-reading-max",
+    "--hao-focus-ring",
+    "body:has(.cv) .sticky-top::-webkit-scrollbar",
+    "scrollbar-width: none",
+    "prefers-reduced-motion",
+  ]) {
+    if (!haoDesignCss.includes(requiredSelector)) {
+      failures.push(`Hao design CSS must keep token/contract: \`${requiredSelector}\`.`);
+    }
+  }
+}
+
+for (const requiredDoc of ["docs/DESIGN_SYSTEM.md", "docs/REDESIGN_ROADMAP.md"]) {
+  if (!exists(requiredDoc)) {
+    failures.push(`Hao redesign documentation missing required path: \`${requiredDoc}\`.`);
   }
 }
 
