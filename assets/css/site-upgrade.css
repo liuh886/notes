@@ -9,9 +9,46 @@
 :root {
   --note-content-wide: min(100%, 62rem);
   --note-reading-wide: min(100%, 54rem);
-  --note-sidebar-scrollbar: color-mix(in srgb, var(--global-text-color, #111827) 28%, transparent);
-  --note-sidebar-scrollbar-hover: color-mix(in srgb, var(--global-theme-color, #2f6fed) 58%, transparent);
-  --note-soft-surface: color-mix(in srgb, var(--global-text-color, #111827) 2.5%, transparent);
+  --note-surface: var(--global-bg-color, #fff);
+  --note-surface-soft: color-mix(in srgb, var(--global-text-color, #111827) 2.5%, transparent);
+  --note-surface-hover: color-mix(in srgb, var(--global-theme-color, #2f6fed) 6%, transparent);
+  --note-hairline: color-mix(in srgb, var(--note-border, rgba(0, 0, 0, 0.12)) 76%, transparent);
+  --note-focus-ring: 0 0 0 3px color-mix(in srgb, var(--global-theme-color, #2f6fed) 18%, transparent);
+  --note-card-shadow: 0 10px 28px rgba(15, 23, 42, 0.055);
+  --note-card-shadow-hover: 0 16px 42px rgba(15, 23, 42, 0.09);
+}
+
+html[data-theme="dark"] {
+  --note-card-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  --note-card-shadow-hover: 0 18px 46px rgba(0, 0, 0, 0.28);
+}
+
+/* Professional portfolio baseline: quiet surfaces, visible focus states, restrained depth. */
+article a:focus-visible,
+.repo-card__cta:focus-visible,
+.home-social-cta__primary:focus-visible,
+body:has(.cv) nav[data-toggle="toc"] a:focus-visible,
+body:has(.cv) #toc-sidebar a:focus-visible,
+body:has(.cv) .toc-sidebar a:focus-visible {
+  border-radius: 6px;
+  outline: none;
+  box-shadow: var(--note-focus-ring);
+}
+
+.featured-posts .card,
+.post-list > li,
+.projects .card,
+.repo-card,
+.cv .card {
+  background: linear-gradient(180deg, var(--note-surface), var(--note-surface-soft));
+  border-color: var(--note-hairline) !important;
+}
+
+.featured-posts a:hover .card,
+.post-list > li:hover,
+.projects a:hover .card,
+.repo-card:hover {
+  box-shadow: var(--note-card-shadow-hover);
 }
 
 /* Blog index: make featured cards and regular posts share one optical column. */
@@ -21,6 +58,14 @@ article:has(.header-bar) .featured-posts,
 article:has(.header-bar) .post-list {
   width: var(--note-content-wide);
   max-width: var(--note-content-wide);
+}
+
+article:has(.header-bar) .header-bar {
+  margin-bottom: 1.55rem;
+}
+
+article:has(.header-bar) .header-bar h1 {
+  letter-spacing: -0.025em;
 }
 
 article:has(.header-bar) .featured-posts {
@@ -45,9 +90,8 @@ article:has(.header-bar) .featured-posts .col {
   flex: none;
 }
 
-article:has(.header-bar) .featured-posts .card,
-article:has(.header-bar) .post-list > li {
-  background: linear-gradient(180deg, var(--note-bg, #fff), var(--note-soft-surface));
+article:has(.header-bar) .featured-posts .card {
+  height: 100%;
 }
 
 article:has(.header-bar) .post-list {
@@ -93,6 +137,20 @@ article:has(.header-bar) .post-list img.card-img {
 }
 
 /* Repository cards: distinguish live product entry points from source-code links. */
+.repo-grid {
+  gap: 1.05rem;
+}
+
+.repo-card__body {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.repo-card__summary {
+  flex: 1 1 auto;
+}
+
 .repo-card__actions {
   display: flex;
   flex-wrap: wrap;
@@ -119,46 +177,33 @@ article:has(.header-bar) .post-list img.card-img {
   text-decoration: none;
 }
 
-/* CV page: refine the left in-page navigation and replace the heavy native scrollbar. */
+/* Projects: make mixed media cards feel like a curated portfolio wall. */
+.projects .card figure {
+  background: linear-gradient(135deg, var(--note-surface-soft), transparent);
+}
+
+.projects .card-title,
+.repo-card h3,
+.post-list h3 {
+  letter-spacing: -0.01em;
+}
+
+/* CV page: hide the ugly native scrollbar while preserving sidebar scrolling. */
 body:has(.cv) #toc-sidebar,
 body:has(.cv) .toc-sidebar,
 body:has(.cv) nav[data-toggle="toc"],
 body:has(.cv) .sticky-top {
-  scrollbar-width: thin;
-  scrollbar-color: var(--note-sidebar-scrollbar) transparent;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 body:has(.cv) #toc-sidebar::-webkit-scrollbar,
 body:has(.cv) .toc-sidebar::-webkit-scrollbar,
 body:has(.cv) nav[data-toggle="toc"]::-webkit-scrollbar,
 body:has(.cv) .sticky-top::-webkit-scrollbar {
-  width: 0.45rem;
-  height: 0.45rem;
-}
-
-body:has(.cv) #toc-sidebar::-webkit-scrollbar-track,
-body:has(.cv) .toc-sidebar::-webkit-scrollbar-track,
-body:has(.cv) nav[data-toggle="toc"]::-webkit-scrollbar-track,
-body:has(.cv) .sticky-top::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-body:has(.cv) #toc-sidebar::-webkit-scrollbar-thumb,
-body:has(.cv) .toc-sidebar::-webkit-scrollbar-thumb,
-body:has(.cv) nav[data-toggle="toc"]::-webkit-scrollbar-thumb,
-body:has(.cv) .sticky-top::-webkit-scrollbar-thumb {
-  border: 0.12rem solid transparent;
-  border-radius: 999px;
-  background: var(--note-sidebar-scrollbar);
-  background-clip: padding-box;
-}
-
-body:has(.cv) #toc-sidebar:hover::-webkit-scrollbar-thumb,
-body:has(.cv) .toc-sidebar:hover::-webkit-scrollbar-thumb,
-body:has(.cv) nav[data-toggle="toc"]:hover::-webkit-scrollbar-thumb,
-body:has(.cv) .sticky-top:hover::-webkit-scrollbar-thumb {
-  background: var(--note-sidebar-scrollbar-hover);
-  background-clip: padding-box;
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 @media (min-width: 992px) {
@@ -166,11 +211,16 @@ body:has(.cv) .sticky-top:hover::-webkit-scrollbar-thumb {
   body:has(.cv) .toc-sidebar,
   body:has(.cv) nav[data-toggle="toc"],
   body:has(.cv) .sticky-top {
-    max-height: calc(100vh - 6.5rem);
-    padding-right: 0.35rem;
+    max-height: calc(100vh - 7rem);
     overflow-y: auto;
     overscroll-behavior: contain;
   }
+}
+
+body:has(.cv) nav[data-toggle="toc"],
+body:has(.cv) #toc-sidebar,
+body:has(.cv) .toc-sidebar {
+  border-radius: 10px;
 }
 
 body:has(.cv) nav[data-toggle="toc"] a,
@@ -185,7 +235,16 @@ body:has(.cv) nav[data-toggle="toc"] a:hover,
 body:has(.cv) #toc-sidebar a:hover,
 body:has(.cv) .toc-sidebar a:hover {
   color: var(--global-theme-color);
-  background: color-mix(in srgb, var(--global-theme-color, #2f6fed) 9%, transparent);
+  background: var(--note-surface-hover);
+}
+
+body:has(.cv) .post-header .post-title {
+  letter-spacing: -0.035em;
+}
+
+body:has(.cv) .post-header .post-description {
+  max-width: 50rem;
+  white-space: normal;
 }
 
 /* Rendering/performance: avoid painting long card lists before they enter the viewport. */
@@ -213,6 +272,15 @@ body:has(.cv) .toc-sidebar a:hover {
     display: grid;
     grid-template-columns: 1fr;
   }
+
+  .repo-card__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .repo-card__actions .repo-card__cta {
+    justify-content: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -220,7 +288,8 @@ body:has(.cv) .toc-sidebar a:hover {
   .post-list > li,
   .projects .card,
   .repo-card,
-  .home-social-cta__primary {
+  .home-social-cta__primary,
+  .repo-card__cta--primary {
     transition: none !important;
   }
 
