@@ -1,6 +1,36 @@
 github_users:
   - liuh886
 
+repo_groups:
+  - id: products-apps
+    title: Products & Apps
+    description: Small, usable products with a clear user workflow, live entry point, or plugin installation path.
+    repos:
+      - liuh886/RhythmCoach
+      - liuh886/FlappyK
+      - liuh886/ownly
+      - liuh886/obsidian-ical-plugin-pro
+  - id: agent-knowledge-tools
+    title: Agent & Knowledge Tools
+    description: Tools for agent workflows, local knowledge systems, media utilities, and command surfaces.
+    repos:
+      - PleasePrompto/ductor
+      - liuh886/http-to-obsidian-cli-gateway
+      - liuh886/GhostCam
+  - id: climate-energy-geoscience
+    title: Climate, Energy & Geoscience
+    description: Research and data products around CCUS, 4D seismic, geophysical modeling, and energy-transition analysis.
+    repos:
+      - liuh886/ccus-policy-hub
+      - liuh886/4d-seismic-hub
+      - liuh886/the_ice_block_expedition_1959
+  - id: teaching-archive
+    title: Teaching & Archive
+    description: Teaching material, language/data utilities, and earlier open-source experiments kept for reference.
+    repos:
+      - liuh886/open-phrasebank
+      - liuh886/GEO4300_2023
+
 github_repos:
   - liuh886/RhythmCoach
   - liuh886/FlappyK
