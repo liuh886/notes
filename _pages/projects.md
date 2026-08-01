@@ -4,7 +4,7 @@ title: Projects
 nav_title: Projects
 permalink: /projects/
 description: Selected projects in climate, geospatial ML, and decision tooling. Focused on high-stakes energy transition applications.
-nav: true
+nav: false
 nav_order: 2
 year_categories: [2025-2026, 2023-2024, 2022, 2019-2020]
 horizontal: false
@@ -47,9 +47,7 @@ horizontal: false
 {%- assign sorted_projects = site.projects | sort: "importance" -%}
 
   <!-- Generate cards for each project -->
-
-{% if page.horizontal -%}
-
+  {% if page.horizontal -%}
   <div class="container">
     <div class="row row-cols-2">
     {%- for project in sorted_projects -%}
@@ -64,7 +62,6 @@ horizontal: false
     {%- endfor %}
   </div>
   {%- endif -%}
-{%- endif -%}
-</div>
 
----
+{%- endif %}
+</div>
