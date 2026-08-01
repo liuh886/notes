@@ -13,7 +13,7 @@ profile:
   more_info: >
     <p>📍Offshore Bergen, 2020 Aug</p>
 
-news: true # Step 2 will reframe this as CURRENT OPERATIONS / 01
+news: false # replaced by CURRENT OPERATIONS / 01 mission log
 announcements:
   enabled: true
   scrollable: false
@@ -76,10 +76,27 @@ home_cta: true
     </div>
   </section>
 
-  <section id="current-operations" class="mission-section mission-section--placeholder" aria-labelledby="current-operations-title">
+  <section id="current-operations" class="mission-section mission-section--operations" aria-labelledby="current-operations-title">
     <div class="mission-section-kicker">CURRENT OPERATIONS / 01</div>
     <h2 id="current-operations-title">Active tasks and systems in motion</h2>
-    <p>This section will replace the legacy news rhythm with a concise task-log view of what is currently live, in progress, or under research.</p>
+    <p class="mission-section__intro">A compact task log of the systems that are live, in progress, or under research right now.</p>
+    <div class="operations-log" aria-label="Current operations">
+      {% for operation in site.data.current_operations.operations %}
+        <article class="operations-log__entry">
+          <div class="operations-log__meta">
+            <span>{{ operation.id }}</span>
+            <strong>{{ operation.status }}</strong>
+          </div>
+          <div class="operations-log__body">
+            <h3>{{ operation.title }}</h3>
+            <p>{{ operation.summary }}</p>
+            {% if operation.href %}
+              <a href="{{ operation.href }}" target="_blank" rel="noopener noreferrer">{{ operation.label | default: "Open" }} →</a>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
   </section>
 
   <section id="contact-back-cover" class="mission-section mission-section--placeholder" aria-labelledby="contact-back-cover-title">
