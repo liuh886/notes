@@ -120,6 +120,7 @@ if (!exists("assets/css/hao-design.css")) {
     ".mission-log-home",
     ".mission-section-kicker",
     ".mission-index__grid",
+    ".operations-log__entry",
     "body:has(.cv) .sticky-top::-webkit-scrollbar",
     "scrollbar-width: none",
     "prefers-reduced-motion",
@@ -142,11 +143,29 @@ for (const requiredHomeMarker of [
   "FIELD OBSERVATIONS / 06",
   "CAREER TRAJECTORY / 07",
   "CONTACT / BACK COVER",
+  "operations-log",
 ]) {
   if (!aboutPage.includes(requiredHomeMarker)) {
     failures.push(
       `Mission Log homepage must keep marker: \`${requiredHomeMarker}\`.`,
     );
+  }
+}
+
+if (!/^news:\s*false\b/m.test(aboutPage)) {
+  failures.push("Mission Log homepage must keep legacy `news` disabled after Step 2.");
+}
+if (!exists("_data/current_operations.yml")) {
+  failures.push("Mission Log current operations data missing: `_data/current_operations.yml`.");
+} else {
+  const currentOperations = read("_data/current_operations.yml");
+  // prettier-ignore
+  for (const requiredOperation of ["OP-01", "CCUS Policy Hub", "Ownly", "FlappyK", "RhythmCoach", "AlphaEngine"]) {
+    if (!currentOperations.includes(requiredOperation)) {
+      failures.push(
+        `Current operations log must keep operation marker: \`${requiredOperation}\`.`,
+      );
+    }
   }
 }
 
