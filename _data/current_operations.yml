@@ -1,0 +1,31 @@
+operations:
+  - id: OP-01
+    title: CCUS Policy Hub
+    status: LIVE / MAINTAINING
+    summary: Maintaining a public-facing policy and project intelligence layer for CCUS deployment, regulation, and dMRV evidence.
+    href: https://liuh886.github.io/ccus-policy-hub/
+    label: Open system
+  - id: OP-02
+    title: Ownly
+    status: IN PROGRESS
+    summary: Building a local-first ownership memory system across Obsidian, web, and agent-readable CLI surfaces.
+    href: https://liuh886.github.io/ownly/
+    label: Open app
+  - id: OP-03
+    title: FlappyK
+    status: LIVE / ITERATING
+    summary: Testing a market-intuition game around hidden historical K-line decisions, positive excess return, and lightweight play.
+    href: https://liuh886.github.io/FlappyK/
+    label: Play game
+  - id: OP-04
+    title: RhythmCoach
+    status: BETA
+    summary: Refining a lightweight rhythm and speech-practice tool with simple onboarding, PWA installation, and focused review.
+    href: https://liuh886.github.io/RhythmCoach/
+    label: Open app
+  - id: OP-05
+    title: AlphaEngine
+    status: RESEARCH
+    summary: Investigating practical routes toward durable alpha discovery, cleaner data foundations, and reproducible strategy records.
+    href: https://github.com/liuh886/alpha_engine
+    label: View repository
