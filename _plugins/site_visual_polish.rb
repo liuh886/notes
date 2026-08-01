@@ -28,7 +28,8 @@ module SiteVisualPolish
     "site-polish.css",
     "site-upgrade.css",
     "hao-design.css",
-    "mission-log-deployments.css"
+    "mission-log-deployments.css",
+    "mission-log-records.css"
   ].freeze
 
   def self.apply_cv_title(page)
