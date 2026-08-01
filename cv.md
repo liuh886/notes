@@ -2,7 +2,7 @@
 layout: cv
 permalink: /cv/
 title: CV
-nav: true
+nav: false
 nav_order: 4
 cv_pdf: /assets/pdf/CV_Zhihao_geoscience.pdf
 cv_format: rendercv
