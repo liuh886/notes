@@ -131,6 +131,7 @@ if (!exists("assets/css/hao-design.css")) {
 }
 
 const aboutPage = read("_pages/about.md");
+// prettier-ignore
 for (const requiredHomeMarker of [
   "COVER / 00",
   "Small systems, field notes, and decision tools.",
@@ -149,6 +150,7 @@ for (const requiredHomeMarker of [
   }
 }
 
+// prettier-ignore
 for (const hiddenNavPage of [
   "_pages/projects.md",
   "_pages/repositories.md",
@@ -161,6 +163,7 @@ for (const hiddenNavPage of [
   }
 }
 
+// prettier-ignore
 for (const requiredDoc of [
   "docs/DESIGN_SYSTEM.md",
   "docs/REDESIGN_ROADMAP.md",
