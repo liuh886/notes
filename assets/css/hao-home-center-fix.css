@@ -1,37 +1,133 @@
 /*
- * Hao home center alignment fix
+ * Hao home shell alignment fix
  *
- * Final alignment guard for the safe homepage. The previous safe layer was
- * intentionally conservative, but at 100% desktop zoom its 68rem page width
- * made the page feel compressed and visually left-weighted. This layer widens
- * the desktop canvas and keeps the navbar and homepage on the same centered
- * viewport-aligned measure.
+ * Final production guard for the safe homepage. This file no longer acts as a
+ * simple width patch. It defines a shared page shell for the homepage navbar and
+ * content, restores the black Zhihao LIU brand in the real navbar, and avoids
+ * relying on inherited CSS custom properties for critical layout dimensions.
  */
 
-body:has(.hao-home--safe) {
-  --hao-safe-width: min(calc(100vw - 3rem), 76rem);
+:root {
+  --hao-home-shell-max: 76rem;
+  --hao-home-shell-gutter: clamp(1.5rem, 4vw, 3rem);
+  --hao-home-shell-width: min(
+    calc(100vw - (2 * var(--hao-home-shell-gutter))),
+    var(--hao-home-shell-max)
+  );
 }
 
-body:has(.hao-home--safe) .navbar .container,
-body:has(.hao-home--safe) .navbar .container-fluid,
-.hao-home--safe {
-  width: var(--hao-safe-width) !important;
-  max-width: var(--hao-safe-width) !important;
-  margin-right: auto !important;
-  margin-left: auto !important;
+body:has(.hao-home--safe),
+html:has(.hao-home--safe) {
+  overflow-x: clip;
 }
 
 body:has(.hao-home--safe) main,
 body:has(.hao-home--safe) main > .container,
+body:has(.hao-home--safe) .container:has(.hao-home--safe),
 body:has(.hao-home--safe) .post,
 body:has(.hao-home--safe) article.post {
   width: 100% !important;
   max-width: none !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* Shared desktop shell: navbar and homepage now use the same left/right edge. */
+body:has(.hao-home--safe) .navbar .container,
+body:has(.hao-home--safe) .navbar .container-fluid,
+.hao-home--safe {
+  width: var(--hao-home-shell-width) !important;
+  max-width: var(--hao-home-shell-width) !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+body:has(.hao-home--safe) .navbar .container,
+body:has(.hao-home--safe) .navbar .container-fluid {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* Restore the normal personal brand position. */
+body:has(.hao-home--safe) .navbar-brand {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  min-width: max-content !important;
+  margin-right: clamp(1.25rem, 3vw, 2.5rem) !important;
+  color: var(--global-text-color, #111827) !important;
+  font-size: 0 !important;
+  font-weight: 760 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  opacity: 1 !important;
+  text-transform: none !important;
+  visibility: visible !important;
+}
+
+body:has(.hao-home--safe) .navbar-brand::before {
+  content: "Zhihao LIU";
+  color: var(--global-text-color, #111827);
+  font-size: 1rem;
+  font-weight: 760;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-transform: none;
+}
+
+body:has(.hao-home--safe) .navbar-brand::after {
+  content: none !important;
+}
+
+body:has(.hao-home--safe) .navbar-collapse {
+  flex: 1 1 auto !important;
+  justify-content: flex-end !important;
+}
+
+body:has(.hao-home--safe) .navbar-nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  width: auto !important;
+  margin-left: auto !important;
+  gap: 0.35rem;
+}
+
+body:has(.hao-home--safe) .navbar-nav .nav-link {
+  color: color-mix(in srgb, var(--global-text-color, #111827) 78%, transparent) !important;
+  font-size: 0.92rem !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+}
+
+body:has(.hao-home--safe) .navbar-nav .active > .nav-link,
+body:has(.hao-home--safe) .navbar-nav .nav-link.active {
+  color: var(--hao-mission-accent, #b80fb8) !important;
+}
+
+.hao-home--safe {
+  padding-top: clamp(3.25rem, 6vw, 4.5rem) !important;
 }
 
 .hao-safe-hero {
-  grid-template-columns: minmax(0, 1fr) minmax(19rem, 22rem);
-  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 1fr) minmax(19rem, 22rem) !important;
+  gap: clamp(2rem, 5vw, 4rem) !important;
+}
+
+.hao-safe-hero__copy,
+.hao-safe-section__intro,
+.hao-safe-card-grid,
+.hao-safe-system-stack,
+.hao-safe-record-list,
+.hao-safe-timeline,
+.hao-safe-contact__links {
+  min-width: 0;
 }
 
 .hao-safe-profile {
@@ -40,9 +136,21 @@ body:has(.hao-home--safe) article.post {
   max-width: 22rem;
 }
 
+.hao-safe-index {
+  width: 100%;
+}
+
 @media (max-width: 900px) {
-  body:has(.hao-home--safe) {
-    --hao-safe-width: min(calc(100vw - 2rem), 68rem);
+  :root {
+    --hao-home-shell-gutter: 1rem;
+    --hao-home-shell-max: 68rem;
+  }
+
+  body:has(.hao-home--safe) .navbar .container,
+  body:has(.hao-home--safe) .navbar .container-fluid,
+  .hao-home--safe {
+    width: min(calc(100vw - 2rem), 68rem) !important;
+    max-width: min(calc(100vw - 2rem), 68rem) !important;
   }
 
   .hao-safe-profile {
@@ -52,7 +160,18 @@ body:has(.hao-home--safe) article.post {
 }
 
 @media (max-width: 680px) {
-  body:has(.hao-home--safe) {
-    --hao-safe-width: min(calc(100vw - 1.25rem), 68rem);
+  :root {
+    --hao-home-shell-gutter: 0.75rem;
+  }
+
+  body:has(.hao-home--safe) .navbar .container,
+  body:has(.hao-home--safe) .navbar .container-fluid,
+  .hao-home--safe {
+    width: min(calc(100vw - 1.25rem), 68rem) !important;
+    max-width: min(calc(100vw - 1.25rem), 68rem) !important;
+  }
+
+  body:has(.hao-home--safe) .navbar-brand::before {
+    font-size: 0.92rem;
   }
 }
