@@ -41,6 +41,10 @@ module SiteVisualPolish
     "hao-home-center-fix.css"
   ].freeze
 
+  # Bump this value whenever the final visual layer changes. GitHub Pages and
+  # browsers may otherwise keep serving an older CSS response for the same path.
+  STYLESHEET_VERSION = "20260802-superdesign-rescue".freeze
+
   def self.apply_cv_title(page)
     return unless page.relative_path == "cv.md"
 
@@ -67,7 +71,7 @@ module SiteVisualPolish
     STYLESHEETS.each do |stylesheet|
       next if page.output.include?(stylesheet)
 
-      href = "#{baseurl}/assets/css/#{stylesheet}"
+      href = "#{baseurl}/assets/css/#{stylesheet}?v=#{STYLESHEET_VERSION}"
       tag = %(<link rel="stylesheet" href="#{href}">)
       page.output = page.output.sub("</head>", "#{tag}</head>")
     end
