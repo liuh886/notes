@@ -1,43 +1,17 @@
 # frozen_string_literal: true
 
 module SiteVisualPolish
-  TARGET_PAGES = [
-    "_pages/about.md",
-    "_pages/blog.md",
-    "_pages/portfolio.md",
-    "_pages/projects.md",
-    "_pages/repositories.md",
-    "cv.md"
-  ].freeze
-
-  TARGET_URLS = [
-    "/",
-    "/blog/",
-    "/portfolio/",
-    "/projects/",
-    "/repositories/",
-    "/cv/"
-  ].freeze
-
-  TARGET_URL_PREFIXES = [
-    "/blog/",
-    "/projects/"
-  ].freeze
-
-  # Keep this list intentionally short. Older Mission Log experiment layers are
-  # no longer loaded; the homepage is governed by the safe layer plus the final
-  # al-folio-compatible production homepage layer.
-  STYLESHEETS = [
-    "site-polish.css",
-    "site-upgrade.css",
-    "hao-design.css",
-    "hao-home-safe.css",
+  # Keep the starter close to upstream al-folio by default. Secondary pages such
+  # as Blog, Projects, Repositories, and CV should use the theme's native visual
+  # grammar unless a change is deliberately made in the theme/gem layer.
+  HOMEPAGE_STYLESHEETS = [
     "hao-home-center-fix.css"
   ].freeze
 
-  # Bump this value whenever the final visual layer changes. GitHub Pages and
-  # browsers may otherwise keep serving an older CSS response for the same path.
-  STYLESHEET_VERSION = "20260802-alfolio-wide-home".freeze
+  # Bump this value whenever the homepage enhancement layer changes. GitHub
+  # Pages and browsers may otherwise keep serving an older CSS response for the
+  # same path.
+  STYLESHEET_VERSION = "20260802-alfolio-baseline".freeze
 
   def self.apply_cv_title(page)
     return unless page.relative_path == "cv.md"
@@ -52,38 +26,30 @@ module SiteVisualPolish
     page.relative_path == "_pages/about.md" || page.url.to_s == "/"
   end
 
-  def self.target_page?(page)
-    url = page.url.to_s
-
-    TARGET_PAGES.include?(page.relative_path) ||
-      TARGET_URLS.include?(url) ||
-      TARGET_URL_PREFIXES.any? { |prefix| url.start_with?(prefix) }
-  end
-
   def self.apply_home_navbar_brand(page)
     return unless home_page?(page)
-    return unless page.output.include?("hao-home--production")
+    return unless page.output.include?("hao-home--alfolio")
     return if page.output.include?("hao-home-navbar-brand")
 
     baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
     home_href = baseurl.empty? ? "/" : "#{baseurl}/"
 
-    # al-folio intentionally omits the navbar brand on the homepage. For this
-    # customized homepage, reinsert the same native brand markup used by the
-    # upstream header on secondary pages instead of fabricating text with CSS.
+    # Upstream al-folio intentionally omits the navbar brand on the homepage,
+    # while secondary pages render it. Reinsert the same semantic brand pattern
+    # on this customized homepage so the site remains visually consistent.
     brand = %(<a class="navbar-brand title font-weight-lighter hao-home-navbar-brand" data-hao-home-brand="true" href="#{home_href}"><span class="font-weight-bold">Zhihao</span> LIU</a>)
 
     navbar_container = %r{(<nav[^>]*class="[^"]*\bnavbar\b[^"]*"[^>]*>\s*<div[^>]*class="[^"]*\bcontainer(?:-fluid)?\b[^"]*"[^>]*>)}m
     page.output = page.output.sub(navbar_container, "\\1\n      #{brand}")
   end
 
-  def self.apply_stylesheet(page)
-    return unless target_page?(page)
+  def self.apply_homepage_stylesheet(page)
+    return unless home_page?(page)
     return unless page.output.include?("</head>")
 
     baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
 
-    STYLESHEETS.each do |stylesheet|
+    HOMEPAGE_STYLESHEETS.each do |stylesheet|
       next if page.output.include?(stylesheet)
 
       href = "#{baseurl}/assets/css/#{stylesheet}?v=#{STYLESHEET_VERSION}"
@@ -97,6 +63,6 @@ end
   Jekyll::Hooks.register hook_owner, :post_render do |page|
     SiteVisualPolish.apply_cv_title(page)
     SiteVisualPolish.apply_home_navbar_brand(page)
-    SiteVisualPolish.apply_stylesheet(page)
+    SiteVisualPolish.apply_homepage_stylesheet(page)
   end
 end
