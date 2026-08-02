@@ -26,7 +26,7 @@ module SiteVisualPolish
 
   # Keep this list intentionally short. Older Mission Log experiment layers are
   # no longer loaded; the homepage is governed by the safe layer plus the final
-  # production homepage layer.
+  # al-folio-compatible production homepage layer.
   STYLESHEETS = [
     "site-polish.css",
     "site-upgrade.css",
@@ -37,9 +37,7 @@ module SiteVisualPolish
 
   # Bump this value whenever the final visual layer changes. GitHub Pages and
   # browsers may otherwise keep serving an older CSS response for the same path.
-  STYLESHEET_VERSION = "20260802-shell-navbar-fix".freeze
-
-  HOMEPAGE_BRAND = "Zhihao LIU".freeze
+  STYLESHEET_VERSION = "20260802-alfolio-wide-home".freeze
 
   def self.apply_cv_title(page)
     return unless page.relative_path == "cv.md"
@@ -69,7 +67,11 @@ module SiteVisualPolish
 
     baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
     home_href = baseurl.empty? ? "/" : "#{baseurl}/"
-    brand = %(<a class="navbar-brand hao-home-navbar-brand" data-hao-home-brand="true" href="#{home_href}">#{HOMEPAGE_BRAND}</a>)
+
+    # al-folio intentionally omits the navbar brand on the homepage. For this
+    # customized homepage, reinsert the same native brand markup used by the
+    # upstream header on secondary pages instead of fabricating text with CSS.
+    brand = %(<a class="navbar-brand title font-weight-lighter hao-home-navbar-brand" data-hao-home-brand="true" href="#{home_href}"><span class="font-weight-bold">Zhihao</span> LIU</a>)
 
     navbar_container = %r{(<nav[^>]*class="[^"]*\bnavbar\b[^"]*"[^>]*>\s*<div[^>]*class="[^"]*\bcontainer(?:-fluid)?\b[^"]*"[^>]*>)}m
     page.output = page.output.sub(navbar_container, "\\1\n      #{brand}")
