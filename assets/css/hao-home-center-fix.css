@@ -1,25 +1,23 @@
 /*
- * Production homepage redesign layer
+ * Production homepage shell and navbar hardening layer
  *
- * Final homepage system for Hao's Notes. This layer keeps the current white /
- * purple gradient language, but rebuilds the homepage as a coherent production
- * surface: one page shell, one card system, one section rhythm, and a real
- * left-side navbar brand.
+ * This is the only final homepage layer. It fixes the two production issues that
+ * kept recurring: inconsistent page widths and a missing homepage navbar brand.
+ * The homepage, navbar, hero, sections, and cards now all use the same shell.
  */
 
 :root {
-  --hao-prod-shell-max: 76rem;
-  --hao-prod-gutter: clamp(1.25rem, 4.8vw, 4.75rem);
-  --hao-prod-shell: min(calc(100% - (2 * var(--hao-prod-gutter))), var(--hao-prod-shell-max));
+  --hao-page-shell-max: 76rem;
+  --hao-page-gutter: clamp(1rem, 4vw, 2.75rem);
+  --hao-page-shell: min(calc(100vw - (2 * var(--hao-page-gutter))), var(--hao-page-shell-max));
   --hao-prod-ink: var(--global-text-color, #111827);
   --hao-prod-muted: color-mix(in srgb, var(--hao-prod-ink) 58%, white);
-  --hao-prod-soft: color-mix(in srgb, var(--hao-mission-accent, #b80fb8) 7%, white);
   --hao-prod-accent: var(--hao-mission-accent, #b80fb8);
   --hao-prod-accent-2: #6d5dfc;
   --hao-prod-accent-3: #22c1c3;
   --hao-prod-line: color-mix(in srgb, var(--hao-prod-accent) 14%, #e5e7eb);
   --hao-prod-line-strong: color-mix(in srgb, var(--hao-prod-accent) 27%, #d1d5db);
-  --hao-prod-surface: color-mix(in srgb, #ffffff 92%, var(--hao-prod-soft));
+  --hao-prod-surface: color-mix(in srgb, #ffffff 92%, color-mix(in srgb, var(--hao-prod-accent) 7%, white));
   --hao-prod-surface-strong: #ffffff;
   --hao-prod-shadow: 0 24px 70px rgba(17, 24, 39, 0.075);
   --hao-prod-shadow-soft: 0 16px 42px rgba(17, 24, 39, 0.055);
@@ -55,7 +53,7 @@ body:has(.hao-home--production) article.post {
 
 body:has(.hao-home--production) header,
 body:has(.hao-home--production) .navbar {
-  background: color-mix(in srgb, #ffffff 86%, transparent) !important;
+  background: color-mix(in srgb, #ffffff 88%, transparent) !important;
   border-bottom: 1px solid color-mix(in srgb, var(--hao-prod-line) 72%, transparent) !important;
   backdrop-filter: blur(18px);
 }
@@ -63,8 +61,9 @@ body:has(.hao-home--production) .navbar {
 body:has(.hao-home--production) .navbar .container,
 body:has(.hao-home--production) .navbar .container-fluid,
 .hao-home--production {
-  width: var(--hao-prod-shell) !important;
-  max-width: var(--hao-prod-shell) !important;
+  box-sizing: border-box !important;
+  width: var(--hao-page-shell) !important;
+  max-width: var(--hao-page-shell-max) !important;
   margin-right: auto !important;
   margin-left: auto !important;
 }
@@ -78,25 +77,31 @@ body:has(.hao-home--production) .navbar .container-fluid {
   padding-left: 0 !important;
 }
 
-/* Restore the real, black, left-side navbar brand used on the blog page. */
-body:has(.hao-home--production) .navbar-brand {
+/* The homepage brand is a real injected anchor, not pseudo-element text. */
+body:has(.hao-home--production) .navbar .navbar-brand:not(.hao-home-navbar-brand) {
+  display: none !important;
+}
+
+body:has(.hao-home--production) .hao-home-navbar-brand {
   display: inline-flex !important;
   flex: 0 0 auto !important;
   align-items: center !important;
   min-width: max-content !important;
-  margin-right: clamp(1.4rem, 3vw, 3rem) !important;
+  margin-right: clamp(1.25rem, 3vw, 2.5rem) !important;
+  padding: 0 !important;
   color: var(--hao-prod-ink) !important;
-  font-size: clamp(1.28rem, 1.95vw, 1.9rem) !important;
+  font-size: clamp(1.22rem, 1.75vw, 1.7rem) !important;
   font-weight: 430 !important;
   letter-spacing: -0.04em !important;
   line-height: 1 !important;
-  opacity: 1 !important;
+  text-decoration: none !important;
   text-transform: none !important;
+  opacity: 1 !important;
   visibility: visible !important;
 }
 
-body:has(.hao-home--production) .navbar-brand::before,
-body:has(.hao-home--production) .navbar-brand::after {
+body:has(.hao-home--production) .hao-home-navbar-brand::before,
+body:has(.hao-home--production) .hao-home-navbar-brand::after {
   content: none !important;
 }
 
@@ -111,34 +116,30 @@ body:has(.hao-home--production) .navbar-nav {
   justify-content: flex-end !important;
   width: auto !important;
   margin-left: auto !important;
-  gap: clamp(0.25rem, 0.75vw, 0.7rem);
+  gap: clamp(0.2rem, 0.7vw, 0.55rem);
 }
 
 body:has(.hao-home--production) .navbar-nav .nav-link {
   border-radius: 999px;
-  padding: 0.45rem 0.72rem !important;
+  padding: 0.45rem 0.7rem !important;
   color: color-mix(in srgb, var(--hao-prod-ink) 70%, transparent) !important;
-  font-size: clamp(0.92rem, 1.08vw, 1.06rem) !important;
+  font-size: clamp(0.9rem, 1.02vw, 1rem) !important;
   font-weight: 520 !important;
   letter-spacing: -0.02em !important;
   text-transform: none !important;
 }
 
 body:has(.hao-home--production) .navbar-nav .nav-link:hover,
-body:has(.hao-home--production) .navbar-nav .nav-link:focus-visible {
-  background: color-mix(in srgb, var(--hao-prod-accent) 7%, transparent);
-  color: var(--hao-prod-accent) !important;
-}
-
+body:has(.hao-home--production) .navbar-nav .nav-link:focus-visible,
 body:has(.hao-home--production) .navbar-nav .active > .nav-link,
 body:has(.hao-home--production) .navbar-nav .nav-link.active {
+  background: color-mix(in srgb, var(--hao-prod-accent) 7%, transparent);
   color: var(--hao-prod-accent) !important;
 }
 
 .hao-home--production {
   position: relative;
-  box-sizing: border-box;
-  padding: clamp(3rem, 6vw, 5.7rem) 0 clamp(4rem, 8vw, 7rem) !important;
+  padding: clamp(2.6rem, 5.5vw, 5.2rem) 0 clamp(4rem, 8vw, 7rem) !important;
   color: var(--hao-prod-ink);
 }
 
@@ -153,16 +154,22 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
   text-underline-offset: 0.22em;
 }
 
+.hao-prod-hero,
+.hao-prod-section,
+.hao-prod-contact {
+  width: 100%;
+}
+
 .hao-prod-hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.04fr) minmax(19rem, 0.62fr);
-  gap: clamp(2.25rem, 7vw, 6.5rem);
+  grid-template-columns: minmax(0, 1.06fr) minmax(18rem, 0.6fr);
+  gap: clamp(2rem, 6vw, 5.25rem);
   align-items: center;
-  padding: clamp(2.5rem, 6vw, 5.25rem);
+  padding: clamp(2.4rem, 5vw, 4.8rem);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--hao-prod-accent) 15%, #e5e7eb);
-  border-radius: clamp(1.6rem, 3vw, var(--hao-prod-radius-xl));
+  border-radius: clamp(1.5rem, 3vw, var(--hao-prod-radius-xl));
   background:
     radial-gradient(circle at 8% 16%, color-mix(in srgb, var(--hao-prod-accent) 16%, transparent) 0, transparent 18rem),
     radial-gradient(circle at 76% 18%, color-mix(in srgb, var(--hao-prod-accent-2) 12%, transparent) 0, transparent 20rem),
@@ -178,11 +185,11 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
   content: "";
   border-radius: inherit;
   background:
-    linear-gradient(90deg, rgba(255,255,255,0.32) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.34) 1px, transparent 1px),
     linear-gradient(180deg, rgba(255,255,255,0.38) 1px, transparent 1px);
-  background-size: 3.7rem 3.7rem;
+  background-size: 3.6rem 3.6rem;
   mask-image: linear-gradient(135deg, black, transparent 78%);
-  opacity: 0.42;
+  opacity: 0.44;
 }
 
 .hao-prod-hero::after {
@@ -205,7 +212,7 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
 }
 
 .hao-prod-hero__content {
-  max-width: 48rem;
+  max-width: 47rem;
 }
 
 .hao-prod-eyebrow,
@@ -223,26 +230,32 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
   max-width: 12ch;
   margin: 0.85rem 0 0;
   color: var(--hao-prod-ink);
-  font-size: clamp(3.35rem, 7vw, 6.35rem);
+  font-size: clamp(3.05rem, 6.2vw, 5.7rem);
   font-weight: 690;
-  letter-spacing: -0.078em;
-  line-height: 0.92;
+  letter-spacing: -0.074em;
+  line-height: 0.94;
   text-wrap: balance;
 }
 
 .hao-prod-lede {
-  max-width: 45rem;
-  margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 0;
+  max-width: 44rem;
+  margin: clamp(1.2rem, 2.4vw, 1.7rem) 0 0;
   color: color-mix(in srgb, var(--hao-prod-ink) 72%, white);
-  font-size: clamp(1.06rem, 1.45vw, 1.32rem);
+  font-size: clamp(1.04rem, 1.35vw, 1.24rem);
   line-height: 1.66;
 }
 
-.hao-prod-actions {
+.hao-prod-actions,
+.hao-prod-archive-links,
+.hao-prod-link-row,
+.hao-prod-contact__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: clamp(1.4rem, 3vw, 2.1rem);
+  gap: 0.72rem;
+}
+
+.hao-prod-actions {
+  margin-top: clamp(1.35rem, 3vw, 2rem);
 }
 
 .hao-prod-button,
@@ -251,11 +264,11 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.75rem;
+  min-height: 2.7rem;
   border: 1px solid var(--hao-prod-line);
   border-radius: 999px;
-  padding: 0.74rem 1.08rem;
-  background: color-mix(in srgb, #ffffff 86%, transparent);
+  padding: 0.72rem 1.05rem;
+  background: color-mix(in srgb, #ffffff 88%, transparent);
   color: var(--hao-prod-ink) !important;
   font-size: 0.88rem;
   font-weight: 680;
@@ -287,7 +300,7 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
 .hao-prod-profile {
   justify-self: end;
   width: 100%;
-  max-width: 25rem;
+  max-width: 24rem;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--hao-prod-accent) 18%, #e5e7eb);
   border-radius: 1.7rem;
@@ -333,7 +346,7 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
 .hao-prod-profile h2 {
   margin: 0.45rem 0 0;
   color: var(--hao-prod-ink);
-  font-size: clamp(1.35rem, 2vw, 1.72rem);
+  font-size: clamp(1.32rem, 1.8vw, 1.62rem);
   letter-spacing: -0.045em;
   line-height: 1.02;
 }
@@ -347,14 +360,14 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
 
 .hao-prod-profile__facts {
   display: grid;
-  gap: 0.52rem;
+  gap: 0.5rem;
   margin: 1rem 0 0;
 }
 
 .hao-prod-profile__facts div {
   display: grid;
   grid-template-columns: 4.2rem minmax(0, 1fr);
-  gap: 0.7rem;
+  gap: 0.75rem;
   align-items: baseline;
 }
 
@@ -367,7 +380,7 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
 
 .hao-prod-profile__facts dt {
   color: var(--hao-prod-muted);
-  font-weight: 720;
+  font-weight: 740;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -379,133 +392,106 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
 
 .hao-prod-index {
   position: sticky;
-  top: 0.75rem;
-  z-index: 2;
+  top: 0.2rem;
+  z-index: 5;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.55rem;
   align-items: center;
-  width: max-content;
-  max-width: 100%;
-  margin: 1.1rem auto 0;
-  border: 1px solid color-mix(in srgb, var(--hao-prod-line) 76%, transparent);
-  border-radius: 999px;
-  padding: 0.45rem;
-  background: color-mix(in srgb, #ffffff 88%, transparent);
-  box-shadow: 0 16px 42px rgba(17, 24, 39, 0.06);
+  margin: clamp(1rem, 2.3vw, 1.6rem) 0 0;
+  padding: 0.72rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--hao-prod-line) 68%, transparent);
+  background: color-mix(in srgb, #ffffff 72%, transparent);
   backdrop-filter: blur(16px);
 }
 
 .hao-prod-index a {
+  border: 1px solid transparent;
   border-radius: 999px;
-  padding: 0.45rem 0.72rem;
-  color: color-mix(in srgb, var(--hao-prod-ink) 68%, white);
+  padding: 0.38rem 0.62rem;
+  color: color-mix(in srgb, var(--hao-prod-ink) 58%, white);
   font-size: 0.76rem;
   font-weight: 720;
-  letter-spacing: 0.08em;
-  line-height: 1;
+  letter-spacing: 0.04em;
   text-decoration: none;
   text-transform: uppercase;
 }
 
 .hao-prod-index a:hover,
 .hao-prod-index a:focus-visible {
-  background: color-mix(in srgb, var(--hao-prod-accent) 8%, transparent);
+  border-color: var(--hao-prod-line);
   color: var(--hao-prod-accent);
 }
 
 .hao-prod-section {
   display: grid;
-  grid-template-columns: minmax(14rem, 0.34fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 4.25rem);
-  padding: clamp(4rem, 8vw, 6.2rem) 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--hao-prod-line) 70%, transparent);
-  scroll-margin-top: 6rem;
+  grid-template-columns: minmax(13rem, 0.33fr) minmax(0, 1fr);
+  gap: clamp(1.7rem, 4.5vw, 4rem);
+  padding: clamp(3.2rem, 6vw, 5rem) 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--hao-prod-line) 66%, transparent);
+  scroll-margin-top: 5.5rem;
 }
 
 .hao-prod-section__header {
-  max-width: 20rem;
+  max-width: 21rem;
 }
 
 .hao-prod-section__header h2,
 .hao-prod-contact h2 {
-  margin: 0.78rem 0 0;
+  margin: 0.65rem 0 0;
   color: var(--hao-prod-ink);
-  font-size: clamp(2rem, 3.7vw, 3.55rem);
-  font-weight: 650;
-  letter-spacing: -0.064em;
-  line-height: 0.98;
+  font-size: clamp(1.85rem, 3.2vw, 2.85rem);
+  font-weight: 670;
+  letter-spacing: -0.058em;
+  line-height: 1.03;
   text-wrap: balance;
 }
 
 .hao-prod-section__header p:not(.hao-prod-eyebrow) {
   margin: 1rem 0 0;
   color: var(--hao-prod-muted);
-  font-size: 0.98rem;
-  line-height: 1.68;
+  font-size: 0.97rem;
+  line-height: 1.66;
 }
 
 .hao-prod-work-grid,
-.hao-prod-system-grid {
+.hao-prod-system-grid,
+.hao-prod-knowledge-grid,
+.hao-prod-timeline {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(0.9rem, 1.8vw, 1.25rem);
   min-width: 0;
 }
 
-@media (min-width: 1180px) {
-  .hao-prod-work-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
+.hao-prod-work-grid,
+.hao-prod-system-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 
-  .hao-prod-work-grid .hao-prod-card--work {
-    grid-column: span 2;
-  }
-
-  .hao-prod-work-grid .hao-prod-card--work:first-child,
-  .hao-prod-work-grid .hao-prod-card--work:nth-child(2) {
-    grid-column: span 3;
-  }
-
-  .hao-prod-system-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .hao-prod-system-group:first-child .hao-prod-card--system:first-child,
-  .hao-prod-system-group:first-child .hao-prod-card--system:nth-child(2) {
-    grid-column: span 1;
-  }
+.hao-prod-knowledge-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
 }
 
 .hao-prod-card,
 .hao-prod-record,
 .hao-prod-note,
 .hao-prod-timeline-item,
-.hao-prod-knowledge-panel {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--hao-prod-line);
+.hao-prod-knowledge-panel,
+.hao-prod-system-group {
+  border: 1px solid color-mix(in srgb, var(--hao-prod-line) 86%, transparent);
   border-radius: var(--hao-prod-radius-lg);
-  background: linear-gradient(180deg, var(--hao-prod-surface-strong), var(--hao-prod-surface));
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.88) inset;
-  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, #ffffff 96%, var(--hao-prod-accent)), #ffffff 88%),
+    #ffffff;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.035);
 }
 
 .hao-prod-card,
 .hao-prod-record,
 .hao-prod-note,
 .hao-prod-timeline-item {
-  padding: clamp(1.05rem, 1.75vw, 1.35rem);
-}
-
-.hao-prod-card::before,
-.hao-prod-knowledge-panel::before {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 3px;
-  content: "";
-  background: linear-gradient(90deg, var(--hao-prod-accent), var(--hao-prod-accent-2), var(--hao-prod-accent-3));
-  opacity: 0.72;
+  padding: clamp(1rem, 1.8vw, 1.25rem);
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .hao-prod-card:hover,
@@ -515,9 +501,7 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
 .hao-prod-note:hover,
 .hao-prod-note:focus-within,
 .hao-prod-timeline-item:hover,
-.hao-prod-timeline-item:focus-within,
-.hao-prod-knowledge-panel:hover,
-.hao-prod-knowledge-panel:focus-within {
+.hao-prod-timeline-item:focus-within {
   transform: translateY(-2px);
   border-color: var(--hao-prod-line-strong);
   box-shadow: var(--hao-prod-shadow-soft);
@@ -528,73 +512,65 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
   gap: 0.7rem;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.1rem;
-}
-
-.hao-prod-card__topline span,
-.hao-prod-card__topline strong {
+  margin-bottom: 0.85rem;
   color: var(--hao-prod-muted);
-  font-size: 0.7rem;
-  font-weight: 760;
-  letter-spacing: 0.1em;
-  line-height: 1.25;
+  font-size: 0.72rem;
+  font-weight: 740;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .hao-prod-card__topline strong {
   color: var(--hao-prod-accent);
+  font-weight: 760;
 }
 
 .hao-prod-card h3,
 .hao-prod-card h4,
-.hao-prod-system-group__intro h3,
+.hao-prod-record h4,
+.hao-prod-note h4,
+.hao-prod-timeline-item h3,
 .hao-prod-panel-heading h3,
+.hao-prod-system-group__intro h3 {
+  margin: 0;
+  color: var(--hao-prod-ink);
+  font-weight: 660;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.hao-prod-card h3,
+.hao-prod-card h4,
 .hao-prod-record h4,
 .hao-prod-note h4,
 .hao-prod-timeline-item h3 {
-  margin: 0;
-  color: var(--hao-prod-ink);
-  font-weight: 670;
-  letter-spacing: -0.04em;
-  line-height: 1.08;
-  text-wrap: balance;
-}
-
-.hao-prod-card h3,
-.hao-prod-system-group__intro h3,
-.hao-prod-panel-heading h3,
-.hao-prod-timeline-item h3 {
-  font-size: clamp(1.16rem, 1.55vw, 1.42rem);
-}
-
-.hao-prod-card h4,
-.hao-prod-record h4,
-.hao-prod-note h4 {
-  font-size: clamp(1.02rem, 1.2vw, 1.18rem);
+  font-size: clamp(1.02rem, 1.25vw, 1.15rem);
 }
 
 .hao-prod-card p,
-.hao-prod-system-group__intro p:not(.hao-prod-card-label),
 .hao-prod-record p,
 .hao-prod-note p,
-.hao-prod-timeline-item p {
+.hao-prod-timeline-item p,
+.hao-prod-system-group__intro p:not(.hao-prod-card-label),
+.hao-prod-panel-heading p:not(.hao-prod-card-label) {
   margin: 0.72rem 0 0;
   color: var(--hao-prod-muted);
-  font-size: 0.93rem;
+  font-size: 0.92rem;
   line-height: 1.62;
 }
 
 .hao-prod-kind {
-  color: color-mix(in srgb, var(--hao-prod-accent) 72%, var(--hao-prod-muted)) !important;
+  margin-top: 0.45rem !important;
+  color: color-mix(in srgb, var(--hao-prod-accent) 70%, var(--hao-prod-muted)) !important;
   font-size: 0.78rem !important;
-  font-weight: 720 !important;
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .hao-prod-text-link {
   display: inline-flex;
-  margin-top: 1rem;
+  margin-top: 0.9rem;
   color: var(--hao-prod-accent) !important;
   font-size: 0.88rem;
   font-weight: 720;
@@ -603,215 +579,144 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
 
 .hao-prod-text-link:hover,
 .hao-prod-text-link:focus-visible {
-  color: var(--hao-prod-accent-2) !important;
   text-decoration: underline !important;
-}
-
-.hao-prod-link-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
-  align-items: center;
 }
 
 .hao-prod-system-stack {
   display: grid;
-  gap: clamp(1.5rem, 3vw, 2.25rem);
-  min-width: 0;
+  gap: clamp(1rem, 2vw, 1.35rem);
 }
 
-.hao-prod-system-group {
+.hao-prod-system-group,
+.hao-prod-knowledge-panel {
+  padding: clamp(1rem, 2vw, 1.35rem);
+}
+
+.hao-prod-system-group__intro,
+.hao-prod-panel-heading {
+  max-width: 42rem;
+  margin-bottom: 1rem;
+}
+
+.hao-prod-system-group__intro h3,
+.hao-prod-panel-heading h3 {
+  margin-top: 0.45rem;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+}
+
+.hao-prod-record-list,
+.hao-prod-note-list {
   display: grid;
-  gap: 1rem;
-}
-
-.hao-prod-system-group__intro {
-  max-width: 44rem;
+  gap: 0.85rem;
 }
 
 .hao-prod-archive-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
   grid-column: 2;
-  margin-top: 1.4rem;
+  margin-top: 1.1rem;
 }
 
 .hao-prod-archive-links--compact {
   margin-top: 1rem;
 }
 
-.hao-prod-knowledge-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.82fr);
-  gap: clamp(1rem, 2vw, 1.4rem);
-  min-width: 0;
-}
-
-.hao-prod-knowledge-panel {
-  padding: clamp(1.1rem, 2vw, 1.45rem);
-}
-
-.hao-prod-panel-heading {
-  margin-bottom: 1rem;
-}
-
-.hao-prod-panel-heading h3 {
-  margin-top: 0.55rem;
-}
-
-.hao-prod-record-list,
-.hao-prod-note-list {
-  display: grid;
-  gap: 0.8rem;
-}
-
-.hao-prod-record,
-.hao-prod-note {
-  background: color-mix(in srgb, #ffffff 89%, var(--hao-prod-soft));
-  box-shadow: none;
-}
-
-.hao-prod-record::before,
-.hao-prod-note::before,
-.hao-prod-timeline-item::before {
-  display: none;
-}
-
 .hao-prod-timeline {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(0.75rem, 1.6vw, 1rem);
-}
-
-.hao-prod-timeline-item {
-  border-radius: 1.15rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .hao-prod-contact {
   display: grid;
-  grid-template-columns: minmax(16rem, 0.52fr) minmax(0, 1fr);
-  gap: clamp(1.5rem, 5vw, 4rem);
-  align-items: end;
-  padding: clamp(3.5rem, 7vw, 5.8rem);
-  border: 1px solid var(--hao-prod-line);
-  border-radius: var(--hao-prod-radius-xl);
-  background:
-    radial-gradient(circle at 12% 22%, color-mix(in srgb, var(--hao-prod-accent) 14%, transparent), transparent 18rem),
-    linear-gradient(135deg, #ffffff, color-mix(in srgb, #ffffff 82%, var(--hao-prod-accent-2)));
-  box-shadow: var(--hao-prod-shadow-soft);
+  grid-template-columns: minmax(13rem, 0.33fr) minmax(0, 1fr);
+  gap: clamp(1.7rem, 4.5vw, 4rem);
+  padding: clamp(3.2rem, 6vw, 5rem) 0 0;
 }
 
 .hao-prod-contact__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  justify-content: flex-end;
-  min-width: 0;
+  align-content: start;
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1100px) {
   :root {
-    --hao-prod-shell-max: 70rem;
-    --hao-prod-gutter: clamp(1rem, 3.5vw, 2rem);
+    --hao-page-gutter: clamp(1rem, 3.5vw, 2rem);
   }
 
   .hao-prod-hero {
-    grid-template-columns: minmax(0, 1fr) minmax(17rem, 22rem);
-    padding: clamp(2.1rem, 5vw, 3.75rem);
+    gap: clamp(1.7rem, 4.5vw, 3.5rem);
+    padding: clamp(2rem, 4.5vw, 3.5rem);
   }
 
   .hao-prod-hero h1 {
-    font-size: clamp(3rem, 6.8vw, 5.35rem);
-  }
-
-  .hao-prod-work-grid,
-  .hao-prod-system-grid,
-  .hao-prod-timeline {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .hao-prod-archive-links {
-    grid-column: 1 / -1;
+    font-size: clamp(2.85rem, 6.4vw, 4.8rem);
   }
 }
 
 @media (max-width: 900px) {
   :root {
-    --hao-prod-shell-max: 62rem;
-    --hao-prod-gutter: 1rem;
-  }
-
-  body:has(.hao-home--production) .navbar-brand {
-    font-size: 1.25rem !important;
-  }
-
-  body:has(.hao-home--production) .navbar-nav .nav-link {
-    font-size: 0.92rem !important;
-  }
-
-  .hao-home--production {
-    padding-top: 2.6rem !important;
-  }
-
-  .hao-prod-hero,
-  .hao-prod-section,
-  .hao-prod-knowledge-grid,
-  .hao-prod-contact {
-    grid-template-columns: 1fr;
-  }
-
-  .hao-prod-profile {
-    justify-self: start;
-    max-width: 30rem;
-  }
-
-  .hao-prod-section__header {
-    max-width: 42rem;
-  }
-
-  .hao-prod-contact__links {
-    justify-content: flex-start;
-  }
-}
-
-@media (max-width: 680px) {
-  :root {
-    --hao-prod-gutter: 0.75rem;
+    --hao-page-gutter: 1rem;
   }
 
   body:has(.hao-home--production) .navbar .container,
   body:has(.hao-home--production) .navbar .container-fluid,
   .hao-home--production {
-    width: min(calc(100% - 1.25rem), 62rem) !important;
-    max-width: min(calc(100% - 1.25rem), 62rem) !important;
+    width: var(--hao-page-shell) !important;
+    max-width: var(--hao-page-shell-max) !important;
   }
 
-  body:has(.hao-home--production) .navbar-brand {
-    font-size: 1.05rem !important;
+  body:has(.hao-home--production) .hao-home-navbar-brand {
+    font-size: 1.28rem !important;
+  }
+
+  .hao-home--production {
+    padding-top: 2.4rem !important;
+  }
+
+  .hao-prod-hero,
+  .hao-prod-section,
+  .hao-prod-contact,
+  .hao-prod-knowledge-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hao-prod-profile {
+    justify-self: start;
+    max-width: 29rem;
+  }
+
+  .hao-prod-section__header {
+    max-width: 40rem;
+  }
+
+  .hao-prod-archive-links {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 680px) {
+  :root {
+    --hao-page-gutter: 0.75rem;
+  }
+
+  body:has(.hao-home--production) .hao-home-navbar-brand {
+    font-size: 1.02rem !important;
     letter-spacing: -0.025em !important;
   }
 
+  body:has(.hao-home--production) .navbar-nav .nav-link {
+    font-size: 0.9rem !important;
+  }
+
+  .hao-home--production {
+    padding-top: 2rem !important;
+  }
+
   .hao-prod-hero {
-    border-radius: 1.2rem;
-    padding: 1.35rem;
+    padding: clamp(1.35rem, 6vw, 2rem);
+    border-radius: 1.35rem;
   }
 
   .hao-prod-hero h1 {
-    max-width: 11ch;
-    font-size: clamp(2.35rem, 12vw, 3.45rem);
-    letter-spacing: -0.064em;
-  }
-
-  .hao-prod-lede {
-    font-size: 1rem;
-  }
-
-  .hao-prod-index {
-    position: static;
-    justify-content: center;
-    width: 100%;
-    border-radius: 1.2rem;
+    max-width: 13ch;
+    font-size: clamp(2.25rem, 11vw, 3.35rem);
+    letter-spacing: -0.058em;
   }
 
   .hao-prod-work-grid,
@@ -820,41 +725,34 @@ body:has(.hao-home--production) .navbar-nav .nav-link.active {
     grid-template-columns: 1fr;
   }
 
-  .hao-prod-section {
-    padding: 3.3rem 0;
+  .hao-prod-profile__facts div {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
   }
 
-  .hao-prod-section__header h2,
-  .hao-prod-contact h2 {
-    font-size: clamp(2rem, 9vw, 2.75rem);
-  }
-
-  .hao-prod-contact {
-    border-radius: 1.25rem;
-    padding: 1.35rem;
+  .hao-prod-index {
+    position: static;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hao-prod-button,
-  .hao-prod-archive-links a,
-  .hao-prod-contact__links a,
   .hao-prod-card,
   .hao-prod-record,
   .hao-prod-note,
   .hao-prod-timeline-item,
-  .hao-prod-knowledge-panel {
+  .hao-prod-archive-links a,
+  .hao-prod-contact__links a {
     transition: none !important;
   }
 
   .hao-prod-button:hover,
-  .hao-prod-archive-links a:hover,
-  .hao-prod-contact__links a:hover,
   .hao-prod-card:hover,
   .hao-prod-record:hover,
   .hao-prod-note:hover,
   .hao-prod-timeline-item:hover,
-  .hao-prod-knowledge-panel:hover {
+  .hao-prod-archive-links a:hover,
+  .hao-prod-contact__links a:hover {
     transform: none !important;
   }
 }

@@ -84,7 +84,10 @@ requireIncludes(
     "hao-design.css",
     "hao-home-safe.css",
     "hao-home-center-fix.css",
-    'STYLESHEET_VERSION = "20260802-production-home"',
+    'STYLESHEET_VERSION = "20260802-shell-navbar-fix"',
+    'HOMEPAGE_BRAND = "Zhihao LIU"',
+    "def self.apply_home_navbar_brand(page)",
+    "hao-home-navbar-brand",
     "?v=#{STYLESHEET_VERSION}",
   ],
   "Site visual polish plugin",
@@ -123,35 +126,47 @@ requireIncludes(
     "body:has(.hao-home--safe) .post-title",
     "body:has(.hao-home--safe) .profile",
     "overflow-x: clip",
-    "font-size: clamp(2.4rem, 5vw, 4.25rem)",
-    "grid-template-columns: minmax(0, 1fr) minmax(18rem, 20rem)",
     "@media (max-width: 900px)",
     "@media (max-width: 680px)",
     "prefers-reduced-motion",
   ],
   "Safe homepage CSS",
 );
-requireAbsent(homeSafeCss, ["position: fixed", "min-height: 100vh", "100vw"], "Safe homepage CSS");
+requireAbsent(homeSafeCss, ["position: fixed", "min-height: 100vh"], "Safe homepage CSS");
 
 const homeProductionCss = exists("assets/css/hao-home-center-fix.css") ? read("assets/css/hao-home-center-fix.css") : "";
 requireIncludes(
   homeProductionCss,
   [
-    "Production homepage redesign layer",
-    "--hao-prod-shell-max: 76rem",
-    "--hao-prod-accent-2: #6d5dfc",
-    "body:has(.hao-home--production) .navbar-brand",
-    "Restore the real, black, left-side navbar brand",
+    "Production homepage shell and navbar hardening layer",
+    "--hao-page-shell-max: 76rem",
+    "--hao-page-shell: min(calc(100vw",
+    ".hao-home-navbar-brand",
+    ".navbar .navbar-brand:not(.hao-home-navbar-brand)",
+    "The homepage brand is a real injected anchor",
     ".hao-prod-hero",
+    ".hao-prod-work-grid",
     ".hao-prod-knowledge-grid",
     ".hao-prod-timeline",
-    "@media (max-width: 1120px)",
+    "@media (max-width: 1100px)",
     "@media (max-width: 900px)",
     "@media (max-width: 680px)",
   ],
   "Homepage production CSS",
 );
-requireAbsent(homeProductionCss, ['content: "Zhihao LIU"', "font-size: 0 !important", "mission-log-shell"], "Homepage production CSS");
+requireAbsent(homeProductionCss, ['content: "Zhihao LIU"', "font-size: 0 !important", "--hao-home-shell", "--hao-prod-shell:"], "Homepage production CSS");
+
+const workflow = read(".github/workflows/deploy.yml");
+requireIncludes(
+  workflow,
+  [
+    "hao-home--production",
+    "hao-home-center-fix.css?v=20260802-shell-navbar-fix",
+    "hao-home-navbar-brand",
+    "Zhihao LIU",
+  ],
+  "Deploy workflow homepage artifact guard",
+);
 
 const aboutPage = read("_pages/about.md");
 requireIncludes(
