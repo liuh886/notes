@@ -37,7 +37,8 @@ module SiteVisualPolish
     "mission-log-shell-v2.css",
     "mission-log-cover-refinement.css",
     "hao-home-v6.css",
-    "hao-home-safe.css"
+    "hao-home-safe.css",
+    "hao-home-center-fix.css"
   ].freeze
 
   def self.apply_cv_title(page)

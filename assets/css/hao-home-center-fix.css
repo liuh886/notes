@@ -1,0 +1,58 @@
+/*
+ * Hao home center alignment fix
+ *
+ * Final alignment guard for the safe homepage. The previous safe layer was
+ * intentionally conservative, but at 100% desktop zoom its 68rem page width
+ * made the page feel compressed and visually left-weighted. This layer widens
+ * the desktop canvas and keeps the navbar and homepage on the same centered
+ * viewport-aligned measure.
+ */
+
+body:has(.hao-home--safe) {
+  --hao-safe-width: min(calc(100vw - 3rem), 76rem);
+}
+
+body:has(.hao-home--safe) .navbar .container,
+body:has(.hao-home--safe) .navbar .container-fluid,
+.hao-home--safe {
+  width: var(--hao-safe-width) !important;
+  max-width: var(--hao-safe-width) !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+body:has(.hao-home--safe) main,
+body:has(.hao-home--safe) main > .container,
+body:has(.hao-home--safe) .post,
+body:has(.hao-home--safe) article.post {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.hao-safe-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(19rem, 22rem);
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.hao-safe-profile {
+  justify-self: end;
+  width: 100%;
+  max-width: 22rem;
+}
+
+@media (max-width: 900px) {
+  body:has(.hao-home--safe) {
+    --hao-safe-width: min(calc(100vw - 2rem), 68rem);
+  }
+
+  .hao-safe-profile {
+    justify-self: start;
+    max-width: 30rem;
+  }
+}
+
+@media (max-width: 680px) {
+  body:has(.hao-home--safe) {
+    --hao-safe-width: min(calc(100vw - 1.25rem), 68rem);
+  }
+}
