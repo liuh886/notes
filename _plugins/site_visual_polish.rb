@@ -24,26 +24,20 @@ module SiteVisualPolish
     "/projects/"
   ].freeze
 
+  # Keep this list intentionally short. Older Mission Log experiment layers are
+  # no longer loaded; the homepage is governed by the safe layer plus the final
+  # Superdesign shell layer.
   STYLESHEETS = [
     "site-polish.css",
     "site-upgrade.css",
     "hao-design.css",
-    "mission-log-deployments.css",
-    "mission-log-records.css",
-    "mission-log-observations.css",
-    "mission-log-trajectory.css",
-    "mission-log-visual-pass.css",
-    "mission-log-canvas-reset.css",
-    "mission-log-shell-v2.css",
-    "mission-log-cover-refinement.css",
-    "hao-home-v6.css",
     "hao-home-safe.css",
     "hao-home-center-fix.css"
   ].freeze
 
   # Bump this value whenever the final visual layer changes. GitHub Pages and
   # browsers may otherwise keep serving an older CSS response for the same path.
-  STYLESHEET_VERSION = "20260802-superdesign-rescue-2".freeze
+  STYLESHEET_VERSION = "20260802-home-cleanup".freeze
 
   def self.apply_cv_title(page)
     return unless page.relative_path == "cv.md"
