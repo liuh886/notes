@@ -11,7 +11,7 @@ module SiteVisualPolish
   # Bump this value whenever the homepage enhancement layer changes. GitHub
   # Pages and browsers may otherwise keep serving an older CSS response for the
   # same path.
-  STYLESHEET_VERSION = "20260802-alfolio-baseline".freeze
+  STYLESHEET_VERSION = "20260802-home-width-align".freeze
 
   def self.apply_cv_title(page)
     return unless page.relative_path == "cv.md"
