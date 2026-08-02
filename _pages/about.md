@@ -1,7 +1,8 @@
 ---
 layout: about
-title: Hao's Notes
+title: Mission Log
 permalink: /
+nav: false
 nav_order: 0
 subtitle: Climate & Energy Data Scientist
 subtitle_extra: "Caixin ESG30 Young Scholar"
@@ -13,37 +14,37 @@ profile:
   more_info: >
     <p>📍Offshore Bergen, 2020 Aug</p>
 
-news: false # replaced by CURRENT OPERATIONS / 01 mission log
+news: false # replaced by CURRENT OPERATIONS / 01 task records
 announcements:
-  enabled: true
+  enabled: false
   scrollable: false
-  limit: 4
+  limit: 0
 
 latest_posts:
   enabled: false
-  scrollable: true
-  limit: 4
+  scrollable: false
+  limit: 0
 
 selected_papers: false # replaced by RESEARCH RECORD / 05 mission log
 projects: false # selected deployments are now composed manually below
 display_categories: [work]
-social: true # rendered from _data/socials.yml
-home_cta: true
+social: false
+home_cta: false
 ---
 
-<div class="mission-log-home mission-log-home--v2">
-  <section class="mission-cover" aria-labelledby="mission-cover-title">
+<div class="mission-log-home mission-log-home--v2 mission-log-home--product">
+  <section class="mission-cover" aria-labelledby="mission-cover-title" data-rail-section="cover">
     <div class="mission-cover__layout">
       <div class="mission-cover__copy">
         <div class="mission-section-kicker">COVER / 00</div>
-        <p class="mission-cover__eyebrow">Hao's Notes / Mission Log</p>
-        <h1 id="mission-cover-title">A working log for systems, research, and field notes.</h1>
-        <p class="mission-cover__subtitle">Recorded from the edge of climate, geospatial intelligence, and AI-native productivity.</p>
-        <p class="mission-cover__note">This page is the main route through what I am building, maintaining, studying, and noticing.</p>
+        <p class="mission-cover__eyebrow">Zhihao LIU / Mission Log</p>
+        <h1 id="mission-cover-title">Systems in progress, evidence in motion.</h1>
+        <p class="mission-cover__subtitle">A working surface for climate intelligence, geospatial research, AI-native productivity, and small product systems.</p>
+        <p class="mission-cover__note">This homepage is organized as an operating log: what is active now, what has shipped, what is documented, and where the work is heading next.</p>
         <div class="mission-cover__actions" aria-label="Mission log shortcuts">
-          <a class="mission-button mission-button--primary" href="#current-operations">Enter log</a>
-          <a class="mission-button" href="{{ '/blog/' | relative_url }}">Read notes</a>
-          <a class="mission-button" href="{{ '/repositories/' | relative_url }}">Repository archive</a>
+          <a class="mission-button mission-button--primary" href="#current-operations">Enter current work</a>
+          <a class="mission-button" href="{{ '/repositories/' | relative_url }}">System archive</a>
+          <a class="mission-button" href="{{ '/blog/' | relative_url }}">Field notes</a>
         </div>
       </div>
       <aside class="mission-cover__visual" aria-label="Mission metadata and portrait">
@@ -51,15 +52,10 @@ home_cta: true
           <img src="{{ '/assets/img/blog_pic.jpg' | relative_url }}" alt="Zhihao Liu" loading="eager">
           <figcaption>Offshore Bergen · 2020 Aug</figcaption>
         </figure>
-        <div class="mission-orbit" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
         <dl class="mission-cover__metadata">
           <div>
-            <dt>LOG STATUS</dt>
-            <dd>ACTIVE</dd>
+            <dt>MODE</dt>
+            <dd>BUILD / RESEARCH / RECORD</dd>
           </div>
           <div>
             <dt>FIELD</dt>
@@ -72,50 +68,76 @@ home_cta: true
         </dl>
         <div class="mission-cover__chips" aria-hidden="true">
           <span>systems</span>
-          <span>field notes</span>
+          <span>task records</span>
           <span>decision tools</span>
         </div>
       </aside>
     </div>
   </section>
 
-  <div class="mission-log-body">
-    <nav class="mission-page-rail" aria-label="Mission Log page markers">
-      <a href="#current-operations" data-section="current-operations"><span>01</span><strong>Operations</strong></a>
-      <a href="#selected-deployments" data-section="selected-deployments"><span>02</span><strong>Deployments</strong></a>
-      <a href="#research-record" data-section="research-record"><span>05</span><strong>Research</strong></a>
-      <a href="#field-observations" data-section="field-observations"><span>06</span><strong>Observations</strong></a>
-      <a href="#career-trajectory" data-section="career-trajectory"><span>07</span><strong>Trajectory</strong></a>
-      <a href="#contact-back-cover" data-section="contact-back-cover"><span>08</span><strong>Contact</strong></a>
-    </nav>
+  <nav class="mission-page-rail" aria-label="Mission Log page markers">
+    <a class="is-active" href="#current-operations" data-section="current-operations" aria-current="true"><span>01</span><strong>Operations</strong></a>
+    <a href="#selected-deployments" data-section="selected-deployments"><span>02</span><strong>Deployments</strong></a>
+    <a href="#research-record" data-section="research-record"><span>05</span><strong>Research</strong></a>
+    <a href="#field-observations" data-section="field-observations"><span>06</span><strong>Observations</strong></a>
+    <a href="#career-trajectory" data-section="career-trajectory"><span>07</span><strong>Trajectory</strong></a>
+    <a href="#contact-back-cover" data-section="contact-back-cover"><span>08</span><strong>Contact</strong></a>
+  </nav>
 
+  <div class="mission-log-body">
     <div class="mission-log-sections">
-      <section id="current-operations" class="mission-section mission-section--operations" aria-labelledby="current-operations-title">
+      <section id="current-operations" class="mission-section mission-section--operations" aria-labelledby="current-operations-title" data-rail-section="current-operations">
         <div class="mission-section-kicker">CURRENT OPERATIONS / 01</div>
-        <h2 id="current-operations-title">Task records in motion</h2>
-        <p class="mission-section__intro">A current task record for live systems, ongoing builds, and research work.</p>
-        <div class="operations-log" aria-label="Current task records">
-          {% for operation in site.data.current_operations.operations %}
-            <article class="operations-log__entry">
-              <div class="operations-log__meta">
-                <span>{{ operation.id }}</span>
-                <strong>{{ operation.status }}</strong>
-              </div>
-              <div class="operations-log__body">
-                <h3>{{ operation.title }}</h3>
-                <p>{{ operation.summary }}</p>
-                {% if operation.href %}
-                  <a href="{{ operation.href }}" target="_blank" rel="noopener noreferrer">{{ operation.label | default: "Open" }} →</a>
-                {% endif %}
-              </div>
-            </article>
-          {% endfor %}
+        <div class="mission-section__header mission-section__header--split">
+          <div>
+            <h2 id="current-operations-title">Task records in motion</h2>
+            <p class="mission-section__intro">The old News block is now absorbed into a live operating record: active systems, current responsibilities, and dispatch notes.</p>
+          </div>
+          <aside class="mission-control-card" aria-label="Current operating status">
+            <span>STATUS</span>
+            <strong>ACTIVE SYSTEMS</strong>
+            <p>Five maintained tracks across policy data, local-first tools, market research, game design, and speech training.</p>
+          </aside>
+        </div>
+
+        <div class="operations-console" aria-label="Current task records">
+          <div class="operations-log">
+            {% for operation in site.data.current_operations.operations %}
+              <article class="operations-log__entry">
+                <div class="operations-log__meta">
+                  <span>{{ operation.id }}</span>
+                  <strong>{{ operation.status }}</strong>
+                </div>
+                <div class="operations-log__body">
+                  <h3>{{ operation.title }}</h3>
+                  <p>{{ operation.summary }}</p>
+                  {% if operation.href %}
+                    <a href="{{ operation.href }}" target="_blank" rel="noopener noreferrer">{{ operation.label | default: "Open" }} →</a>
+                  {% endif %}
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+
+          <aside class="operations-dispatches" aria-label="Current dispatch feed">
+            <div class="operations-dispatches__header">
+              <span>DISPATCH FEED</span>
+              <strong>Previously News</strong>
+            </div>
+            {% for dispatch in site.data.current_operations.dispatches %}
+              <article class="operations-dispatch">
+                <time>{{ dispatch.date }}</time>
+                <h3>{{ dispatch.label }}</h3>
+                <p>{{ dispatch.text }}</p>
+              </article>
+            {% endfor %}
+          </aside>
         </div>
       </section>
 
-      <section id="selected-deployments" class="mission-section mission-section--deployments" aria-labelledby="selected-deployments-title">
+      <section id="selected-deployments" class="mission-section mission-section--deployments" aria-labelledby="selected-deployments-title" data-rail-section="selected-deployments">
         <div class="mission-section-kicker">SELECTED DEPLOYMENTS / 02-04</div>
-        <h2 id="selected-deployments-title">Prioritized systems and technical assets</h2>
+        <h2 id="selected-deployments-title">Systems that have left the notebook</h2>
         <p class="mission-section__intro">A curated deployment list ordered by importance rather than repository chronology.</p>
         <div class="deployments-log">
           {% for group in site.data.selected_deployments.groups %}
@@ -155,9 +177,9 @@ home_cta: true
         </div>
       </section>
 
-      <section id="research-record" class="mission-section mission-section--research" aria-labelledby="research-record-title">
+      <section id="research-record" class="mission-section mission-section--research" aria-labelledby="research-record-title" data-rail-section="research-record">
         <div class="mission-section-kicker">RESEARCH RECORD / 05</div>
-        <h2 id="research-record-title">Selected research outputs and knowledge records</h2>
+        <h2 id="research-record-title">Evidence, papers, and knowledge systems</h2>
         <p class="mission-section__intro">Formal publication, research systems, and field-oriented technical records.</p>
         <div class="research-records">
           {% for record in site.data.research_records.records %}
@@ -184,9 +206,9 @@ home_cta: true
         </div>
       </section>
 
-      <section id="field-observations" class="mission-section mission-section--observations" aria-labelledby="field-observations-title">
+      <section id="field-observations" class="mission-section mission-section--observations" aria-labelledby="field-observations-title" data-rail-section="field-observations">
         <div class="mission-section-kicker">FIELD OBSERVATIONS / 06</div>
-        <h2 id="field-observations-title">Selected notes from the field</h2>
+        <h2 id="field-observations-title">Notes from the edge of the work</h2>
         <p class="mission-section__intro">A curated reading path through observations, build notes, and technical records.</p>
         <div class="field-observations">
           {% for observation in site.data.field_observations.observations %}
@@ -208,7 +230,7 @@ home_cta: true
         </div>
       </section>
 
-      <section id="career-trajectory" class="mission-section mission-section--trajectory" aria-labelledby="career-trajectory-title">
+      <section id="career-trajectory" class="mission-section mission-section--trajectory" aria-labelledby="career-trajectory-title" data-rail-section="career-trajectory">
         <div class="mission-section-kicker">CAREER TRAJECTORY / 07</div>
         <h2 id="career-trajectory-title">How this path formed</h2>
         <p class="mission-section__intro">A phase narrative; the complete formal record remains in the CV archive.</p>
@@ -229,7 +251,7 @@ home_cta: true
         </div>
       </section>
 
-      <section id="contact-back-cover" class="mission-section mission-back-cover" aria-labelledby="contact-back-cover-title">
+      <section id="contact-back-cover" class="mission-section mission-back-cover" aria-labelledby="contact-back-cover-title" data-rail-section="contact-back-cover">
         <div class="mission-section-kicker">BACK COVER / 08</div>
         <h2 id="contact-back-cover-title">End of log</h2>
         <p>If something here resonates, use the links below for code, records, archives, support, or direct contact.</p>
@@ -248,8 +270,9 @@ home_cta: true
 
 <script>
   (() => {
+    const home = document.querySelector('.mission-log-home--product');
     const rail = document.querySelector('.mission-page-rail');
-    if (!rail || !('IntersectionObserver' in window)) return;
+    if (!home || !rail) return;
 
     const links = Array.from(rail.querySelectorAll('a[data-section]'));
     const sections = links
@@ -257,6 +280,7 @@ home_cta: true
       .filter(Boolean);
 
     const activate = (id) => {
+      home.dataset.activeSection = id;
       links.forEach((link) => {
         const active = link.dataset.section === id;
         link.classList.toggle('is-active', active);
@@ -268,18 +292,38 @@ home_cta: true
       });
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    let ticking = false;
+    const updateRail = () => {
+      ticking = false;
+      const firstSection = sections[0];
+      if (!firstSection) return;
 
-        if (visible) activate(visible.target.id);
-      },
-      { rootMargin: '-28% 0px -58% 0px', threshold: [0.12, 0.35, 0.6] },
-    );
+      const firstTop = firstSection.getBoundingClientRect().top;
+      home.classList.toggle('mission-log-home--rail-visible', firstTop < window.innerHeight * 0.58);
 
-    sections.forEach((section) => observer.observe(section));
-    if (sections[0]) activate(sections[0].id);
+      const probeLine = window.innerHeight * 0.38;
+      let current = firstSection;
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= probeLine && rect.bottom > probeLine * 0.35) {
+          current = section;
+          break;
+        }
+        if (rect.top < probeLine) current = section;
+      }
+      activate(current.id);
+    };
+
+    const requestUpdate = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(updateRail);
+      }
+    };
+
+    links.forEach((link) => link.addEventListener('click', () => activate(link.dataset.section)));
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    updateRail();
   })();
 </script>
