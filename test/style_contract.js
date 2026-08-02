@@ -85,7 +85,7 @@ for (const requiredPath of ["test/visual", "test/integration_plugin_toggles.sh",
 }
 
 const visualPlugin = read("_plugins/site_visual_polish.rb");
-for (const stylesheet of ["site-polish.css", "site-upgrade.css", "hao-design.css"]) {
+for (const stylesheet of ["site-polish.css", "site-upgrade.css", "hao-design.css", "hao-home-v6.css"]) {
   if (!visualPlugin.includes(stylesheet)) {
     failures.push(`Site visual polish plugin must inject \`${stylesheet}\`.`);
   }
@@ -131,41 +131,58 @@ if (!exists("assets/css/hao-design.css")) {
   }
 }
 
+if (!exists("assets/css/hao-home-v6.css")) {
+  failures.push("Clean homepage reframe CSS missing: `assets/css/hao-home-v6.css`.");
+} else {
+  const homeCss = read("assets/css/hao-home-v6.css");
+  // prettier-ignore
+  for (const requiredSelector of [".hao-home--v6", ".hao-home-hero", ".hao-home-index", ".hao-home-current-grid", ".hao-home-system-grid", "overflow-x: clip", "prefers-reduced-motion"]) {
+    if (!homeCss.includes(requiredSelector)) {
+      failures.push(`Homepage v6 CSS must keep selector/contract: \`${requiredSelector}\`.`);
+    }
+  }
+}
+
 const aboutPage = read("_pages/about.md");
 // prettier-ignore
 for (const requiredHomeMarker of [
-  "mission-log-home--product",
-  "COVER / 00",
-  "Systems in progress, evidence in motion.",
-  "CURRENT OPERATIONS / 01",
-  "Task records in motion",
-  "operations-console",
-  "operations-dispatches",
-  "Previously News",
-  "mission-page-rail",
-  "mission-log-home--rail-visible",
-  "SELECTED DEPLOYMENTS / 02-04",
-  "RESEARCH RECORD / 05",
-  "FIELD OBSERVATIONS / 06",
-  "CAREER TRAJECTORY / 07",
-  "BACK COVER / 08",
-  "operations-log",
+  "hao-home--v6",
+  "Building small data systems for climate, geoscience, and personal productivity.",
+  "Current work",
+  "Active tracks, not a news feed.",
+  "hao-home-current-grid",
+  "Task notes",
+  "Selected systems",
+  "Research record",
+  "Field observations",
+  "Career trajectory",
+  "hao-home-contact",
 ]) {
   if (!aboutPage.includes(requiredHomeMarker)) {
     failures.push(
-      `Mission Log homepage must keep marker: \`${requiredHomeMarker}\`.`,
+      `Hao homepage v6 must keep marker: \`${requiredHomeMarker}\`.`,
     );
   }
 }
 
+for (const removedHomeMarker of [
+  "mission-log-home--product",
+  "mission-page-rail",
+  "operations-console",
+]) {
+  if (aboutPage.includes(removedHomeMarker)) {
+    failures.push(`Hao homepage v6 must not reintroduce old marker: \`${removedHomeMarker}\`.`);
+  }
+}
+
 if (!/^news:\s*false\b/m.test(aboutPage)) {
-  failures.push("Mission Log homepage must keep legacy `news` disabled after Step 2.");
+  failures.push("Hao homepage must keep legacy `news` disabled.");
 }
 if (!/^\s*enabled:\s*false\b/m.test(aboutPage)) {
-  failures.push("Mission Log homepage must keep legacy announcements disabled.");
+  failures.push("Hao homepage must keep legacy announcements disabled.");
 }
 if (!exists("_data/current_operations.yml")) {
-  failures.push("Mission Log current operations data missing: `_data/current_operations.yml`.");
+  failures.push("Current operations data missing: `_data/current_operations.yml`.");
 } else {
   const currentOperations = read("_data/current_operations.yml");
   // prettier-ignore
@@ -186,7 +203,7 @@ for (const hiddenNavPage of [
 ]) {
   if (!/^nav:\s*false$/m.test(read(hiddenNavPage))) {
     failures.push(
-      `Mission Log nav strategy requires \`${hiddenNavPage}\` to keep \`nav: false\`.`,
+      `Hao homepage nav strategy requires \`${hiddenNavPage}\` to keep \`nav: false\`.`,
     );
   }
 }
