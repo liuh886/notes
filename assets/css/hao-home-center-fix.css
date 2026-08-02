@@ -1,10 +1,10 @@
 /*
- * al-folio-compatible wide homepage layer
+ * al-folio baseline homepage enhancement
  *
- * This layer restores the homepage to the native al-folio about-page grammar:
- * navbar > .container, main > .container, .post, .post-header, article, and
- * clearfix. It only widens the native shell and adds compatible content modules
- * for the homepage records. It is not a standalone landing-page shell.
+ * The whole site should look like upstream al-folio by default. This single
+ * homepage-only layer widens the native about-page shell and adds lightweight
+ * content modules inside the original .post / article / clearfix flow. It does
+ * not restyle Blog, Projects, Repositories, CV, or secondary pages.
  */
 
 :root {
@@ -13,7 +13,7 @@
   --hao-alfolio-shell: min(calc(100% - var(--hao-alfolio-gutter) - var(--hao-alfolio-gutter)), var(--hao-alfolio-shell-max));
   --hao-home-ink: var(--global-text-color, #111827);
   --hao-home-muted: var(--global-text-color-light, #6b7280);
-  --hao-home-accent: var(--hao-mission-accent, #b80fb8);
+  --hao-home-accent: var(--global-theme-color, #b80fb8);
   --hao-home-line: var(--global-divider-color, #e5e7eb);
   --hao-home-card-bg: var(--global-bg-color, #ffffff);
   --hao-home-soft: color-mix(in srgb, var(--hao-home-accent) 5%, var(--global-bg-color, #ffffff));
@@ -38,7 +38,7 @@ body:has(.hao-home--alfolio) .post {
   max-width: none;
 }
 
-/* Undo the old rescue layer so the native about layout is visible again. */
+/* Keep the native al-folio about-page surface visible. */
 body:has(.hao-home--alfolio) .post > header,
 body:has(.hao-home--alfolio) .post-header,
 body:has(.hao-home--alfolio) .post-title,
@@ -53,19 +53,13 @@ body:has(.hao-home--alfolio) .post-header {
   margin-bottom: 1.75rem;
 }
 
-body:has(.hao-home--alfolio) .post-title {
-  color: var(--hao-home-ink);
-}
-
 body:has(.hao-home--alfolio) .desc {
   max-width: 42rem;
-  color: var(--hao-home-muted);
 }
 
 /* Homepage brand: same semantic class stack as the upstream al-folio header. */
 body:has(.hao-home--alfolio) .hao-home-navbar-brand {
   display: inline-block !important;
-  color: var(--hao-home-ink) !important;
   text-decoration: none !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -79,7 +73,6 @@ body:has(.hao-home--alfolio) .hao-home-navbar-brand::after {
 .hao-home--alfolio {
   clear: both;
   margin-top: 1.25rem;
-  color: var(--hao-home-ink);
 }
 
 .hao-home--alfolio *,
