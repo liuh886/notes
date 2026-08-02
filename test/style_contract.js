@@ -57,6 +57,24 @@ for (const requiredPath of ["test/visual", "test/integration_plugin_toggles.sh",
   if (!exists(requiredPath)) failures.push(`Starter integration/visual contract missing required path: \`${requiredPath}\`.`);
 }
 
+const deprecatedHomepageFiles = [
+  "assets/css/mission-log-deployments.css",
+  "assets/css/mission-log-records.css",
+  "assets/css/mission-log-observations.css",
+  "assets/css/mission-log-trajectory.css",
+  "assets/css/mission-log-visual-pass.css",
+  "assets/css/mission-log-canvas-reset.css",
+  "assets/css/mission-log-shell-v2.css",
+  "assets/css/mission-log-cover-refinement.css",
+  "assets/css/hao-home-v6.css",
+];
+
+for (const deprecatedFile of deprecatedHomepageFiles) {
+  if (exists(deprecatedFile)) {
+    failures.push(`Deprecated homepage experiment file must be removed: \`${deprecatedFile}\`.`);
+  }
+}
+
 const visualPlugin = read("_plugins/site_visual_polish.rb");
 requireIncludes(
   visualPlugin,
