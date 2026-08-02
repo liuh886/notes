@@ -85,7 +85,12 @@ for (const requiredPath of ["test/visual", "test/integration_plugin_toggles.sh",
 }
 
 const visualPlugin = read("_plugins/site_visual_polish.rb");
-for (const stylesheet of ["site-polish.css", "site-upgrade.css", "hao-design.css", "hao-home-v6.css"]) {
+for (const stylesheet of [
+  "site-polish.css",
+  "site-upgrade.css",
+  "hao-design.css",
+  "hao-home-v6.css",
+]) {
   if (!visualPlugin.includes(stylesheet)) {
     failures.push(`Site visual polish plugin must inject \`${stylesheet}\`.`);
   }
@@ -135,8 +140,15 @@ if (!exists("assets/css/hao-home-v6.css")) {
   failures.push("Clean homepage reframe CSS missing: `assets/css/hao-home-v6.css`.");
 } else {
   const homeCss = read("assets/css/hao-home-v6.css");
-  // prettier-ignore
-  for (const requiredSelector of [".hao-home--v6", ".hao-home-hero", ".hao-home-index", ".hao-home-current-grid", ".hao-home-system-grid", "overflow-x: clip", "prefers-reduced-motion"]) {
+  for (const requiredSelector of [
+    ".hao-home--v6",
+    ".hao-home-hero",
+    ".hao-home-index",
+    ".hao-home-current-grid",
+    ".hao-home-system-grid",
+    "overflow-x: clip",
+    "prefers-reduced-motion",
+  ]) {
     if (!homeCss.includes(requiredSelector)) {
       failures.push(`Homepage v6 CSS must keep selector/contract: \`${requiredSelector}\`.`);
     }
