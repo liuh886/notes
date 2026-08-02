@@ -134,13 +134,16 @@ if (!exists("assets/css/hao-design.css")) {
 const aboutPage = read("_pages/about.md");
 // prettier-ignore
 for (const requiredHomeMarker of [
-  "mission-log-home--v2",
+  "mission-log-home--product",
   "COVER / 00",
-  "A working log for systems, research, and field notes.",
-  "Recorded from the edge of climate, geospatial intelligence, and AI-native productivity.",
-  "mission-page-rail",
+  "Systems in progress, evidence in motion.",
   "CURRENT OPERATIONS / 01",
   "Task records in motion",
+  "operations-console",
+  "operations-dispatches",
+  "Previously News",
+  "mission-page-rail",
+  "mission-log-home--rail-visible",
   "SELECTED DEPLOYMENTS / 02-04",
   "RESEARCH RECORD / 05",
   "FIELD OBSERVATIONS / 06",
@@ -158,12 +161,15 @@ for (const requiredHomeMarker of [
 if (!/^news:\s*false\b/m.test(aboutPage)) {
   failures.push("Mission Log homepage must keep legacy `news` disabled after Step 2.");
 }
+if (!/^\s*enabled:\s*false\b/m.test(aboutPage)) {
+  failures.push("Mission Log homepage must keep legacy announcements disabled.");
+}
 if (!exists("_data/current_operations.yml")) {
   failures.push("Mission Log current operations data missing: `_data/current_operations.yml`.");
 } else {
   const currentOperations = read("_data/current_operations.yml");
   // prettier-ignore
-  for (const requiredOperation of ["OP-01", "CCUS Policy Hub", "Ownly", "FlappyK", "RhythmCoach", "AlphaEngine"]) {
+  for (const requiredOperation of ["OP-01", "CCUS Policy Hub", "Ownly", "FlappyK", "RhythmCoach", "AlphaEngine", "dispatches", "Shell reset"]) {
     if (!currentOperations.includes(requiredOperation)) {
       failures.push(
         `Current operations log must keep operation marker: \`${requiredOperation}\`.`,
