@@ -1,31 +1,42 @@
 operations:
   - id: OP-01
     title: CCUS Policy Hub
-    status: LIVE / MAINTAINING
-    summary: Maintaining a public-facing policy and project intelligence layer for CCUS deployment, regulation, and dMRV evidence.
+    status: LIVE SYSTEM
+    summary: Public policy and project intelligence layer for CCUS deployment, regulation, and dMRV evidence. Current work focuses on keeping the data and policy pages coherent as the database changes.
     href: https://liuh886.github.io/ccus-policy-hub/
     label: Open system
   - id: OP-02
     title: Ownly
-    status: IN PROGRESS
-    summary: Building a local-first ownership memory system across Obsidian, web, and agent-readable CLI surfaces.
+    status: PRODUCT BUILD
+    summary: Local-first ownership memory across Obsidian, web, PWA, and agent-readable CLI surfaces. The active track is reliability, terminology, onboarding, and cross-surface consistency.
     href: https://liuh886.github.io/ownly/
     label: Open app
   - id: OP-03
-    title: FlappyK
-    status: LIVE / ITERATING
-    summary: Testing a market-intuition game around hidden historical K-line decisions, positive excess return, and lightweight play.
-    href: https://liuh886.github.io/FlappyK/
-    label: Play game
-  - id: OP-04
-    title: RhythmCoach
-    status: BETA
-    summary: Refining a lightweight rhythm and speech-practice tool with simple onboarding, PWA installation, and focused review.
-    href: https://liuh886.github.io/RhythmCoach/
-    label: Open app
-  - id: OP-05
     title: AlphaEngine
-    status: RESEARCH
-    summary: Investigating practical routes toward durable alpha discovery, cleaner data foundations, and reproducible strategy records.
+    status: RESEARCH ENGINE
+    summary: Experimental research platform for data foundations, factor panels, model training, and reproducible strategy records across selected US and China pools.
     href: https://github.com/liuh886/alpha_engine
     label: View repository
+  - id: OP-04
+    title: FlappyK
+    status: LIVE ITERATION
+    summary: Market-intuition game built around hidden historical K-line decisions. Current work is product polish, PWA quality, analytics, and a clearer arcade identity.
+    href: https://liuh886.github.io/FlappyK/
+    label: Play game
+  - id: OP-05
+    title: RhythmCoach
+    status: TRAINING TOOL
+    summary: Lightweight rhythm and speech-practice tool for focused review sessions. Current work is content structure, subtle pronunciation marks, and PWA training flow.
+    href: https://liuh886.github.io/RhythmCoach/
+    label: Open app
+
+dispatches:
+  - date: 2026-08-02
+    label: Shell reset
+    text: Mission Log homepage moved away from legacy news and into a task-record homepage architecture.
+  - date: 2026-08-02
+    label: Product lane
+    text: Active systems are now treated as maintained product and research lanes rather than chronological updates.
+  - date: 2026-08-02
+    label: Design direction
+    text: The homepage should read as a working control surface for a solo research and product practice, not as a theme demo.
