@@ -1,0 +1,344 @@
+/*
+ * Mission Log shell v2
+ *
+ * Coherent homepage shell after the full-bleed reset. This replaces the
+ * post-render repair approach with a direct, unified visual layer.
+ */
+
+body:has(.mission-log-home--v2) {
+  --mission-v2-wide: min(100%, 82rem);
+  --mission-v2-main: min(100%, 72rem);
+  --mission-v2-read: min(100%, 48rem);
+  --mission-v2-rail: 3rem;
+  scroll-behavior: smooth;
+}
+
+/* Align the real navigation system with the wider homepage canvas. */
+body:has(.mission-log-home--v2) .navbar,
+body:has(.mission-log-home--v2) header,
+body:has(.mission-log-home--v2) .navbar .container,
+body:has(.mission-log-home--v2) .navbar .container-fluid {
+  max-width: none;
+}
+
+body:has(.mission-log-home--v2) .navbar .container,
+body:has(.mission-log-home--v2) .navbar .container-fluid {
+  width: 100%;
+  padding-right: max(1rem, calc((100vw - 82rem) / 2));
+  padding-left: max(1rem, calc((100vw - 82rem) / 2));
+}
+
+body:has(.mission-log-home--v2) .navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--global-text-color, #111827) !important;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body:has(.mission-log-home--v2) .navbar-brand::before {
+  content: "";
+  width: 0.42rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--hao-mission-accent);
+  box-shadow: 0 0 0 0.25rem var(--hao-mission-soft);
+}
+
+body:has(.mission-log-home--v2) .navbar-brand::after {
+  content: " / Mission Log";
+  color: var(--hao-text-muted);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+body:has(.mission-log-home--v2) .navbar-nav {
+  gap: 0.15rem;
+}
+
+body:has(.mission-log-home--v2) .navbar-nav .nav-link {
+  color: var(--hao-text-muted) !important;
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+/* Reset the homepage itself as one deliberate canvas. */
+.mission-log-home--v2 {
+  overflow: visible !important;
+  padding-top: clamp(1rem, 2.5vw, 2rem) !important;
+}
+
+.mission-log-home--v2::before {
+  pointer-events: none;
+}
+
+.mission-log-home--v2 .mission-cover {
+  max-width: var(--mission-v2-wide) !important;
+  min-height: min(78vh, 46rem) !important;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: clamp(1.1rem, 2.8vw, 2.2rem) !important;
+  background:
+    radial-gradient(circle at 8% 10%, color-mix(in srgb, var(--hao-mission-accent) 12%, transparent), transparent 22rem),
+    radial-gradient(circle at 88% 20%, color-mix(in srgb, var(--hao-mission-accent) 11%, transparent), transparent 23rem),
+    linear-gradient(90deg, color-mix(in srgb, var(--hao-mission-accent) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in srgb, var(--hao-mission-accent) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(135deg, var(--hao-surface-base), color-mix(in srgb, var(--hao-surface-base) 84%, var(--hao-mission-soft)) 58%, var(--hao-surface-soft)) !important;
+  background-size: auto, auto, 42px 42px, 42px 42px, auto !important;
+}
+
+.mission-log-home--v2 .mission-cover__layout {
+  grid-template-columns: minmax(0, 1.08fr) minmax(22rem, 0.92fr) !important;
+  gap: clamp(2rem, 6vw, 5rem) !important;
+}
+
+.mission-cover__eyebrow {
+  margin: 0.85rem 0 0 !important;
+  color: var(--hao-mission-accent) !important;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.mission-log-home--v2 .mission-cover h1 {
+  max-width: 12ch !important;
+  font-size: clamp(3.35rem, 8vw, 7.4rem) !important;
+  line-height: 0.9 !important;
+}
+
+.mission-log-home--v2 .mission-cover__subtitle {
+  max-width: 40rem !important;
+}
+
+.mission-log-home--v2 .mission-cover__note {
+  max-width: 33rem !important;
+}
+
+.mission-log-home--v2 .mission-cover__visual {
+  display: grid;
+  min-height: clamp(23rem, 42vw, 32rem) !important;
+  grid-template-rows: auto 1fr auto;
+  align-content: stretch;
+  background:
+    radial-gradient(circle at 50% 46%, color-mix(in srgb, var(--hao-mission-accent) 18%, transparent), transparent 31%),
+    linear-gradient(90deg, color-mix(in srgb, var(--hao-mission-accent) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in srgb, var(--hao-mission-accent) 5%, transparent) 1px, transparent 1px),
+    color-mix(in srgb, var(--hao-surface-base) 90%, var(--hao-mission-soft)) !important;
+  background-size: auto, 28px 28px, 28px 28px, auto !important;
+}
+
+.mission-cover__portrait {
+  position: relative;
+  z-index: 2;
+  justify-self: end;
+  width: min(13.5rem, 58%);
+  margin: 0 0 clamp(0.9rem, 2vw, 1.25rem);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--hao-mission-accent) 24%, var(--hao-border-subtle));
+  border-radius: clamp(0.85rem, 2vw, 1.35rem);
+  background: var(--hao-surface-base);
+  box-shadow: 0 18px 48px color-mix(in srgb, var(--hao-mission-accent) 14%, transparent);
+}
+
+.mission-cover__portrait img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.mission-cover__portrait figcaption {
+  margin: 0;
+  padding: 0.42rem 0.55rem;
+  color: var(--hao-text-muted);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+/* The page rail starts after the cover, so it does not appear over the banner. */
+.mission-log-body {
+  display: grid;
+  max-width: var(--mission-v2-wide);
+  grid-template-columns: var(--mission-v2-rail) minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  margin: clamp(2.5rem, 7vw, 5.5rem) auto 0;
+}
+
+.mission-page-rail {
+  position: sticky;
+  top: clamp(4.5rem, 10vh, 7rem);
+  display: flex;
+  min-height: 18rem;
+  align-self: start;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.3rem 0;
+}
+
+.mission-page-rail::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: -1;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--hao-mission-line), transparent);
+  transform: translateX(-50%);
+}
+
+.mission-page-rail a {
+  display: grid;
+  width: 1.7rem;
+  height: 1.7rem;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--hao-text-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.mission-page-rail a strong {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.mission-page-rail a:hover,
+.mission-page-rail a:focus-visible,
+.mission-page-rail a.is-active {
+  background: var(--hao-mission-soft);
+  color: var(--hao-mission-accent);
+  transform: translateX(1px);
+}
+
+.mission-log-sections {
+  min-width: 0;
+}
+
+.mission-log-home--v2 .mission-index {
+  display: none !important;
+}
+
+/* Sections now share one rhythm but keep distinct shapes. */
+.mission-log-home--v2 .mission-section {
+  max-width: var(--mission-v2-main) !important;
+  margin-top: clamp(2.6rem, 6vw, 5.25rem) !important;
+}
+
+.mission-log-home--v2 .mission-section:first-child {
+  margin-top: 0 !important;
+}
+
+.mission-log-home--v2 .mission-section > h2 {
+  max-width: 13ch !important;
+}
+
+.mission-section--operations .operations-log {
+  border-left: 1px solid var(--hao-mission-line);
+}
+
+.mission-section--operations .operations-log__entry::before {
+  background: var(--hao-surface-base);
+}
+
+.mission-section--deployments {
+  max-width: min(100%, 76rem) !important;
+}
+
+.mission-section--deployments .deployments-group:first-child .deployment-card:first-child h4 {
+  max-width: 12ch;
+}
+
+.mission-section--research .research-record,
+.mission-section--observations .field-observation,
+.mission-section--trajectory .career-phase {
+  background-color: color-mix(in srgb, var(--hao-surface-base) 92%, var(--hao-mission-soft)) !important;
+}
+
+.mission-back-cover {
+  max-width: var(--mission-v2-wide) !important;
+  margin-top: clamp(3.4rem, 8vw, 6rem) !important;
+}
+
+.mission-back-cover .mission-section-kicker {
+  color: var(--hao-mission-accent);
+}
+
+@media (max-width: 991px) {
+  body:has(.mission-log-home--v2) .navbar .container,
+  body:has(.mission-log-home--v2) .navbar .container-fluid {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  body:has(.mission-log-home--v2) .navbar-brand::after {
+    content: " / Log";
+  }
+
+  .mission-log-home--v2 .mission-cover__layout,
+  .mission-log-body {
+    display: block;
+  }
+
+  .mission-page-rail {
+    position: static;
+    min-height: 0;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 auto clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  .mission-page-rail::before {
+    display: none;
+  }
+
+  .mission-page-rail a {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .mission-log-home--v2 .mission-cover__visual {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  body:has(.mission-log-home--v2) .navbar-brand {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  .mission-page-rail {
+    display: none;
+  }
+
+  .mission-log-home--v2 .mission-cover h1 {
+    max-width: 10.5ch !important;
+    font-size: clamp(2.75rem, 16vw, 4.5rem) !important;
+  }
+
+  .mission-cover__portrait {
+    width: min(12rem, 72%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mission-page-rail a {
+    transition: none !important;
+  }
+}
