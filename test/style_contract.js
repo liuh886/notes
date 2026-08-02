@@ -81,7 +81,7 @@ requireIncludes(
   [
     "HOMEPAGE_STYLESHEETS",
     "hao-home-center-fix.css",
-    'STYLESHEET_VERSION = "20260802-alfolio-baseline"',
+    'STYLESHEET_VERSION = "20260802-home-width-align"',
     "def self.apply_home_navbar_brand(page)",
     "navbar-brand title font-weight-lighter hao-home-navbar-brand",
     "<span class=\"font-weight-bold\">Zhihao</span> LIU",
@@ -122,12 +122,15 @@ requireIncludes(
   [
     "al-folio baseline homepage enhancement",
     "--hao-alfolio-shell-max: 72rem",
+    "Shared al-folio shell: navbar and homepage content use the same edge.",
     "body:has(.hao-home--alfolio) main > .container",
     "body:has(.hao-home--alfolio) .navbar > .container",
+    "body:has(.hao-home--alfolio) article > .clearfix",
     "display: revert !important",
     ".hao-home-navbar-brand",
     ".hao-home--alfolio",
     ".hao-home-intro",
+    ".hao-home-intro .hao-home-eyebrow",
     ".hao-home-section",
     ".hao-home-knowledge-grid",
     "@media (max-width: 992px)",
@@ -156,7 +159,7 @@ requireIncludes(
   [
     "hao-home--alfolio",
     "Research records, shipped tools, and field-informed systems.",
-    "hao-home-center-fix.css?v=20260802-alfolio-baseline",
+    "hao-home-center-fix.css?v=20260802-home-width-align",
     "hao-home-navbar-brand",
     'font-weight-bold">Zhihao</span> LIU',
     "Verify secondary pages keep al-folio baseline",

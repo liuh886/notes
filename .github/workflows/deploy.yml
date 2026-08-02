@@ -80,7 +80,7 @@ jobs:
           test -f _site/index.html
           grep -q 'hao-home--alfolio' _site/index.html
           grep -q 'Research records, shipped tools, and field-informed systems.' _site/index.html
-          grep -q 'hao-home-center-fix.css?v=20260802-alfolio-baseline' _site/index.html
+          grep -q 'hao-home-center-fix.css?v=20260802-home-width-align' _site/index.html
           grep -q 'hao-home-navbar-brand' _site/index.html
           grep -q 'font-weight-bold">Zhihao</span> LIU' _site/index.html
           if grep -q 'mission-log-shell-v2.css' _site/index.html; then
