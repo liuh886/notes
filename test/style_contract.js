@@ -79,27 +79,27 @@ const visualPlugin = read("_plugins/site_visual_polish.rb");
 requireIncludes(
   visualPlugin,
   [
-    "site-polish.css",
-    "site-upgrade.css",
-    "hao-design.css",
-    "hao-home-safe.css",
+    "HOMEPAGE_STYLESHEETS",
     "hao-home-center-fix.css",
-    'STYLESHEET_VERSION = "20260802-alfolio-wide-home"',
+    'STYLESHEET_VERSION = "20260802-alfolio-baseline"',
     "def self.apply_home_navbar_brand(page)",
     "navbar-brand title font-weight-lighter hao-home-navbar-brand",
     "<span class=\"font-weight-bold\">Zhihao</span> LIU",
+    "def self.apply_homepage_stylesheet(page)",
     "?v=#{STYLESHEET_VERSION}",
   ],
   "Site visual polish plugin",
 );
-requireRegex(
-  visualPlugin,
-  /"hao-home-safe\.css",\s*"hao-home-center-fix\.css"/m,
-  "Final homepage stylesheets must load in the order `hao-home-safe.css` then `hao-home-center-fix.css`.",
-);
 requireAbsent(
   visualPlugin,
   [
+    "TARGET_PAGES",
+    "TARGET_URLS",
+    "TARGET_URL_PREFIXES",
+    "site-polish.css",
+    "site-upgrade.css",
+    "hao-design.css",
+    "hao-home-safe.css",
     'HOMEPAGE_BRAND = "Zhihao LIU"',
     "mission-log-deployments.css",
     "mission-log-records.css",
@@ -114,16 +114,13 @@ requireAbsent(
   "Site visual polish plugin",
 );
 
-if (!exists("assets/css/site-upgrade.css")) failures.push("Frontend upgrade layer missing: `assets/css/site-upgrade.css`.");
-if (!exists("assets/css/hao-design.css")) failures.push("Hao design system layer missing: `assets/css/hao-design.css`.");
-if (!exists("assets/css/hao-home-safe.css")) failures.push("Safe homepage CSS missing: `assets/css/hao-home-safe.css`.");
 if (!exists("assets/css/hao-home-center-fix.css")) failures.push("Homepage al-folio-compatible CSS missing: `assets/css/hao-home-center-fix.css`.");
 
 const homeAlfolioCss = exists("assets/css/hao-home-center-fix.css") ? read("assets/css/hao-home-center-fix.css") : "";
 requireIncludes(
   homeAlfolioCss,
   [
-    "al-folio-compatible wide homepage layer",
+    "al-folio baseline homepage enhancement",
     "--hao-alfolio-shell-max: 72rem",
     "body:has(.hao-home--alfolio) main > .container",
     "body:has(.hao-home--alfolio) .navbar > .container",
@@ -159,9 +156,11 @@ requireIncludes(
   [
     "hao-home--alfolio",
     "Research records, shipped tools, and field-informed systems.",
-    "hao-home-center-fix.css?v=20260802-alfolio-wide-home",
+    "hao-home-center-fix.css?v=20260802-alfolio-baseline",
     "hao-home-navbar-brand",
     'font-weight-bold">Zhihao</span> LIU',
+    "Verify secondary pages keep al-folio baseline",
+    "site-polish.css|site-upgrade.css|hao-design.css|hao-home-safe.css|hao-home-center-fix.css",
   ],
   "Deploy workflow homepage artifact guard",
 );
