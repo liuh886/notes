@@ -58,46 +58,109 @@ for (const requiredPath of ["test/visual", "test/integration_plugin_toggles.sh",
 }
 
 const visualPlugin = read("_plugins/site_visual_polish.rb");
-requireIncludes(visualPlugin, ["site-polish.css", "site-upgrade.css", "hao-design.css", "hao-home-safe.css"], "Site visual polish plugin");
-requireRegex(visualPlugin, /"hao-home-v6\.css",\s*"hao-home-safe\.css"/m, "Safe homepage stylesheet must load after v6 so it can override the failed layout.");
+requireIncludes(
+  visualPlugin,
+  [
+    "site-polish.css",
+    "site-upgrade.css",
+    "hao-design.css",
+    "hao-home-safe.css",
+    "hao-home-center-fix.css",
+    "STYLESHEET_VERSION = \"20260802-home-cleanup\"",
+    "?v=#{STYLESHEET_VERSION}",
+  ],
+  "Site visual polish plugin",
+);
+requireRegex(
+  visualPlugin,
+  /"hao-home-safe\.css",\s*"hao-home-center-fix\.css"/m,
+  "Final homepage stylesheets must load in the order `hao-home-safe.css` then `hao-home-center-fix.css`.",
+);
+requireAbsent(
+  visualPlugin,
+  [
+    "mission-log-deployments.css",
+    "mission-log-records.css",
+    "mission-log-observations.css",
+    "mission-log-trajectory.css",
+    "mission-log-visual-pass.css",
+    "mission-log-canvas-reset.css",
+    "mission-log-shell-v2.css",
+    "mission-log-cover-refinement.css",
+    "hao-home-v6.css",
+  ],
+  "Site visual polish plugin",
+);
 
 if (!exists("assets/css/site-upgrade.css")) failures.push("Frontend upgrade layer missing: `assets/css/site-upgrade.css`.");
 if (!exists("assets/css/hao-design.css")) failures.push("Hao design system layer missing: `assets/css/hao-design.css`.");
 if (!exists("assets/css/hao-home-safe.css")) failures.push("Safe homepage CSS missing: `assets/css/hao-home-safe.css`.");
+if (!exists("assets/css/hao-home-center-fix.css")) failures.push("Homepage shell CSS missing: `assets/css/hao-home-center-fix.css`.");
 
 const homeSafeCss = exists("assets/css/hao-home-safe.css") ? read("assets/css/hao-home-safe.css") : "";
-requireIncludes(homeSafeCss, [
-  ".hao-home--safe",
-  "body:has(.hao-home--safe) .post-title",
-  "body:has(.hao-home--safe) .profile",
-  "overflow-x: clip",
-  "font-size: clamp(2.4rem, 5vw, 4.25rem)",
-  "grid-template-columns: minmax(0, 1fr) minmax(18rem, 20rem)",
-  "@media (max-width: 900px)",
-  "@media (max-width: 680px)",
-  "prefers-reduced-motion",
-], "Safe homepage CSS");
+requireIncludes(
+  homeSafeCss,
+  [
+    ".hao-home--safe",
+    "body:has(.hao-home--safe) .post-title",
+    "body:has(.hao-home--safe) .profile",
+    "overflow-x: clip",
+    "font-size: clamp(2.4rem, 5vw, 4.25rem)",
+    "grid-template-columns: minmax(0, 1fr) minmax(18rem, 20rem)",
+    "@media (max-width: 900px)",
+    "@media (max-width: 680px)",
+    "prefers-reduced-motion",
+  ],
+  "Safe homepage CSS",
+);
 requireAbsent(homeSafeCss, ["position: fixed", "min-height: 100vh", "100vw"], "Safe homepage CSS");
 
+const homeShellCss = exists("assets/css/hao-home-center-fix.css") ? read("assets/css/hao-home-center-fix.css") : "";
+requireIncludes(
+  homeShellCss,
+  [
+    "Superdesign homepage rescue layer",
+    "--hao-home-shell-max: 112rem",
+    "body:has(.hao-home--safe) .navbar-brand",
+    "Restore the real, black, left-side navbar brand",
+    "body:has(.hao-home--safe) .navbar-brand::before",
+    "content: none !important",
+    "grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem)",
+    "@media (max-width: 1100px)",
+    "@media (max-width: 900px)",
+    "@media (max-width: 680px)",
+  ],
+  "Homepage shell CSS",
+);
+requireAbsent(homeShellCss, ['content: "Zhihao LIU"', "font-size: 0 !important"], "Homepage shell CSS");
+
 const aboutPage = read("_pages/about.md");
-requireIncludes(aboutPage, [
-  "hao-home--safe",
-  "Climate data, geoscience evidence, and small tools.",
-  "Current work",
-  "Active tracks, not a news feed.",
-  "Selected systems",
-  "Research record",
-  "Field observations",
-  "Career trajectory",
-  "hao-safe-contact",
-], "Safe homepage");
-requireAbsent(aboutPage, [
-  "hao-home--v6",
-  "Building small data systems for climate, geoscience, and personal productivity.",
-  "mission-log-home--product",
-  "mission-page-rail",
-  "operations-console",
-], "Safe homepage");
+requireIncludes(
+  aboutPage,
+  [
+    "hao-home--safe",
+    "Climate data, geoscience evidence, and small tools.",
+    "Current work",
+    "Active tracks, not a news feed.",
+    "Selected systems",
+    "Research record",
+    "Field observations",
+    "Career trajectory",
+    "hao-safe-contact",
+  ],
+  "Safe homepage",
+);
+requireAbsent(
+  aboutPage,
+  [
+    "hao-home--v6",
+    "Building small data systems for climate, geoscience, and personal productivity.",
+    "mission-log-home--product",
+    "mission-page-rail",
+    "operations-console",
+  ],
+  "Safe homepage",
+);
 requireRegex(aboutPage, /^news:\s*false\b/m, "Hao homepage must keep legacy `news` disabled.");
 requireRegex(aboutPage, /^\s*enabled:\s*false\b/m, "Hao homepage must keep legacy announcements disabled.");
 
@@ -114,7 +177,7 @@ for (const hiddenNavPage of ["_pages/projects.md", "_pages/repositories.md", "cv
   }
 }
 
-for (const requiredDoc of ["docs/DESIGN_SYSTEM.md", "docs/REDESIGN_ROADMAP.md", "docs/MISSION_LOG_PLAN.md"]) {
+for (const requiredDoc of ["docs/DESIGN_SYSTEM.md", "docs/REDESIGN_ROADMAP.md", "docs/MISSION_LOG_PLAN.md", "docs/HOMEPAGE_FRONTEND_GOVERNANCE.md"]) {
   if (!exists(requiredDoc)) failures.push(`Hao redesign documentation missing required path: \`${requiredDoc}\`.`);
 }
 
