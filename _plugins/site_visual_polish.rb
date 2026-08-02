@@ -26,7 +26,7 @@ module SiteVisualPolish
 
   # Keep this list intentionally short. Older Mission Log experiment layers are
   # no longer loaded; the homepage is governed by the safe layer plus the final
-  # Superdesign shell layer.
+  # production homepage layer.
   STYLESHEETS = [
     "site-polish.css",
     "site-upgrade.css",
@@ -37,7 +37,7 @@ module SiteVisualPolish
 
   # Bump this value whenever the final visual layer changes. GitHub Pages and
   # browsers may otherwise keep serving an older CSS response for the same path.
-  STYLESHEET_VERSION = "20260802-home-cleanup".freeze
+  STYLESHEET_VERSION = "20260802-production-home".freeze
 
   def self.apply_cv_title(page)
     return unless page.relative_path == "cv.md"
