@@ -1,0 +1,494 @@
+/*
+ * Hao home safe layout
+ *
+ * Conservative production layer after the failed Mission Log/v6 experiments.
+ * The goal is legibility first: no duplicated about header, no giant clipped
+ * headline, no fixed rail, no full-bleed canvas, and no horizontal overflow.
+ */
+
+body:has(.hao-home--safe) {
+  --hao-safe-width: min(100% - 2rem, 68rem);
+  --hao-safe-ink: var(--global-text-color, #111827);
+  --hao-safe-muted: var(--hao-text-muted, #6b7280);
+  --hao-safe-surface: var(--hao-surface-base, #ffffff);
+  --hao-safe-soft: color-mix(in srgb, var(--hao-mission-accent, #b80fb8) 5%, var(--hao-surface-base, #ffffff));
+  --hao-safe-line: color-mix(in srgb, var(--hao-mission-accent, #b80fb8) 14%, var(--hao-border-subtle, #e5e7eb));
+  overflow-x: clip;
+}
+
+html:has(.hao-home--safe) {
+  overflow-x: clip;
+}
+
+/* Hide the al-folio about layout header/profile so the custom homepage is not duplicated. */
+body:has(.hao-home--safe) .post > header,
+body:has(.hao-home--safe) .post-title,
+body:has(.hao-home--safe) .post-description,
+body:has(.hao-home--safe) .profile {
+  display: none !important;
+}
+
+body:has(.hao-home--safe) .post {
+  width: 100% !important;
+  max-width: none !important;
+  padding-top: 0 !important;
+}
+
+body:has(.hao-home--safe) main,
+body:has(.hao-home--safe) main > .container,
+body:has(.hao-home--safe) .container:has(.hao-home--safe) {
+  width: 100% !important;
+  max-width: none !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+body:has(.hao-home--safe) .navbar .container,
+body:has(.hao-home--safe) .navbar .container-fluid {
+  width: var(--hao-safe-width) !important;
+  max-width: var(--hao-safe-width) !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.hao-home--safe {
+  box-sizing: border-box;
+  width: var(--hao-safe-width);
+  max-width: var(--hao-safe-width);
+  margin: 0 auto;
+  padding: clamp(3.5rem, 7vw, 5rem) 0 clamp(3rem, 7vw, 5rem);
+  color: var(--hao-safe-ink);
+}
+
+.hao-home--safe *,
+.hao-home--safe *::before,
+.hao-home--safe *::after {
+  box-sizing: border-box;
+}
+
+.hao-home--safe a {
+  color: var(--hao-mission-accent, #b80fb8);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.hao-home--safe a:hover,
+.hao-home--safe a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.hao-safe-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 20rem);
+  gap: clamp(2rem, 6vw, 4.5rem);
+  align-items: center;
+  padding-bottom: clamp(2rem, 5vw, 3.5rem);
+  border-bottom: 1px solid var(--hao-safe-line);
+}
+
+.hao-safe-kicker,
+.hao-safe-profile__label,
+.hao-safe-group-heading span {
+  margin: 0 0 0.75rem;
+  color: var(--hao-mission-accent, #b80fb8);
+  font-size: 0.72rem;
+  font-weight: 820;
+  letter-spacing: 0.13em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.hao-safe-hero h1 {
+  max-width: 11.5em;
+  margin: 0;
+  color: var(--hao-safe-ink);
+  font-size: clamp(2.4rem, 5vw, 4.25rem);
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.hao-safe-lede {
+  max-width: 42rem;
+  margin: 1.15rem 0 0;
+  color: color-mix(in srgb, var(--hao-safe-ink) 76%, var(--hao-safe-muted));
+  font-size: clamp(1rem, 1.5vw, 1.16rem);
+  line-height: 1.68;
+}
+
+.hao-safe-actions,
+.hao-safe-links,
+.hao-safe-archive-links,
+.hao-safe-contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.hao-safe-actions {
+  margin-top: 1.5rem;
+}
+
+.hao-safe-button,
+.hao-safe-archive-links a,
+.hao-safe-contact__links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.55rem;
+  border: 1px solid var(--hao-safe-line);
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  background: var(--hao-safe-surface);
+  color: var(--hao-safe-ink) !important;
+  font-size: 0.84rem;
+  font-weight: 720;
+  text-decoration: none !important;
+}
+
+.hao-safe-button--primary {
+  border-color: var(--hao-mission-accent, #b80fb8);
+  background: var(--hao-mission-accent, #b80fb8);
+  color: #ffffff !important;
+}
+
+.hao-safe-profile {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  border: 1px solid var(--hao-safe-line);
+  border-radius: 1.25rem;
+  padding: 1rem;
+  background: linear-gradient(180deg, var(--hao-safe-surface), var(--hao-safe-soft));
+}
+
+.hao-safe-profile img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--hao-safe-line);
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.hao-safe-profile h2 {
+  margin: 0;
+  color: var(--hao-safe-ink);
+  font-size: 1.1rem;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+}
+
+.hao-safe-profile p:not(.hao-safe-profile__label) {
+  margin: 0.45rem 0 0;
+  color: var(--hao-safe-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.hao-safe-profile dl {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.8rem 0 0;
+}
+
+.hao-safe-profile dl div {
+  display: grid;
+  grid-template-columns: 3.4rem minmax(0, 1fr);
+  gap: 0.65rem;
+}
+
+.hao-safe-profile dt,
+.hao-safe-profile dd {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.hao-safe-profile dt {
+  color: var(--hao-safe-muted);
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.hao-safe-profile dd {
+  color: var(--hao-safe-ink);
+  font-weight: 720;
+}
+
+.hao-safe-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1rem 0 0;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--hao-safe-line);
+}
+
+.hao-safe-index a {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.36rem 0.6rem;
+  color: var(--hao-safe-muted);
+  font-size: 0.76rem;
+  font-weight: 740;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hao-safe-index a:hover,
+.hao-safe-index a:focus-visible {
+  border-color: var(--hao-safe-line);
+  color: var(--hao-mission-accent, #b80fb8);
+  text-decoration: none;
+}
+
+.hao-safe-section,
+.hao-safe-contact {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.34fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+  padding: clamp(2.75rem, 6vw, 4.25rem) 0;
+  border-bottom: 1px solid var(--hao-safe-line);
+  scroll-margin-top: 5rem;
+}
+
+.hao-safe-section__intro h2,
+.hao-safe-contact h2 {
+  max-width: 12em;
+  margin: 0;
+  color: var(--hao-safe-ink);
+  font-size: clamp(1.65rem, 3.2vw, 2.45rem);
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.hao-safe-section__intro p:not(.hao-safe-kicker),
+.hao-safe-contact p:not(.hao-safe-kicker) {
+  margin: 0.85rem 0 0;
+  color: var(--hao-safe-muted);
+  font-size: 0.95rem;
+  line-height: 1.62;
+}
+
+.hao-safe-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.hao-safe-card,
+.hao-safe-record,
+.hao-safe-timeline-item {
+  min-width: 0;
+  border: 1px solid var(--hao-safe-line);
+  border-radius: 1.1rem;
+  padding: 1rem;
+  background: var(--hao-safe-surface);
+}
+
+.hao-safe-card-grid--current .hao-safe-card:first-child,
+.hao-safe-system-group:first-child .hao-safe-card:first-child {
+  background: linear-gradient(180deg, var(--hao-safe-soft), var(--hao-safe-surface));
+}
+
+.hao-safe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  color: var(--hao-safe-muted);
+  font-size: 0.68rem;
+  font-weight: 780;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.hao-safe-meta strong {
+  color: var(--hao-mission-accent, #b80fb8);
+}
+
+.hao-safe-card h3,
+.hao-safe-card h4,
+.hao-safe-record h3,
+.hao-safe-timeline-item h3 {
+  margin: 0;
+  color: var(--hao-safe-ink);
+  font-size: 1.05rem;
+  letter-spacing: -0.025em;
+  line-height: 1.24;
+}
+
+.hao-safe-card p,
+.hao-safe-record p,
+.hao-safe-timeline-item p {
+  margin: 0.65rem 0 0;
+  color: var(--hao-safe-muted);
+  font-size: 0.9rem;
+  line-height: 1.58;
+}
+
+.hao-safe-card > a {
+  display: inline-flex;
+  margin-top: 0.85rem;
+}
+
+.hao-safe-system-stack {
+  display: grid;
+  gap: clamp(1.6rem, 4vw, 2.5rem);
+}
+
+.hao-safe-system-group {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.hao-safe-group-heading {
+  max-width: 42rem;
+}
+
+.hao-safe-group-heading h3 {
+  margin: 0;
+  color: var(--hao-safe-ink);
+  font-size: 1.3rem;
+  letter-spacing: -0.035em;
+}
+
+.hao-safe-group-heading p {
+  margin: 0.5rem 0 0;
+  color: var(--hao-safe-muted);
+  font-size: 0.93rem;
+  line-height: 1.56;
+}
+
+.hao-safe-kind {
+  color: color-mix(in srgb, var(--hao-safe-ink) 68%, var(--hao-safe-muted)) !important;
+  font-weight: 720;
+}
+
+.hao-safe-links,
+.hao-safe-archive-links {
+  margin-top: 0.85rem;
+}
+
+.hao-safe-record-list,
+.hao-safe-timeline {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.hao-safe-record {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.25fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.hao-safe-timeline {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.hao-safe-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0;
+  width: 1px;
+  background: var(--hao-safe-line);
+}
+
+.hao-safe-timeline-item {
+  position: relative;
+}
+
+.hao-safe-timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 1.15rem;
+  left: -1.28rem;
+  width: 0.48rem;
+  aspect-ratio: 1;
+  border: 2px solid var(--hao-safe-surface);
+  border-radius: 50%;
+  background: var(--hao-mission-accent, #b80fb8);
+}
+
+.hao-safe-contact {
+  border-bottom: 0;
+}
+
+.hao-safe-contact__links {
+  align-content: start;
+}
+
+html[data-theme="dark"] body:has(.hao-home--safe) {
+  --hao-safe-soft: color-mix(in srgb, var(--hao-mission-accent, #b80fb8) 11%, var(--hao-surface-base, #111827));
+}
+
+@media (max-width: 900px) {
+  .hao-home--safe {
+    padding-top: 2.5rem;
+  }
+
+  .hao-safe-hero,
+  .hao-safe-section,
+  .hao-safe-contact {
+    grid-template-columns: 1fr;
+  }
+
+  .hao-safe-hero {
+    align-items: start;
+  }
+
+  .hao-safe-profile {
+    max-width: 30rem;
+  }
+
+  .hao-safe-section__intro h2,
+  .hao-safe-contact h2 {
+    max-width: 16em;
+  }
+}
+
+@media (max-width: 680px) {
+  body:has(.hao-home--safe) {
+    --hao-safe-width: min(100% - 1.25rem, 68rem);
+  }
+
+  .hao-safe-hero h1 {
+    font-size: clamp(2.15rem, 11vw, 3.35rem);
+    letter-spacing: -0.05em;
+  }
+
+  .hao-safe-card-grid,
+  .hao-safe-record {
+    grid-template-columns: 1fr;
+  }
+
+  .hao-safe-profile {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: 0.85rem;
+    padding: 0.85rem;
+  }
+
+  .hao-safe-index {
+    gap: 0.35rem;
+  }
+
+  .hao-safe-index a {
+    font-size: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:has(.hao-home--safe) {
+    scroll-behavior: auto;
+  }
+}
