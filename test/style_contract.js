@@ -79,27 +79,28 @@ const visualPlugin = read("_plugins/site_visual_polish.rb");
 requireIncludes(
   visualPlugin,
   [
-    "site-polish.css",
-    "site-upgrade.css",
-    "hao-design.css",
-    "hao-home-safe.css",
+    "HOMEPAGE_STYLESHEETS",
     "hao-home-center-fix.css",
-    'STYLESHEET_VERSION = "20260802-shell-navbar-fix"',
-    'HOMEPAGE_BRAND = "Zhihao LIU"',
+    'STYLESHEET_VERSION = "20260802-alfolio-baseline"',
     "def self.apply_home_navbar_brand(page)",
-    "hao-home-navbar-brand",
+    "navbar-brand title font-weight-lighter hao-home-navbar-brand",
+    "<span class=\"font-weight-bold\">Zhihao</span> LIU",
+    "def self.apply_homepage_stylesheet(page)",
     "?v=#{STYLESHEET_VERSION}",
   ],
   "Site visual polish plugin",
 );
-requireRegex(
-  visualPlugin,
-  /"hao-home-safe\.css",\s*"hao-home-center-fix\.css"/m,
-  "Final homepage stylesheets must load in the order `hao-home-safe.css` then `hao-home-center-fix.css`.",
-);
 requireAbsent(
   visualPlugin,
   [
+    "TARGET_PAGES",
+    "TARGET_URLS",
+    "TARGET_URL_PREFIXES",
+    "site-polish.css",
+    "site-upgrade.css",
+    "hao-design.css",
+    "hao-home-safe.css",
+    'HOMEPAGE_BRAND = "Zhihao LIU"',
     "mission-log-deployments.css",
     "mission-log-records.css",
     "mission-log-observations.css",
@@ -113,57 +114,53 @@ requireAbsent(
   "Site visual polish plugin",
 );
 
-if (!exists("assets/css/site-upgrade.css")) failures.push("Frontend upgrade layer missing: `assets/css/site-upgrade.css`.");
-if (!exists("assets/css/hao-design.css")) failures.push("Hao design system layer missing: `assets/css/hao-design.css`.");
-if (!exists("assets/css/hao-home-safe.css")) failures.push("Safe homepage CSS missing: `assets/css/hao-home-safe.css`.");
-if (!exists("assets/css/hao-home-center-fix.css")) failures.push("Homepage production CSS missing: `assets/css/hao-home-center-fix.css`.");
+if (!exists("assets/css/hao-home-center-fix.css")) failures.push("Homepage al-folio-compatible CSS missing: `assets/css/hao-home-center-fix.css`.");
 
-const homeSafeCss = exists("assets/css/hao-home-safe.css") ? read("assets/css/hao-home-safe.css") : "";
+const homeAlfolioCss = exists("assets/css/hao-home-center-fix.css") ? read("assets/css/hao-home-center-fix.css") : "";
 requireIncludes(
-  homeSafeCss,
+  homeAlfolioCss,
   [
-    ".hao-home--safe",
-    "body:has(.hao-home--safe) .post-title",
-    "body:has(.hao-home--safe) .profile",
-    "overflow-x: clip",
-    "@media (max-width: 900px)",
-    "@media (max-width: 680px)",
-    "prefers-reduced-motion",
-  ],
-  "Safe homepage CSS",
-);
-requireAbsent(homeSafeCss, ["position: fixed", "min-height: 100vh"], "Safe homepage CSS");
-
-const homeProductionCss = exists("assets/css/hao-home-center-fix.css") ? read("assets/css/hao-home-center-fix.css") : "";
-requireIncludes(
-  homeProductionCss,
-  [
-    "Production homepage shell and navbar hardening layer",
-    "--hao-page-shell-max: 76rem",
-    "--hao-page-shell: min(calc(100vw",
+    "al-folio baseline homepage enhancement",
+    "--hao-alfolio-shell-max: 72rem",
+    "body:has(.hao-home--alfolio) main > .container",
+    "body:has(.hao-home--alfolio) .navbar > .container",
+    "display: revert !important",
     ".hao-home-navbar-brand",
-    ".navbar .navbar-brand:not(.hao-home-navbar-brand)",
-    "The homepage brand is a real injected anchor",
-    ".hao-prod-hero",
-    ".hao-prod-work-grid",
-    ".hao-prod-knowledge-grid",
-    ".hao-prod-timeline",
-    "@media (max-width: 1100px)",
-    "@media (max-width: 900px)",
-    "@media (max-width: 680px)",
+    ".hao-home--alfolio",
+    ".hao-home-intro",
+    ".hao-home-section",
+    ".hao-home-knowledge-grid",
+    "@media (max-width: 992px)",
+    "@media (max-width: 760px)",
   ],
-  "Homepage production CSS",
+  "Homepage al-folio-compatible CSS",
 );
-requireAbsent(homeProductionCss, ['content: "Zhihao LIU"', "font-size: 0 !important", "--hao-home-shell", "--hao-prod-shell:"], "Homepage production CSS");
+requireAbsent(
+  homeAlfolioCss,
+  [
+    'content: "Zhihao LIU"',
+    "font-size: 0 !important",
+    "--hao-page-shell",
+    "--hao-prod-shell",
+    ".hao-prod-hero",
+    ".hao-prod-profile",
+    ".navbar .navbar-brand:not(.hao-home-navbar-brand)",
+    "position: fixed",
+  ],
+  "Homepage al-folio-compatible CSS",
+);
 
 const workflow = read(".github/workflows/deploy.yml");
 requireIncludes(
   workflow,
   [
-    "hao-home--production",
-    "hao-home-center-fix.css?v=20260802-shell-navbar-fix",
+    "hao-home--alfolio",
+    "Research records, shipped tools, and field-informed systems.",
+    "hao-home-center-fix.css?v=20260802-alfolio-baseline",
     "hao-home-navbar-brand",
-    "Zhihao LIU",
+    'font-weight-bold">Zhihao</span> LIU',
+    "Verify secondary pages keep al-folio baseline",
+    "site-polish.css|site-upgrade.css|hao-design.css|hao-home-safe.css|hao-home-center-fix.css",
   ],
   "Deploy workflow homepage artifact guard",
 );
@@ -172,32 +169,33 @@ const aboutPage = read("_pages/about.md");
 requireIncludes(
   aboutPage,
   [
-    "hao-home--safe hao-home--production",
-    "Build systems that turn field evidence into usable products.",
-    "Independent Builder · Climate · Geospatial · AI",
-    "Explore current work",
-    "Active tracks, organized as working lanes.",
-    "Selected systems",
-    "Knowledge work",
-    "Research records and field notes in one workspace.",
-    "Career trajectory",
-    "hao-prod-contact",
+    "hao-home--production hao-home--alfolio",
+    "Climate data · Geoscience evidence · AI tools",
+    "Research records, shipped tools, and field-informed systems.",
+    "Current work",
+    "Systems",
+    "Knowledge",
+    "Trajectory",
+    "Contact",
+    "hao-home-contact",
   ],
-  "Production homepage",
+  "al-folio-compatible homepage",
 );
 requireAbsent(
   aboutPage,
   [
+    "hao-home--safe",
     "hao-home--v6",
-    "Building small data systems for climate, geoscience, and personal productivity.",
-    "Climate data, geoscience evidence, and small tools.",
+    "hao-prod-",
+    "Build systems that turn field evidence into usable products.",
+    "Independent Builder · Climate · Geospatial · AI",
     "mission-log-home--product",
     "mission-page-rail",
     "operations-console",
-    "hao-safe-section",
   ],
-  "Production homepage",
+  "al-folio-compatible homepage",
 );
+requireRegex(aboutPage, /^layout:\s*about\b/m, "Homepage must keep al-folio `layout: about`.");
 requireRegex(aboutPage, /^news:\s*false\b/m, "Hao homepage must keep legacy `news` disabled.");
 requireRegex(aboutPage, /^\s*enabled:\s*false\b/m, "Hao homepage must keep legacy announcements disabled.");
 
