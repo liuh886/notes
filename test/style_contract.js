@@ -134,15 +134,18 @@ if (!exists("assets/css/hao-design.css")) {
 const aboutPage = read("_pages/about.md");
 // prettier-ignore
 for (const requiredHomeMarker of [
+  "mission-log-home--v2",
   "COVER / 00",
-  "Small systems, field notes, and decision tools.",
-  "Recorded from the edge of climate, geospatial intelligence, and AI productivity.",
+  "A working log for systems, research, and field notes.",
+  "Recorded from the edge of climate, geospatial intelligence, and AI-native productivity.",
+  "mission-page-rail",
   "CURRENT OPERATIONS / 01",
+  "Task records in motion",
   "SELECTED DEPLOYMENTS / 02-04",
   "RESEARCH RECORD / 05",
   "FIELD OBSERVATIONS / 06",
   "CAREER TRAJECTORY / 07",
-  "CONTACT / BACK COVER",
+  "BACK COVER / 08",
   "operations-log",
 ]) {
   if (!aboutPage.includes(requiredHomeMarker)) {
