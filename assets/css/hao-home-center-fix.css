@@ -1,19 +1,20 @@
 /*
- * Hao home shell alignment fix
+ * Superdesign homepage rescue layer
  *
- * Final production guard for the safe homepage. This file no longer acts as a
- * simple width patch. It defines a shared page shell for the homepage navbar and
- * content, restores the black Zhihao LIU brand in the real navbar, and avoids
- * relying on inherited CSS custom properties for critical layout dimensions.
+ * Final production guard for the safe homepage. This layer restores the real
+ * al-folio navbar brand instead of fabricating it with pseudo-elements, then
+ * establishes a wider, symmetric page shell and a calmer homepage composition.
  */
 
 :root {
-  --hao-home-shell-max: 76rem;
-  --hao-home-shell-gutter: clamp(1.5rem, 4vw, 3rem);
+  --hao-home-shell-max: 112rem;
+  --hao-home-shell-gutter: clamp(1.25rem, 5.4vw, 7rem);
   --hao-home-shell-width: min(
     calc(100vw - (2 * var(--hao-home-shell-gutter))),
     var(--hao-home-shell-max)
   );
+  --hao-home-measure: 46rem;
+  --hao-home-section-rail: clamp(13rem, 22vw, 22rem);
 }
 
 body:has(.hao-home--safe),
@@ -34,7 +35,6 @@ body:has(.hao-home--safe) article.post {
   padding-left: 0 !important;
 }
 
-/* Shared desktop shell: navbar and homepage now use the same left/right edge. */
 body:has(.hao-home--safe) .navbar .container,
 body:has(.hao-home--safe) .navbar .container-fluid,
 .hao-home--safe {
@@ -53,33 +53,24 @@ body:has(.hao-home--safe) .navbar .container-fluid {
   padding-left: 0 !important;
 }
 
-/* Restore the normal personal brand position. */
+/* Restore the real, black, left-side navbar brand used on the blog page. */
 body:has(.hao-home--safe) .navbar-brand {
   display: inline-flex !important;
   flex: 0 0 auto !important;
   align-items: center !important;
   min-width: max-content !important;
-  margin-right: clamp(1.25rem, 3vw, 2.5rem) !important;
+  margin-right: clamp(1.5rem, 3vw, 3rem) !important;
   color: var(--global-text-color, #111827) !important;
-  font-size: 0 !important;
-  font-weight: 760 !important;
+  font-size: clamp(1.45rem, 2.05vw, 2rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.035em !important;
   line-height: 1 !important;
-  letter-spacing: 0 !important;
   opacity: 1 !important;
   text-transform: none !important;
   visibility: visible !important;
 }
 
-body:has(.hao-home--safe) .navbar-brand::before {
-  content: "Zhihao LIU";
-  color: var(--global-text-color, #111827);
-  font-size: 1rem;
-  font-weight: 760;
-  letter-spacing: -0.01em;
-  line-height: 1;
-  text-transform: none;
-}
-
+body:has(.hao-home--safe) .navbar-brand::before,
 body:has(.hao-home--safe) .navbar-brand::after {
   content: none !important;
 }
@@ -95,14 +86,14 @@ body:has(.hao-home--safe) .navbar-nav {
   justify-content: flex-end !important;
   width: auto !important;
   margin-left: auto !important;
-  gap: 0.35rem;
+  gap: clamp(0.25rem, 0.9vw, 0.8rem);
 }
 
 body:has(.hao-home--safe) .navbar-nav .nav-link {
   color: color-mix(in srgb, var(--global-text-color, #111827) 78%, transparent) !important;
-  font-size: 0.92rem !important;
-  font-weight: 650 !important;
-  letter-spacing: -0.01em !important;
+  font-size: clamp(0.96rem, 1.18vw, 1.16rem) !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
   text-transform: none !important;
 }
 
@@ -112,12 +103,16 @@ body:has(.hao-home--safe) .navbar-nav .nav-link.active {
 }
 
 .hao-home--safe {
-  padding-top: clamp(3.25rem, 6vw, 4.5rem) !important;
+  padding-top: clamp(3rem, 5.5vw, 5rem) !important;
+  padding-bottom: clamp(3.5rem, 7vw, 6rem) !important;
 }
 
 .hao-safe-hero {
-  grid-template-columns: minmax(0, 1fr) minmax(19rem, 22rem) !important;
-  gap: clamp(2rem, 5vw, 4rem) !important;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem) !important;
+  gap: clamp(2.75rem, 8vw, 7rem) !important;
+  align-items: center !important;
+  min-height: auto !important;
+  padding-bottom: clamp(2.5rem, 5vw, 4rem) !important;
 }
 
 .hao-safe-hero__copy,
@@ -130,14 +125,151 @@ body:has(.hao-home--safe) .navbar-nav .nav-link.active {
   min-width: 0;
 }
 
+.hao-safe-hero__copy {
+  max-width: var(--hao-home-measure);
+}
+
+.hao-safe-kicker {
+  margin-bottom: 0.95rem !important;
+  letter-spacing: 0.15em !important;
+}
+
+.hao-safe-hero h1 {
+  max-width: 12em !important;
+  font-size: clamp(3rem, 6vw, 5rem) !important;
+  line-height: 0.96 !important;
+  letter-spacing: -0.07em !important;
+}
+
+.hao-safe-lede {
+  max-width: 42rem !important;
+  margin-top: 1.25rem !important;
+  font-size: clamp(1.02rem, 1.28vw, 1.22rem) !important;
+  line-height: 1.62 !important;
+}
+
+.hao-safe-actions {
+  margin-top: 1.65rem !important;
+}
+
+.hao-safe-button,
+.hao-safe-archive-links a,
+.hao-safe-contact__links a {
+  min-height: 2.65rem !important;
+  padding: 0.7rem 1.1rem !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+
 .hao-safe-profile {
-  justify-self: end;
-  width: 100%;
-  max-width: 22rem;
+  justify-self: end !important;
+  width: 100% !important;
+  max-width: 24rem !important;
+  border-radius: 1.35rem !important;
+  padding: 1.1rem !important;
+  box-shadow: 0 18px 48px rgba(17, 24, 39, 0.055) !important;
+}
+
+.hao-safe-profile img {
+  border-radius: 1.05rem !important;
 }
 
 .hao-safe-index {
-  width: 100%;
+  width: 100% !important;
+  margin-top: 1.15rem !important;
+  padding: 0.9rem 0 !important;
+}
+
+.hao-safe-index a {
+  padding: 0.42rem 0.65rem !important;
+  font-size: 0.78rem !important;
+}
+
+.hao-safe-section,
+.hao-safe-contact {
+  grid-template-columns: minmax(12rem, var(--hao-home-section-rail)) minmax(0, 1fr) !important;
+  gap: clamp(2rem, 5.5vw, 5rem) !important;
+  padding: clamp(3rem, 6vw, 5rem) 0 !important;
+}
+
+.hao-safe-section__intro {
+  max-width: 19rem;
+}
+
+.hao-safe-section__intro h2,
+.hao-safe-contact h2 {
+  font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
+  line-height: 1.02 !important;
+}
+
+.hao-safe-section__intro p:not(.hao-safe-kicker),
+.hao-safe-contact p:not(.hao-safe-kicker) {
+  line-height: 1.64 !important;
+}
+
+.hao-safe-card-grid {
+  gap: clamp(0.9rem, 1.7vw, 1.25rem) !important;
+}
+
+@media (min-width: 1180px) {
+  .hao-safe-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .hao-safe-card-grid--current .hao-safe-card:first-child,
+  .hao-safe-system-group:first-child .hao-safe-card:first-child {
+    grid-column: span 1 !important;
+  }
+}
+
+.hao-safe-card,
+.hao-safe-record,
+.hao-safe-timeline-item {
+  border-radius: 1.15rem !important;
+  padding: clamp(1rem, 1.7vw, 1.25rem) !important;
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.hao-safe-card:hover,
+.hao-safe-record:hover,
+.hao-safe-timeline-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 32px rgba(17, 24, 39, 0.045);
+}
+
+.hao-safe-card h3,
+.hao-safe-card h4,
+.hao-safe-record h3,
+.hao-safe-timeline-item h3 {
+  font-size: clamp(1.02rem, 1.25vw, 1.16rem) !important;
+}
+
+.hao-safe-record-list {
+  max-width: 62rem;
+}
+
+.hao-safe-record {
+  grid-template-columns: minmax(7.5rem, 0.23fr) minmax(0, 1fr) !important;
+}
+
+.hao-safe-contact__links {
+  align-content: start;
+}
+
+@media (max-width: 1100px) {
+  :root {
+    --hao-home-shell-max: 76rem;
+    --hao-home-shell-gutter: clamp(1rem, 4vw, 2rem);
+  }
+
+  .hao-safe-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem) !important;
+    gap: clamp(2rem, 5vw, 4rem) !important;
+  }
+
+  .hao-safe-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
 }
 
 @media (max-width: 900px) {
@@ -153,9 +285,27 @@ body:has(.hao-home--safe) .navbar-nav .nav-link.active {
     max-width: min(calc(100vw - 2rem), 68rem) !important;
   }
 
+  body:has(.hao-home--safe) .navbar-brand {
+    font-size: 1.35rem !important;
+  }
+
+  .hao-home--safe {
+    padding-top: 2.7rem !important;
+  }
+
+  .hao-safe-hero,
+  .hao-safe-section,
+  .hao-safe-contact {
+    grid-template-columns: 1fr !important;
+  }
+
   .hao-safe-profile {
-    justify-self: start;
-    max-width: 30rem;
+    justify-self: start !important;
+    max-width: 30rem !important;
+  }
+
+  .hao-safe-section__intro {
+    max-width: 34rem;
   }
 }
 
@@ -171,7 +321,22 @@ body:has(.hao-home--safe) .navbar-nav .nav-link.active {
     max-width: min(calc(100vw - 1.25rem), 68rem) !important;
   }
 
-  body:has(.hao-home--safe) .navbar-brand::before {
-    font-size: 0.92rem;
+  body:has(.hao-home--safe) .navbar-brand {
+    font-size: 1.05rem !important;
+    letter-spacing: -0.025em !important;
+  }
+
+  body:has(.hao-home--safe) .navbar-nav .nav-link {
+    font-size: 0.92rem !important;
+  }
+
+  .hao-safe-hero h1 {
+    font-size: clamp(2.25rem, 11vw, 3.4rem) !important;
+    letter-spacing: -0.055em !important;
+  }
+
+  .hao-safe-card-grid,
+  .hao-safe-record {
+    grid-template-columns: 1fr !important;
   }
 }
