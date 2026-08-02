@@ -1,24 +1,28 @@
 /*
- * Mission Log product shell v3
+ * Mission Log layout composition v4
  *
- * A coherent homepage surface after the Mission Log reset. This layer treats
- * the homepage as a product surface rather than a patched al-folio about page:
- * navbar identity, first-screen cover, contextual page rail, task records, and
- * dispatch feed are designed as one system.
+ * This pass reduces the visual noise introduced by the product-surface reset.
+ * It rebuilds the homepage around calmer spacing, a smaller first screen,
+ * a two-column editorial grid, and task records that read as an operating log
+ * rather than a news block or dashboard collage.
  */
 
 body:has(.mission-log-home--product) {
-  --mission-v3-wide: min(100%, 88rem);
-  --mission-v3-main: min(100%, 76rem);
-  --mission-v3-reading: min(100%, 54rem);
-  --mission-v3-pad: max(1.15rem, calc((100vw - 88rem) / 2));
-  --mission-v3-ink: var(--global-text-color, #111827);
-  --mission-v3-muted: var(--hao-text-muted, #6b7280);
-  --mission-v3-line: color-mix(in srgb, var(--hao-mission-accent) 16%, var(--hao-border-subtle));
+  --mission-v4-wide: min(100%, 78rem);
+  --mission-v4-main: min(100%, 68rem);
+  --mission-v4-reading: min(100%, 44rem);
+  --mission-v4-gutter: max(1.25rem, calc((100vw - 78rem) / 2));
+  --mission-v4-sidebar: minmax(12rem, 0.32fr);
+  --mission-v4-content: minmax(0, 1fr);
+  --mission-v4-ink: var(--global-text-color, #111827);
+  --mission-v4-muted: var(--hao-text-muted, #6b7280);
+  --mission-v4-surface: var(--hao-surface-base, #ffffff);
+  --mission-v4-soft: color-mix(in srgb, var(--hao-mission-accent) 7%, var(--hao-surface-base, #ffffff));
+  --mission-v4-line: color-mix(in srgb, var(--hao-mission-accent) 14%, var(--hao-border-subtle, #e5e7eb));
   scroll-behavior: smooth;
 }
 
-/* Restore the real navbar as the identity system. */
+/* Navbar: keep identity in the real nav, but make it quiet and aligned. */
 body:has(.mission-log-home--product) header,
 body:has(.mission-log-home--product) .navbar,
 body:has(.mission-log-home--product) .navbar .container,
@@ -26,48 +30,54 @@ body:has(.mission-log-home--product) .navbar .container-fluid {
   max-width: none !important;
 }
 
+body:has(.mission-log-home--product) .navbar {
+  border-bottom-color: color-mix(in srgb, var(--hao-border-subtle, #e5e7eb) 72%, transparent) !important;
+  background: color-mix(in srgb, var(--mission-v4-surface) 88%, transparent) !important;
+  backdrop-filter: blur(14px);
+}
+
 body:has(.mission-log-home--product) .navbar .container,
 body:has(.mission-log-home--product) .navbar .container-fluid {
   width: 100% !important;
-  padding-right: var(--mission-v3-pad) !important;
-  padding-left: var(--mission-v3-pad) !important;
+  padding-right: var(--mission-v4-gutter) !important;
+  padding-left: var(--mission-v4-gutter) !important;
 }
 
 body:has(.mission-log-home--product) .navbar-brand {
   display: inline-flex !important;
   align-items: center;
-  gap: 0.5rem;
-  color: var(--mission-v3-ink) !important;
-  font-size: 0.82rem !important;
-  font-weight: 820 !important;
-  letter-spacing: 0.13em !important;
+  gap: 0.48rem;
+  color: var(--mission-v4-ink) !important;
+  font-size: 0.78rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
   text-transform: uppercase;
 }
 
 body:has(.mission-log-home--product) .navbar-brand::before {
   content: "";
-  width: 0.44rem;
+  width: 0.38rem;
   aspect-ratio: 1;
   border-radius: 999px;
   background: var(--hao-mission-accent);
-  box-shadow: 0 0 0 0.28rem var(--hao-mission-soft);
+  box-shadow: 0 0 0 0.22rem color-mix(in srgb, var(--hao-mission-accent) 12%, transparent);
 }
 
 body:has(.mission-log-home--product) .navbar-brand::after {
   content: " / Mission Log";
-  color: var(--mission-v3-muted);
-  font-weight: 720;
-  letter-spacing: 0.08em;
+  color: var(--mission-v4-muted);
+  font-weight: 700;
+  letter-spacing: 0.07em;
 }
 
 body:has(.mission-log-home--product) .navbar-nav {
   margin-left: auto !important;
-  gap: 0.35rem;
+  gap: 0.2rem;
 }
 
 body:has(.mission-log-home--product) .navbar-nav .nav-link {
-  color: var(--mission-v3-muted) !important;
-  font-size: 0.82rem !important;
+  color: var(--mission-v4-muted) !important;
+  font-size: 0.8rem !important;
   font-weight: 650 !important;
 }
 
@@ -76,7 +86,7 @@ body:has(.mission-log-home--product) .navbar-nav .nav-link:focus-visible {
   color: var(--hao-mission-accent) !important;
 }
 
-/* Page canvas. */
+/* Page canvas: quieter than v3, with a centered composition. */
 .mission-log-home--product {
   position: relative;
   overflow: clip visible !important;
@@ -84,11 +94,11 @@ body:has(.mission-log-home--product) .navbar-nav .nav-link:focus-visible {
   max-width: none !important;
   margin-right: calc(50% - 50vw) !important;
   margin-left: calc(50% - 50vw) !important;
-  padding: clamp(1.25rem, 2.8vw, 2.35rem) var(--mission-v3-pad) clamp(3.5rem, 8vw, 6rem) !important;
+  padding: clamp(1.5rem, 3vw, 2.25rem) var(--mission-v4-gutter) clamp(4rem, 8vw, 6rem) !important;
   background:
-    radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--hao-mission-accent) 10%, transparent), transparent 26rem),
-    radial-gradient(circle at 92% 18%, color-mix(in srgb, var(--hao-mission-accent) 8%, transparent), transparent 24rem),
-    linear-gradient(180deg, color-mix(in srgb, var(--hao-surface-base) 96%, var(--hao-mission-soft)), var(--hao-surface-base) 28rem, var(--hao-surface-base));
+    radial-gradient(circle at 15% 0%, color-mix(in srgb, var(--hao-mission-accent) 7%, transparent), transparent 24rem),
+    radial-gradient(circle at 90% 9%, color-mix(in srgb, var(--hao-mission-accent) 5%, transparent), transparent 26rem),
+    linear-gradient(180deg, color-mix(in srgb, var(--mission-v4-surface) 94%, var(--hao-mission-soft, #f4f0ff)), var(--mission-v4-surface) 22rem);
 }
 
 .mission-log-home--product::before {
@@ -97,105 +107,118 @@ body:has(.mission-log-home--product) .navbar-nav .nav-link:focus-visible {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(90deg, color-mix(in srgb, var(--hao-mission-accent) 5%, transparent) 1px, transparent 1px),
-    linear-gradient(0deg, color-mix(in srgb, var(--hao-mission-accent) 4%, transparent) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: linear-gradient(180deg, black, transparent 34rem);
-  opacity: 0.58;
+    linear-gradient(90deg, color-mix(in srgb, var(--hao-mission-accent) 3.5%, transparent) 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in srgb, var(--hao-mission-accent) 3%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(180deg, black, transparent 26rem);
+  opacity: 0.42;
 }
 
 .mission-log-home--product > * {
   position: relative;
 }
 
-/* First screen cover. */
+/* Cover: less billboard, more elegant dossier cover. */
 .mission-log-home--product .mission-cover {
-  display: grid !important;
-  max-width: var(--mission-v3-wide) !important;
-  min-height: min(80vh, 48rem) !important;
+  max-width: var(--mission-v4-wide) !important;
+  min-height: auto !important;
   margin: 0 auto !important;
-  border: 1px solid color-mix(in srgb, var(--hao-mission-accent) 16%, var(--hao-border-subtle)) !important;
-  border-radius: clamp(1.25rem, 3vw, 2.35rem) !important;
-  background:
-    radial-gradient(circle at 12% 12%, color-mix(in srgb, var(--hao-mission-accent) 15%, transparent), transparent 22rem),
-    radial-gradient(circle at 86% 16%, color-mix(in srgb, var(--hao-mission-accent) 11%, transparent), transparent 21rem),
-    linear-gradient(135deg, var(--hao-surface-base), color-mix(in srgb, var(--hao-surface-base) 82%, var(--hao-mission-soft)) 62%, var(--hao-surface-soft)) !important;
-  box-shadow: 0 30px 88px color-mix(in srgb, var(--hao-mission-accent) 12%, transparent) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .mission-log-home--product .mission-cover__layout {
   display: grid !important;
-  grid-template-columns: minmax(0, 1.04fr) minmax(22rem, 0.78fr) !important;
-  gap: clamp(2.25rem, 6vw, 5.75rem) !important;
+  grid-template-columns: minmax(0, 7fr) minmax(18rem, 4fr) !important;
+  gap: clamp(2.4rem, 7vw, 6rem) !important;
   align-items: center !important;
-  padding: clamp(2.1rem, 6vw, 5.5rem) !important;
+  min-height: clamp(31rem, 64vh, 42rem) !important;
+  padding: clamp(2rem, 5vw, 4.25rem) 0 clamp(2.25rem, 5vw, 4.5rem) !important;
 }
 
-.mission-log-home--product .mission-section-kicker {
+.mission-log-home--product .mission-section-kicker,
+.mission-log-home--product .deployments-group__header > span,
+.mission-log-home--product .mission-control-card span,
+.mission-log-home--product .operations-dispatches__header span {
   color: var(--hao-mission-accent) !important;
-  font-size: 0.74rem !important;
+  font-size: 0.7rem !important;
   font-weight: 850 !important;
   letter-spacing: 0.18em !important;
+  line-height: 1.3;
+  text-transform: uppercase;
 }
 
 .mission-cover__eyebrow {
-  margin: clamp(0.9rem, 2vw, 1.3rem) 0 0 !important;
-  color: var(--mission-v3-muted) !important;
-  font-size: 0.76rem !important;
-  font-weight: 780 !important;
-  letter-spacing: 0.15em !important;
+  margin: clamp(0.85rem, 2vw, 1.15rem) 0 0 !important;
+  color: var(--mission-v4-muted) !important;
+  font-size: 0.78rem !important;
+  font-weight: 760 !important;
+  letter-spacing: 0.13em !important;
   text-transform: uppercase;
 }
 
 .mission-log-home--product .mission-cover h1 {
-  max-width: 11.2ch !important;
-  margin-top: clamp(1rem, 3vw, 1.8rem) !important;
-  color: var(--mission-v3-ink) !important;
-  font-size: clamp(3.35rem, 8.7vw, 8rem) !important;
-  letter-spacing: -0.08em !important;
-  line-height: 0.86 !important;
+  max-width: 15ch !important;
+  margin-top: clamp(1.2rem, 2.8vw, 1.8rem) !important;
+  color: var(--mission-v4-ink) !important;
+  font-size: clamp(3.05rem, 6.8vw, 5.8rem) !important;
+  letter-spacing: -0.065em !important;
+  line-height: 0.94 !important;
 }
 
 .mission-log-home--product .mission-cover__subtitle {
-  max-width: 42rem !important;
-  color: color-mix(in srgb, var(--mission-v3-ink) 82%, var(--mission-v3-muted)) !important;
-  font-size: clamp(1.12rem, 2vw, 1.55rem) !important;
-  line-height: 1.48 !important;
+  max-width: 40rem !important;
+  color: color-mix(in srgb, var(--mission-v4-ink) 82%, var(--mission-v4-muted)) !important;
+  font-size: clamp(1.05rem, 1.7vw, 1.32rem) !important;
+  line-height: 1.55 !important;
 }
 
 .mission-log-home--product .mission-cover__note {
   max-width: 34rem !important;
-  color: var(--mission-v3-muted) !important;
+  color: var(--mission-v4-muted) !important;
+  font-size: 0.98rem !important;
+  line-height: 1.65 !important;
+}
+
+.mission-cover__actions {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 0.72rem !important;
+  margin-top: clamp(1.4rem, 3vw, 2rem) !important;
+}
+
+.mission-button {
+  border-radius: 999px !important;
+  padding: 0.72rem 1rem !important;
+  font-size: 0.8rem !important;
+  font-weight: 760 !important;
 }
 
 .mission-log-home--product .mission-cover__visual {
   display: grid !important;
-  min-height: clamp(24rem, 44vw, 33rem) !important;
-  grid-template-rows: auto 1fr auto;
   gap: 1rem;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--hao-mission-accent) 17%, transparent) !important;
-  border-radius: clamp(1rem, 2vw, 1.5rem) !important;
-  padding: clamp(1rem, 2.5vw, 1.55rem) !important;
+  align-self: center;
+  min-height: 0 !important;
+  border: 1px solid var(--mission-v4-line) !important;
+  border-radius: 1.35rem !important;
+  padding: 1rem !important;
   background:
-    radial-gradient(circle at 52% 44%, color-mix(in srgb, var(--hao-mission-accent) 17%, transparent), transparent 32%),
-    linear-gradient(90deg, color-mix(in srgb, var(--hao-mission-accent) 8%, transparent) 1px, transparent 1px),
-    linear-gradient(0deg, color-mix(in srgb, var(--hao-mission-accent) 6%, transparent) 1px, transparent 1px),
-    color-mix(in srgb, var(--hao-surface-base) 91%, var(--hao-mission-soft)) !important;
-  background-size: auto, 28px 28px, 28px 28px, auto !important;
+    linear-gradient(180deg, color-mix(in srgb, var(--mission-v4-surface) 92%, var(--mission-v4-soft)), var(--mission-v4-surface)) !important;
+  box-shadow: 0 18px 54px color-mix(in srgb, var(--hao-mission-accent) 8%, transparent) !important;
 }
 
 .mission-cover__portrait {
   position: relative;
-  z-index: 2;
   justify-self: end;
-  width: min(14.5rem, 62%);
+  width: min(10.75rem, 52%) !important;
   margin: 0 !important;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--hao-mission-accent) 24%, var(--hao-border-subtle));
-  border-radius: clamp(0.85rem, 2vw, 1.35rem);
-  background: var(--hao-surface-base);
-  box-shadow: 0 18px 48px color-mix(in srgb, var(--hao-mission-accent) 14%, transparent);
+  border: 1px solid var(--mission-v4-line) !important;
+  border-radius: 1rem !important;
+  background: var(--mission-v4-surface);
+  box-shadow: none !important;
 }
 
 .mission-cover__portrait img {
@@ -207,38 +230,77 @@ body:has(.mission-log-home--product) .navbar-nav .nav-link:focus-visible {
 
 .mission-cover__portrait figcaption {
   margin: 0;
-  padding: 0.46rem 0.58rem;
-  color: var(--mission-v3-muted);
-  font-size: 0.64rem;
-  font-weight: 760;
+  padding: 0.44rem 0.54rem;
+  color: var(--mission-v4-muted);
+  font-size: 0.62rem;
+  font-weight: 720;
   letter-spacing: 0.08em;
   line-height: 1.25;
   text-transform: uppercase;
 }
 
-.mission-log-home--product .mission-cover__metadata {
-  align-self: end;
+.mission-cover__metadata {
+  display: grid !important;
+  gap: 0.45rem;
+  margin: 0 !important;
 }
 
-/* Fixed contextual rail. Hidden on the cover; appears once CURRENT OPERATIONS enters view. */
+.mission-cover__metadata div {
+  display: grid;
+  grid-template-columns: 6.8rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.72rem 0 !important;
+  border-top: 1px solid var(--mission-v4-line);
+}
+
+.mission-cover__metadata dt {
+  color: var(--mission-v4-muted) !important;
+  font-size: 0.66rem !important;
+  font-weight: 760 !important;
+  letter-spacing: 0.12em !important;
+}
+
+.mission-cover__metadata dd {
+  color: var(--mission-v4-ink) !important;
+  font-size: 0.78rem !important;
+  font-weight: 760 !important;
+  letter-spacing: 0.04em;
+}
+
+.mission-cover__chips {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+.mission-cover__chips span {
+  border: 1px solid var(--mission-v4-line) !important;
+  border-radius: 999px;
+  padding: 0.38rem 0.58rem !important;
+  color: var(--mission-v4-muted);
+  font-size: 0.68rem !important;
+  font-weight: 720;
+}
+
+/* Rail: useful orientation, not the visual focus. */
 .mission-page-rail {
   position: fixed !important;
   top: 50%;
-  left: max(0.8rem, calc((100vw - 88rem) / 2 - 3.35rem));
+  left: max(0.8rem, calc((100vw - 78rem) / 2 - 2.9rem));
   z-index: 45;
   display: flex !important;
   flex-direction: column;
   align-items: center;
-  gap: 0.78rem;
-  padding: 0.45rem 0;
+  gap: 0.58rem;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-50%) translateX(-0.45rem);
+  transform: translateY(-50%) translateX(-0.25rem);
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
 .mission-log-home--rail-visible .mission-page-rail {
-  opacity: 1;
+  opacity: 0.86;
   pointer-events: auto;
   transform: translateY(-50%) translateX(0);
 }
@@ -246,27 +308,27 @@ body:has(.mission-log-home--product) .navbar-nav .nav-link:focus-visible {
 .mission-page-rail::before {
   content: "";
   position: absolute;
-  top: -1.1rem;
-  bottom: -1.1rem;
+  top: -0.65rem;
+  bottom: -0.65rem;
   left: 50%;
   z-index: -1;
   width: 1px;
-  background: linear-gradient(180deg, transparent, var(--mission-v3-line), transparent);
+  background: linear-gradient(180deg, transparent, var(--mission-v4-line), transparent);
   transform: translateX(-50%);
 }
 
 .mission-page-rail a {
   display: grid !important;
-  width: 1.82rem;
-  height: 1.82rem;
+  width: 1.48rem;
+  height: 1.48rem;
   place-items: center;
   border: 1px solid transparent;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--hao-surface-base) 86%, transparent);
-  color: var(--mission-v3-muted) !important;
-  font-size: 0.68rem;
+  background: color-mix(in srgb, var(--mission-v4-surface) 84%, transparent);
+  color: color-mix(in srgb, var(--mission-v4-muted) 84%, transparent) !important;
+  font-size: 0.58rem;
   font-weight: 840;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-decoration: none !important;
   transition: border-color 160ms ease, color 160ms ease, background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
@@ -284,228 +346,401 @@ body:has(.mission-log-home--product) .navbar-nav .nav-link:focus-visible {
 .mission-page-rail a:focus-visible,
 .mission-page-rail a.is-active,
 .mission-page-rail a[aria-current="true"] {
-  border-color: color-mix(in srgb, var(--hao-mission-accent) 28%, transparent);
-  background: var(--hao-mission-soft);
+  border-color: color-mix(in srgb, var(--hao-mission-accent) 24%, transparent);
+  background: color-mix(in srgb, var(--hao-mission-accent) 10%, var(--mission-v4-surface));
   color: var(--hao-mission-accent) !important;
-  box-shadow: 0 0 0 0.28rem color-mix(in srgb, var(--hao-mission-accent) 8%, transparent);
+  box-shadow: 0 0 0 0.22rem color-mix(in srgb, var(--hao-mission-accent) 7%, transparent);
   transform: translateX(1px);
 }
 
-/* Main sections. */
+/* Section architecture: stable two-column editorial rhythm. */
 .mission-log-body {
-  max-width: var(--mission-v3-wide) !important;
-  margin: clamp(2.8rem, 7vw, 5.75rem) auto 0 !important;
+  max-width: var(--mission-v4-wide) !important;
+  margin: clamp(1.8rem, 5vw, 3.25rem) auto 0 !important;
 }
 
 .mission-log-sections {
   display: grid;
-  gap: clamp(3rem, 7vw, 6rem);
+  gap: clamp(4rem, 8vw, 7rem);
 }
 
 .mission-log-home--product .mission-section {
-  max-width: var(--mission-v3-main) !important;
+  display: grid !important;
+  max-width: var(--mission-v4-wide) !important;
+  grid-template-columns: var(--mission-v4-sidebar) var(--mission-v4-content);
+  column-gap: clamp(2rem, 5vw, 4.5rem);
+  row-gap: 1.1rem;
   margin: 0 auto !important;
   scroll-margin-top: 6rem;
 }
 
-.mission-section__header--split {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.42fr);
-  gap: clamp(1.2rem, 4vw, 3rem);
-  align-items: end;
+.mission-log-home--product .mission-section > .mission-section-kicker {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .mission-log-home--product .mission-section > h2,
 .mission-section__header h2 {
   max-width: 12.5ch !important;
-  color: var(--mission-v3-ink) !important;
+  margin-top: 0.7rem !important;
+  color: var(--mission-v4-ink) !important;
+  font-size: clamp(2rem, 3.8vw, 3.25rem) !important;
   letter-spacing: -0.045em !important;
+  line-height: 1.02 !important;
+}
+
+.mission-log-home--product .mission-section > h2 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.mission-log-home--product .mission-section > .mission-section__intro {
+  grid-column: 1;
+  grid-row: 3;
+  max-width: 18rem !important;
+  color: var(--mission-v4-muted) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.62 !important;
+}
+
+.mission-section__header {
+  grid-column: 1;
+  grid-row: 1 / span 4;
+}
+
+.mission-section__header--split {
+  display: block !important;
+}
+
+.mission-section__header--split .mission-section__intro {
+  max-width: 18rem !important;
+  color: var(--mission-v4-muted) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.62 !important;
 }
 
 .mission-control-card {
-  border: 1px solid var(--mission-v3-line);
-  border-radius: 1.1rem;
-  padding: 1rem;
-  background: color-mix(in srgb, var(--hao-surface-base) 90%, var(--hao-mission-soft));
-}
-
-.mission-control-card span,
-.operations-dispatches__header span {
-  display: block;
-  color: var(--hao-mission-accent);
-  font-size: 0.68rem;
-  font-weight: 850;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  margin-top: 1.2rem;
+  border: 1px solid var(--mission-v4-line);
+  border-radius: 1rem;
+  padding: 0.95rem;
+  background: var(--mission-v4-soft);
 }
 
 .mission-control-card strong,
 .operations-dispatches__header strong {
   display: block;
-  margin-top: 0.35rem;
-  color: var(--mission-v3-ink);
-  font-size: 0.88rem;
+  margin-top: 0.28rem;
+  color: var(--mission-v4-ink);
+  font-size: 0.78rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .mission-control-card p {
-  margin: 0.7rem 0 0;
-  color: var(--mission-v3-muted);
-  font-size: 0.86rem;
+  margin: 0.55rem 0 0;
+  color: var(--mission-v4-muted);
+  font-size: 0.82rem;
   line-height: 1.55;
 }
 
-/* CURRENT OPERATIONS absorbs the old News behavior. */
+.operations-console,
+.deployments-log,
+.research-records,
+.field-observations,
+.career-trajectory,
+.mission-back-cover > p,
+.back-cover-links {
+  grid-column: 2;
+  grid-row: 1 / span 6;
+}
+
+.mission-archive-links {
+  grid-column: 2;
+}
+
+/* Current Operations: main record + dispatch column, not a news list. */
 .operations-console {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.42fr);
-  gap: clamp(1.1rem, 3.5vw, 2.6rem);
-  margin-top: clamp(1.5rem, 3.5vw, 2.4rem);
+  grid-template-columns: minmax(0, 1.45fr) minmax(15rem, 0.72fr);
+  gap: clamp(1rem, 3vw, 1.8rem);
+  align-items: start;
 }
 
 .operations-log {
-  display: grid;
-  gap: 0.9rem;
+  display: grid !important;
+  gap: 0.82rem;
   border-left: 0 !important;
 }
 
 .operations-log__entry {
   display: grid !important;
-  grid-template-columns: minmax(5.2rem, 0.16fr) minmax(0, 1fr);
-  gap: 1.15rem;
-  border: 1px solid var(--mission-v3-line) !important;
-  border-radius: 1.15rem !important;
-  padding: clamp(1rem, 2vw, 1.25rem) !important;
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--hao-mission-accent) 5%, transparent), transparent 38%),
-    color-mix(in srgb, var(--hao-surface-base) 94%, var(--hao-mission-soft)) !important;
+  grid-template-columns: minmax(6rem, 0.26fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  border: 1px solid var(--mission-v4-line) !important;
+  border-radius: 1.05rem !important;
+  padding: 1rem !important;
+  background: color-mix(in srgb, var(--mission-v4-surface) 94%, var(--mission-v4-soft)) !important;
+  box-shadow: none !important;
 }
 
 .operations-log__entry::before {
   display: none !important;
 }
 
-.operations-log__meta span,
-.operations-log__meta strong {
-  display: block;
-}
-
-.operations-log__meta span {
-  color: var(--hao-mission-accent);
-  font-size: 0.72rem;
-  font-weight: 850;
-  letter-spacing: 0.12em;
-}
-
-.operations-log__meta strong {
-  margin-top: 0.45rem;
-  color: var(--mission-v3-muted);
+.operations-log__meta {
+  display: grid;
+  gap: 0.38rem;
+  color: var(--mission-v4-muted);
   font-size: 0.68rem;
   font-weight: 780;
-  letter-spacing: 0.1em;
-  line-height: 1.35;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.operations-log__body h3 {
-  margin-top: 0 !important;
-  font-size: clamp(1.05rem, 2vw, 1.35rem) !important;
+.operations-log__meta strong {
+  color: var(--hao-mission-accent);
+  font-size: 0.66rem;
 }
 
-.operations-log__body p {
-  color: var(--mission-v3-muted) !important;
+.operations-log__body h3,
+.deployment-card h4,
+.research-record h3,
+.field-observation h3,
+.career-phase h3 {
+  margin-top: 0 !important;
+  color: var(--mission-v4-ink) !important;
+  letter-spacing: -0.015em;
+  line-height: 1.18;
+}
+
+.operations-log__body p,
+.deployment-card p,
+.research-record p,
+.field-observation p,
+.career-phase p,
+.operations-dispatch p {
+  color: var(--mission-v4-muted) !important;
+  line-height: 1.62 !important;
+}
+
+.operations-log__body a,
+.deployment-card a,
+.research-record a,
+.field-observation a,
+.mission-archive-links a,
+.back-cover-links a {
+  color: var(--hao-mission-accent) !important;
+  font-weight: 760;
+  text-decoration: none !important;
 }
 
 .operations-dispatches {
-  position: sticky;
-  top: 6.25rem;
-  display: grid;
-  align-self: start;
-  gap: 0.82rem;
-  border: 1px solid color-mix(in srgb, var(--hao-mission-accent) 18%, var(--hao-border-subtle));
-  border-radius: 1.25rem;
+  border: 1px solid var(--mission-v4-line);
+  border-radius: 1.05rem;
   padding: 1rem;
-  background:
-    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--hao-mission-accent) 12%, transparent), transparent 11rem),
-    var(--hao-surface-base);
-  box-shadow: 0 18px 48px color-mix(in srgb, var(--hao-mission-accent) 7%, transparent);
+  background: color-mix(in srgb, var(--mission-v4-surface) 90%, var(--mission-v4-soft));
+}
+
+.operations-dispatches__header {
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--mission-v4-line);
 }
 
 .operations-dispatch {
-  border-top: 1px solid var(--mission-v3-line);
-  padding-top: 0.78rem;
+  padding: 0.82rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--mission-v4-line) 70%, transparent);
+}
+
+.operations-dispatch:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
 }
 
 .operations-dispatch time {
-  color: var(--mission-v3-muted);
+  color: var(--hao-mission-accent);
   font-size: 0.68rem;
-  font-weight: 760;
-  letter-spacing: 0.08em;
+  font-weight: 820;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .operations-dispatch h3 {
-  margin: 0.35rem 0 0.25rem !important;
-  color: var(--mission-v3-ink) !important;
-  font-size: 0.96rem !important;
+  margin: 0.28rem 0 0.35rem;
+  color: var(--mission-v4-ink);
+  font-size: 0.96rem;
+  line-height: 1.25;
 }
 
 .operations-dispatch p {
-  margin: 0 !important;
-  color: var(--mission-v3-muted) !important;
-  font-size: 0.84rem !important;
-  line-height: 1.5 !important;
+  margin: 0;
+  font-size: 0.84rem;
 }
 
-/* Down-page rhythm. */
-.mission-section--deployments {
-  max-width: min(100%, 80rem) !important;
+/* Deployments: reduce density, prioritize scannability. */
+.deployments-log {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.6rem);
 }
 
-.mission-section--deployments .deployments-log {
-  margin-top: clamp(1.3rem, 3vw, 2.2rem);
+.deployments-group {
+  display: grid;
+  gap: 1rem;
 }
 
-.mission-section--research,
-.mission-section--observations,
-.mission-section--trajectory {
-  max-width: var(--mission-v3-reading) !important;
+.deployments-group__header {
+  max-width: 40rem;
 }
 
-.mission-section--research .research-record,
-.mission-section--observations .field-observation,
-.mission-section--trajectory .career-phase {
-  border-color: var(--mission-v3-line) !important;
-  background: color-mix(in srgb, var(--hao-surface-base) 93%, var(--hao-mission-soft)) !important;
+.deployments-group__header h3 {
+  margin: 0.42rem 0 0.35rem !important;
+  color: var(--mission-v4-ink);
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  letter-spacing: -0.025em;
 }
 
+.deployments-group__header p {
+  color: var(--mission-v4-muted);
+  line-height: 1.62;
+}
+
+.deployments-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.95rem !important;
+}
+
+.deployment-card,
+.research-record,
+.field-observation,
+.career-phase {
+  border: 1px solid var(--mission-v4-line) !important;
+  border-radius: 1rem !important;
+  padding: 1rem !important;
+  background: var(--mission-v4-surface) !important;
+  box-shadow: none !important;
+}
+
+.deployment-card__meta,
+.research-record__meta,
+.field-observation__meta,
+.career-phase__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+  color: var(--mission-v4-muted);
+  font-size: 0.66rem;
+  font-weight: 780;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.deployment-card__meta strong,
+.research-record__meta strong,
+.field-observation__meta strong,
+.career-phase__meta strong {
+  color: var(--hao-mission-accent);
+}
+
+.deployment-card__kind,
+.research-record__kind {
+  margin-top: -0.25rem !important;
+  color: color-mix(in srgb, var(--mission-v4-muted) 86%, var(--hao-mission-accent)) !important;
+  font-size: 0.82rem !important;
+  font-weight: 760;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.deployment-card__actions,
+.research-record__actions,
+.mission-archive-links,
+.back-cover-links {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-top: 1rem;
+}
+
+/* Research / notes / trajectory: read like records, not dashboards. */
+.research-records,
+.field-observations,
+.career-trajectory {
+  display: grid !important;
+  gap: 0.9rem !important;
+}
+
+.research-record {
+  display: grid !important;
+  grid-template-columns: minmax(6rem, 0.22fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.research-record__meta {
+  display: grid;
+  align-content: start;
+  justify-content: start;
+  margin-bottom: 0;
+}
+
+.field-observations {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.career-trajectory {
+  position: relative;
+}
+
+.career-phase {
+  position: relative;
+}
+
+/* Back cover: simpler closing band. */
 .mission-back-cover {
-  max-width: var(--mission-v3-wide) !important;
-  border-radius: 1.4rem !important;
-  background:
-    radial-gradient(circle at 8% 20%, color-mix(in srgb, var(--hao-mission-accent) 12%, transparent), transparent 20rem),
-    color-mix(in srgb, var(--hao-surface-base) 92%, var(--hao-mission-soft)) !important;
+  min-height: auto !important;
+  border-top: 1px solid var(--mission-v4-line);
+  padding-top: clamp(2rem, 5vw, 3.5rem);
 }
 
-.mission-back-cover .mission-section-kicker {
-  color: var(--hao-mission-accent) !important;
+.mission-back-cover > .mission-section-kicker,
+.mission-back-cover > h2 {
+  grid-column: 1;
 }
 
-.mission-log-home--product .mission-index {
-  display: none !important;
+.mission-back-cover > p {
+  align-self: start;
+  max-width: 36rem !important;
+  margin: 0 !important;
+  color: var(--mission-v4-muted);
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
-@media (max-width: 1160px) {
+.back-cover-links {
+  grid-row: 2;
+}
+
+.back-cover-links a {
+  border: 1px solid var(--mission-v4-line);
+  border-radius: 999px;
+  padding: 0.55rem 0.78rem;
+  background: var(--mission-v4-surface);
+}
+
+/* Responsive composition. */
+@media (max-width: 1180px) {
   .mission-page-rail {
-    left: 0.85rem;
+    left: 0.7rem;
   }
 }
 
 @media (max-width: 991px) {
-  body:has(.mission-log-home--product) .navbar .container,
-  body:has(.mission-log-home--product) .navbar .container-fluid {
-    padding-right: 1rem !important;
-    padding-left: 1rem !important;
+  body:has(.mission-log-home--product) {
+    --mission-v4-gutter: 1rem;
   }
 
   body:has(.mission-log-home--product) .navbar-brand::after {
@@ -513,74 +748,77 @@ body:has(.mission-log-home--product) .navbar-nav .nav-link:focus-visible {
   }
 
   .mission-log-home--product .mission-cover__layout,
-  .mission-section__header--split,
+  .mission-log-home--product .mission-section,
   .operations-console {
-    grid-template-columns: 1fr !important;
+    display: block !important;
   }
 
-  .mission-log-home--product .mission-cover__visual {
+  .mission-log-home--product .mission-cover__layout {
     min-height: auto !important;
   }
 
+  .mission-log-home--product .mission-cover__visual {
+    margin-top: 1.6rem;
+  }
+
   .mission-page-rail {
-    top: auto;
-    right: 1rem;
-    bottom: 1rem;
-    left: 1rem;
-    flex-direction: row;
-    justify-content: center;
-    border: 1px solid var(--mission-v3-line);
-    border-radius: 999px;
-    padding: 0.5rem;
-    background: color-mix(in srgb, var(--hao-surface-base) 92%, transparent);
-    backdrop-filter: blur(14px);
-    transform: translateY(0.5rem);
+    display: none !important;
   }
 
-  .mission-log-home--rail-visible .mission-page-rail {
-    transform: translateY(0);
+  .operations-dispatches,
+  .mission-control-card {
+    margin-top: 1rem;
   }
 
-  .mission-page-rail::before {
-    display: none;
+  .deployments-grid,
+  .field-observations,
+  .research-record {
+    grid-template-columns: 1fr !important;
   }
 
-  .operations-dispatches {
-    position: static;
+  .mission-log-home--product .mission-section > .mission-section__intro,
+  .mission-section__header--split .mission-section__intro {
+    max-width: var(--mission-v4-reading) !important;
+  }
+
+  .operations-console,
+  .deployments-log,
+  .research-records,
+  .field-observations,
+  .career-trajectory,
+  .mission-archive-links,
+  .mission-back-cover > p,
+  .back-cover-links {
+    margin-top: 1.25rem;
   }
 }
 
 @media (max-width: 640px) {
   body:has(.mission-log-home--product) .navbar-brand {
-    font-size: 0.72rem !important;
+    font-size: 0.7rem !important;
     letter-spacing: 0.08em !important;
   }
 
-  .mission-log-home--product {
-    padding-right: 0.9rem !important;
-    padding-left: 0.9rem !important;
-  }
-
-  .mission-log-home--product .mission-cover__layout {
-    padding: 1.35rem !important;
-  }
-
   .mission-log-home--product .mission-cover h1 {
-    max-width: 10.5ch !important;
-    font-size: clamp(2.8rem, 16vw, 4.7rem) !important;
+    font-size: clamp(2.55rem, 15vw, 4rem) !important;
   }
 
-  .mission-cover__portrait {
-    width: min(12rem, 72%);
+  .mission-cover__actions,
+  .deployment-card__actions,
+  .research-record__actions,
+  .mission-archive-links,
+  .back-cover-links {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .operations-log__entry {
     grid-template-columns: 1fr !important;
   }
 
-  .mission-page-rail a {
-    width: 1.7rem;
-    height: 1.7rem;
+  .mission-cover__metadata div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
   }
 }
 
