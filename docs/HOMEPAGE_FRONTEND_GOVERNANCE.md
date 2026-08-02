@@ -14,9 +14,31 @@ The active visual stack is intentionally short:
 4. `hao-home-safe.css`
 5. `hao-home-center-fix.css`
 
-`hao-home-safe.css` keeps the homepage out of the legacy al-folio about-page surface. `hao-home-center-fix.css` is now the production homepage layer, not a temporary rescue patch. It owns the page shell, hero, card system, section rhythm, profile card, and responsive behavior.
+`hao-home-safe.css` keeps the homepage out of the legacy al-folio about-page surface. `hao-home-center-fix.css` is the production homepage layer. It owns the page shell, hero, card system, section rhythm, profile card, and responsive behavior.
 
 Older Mission Log and v6 experiment styles must not be injected or kept as active production CSS.
+
+## Shell contract
+
+The homepage uses one shared shell token:
+
+- `--hao-page-shell-max`
+- `--hao-page-gutter`
+- `--hao-page-shell`
+
+The navbar container and `.hao-home--production` must both use this same shell. Do not reintroduce competing width variables such as old `--hao-home-shell-*` or `--hao-prod-shell` page-width tokens.
+
+## Navbar brand contract
+
+The homepage must render a real anchor:
+
+```html
+<a class="navbar-brand hao-home-navbar-brand" data-hao-home-brand="true" href="/">Zhihao LIU</a>
+```
+
+This is injected only on the homepage by `_plugins/site_visual_polish.rb`, because the homepage and secondary pages do not always emit identical navbar-brand markup. Blog and other secondary pages should continue to use the theme's native brand.
+
+The homepage brand must not be fabricated with `::before` content, and it must not be hidden with `font-size: 0`.
 
 ## Deployment contract
 
@@ -25,7 +47,8 @@ Before a Pages artifact is uploaded, the workflow must verify `_site/index.html`
 - `hao-home--safe`
 - `hao-home--production`
 - `Build systems that turn field evidence into usable products.`
-- `hao-home-center-fix.css?v=20260802-production-home`
+- `hao-home-center-fix.css?v=20260802-shell-navbar-fix`
+- `hao-home-navbar-brand`
 - `Zhihao LIU`
 
 The artifact must not contain deprecated homepage styles such as:
@@ -39,9 +62,8 @@ This prevents a green CI run from publishing an artifact that still points to th
 
 The homepage should preserve these rules:
 
-- The real al-folio navbar brand must remain visible as black `Zhihao LIU`.
-- The navbar brand must not be fabricated with `::before` content.
-- The homepage and navbar should share one centered page shell.
+- The homepage navbar brand must remain visible as black `Zhihao LIU`.
+- The homepage and navbar must share one centered page shell.
 - The homepage should keep the current white, purple, and soft-gradient visual language.
 - The homepage should feel like a production personal product surface: composed hero, profile card, current-work cards, systems grid, knowledge workspace, trajectory, and contact block.
 - Legacy about header/profile, legacy news, and legacy announcements should remain disabled on the homepage.
