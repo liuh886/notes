@@ -1,0 +1,181 @@
+/*
+ * Mission Log cover refinement v5
+ *
+ * Final cover-only composition layer. It corrects the excessive space between
+ * the navbar and COVER / 00, then rebuilds the banner as a compact editorial
+ * masthead with a stronger portrait/metadata panel.
+ */
+
+body:has(.mission-log-home--product) {
+  --mission-v5-cover-gap: clamp(0.45rem, 1.2vw, 0.95rem);
+  --mission-v5-cover-height: clamp(26rem, 54vh, 36rem);
+  --mission-v5-card: color-mix(in srgb, var(--hao-surface-base, #ffffff) 93%, var(--hao-mission-soft, #f4f0ff));
+  --mission-v5-line: color-mix(in srgb, var(--hao-mission-accent) 17%, var(--hao-border-subtle, #e5e7eb));
+}
+
+/* Reduce the opening gap. The homepage should start close to the navbar. */
+.mission-log-home--product {
+  padding-top: var(--mission-v5-cover-gap) !important;
+}
+
+.mission-log-home--product::before {
+  mask-image: linear-gradient(180deg, black, transparent 19rem) !important;
+  opacity: 0.34 !important;
+}
+
+/* Rebuild the banner as a compact masthead, not a tall billboard. */
+.mission-log-home--product .mission-cover {
+  max-width: min(100%, 80rem) !important;
+  margin-top: 0 !important;
+  border: 1px solid var(--mission-v5-line) !important;
+  border-radius: clamp(1rem, 2.2vw, 1.65rem) !important;
+  background:
+    radial-gradient(circle at 10% 0%, color-mix(in srgb, var(--hao-mission-accent) 10%, transparent), transparent 18rem),
+    linear-gradient(90deg, color-mix(in srgb, var(--hao-mission-accent) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in srgb, var(--hao-mission-accent) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(135deg, var(--hao-surface-base, #ffffff), var(--mission-v5-card)) !important;
+  background-size: auto, 48px 48px, 48px 48px, auto !important;
+  box-shadow: 0 18px 52px color-mix(in srgb, var(--hao-mission-accent) 9%, transparent) !important;
+}
+
+.mission-log-home--product .mission-cover::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: clamp(0.32rem, 0.8vw, 0.48rem);
+  border-radius: inherit;
+  background: linear-gradient(180deg, var(--hao-mission-accent), color-mix(in srgb, var(--hao-mission-accent) 22%, transparent));
+}
+
+.mission-log-home--product .mission-cover__layout {
+  position: relative;
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.5fr) !important;
+  min-height: var(--mission-v5-cover-height) !important;
+  gap: clamp(1.8rem, 4.5vw, 4.2rem) !important;
+  padding: clamp(1.6rem, 4vw, 3rem) clamp(1.45rem, 4vw, 3.2rem) !important;
+}
+
+.mission-log-home--product .mission-section-kicker {
+  letter-spacing: 0.2em !important;
+}
+
+.mission-cover__eyebrow {
+  margin-top: 0.75rem !important;
+}
+
+.mission-log-home--product .mission-cover h1 {
+  max-width: 13.5ch !important;
+  margin-top: clamp(0.9rem, 2vw, 1.35rem) !important;
+  font-size: clamp(2.85rem, 6.1vw, 5.25rem) !important;
+  line-height: 0.96 !important;
+}
+
+.mission-log-home--product .mission-cover__subtitle {
+  max-width: 38rem !important;
+  margin-top: clamp(0.95rem, 2vw, 1.35rem) !important;
+  font-size: clamp(1.02rem, 1.45vw, 1.22rem) !important;
+}
+
+.mission-log-home--product .mission-cover__note {
+  max-width: 32rem !important;
+  margin-top: 0.75rem !important;
+  font-size: 0.94rem !important;
+}
+
+.mission-cover__actions {
+  margin-top: clamp(1rem, 2vw, 1.45rem) !important;
+}
+
+/* Make the right side feel like part of the banner rather than a loose card. */
+.mission-log-home--product .mission-cover__visual {
+  align-self: stretch !important;
+  display: grid !important;
+  grid-template-rows: auto 1fr auto !important;
+  min-height: auto !important;
+  border: 1px solid color-mix(in srgb, var(--hao-mission-accent) 20%, transparent) !important;
+  border-radius: clamp(0.85rem, 1.8vw, 1.25rem) !important;
+  padding: clamp(0.9rem, 2.2vw, 1.25rem) !important;
+  background:
+    radial-gradient(circle at 78% 0%, color-mix(in srgb, var(--hao-mission-accent) 13%, transparent), transparent 10rem),
+    linear-gradient(180deg, color-mix(in srgb, var(--hao-surface-base, #ffffff) 90%, var(--hao-mission-soft, #f4f0ff)), var(--hao-surface-base, #ffffff)) !important;
+  box-shadow: none !important;
+}
+
+.mission-cover__portrait {
+  justify-self: end;
+  width: min(9.2rem, 48%) !important;
+  border-radius: 0.85rem !important;
+}
+
+.mission-cover__metadata {
+  align-self: end;
+  margin-top: auto !important;
+}
+
+.mission-cover__metadata div {
+  grid-template-columns: 5.8rem 1fr !important;
+  padding: 0.58rem 0 !important;
+}
+
+.mission-cover__metadata dt {
+  font-size: 0.61rem !important;
+}
+
+.mission-cover__metadata dd {
+  font-size: 0.72rem !important;
+}
+
+.mission-cover__chips {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-self: end;
+  gap: 0.45rem !important;
+  margin-top: 0.6rem !important;
+}
+
+.mission-cover__chips span {
+  border: 1px solid var(--mission-v5-line) !important;
+  border-radius: 999px !important;
+  padding: 0.32rem 0.55rem !important;
+  background: color-mix(in srgb, var(--hao-surface-base, #ffffff) 76%, transparent) !important;
+  color: var(--hao-text-muted, #6b7280) !important;
+  font-size: 0.63rem !important;
+  font-weight: 730 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mission-log-body {
+  margin-top: clamp(2.2rem, 5vw, 4rem) !important;
+}
+
+@media (max-width: 991px) {
+  .mission-log-home--product .mission-cover__layout {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    padding: clamp(1.25rem, 5vw, 2.3rem) !important;
+  }
+
+  .mission-log-home--product .mission-cover__visual {
+    align-self: auto !important;
+  }
+
+  .mission-cover__portrait {
+    justify-self: start;
+    width: min(8.8rem, 42%) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .mission-log-home--product {
+    padding-top: 0.55rem !important;
+  }
+
+  .mission-log-home--product .mission-cover {
+    border-radius: 1rem !important;
+  }
+
+  .mission-log-home--product .mission-cover h1 {
+    font-size: clamp(2.55rem, 13vw, 4.1rem) !important;
+  }
+}
