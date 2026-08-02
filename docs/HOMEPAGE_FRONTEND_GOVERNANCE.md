@@ -1,10 +1,28 @@
 # Homepage Frontend Governance
 
-This document records the production rules for the Hao's Notes homepage after the August 2026 rescue and redesign work.
+This document records the production rules for the Hao's Notes homepage after the August 2026 rescue work and the subsequent return to an al-folio-compatible design direction.
 
 ## Current ownership model
 
-The homepage should use the stable `hao-home--safe hao-home--production` structure in `_pages/about.md`.
+The homepage must keep the native al-folio `layout: about` structure. The page content should live inside the upstream about-page sequence:
+
+1. `.post`
+2. `.post-header`
+3. `.post-title`
+4. `.desc`
+5. `article`
+6. `.profile`
+7. `.clearfix`
+
+The custom homepage content root is now:
+
+```html
+<div class="hao-home hao-home--production hao-home--alfolio">
+```
+
+Do not reintroduce `hao-home--safe` as the active homepage root. That old rescue class hid the native al-folio title/profile surface and pushed the page toward a standalone landing-page shell.
+
+## Active visual stack
 
 The active visual stack is intentionally short:
 
@@ -14,42 +32,49 @@ The active visual stack is intentionally short:
 4. `hao-home-safe.css`
 5. `hao-home-center-fix.css`
 
-`hao-home-safe.css` keeps the homepage out of the legacy al-folio about-page surface. `hao-home-center-fix.css` is the production homepage layer. It owns the page shell, hero, card system, section rhythm, profile card, and responsive behavior.
+`hao-home-safe.css` remains as a historical compatibility layer, but the current homepage should not depend on its old hidden-header behavior. `hao-home-center-fix.css` is now the al-folio-compatible wide homepage layer. It owns only the wider native container, light content cards, section rhythm, and responsive behavior.
 
 Older Mission Log and v6 experiment styles must not be injected or kept as active production CSS.
 
 ## Shell contract
 
-The homepage uses one shared shell token:
+The homepage should follow al-folio's native shell and widen it, rather than replacing it.
 
-- `--hao-page-shell-max`
-- `--hao-page-gutter`
-- `--hao-page-shell`
+Allowed shell tokens:
 
-The navbar container and `.hao-home--production` must both use this same shell. Do not reintroduce competing width variables such as old `--hao-home-shell-*` or `--hao-prod-shell` page-width tokens.
+- `--hao-alfolio-shell-max`
+- `--hao-alfolio-gutter`
+- `--hao-alfolio-shell`
+
+The following elements should share the same widened shell:
+
+- `body:has(.hao-home--alfolio) main > .container`
+- `body:has(.hao-home--alfolio) .navbar > .container`
+- `body:has(.hao-home--alfolio) .navbar > .container-fluid`
+
+Do not reintroduce competing standalone page-width tokens such as `--hao-page-shell`, old `--hao-home-shell-*`, or `--hao-prod-shell`.
 
 ## Navbar brand contract
 
-The homepage must render a real anchor:
+Upstream al-folio intentionally does not render the left navbar brand on the homepage when `page.permalink == '/'`; it renders the brand on secondary pages. For this customized homepage, `_plugins/site_visual_polish.rb` reinserts the same semantic brand pattern used by the upstream secondary-page header:
 
 ```html
-<a class="navbar-brand hao-home-navbar-brand" data-hao-home-brand="true" href="/">Zhihao LIU</a>
+<a class="navbar-brand title font-weight-lighter hao-home-navbar-brand" data-hao-home-brand="true" href="/"><span class="font-weight-bold">Zhihao</span> LIU</a>
 ```
 
-This is injected only on the homepage by `_plugins/site_visual_polish.rb`, because the homepage and secondary pages do not always emit identical navbar-brand markup. Blog and other secondary pages should continue to use the theme's native brand.
+This preserves the original al-folio brand typography rather than fabricating text with CSS. Blog and secondary pages should continue to use the theme's native brand.
 
-The homepage brand must not be fabricated with `::before` content, and it must not be hidden with `font-size: 0`.
+The homepage brand must not be fabricated with `::before` content, hidden with `font-size: 0`, or restyled into a different typography system.
 
 ## Deployment contract
 
 Before a Pages artifact is uploaded, the workflow must verify `_site/index.html` contains:
 
-- `hao-home--safe`
-- `hao-home--production`
-- `Build systems that turn field evidence into usable products.`
-- `hao-home-center-fix.css?v=20260802-shell-navbar-fix`
+- `hao-home--alfolio`
+- `Research records, shipped tools, and field-informed systems.`
+- `hao-home-center-fix.css?v=20260802-alfolio-wide-home`
 - `hao-home-navbar-brand`
-- `Zhihao LIU`
+- `font-weight-bold">Zhihao</span> LIU`
 
 The artifact must not contain deprecated homepage styles such as:
 
@@ -62,19 +87,19 @@ This prevents a green CI run from publishing an artifact that still points to th
 
 The homepage should preserve these rules:
 
-- The homepage navbar brand must remain visible as black `Zhihao LIU`.
-- The homepage and navbar must share one centered page shell.
-- The homepage should keep the current white, purple, and soft-gradient visual language.
-- The homepage should feel like a production personal product surface: composed hero, profile card, current-work cards, systems grid, knowledge workspace, trajectory, and contact block.
-- Legacy about header/profile, legacy news, and legacy announcements should remain disabled on the homepage.
-- The homepage should avoid fixed rails, full-bleed experimental canvases, and oversized hero typography that can clip at common desktop widths.
+- Keep the native al-folio about-page title, subtitle, profile image, article flow, and clearfix structure visible.
+- Widen the original al-folio container instead of rebuilding a standalone landing-page shell.
+- Keep the homepage navbar brand visually aligned with al-folio's original brand style: `<span class="font-weight-bold">Zhihao</span> LIU`.
+- Place `Current work`, `Systems`, `Knowledge`, `Trajectory`, and `Contact` as compatible content modules inside the original layout.
+- Use light cards, subtle borders, and the existing purple accent; avoid heavy hero panels, full-bleed canvases, duplicated profile cards, or product-site visual language.
+- Keep legacy news, latest posts, selected papers, and announcements disabled unless deliberately reintroduced.
 
 ## Change policy
 
 When the homepage visual layer changes:
 
-1. Update `hao-home-center-fix.css` or `hao-home-safe.css`; avoid adding another final CSS layer.
+1. Update `hao-home-center-fix.css` or the homepage markdown; avoid adding another final CSS layer.
 2. Bump `STYLESHEET_VERSION` in `_plugins/site_visual_polish.rb`.
-3. Keep `test/style_contract.js` aligned with the intended production shell.
+3. Keep `test/style_contract.js` aligned with the intended al-folio-compatible shell.
 4. Confirm the workflow artifact check passes before merging.
 5. After merge, verify the live page shows the new stylesheet version in its HTML.
