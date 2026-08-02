@@ -84,7 +84,7 @@ requireIncludes(
     "hao-design.css",
     "hao-home-safe.css",
     "hao-home-center-fix.css",
-    "STYLESHEET_VERSION = \"20260802-home-cleanup\"",
+    'STYLESHEET_VERSION = "20260802-production-home"',
     "?v=#{STYLESHEET_VERSION}",
   ],
   "Site visual polish plugin",
@@ -113,7 +113,7 @@ requireAbsent(
 if (!exists("assets/css/site-upgrade.css")) failures.push("Frontend upgrade layer missing: `assets/css/site-upgrade.css`.");
 if (!exists("assets/css/hao-design.css")) failures.push("Hao design system layer missing: `assets/css/hao-design.css`.");
 if (!exists("assets/css/hao-home-safe.css")) failures.push("Safe homepage CSS missing: `assets/css/hao-home-safe.css`.");
-if (!exists("assets/css/hao-home-center-fix.css")) failures.push("Homepage shell CSS missing: `assets/css/hao-home-center-fix.css`.");
+if (!exists("assets/css/hao-home-center-fix.css")) failures.push("Homepage production CSS missing: `assets/css/hao-home-center-fix.css`.");
 
 const homeSafeCss = exists("assets/css/hao-home-safe.css") ? read("assets/css/hao-home-safe.css") : "";
 requireIncludes(
@@ -133,51 +133,55 @@ requireIncludes(
 );
 requireAbsent(homeSafeCss, ["position: fixed", "min-height: 100vh", "100vw"], "Safe homepage CSS");
 
-const homeShellCss = exists("assets/css/hao-home-center-fix.css") ? read("assets/css/hao-home-center-fix.css") : "";
+const homeProductionCss = exists("assets/css/hao-home-center-fix.css") ? read("assets/css/hao-home-center-fix.css") : "";
 requireIncludes(
-  homeShellCss,
+  homeProductionCss,
   [
-    "Superdesign homepage rescue layer",
-    "--hao-home-shell-max: 112rem",
-    "body:has(.hao-home--safe) .navbar-brand",
+    "Production homepage redesign layer",
+    "--hao-prod-shell-max: 76rem",
+    "--hao-prod-accent-2: #6d5dfc",
+    "body:has(.hao-home--production) .navbar-brand",
     "Restore the real, black, left-side navbar brand",
-    "body:has(.hao-home--safe) .navbar-brand::before",
-    "content: none !important",
-    "grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem)",
-    "@media (max-width: 1100px)",
+    ".hao-prod-hero",
+    ".hao-prod-knowledge-grid",
+    ".hao-prod-timeline",
+    "@media (max-width: 1120px)",
     "@media (max-width: 900px)",
     "@media (max-width: 680px)",
   ],
-  "Homepage shell CSS",
+  "Homepage production CSS",
 );
-requireAbsent(homeShellCss, ['content: "Zhihao LIU"', "font-size: 0 !important"], "Homepage shell CSS");
+requireAbsent(homeProductionCss, ['content: "Zhihao LIU"', "font-size: 0 !important", "mission-log-shell"], "Homepage production CSS");
 
 const aboutPage = read("_pages/about.md");
 requireIncludes(
   aboutPage,
   [
-    "hao-home--safe",
-    "Climate data, geoscience evidence, and small tools.",
-    "Current work",
-    "Active tracks, not a news feed.",
+    "hao-home--safe hao-home--production",
+    "Build systems that turn field evidence into usable products.",
+    "Independent Builder · Climate · Geospatial · AI",
+    "Explore current work",
+    "Active tracks, organized as working lanes.",
     "Selected systems",
-    "Research record",
-    "Field observations",
+    "Knowledge work",
+    "Research records and field notes in one workspace.",
     "Career trajectory",
-    "hao-safe-contact",
+    "hao-prod-contact",
   ],
-  "Safe homepage",
+  "Production homepage",
 );
 requireAbsent(
   aboutPage,
   [
     "hao-home--v6",
     "Building small data systems for climate, geoscience, and personal productivity.",
+    "Climate data, geoscience evidence, and small tools.",
     "mission-log-home--product",
     "mission-page-rail",
     "operations-console",
+    "hao-safe-section",
   ],
-  "Safe homepage",
+  "Production homepage",
 );
 requireRegex(aboutPage, /^news:\s*false\b/m, "Hao homepage must keep legacy `news` disabled.");
 requireRegex(aboutPage, /^\s*enabled:\s*false\b/m, "Hao homepage must keep legacy announcements disabled.");
