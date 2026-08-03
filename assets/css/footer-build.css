@@ -1,0 +1,23 @@
+/* Compact deployment identifier appended to the inherited al-folio footer. */
+
+.hao-build-revision {
+  display: inline;
+  margin-left: 0.2em;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.hao-build-revision a {
+  color: inherit;
+  font-family: var(--global-code-font, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+  text-decoration: none;
+  opacity: 0.78;
+}
+
+.hao-build-revision a:hover,
+.hao-build-revision a:focus-visible {
+  color: var(--global-theme-color);
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
