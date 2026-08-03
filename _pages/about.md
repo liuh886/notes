@@ -12,7 +12,7 @@ profile:
   image: blog_pic.jpg
   image_circular: false
   more_info: >
-    <p>📍Offshore Bergen, 2020 Aug</p>
+    <p>Offshore Bergen · Aug 2020</p>
 
 news: false
 announcements:
@@ -36,12 +36,10 @@ home_cta: false
   <section class="hao-home-intro" aria-labelledby="hao-home-intro-title">
     <p class="hao-home-eyebrow">Climate data · Geoscience evidence · AI tools</p>
     <h2 id="hao-home-intro-title">Research records, shipped tools, and field-informed systems.</h2>
-    <p>Hao's Notes is the public surface for my climate data work, geoscience evidence, shipped tools, and local-first systems. It keeps the original al-folio homepage structure, while giving the active work a wider and more organized presentation.</p>
+    <p>I build evidence-driven data systems for climate, energy, and geoscience—from field observations and reproducible research to public tools that support analysis and decisions.</p>
     <div class="hao-home-actions" aria-label="Homepage shortcuts">
-      <a class="hao-home-button hao-home-button--primary" href="#current-work">Current work</a>
-      <a class="hao-home-button" href="#systems">Systems</a>
-      <a class="hao-home-button" href="#knowledge">Knowledge</a>
-      <a class="hao-home-button" href="{{ '/blog/' | relative_url }}">Notes</a>
+      <a class="hao-home-button hao-home-button--primary" href="#current-work">Browse current work</a>
+      <a class="hao-home-button" href="{{ '/blog/' | relative_url }}">Read notes</a>
     </div>
   </section>
 
