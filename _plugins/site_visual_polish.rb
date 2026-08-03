@@ -1,20 +1,26 @@
 # frozen_string_literal: true
 
 module SiteVisualPolish
-  # Keep the starter close to upstream al-folio by default. Secondary pages such
-  # as Blog, Projects, Repositories, and CV should use the theme's native visual
-  # grammar unless a change is deliberately made in the theme/gem layer.
+  # Keep the starter close to upstream al-folio by default. The homepage owns one
+  # scoped layout stylesheet; the CV owns one narrowly scoped TOC polish layer.
   HOMEPAGE_STYLESHEETS = [
     "hao-home-center-fix.css"
   ].freeze
 
-  # Bump this value whenever the homepage enhancement layer changes. GitHub
-  # Pages and browsers may otherwise keep serving an older CSS response for the
-  # same path.
-  STYLESHEET_VERSION = "20260803-content-audit-optical-shell".freeze
+  CV_STYLESHEETS = [
+    "cv-toc-polish.css"
+  ].freeze
+
+  # Bump this value whenever either scoped visual layer changes. GitHub Pages and
+  # browsers may otherwise keep serving an older CSS response for the same path.
+  STYLESHEET_VERSION = "20260803-cv-toc-home-81".freeze
+
+  def self.cv_page?(page)
+    page.relative_path == "cv.md" || page.url.to_s == "/cv/"
+  end
 
   def self.apply_cv_title(page)
-    return unless page.relative_path == "cv.md"
+    return unless cv_page?(page)
 
     page.output = page.output.sub(
       %r{(<a class="anchor" id="publications"></a>\s*<div class="card mt-3 p-3">\s*<h3 class="card-title font-weight-medium">)Publications(</h3>)},
@@ -34,6 +40,13 @@ module SiteVisualPolish
     page.output = page.output.sub('<body class="', '<body class="hao-home-page ')
   end
 
+  def self.apply_cv_body_class(page)
+    return unless cv_page?(page)
+    return if page.output.include?("hao-cv-page")
+
+    page.output = page.output.sub('<body class="', '<body class="hao-cv-page ')
+  end
+
   def self.apply_home_navbar_brand(page)
     return unless home_page?(page)
     return unless page.output.include?("hao-home--alfolio")
@@ -48,13 +61,12 @@ module SiteVisualPolish
     page.output = page.output.sub(navbar_container, "\\1\n      #{brand}")
   end
 
-  def self.apply_homepage_stylesheet(page)
-    return unless home_page?(page)
+  def self.apply_stylesheets(page, stylesheets)
     return unless page.output.include?("</head>")
 
     baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
 
-    HOMEPAGE_STYLESHEETS.each do |stylesheet|
+    stylesheets.each do |stylesheet|
       next if page.output.include?(stylesheet)
 
       href = "#{baseurl}/assets/css/#{stylesheet}?v=#{STYLESHEET_VERSION}"
@@ -62,13 +74,27 @@ module SiteVisualPolish
       page.output = page.output.sub("</head>", "#{tag}</head>")
     end
   end
+
+  def self.apply_homepage_stylesheet(page)
+    return unless home_page?(page)
+
+    apply_stylesheets(page, HOMEPAGE_STYLESHEETS)
+  end
+
+  def self.apply_cv_stylesheet(page)
+    return unless cv_page?(page)
+
+    apply_stylesheets(page, CV_STYLESHEETS)
+  end
 end
 
 [:pages, :documents].each do |hook_owner|
   Jekyll::Hooks.register hook_owner, :post_render do |page|
     SiteVisualPolish.apply_cv_title(page)
     SiteVisualPolish.apply_home_body_class(page)
+    SiteVisualPolish.apply_cv_body_class(page)
     SiteVisualPolish.apply_home_navbar_brand(page)
     SiteVisualPolish.apply_homepage_stylesheet(page)
+    SiteVisualPolish.apply_cv_stylesheet(page)
   end
 end
