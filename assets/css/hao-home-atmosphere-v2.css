@@ -15,8 +15,8 @@
 /*
  * One shared ambient field for the complete hero-to-Current work composition.
  * Its irregular long-duration path creates natural-looking drift without adding
- * a second section-specific light source. The intensity stays deliberately low
- * so the field reads as atmosphere rather than a colored panel.
+ * a second section-specific light source. The intensity is balanced so the field
+ * remains visible without reading as a colored panel.
  */
 .hao-home-page .hao-home--alfolio::before {
   position: absolute;
@@ -28,9 +28,9 @@
   border-radius: 48%;
   background: radial-gradient(
     ellipse at 64% 24%,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 7%, transparent) 0%,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 4%, transparent) 34%,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 2%, transparent) 52%,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 10%, transparent) 0%,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 6%, transparent) 34%,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 3%, transparent) 52%,
     transparent 72%
   );
   content: "";
@@ -56,7 +56,7 @@
   border-radius: 2rem;
   background: radial-gradient(
     circle at 56% 38%,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 7%, transparent),
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 9%, transparent),
     transparent 64%
   );
   content: "";
@@ -172,39 +172,39 @@ html[data-theme="dark"] .hao-home-page #contact::before {
 
 @keyframes hao-home-shared-ambient-drift {
   0% {
-    opacity: 0.38;
+    opacity: 0.54;
     transform: translate3d(2rem, -1rem, 0) scale(0.96);
   }
 
   21% {
-    opacity: 0.48;
+    opacity: 0.66;
     transform: translate3d(-5rem, 3rem, 0) scale(1.02);
   }
 
   47% {
-    opacity: 0.42;
+    opacity: 0.6;
     transform: translate3d(-11rem, 10rem, 0) scale(1.06);
   }
 
   73% {
-    opacity: 0.52;
+    opacity: 0.72;
     transform: translate3d(-3rem, 15rem, 0) scale(1.01);
   }
 
   100% {
-    opacity: 0.4;
+    opacity: 0.57;
     transform: translate3d(4rem, 7rem, 0) scale(0.98);
   }
 }
 
 @keyframes hao-home-image-halo {
   from {
-    opacity: 0.36;
+    opacity: 0.48;
     transform: translate3d(0, 0, 0) scale(0.98);
   }
 
   to {
-    opacity: 0.58;
+    opacity: 0.72;
     transform: translate3d(-0.35rem, 0.25rem, 0) scale(1.04);
   }
 }
@@ -216,7 +216,7 @@ html[data-theme="dark"] .hao-home-page #contact::before {
   }
 
   .hao-home-page .hao-home--alfolio::before {
-    opacity: 0.44;
+    opacity: 0.6;
     transform: translate3d(-4rem, 6rem, 0) scale(1);
   }
 }
