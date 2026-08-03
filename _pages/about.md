@@ -11,6 +11,8 @@ profile:
   align: right
   image: blog_pic.jpg
   image_circular: false
+  more_info: >
+    <p>Offshore Bergen · Aug 2020</p>
 
 news: false
 announcements:
@@ -35,9 +37,8 @@ home_cta: false
     <p class="hao-home-eyebrow">Climate data · Geoscience evidence · AI tools</p>
     <h2 id="hao-home-intro-title">Research records, shipped tools, and field-informed systems.</h2>
     <p>I build evidence-driven data systems for climate, energy, and geoscience—from field observations and reproducible research to public tools that support analysis and decisions.</p>
-    <div class="hao-home-actions" aria-label="Homepage shortcuts">
-      <a class="hao-home-button hao-home-button--primary" href="#current-work">Browse current work</a>
-      <a class="hao-home-button" href="{{ '/blog/' | relative_url }}">Read notes</a>
+    <div class="hao-home-actions" aria-label="Homepage contact">
+      <a class="hao-home-button hao-home-button--primary" href="https://calendar.app.google/UQ267iEs4MTAGFSd7" target="_blank" rel="noopener noreferrer" aria-label="Contact — book a chat">Contact</a>
     </div>
   </section>
 
