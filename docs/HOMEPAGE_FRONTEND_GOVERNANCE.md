@@ -32,47 +32,69 @@ The only homepage-specific visual layer is:
 
 1. `hao-home-center-fix.css`
 
-`hao-home-center-fix.css` owns the widened native shell, the coordinated title/introduction/profile banner, light content cards, section rhythm, and responsive behavior for the homepage.
+`hao-home-center-fix.css` owns the differentiated navigation/content shells, the coordinated introduction/profile/identity banner, light content cards, status labels, section rhythm, and responsive behavior for the homepage.
 
 Older Mission Log and v6 experiment styles must not be injected or kept as active production CSS.
 
 ## Shell contract
 
-The homepage follows al-folio's native shell and widens it rather than replacing it.
+The homepage follows al-folio's native shell and widens it rather than replacing it. The navigation should remain slightly more compact than the working content area: exact equality makes the navbar feel visually stretched, while the homepage grids benefit from additional horizontal space.
 
 Allowed shell tokens:
 
-- `--hao-alfolio-shell-max`
+- `--hao-alfolio-content-shell-max`
+- `--hao-alfolio-nav-shell-max`
 - `--hao-alfolio-gutter`
-- `--hao-alfolio-shell`
+- `--hao-alfolio-content-shell`
+- `--hao-alfolio-nav-shell`
 - `--hao-home-profile-width`
 
-The production desktop maximum is `84rem`. The following real theme nodes must share the same calculated width and left/right edges:
+The production desktop maximums are:
 
-- `.hao-home-page > .container[role="main"]`
-- `.hao-home-page #navbar > .container`
-- `.hao-home-page #navbar > .container-fluid`
+- homepage content: `84rem`
+- navbar and footer: `80rem`
+
+The real theme nodes are assigned as follows:
+
+- `.hao-home-page > .container[role="main"]` uses the content shell.
+- `.hao-home-page #navbar > .container` uses the navigation shell.
+- `.hao-home-page #navbar > .container-fluid` uses the navigation shell.
+- `.hao-home-page footer > .container` uses the navigation shell.
 
 The al-folio default layout renders the content container directly below `<body>`; it does not render a `main > .container` wrapper. Homepage changes must be based on the generated DOM, not an assumed wrapper.
 
-Within that shell, the `.post`, homepage index, content sections, card grids, and contact block must not carry a narrower outer `max-width`. Individual paragraphs may keep readable line lengths, but section and card-grid containers should align with the navbar shell.
+Within the content shell, the `.post`, homepage index, content sections, card grids, and contact block must not carry a narrower outer `max-width`. Individual paragraphs may keep readable line lengths.
 
-Do not reintroduce competing standalone page-width tokens such as `--hao-page-shell`, old `--hao-home-shell-*`, or `--hao-prod-shell`.
+Do not reintroduce competing standalone page-width tokens such as `--hao-alfolio-shell-max`, `--hao-page-shell`, old `--hao-home-shell-*`, or `--hao-prod-shell`.
 
 ## Banner contract
 
-The native title, subtitle, profile image, and custom introduction form one banner rather than two unrelated vertical blocks.
+The custom introduction, native profile image, and native title/subtitle form one coordinated banner.
 
 On desktop:
 
-- `.post` is the banner and page grid.
-- `.post-header` and `.hao-home-intro` occupy the left column.
-- the native `.profile` occupies the right column and spans the title/introduction rows.
-- `.hao-home-index` and all following sections span the full shell below the banner.
+- `.hao-home-intro` occupies the left column and leads the page narrative.
+- the native `.profile` occupies the upper-right column.
+- `.post-header`, containing `Zhihao LIU` and `Climate & Energy Data Scientist`, sits directly beneath the profile image as its identity block.
+- the profile front matter should not add a competing `more_info` caption.
+- `.hao-home-index` and all following sections span the full content shell below the banner.
 - the upstream `article` and `.clearfix` wrappers may use `display: contents` so their children participate in the banner grid without duplicating the theme layout.
 - the profile must not remain floated.
 
-At tablet and mobile widths, the grid becomes one column. Title and introduction remain the reading lead; the profile follows as a bounded, left-aligned image before the section index.
+At tablet and mobile widths, the grid becomes one column in this order:
+
+1. profile image
+2. native name and role
+3. custom introduction
+4. section index
+
+This keeps the identity attached to the image instead of separating it with a long introductory block.
+
+The banner should contain exactly two direct actions: one primary route to current work and one secondary route to notes. The complete section navigation belongs in `.hao-home-index` and should not be duplicated as another row of buttons.
+
+## Card hierarchy contract
+
+Card identifiers remain quiet metadata. Status values use a subtle pill treatment with a light border and the existing theme accent. They should improve scanability without creating a dashboard-like visual system or adding status-specific colors that require a separate taxonomy.
 
 ## Navbar brand contract
 
@@ -93,7 +115,9 @@ Before a Pages artifact is uploaded, the workflow must verify `_site/index.html`
 - `hao-home--alfolio`
 - `hao-home-page`
 - `Research records, shipped tools, and field-informed systems.`
-- `hao-home-center-fix.css?v=20260803-shell-banner-grid`
+- the evidence-driven homepage introduction
+- `Browse current work`
+- `hao-home-center-fix.css?v=20260803-ui-polish`
 - `hao-home-navbar-brand`
 - `font-weight-bold">Zhihao</span> LIU`
 
@@ -111,12 +135,13 @@ This prevents a green CI run from publishing an artifact that either points to t
 The homepage should preserve these rules:
 
 - Keep the native al-folio about-page title, subtitle, profile image, article, and clearfix semantics.
-- Widen the original al-folio container instead of rebuilding a standalone landing-page shell.
-- Align the visible homepage content blocks to the same left and right shell edges as the navbar.
-- Treat the title, introduction, and profile as one coordinated banner on desktop.
+- Widen the original al-folio content container instead of rebuilding a standalone landing-page shell.
+- Keep homepage content slightly wider than the navbar and footer on desktop.
+- Treat the introduction, profile, and identity block as one coordinated banner.
+- Keep `Zhihao LIU` and `Climate & Energy Data Scientist` directly beneath the profile image.
 - Keep the homepage navbar brand visually aligned with al-folio's original brand style: `<span class="font-weight-bold">Zhihao</span> LIU`.
 - Place `Current work`, `Systems`, `Knowledge`, `Trajectory`, and `Contact` as compatible content modules inside the original layout.
-- Use light cards, subtle borders, and the existing purple accent; avoid heavy hero panels, full-bleed canvases, duplicated profile cards, or product-site visual language.
+- Use light cards, subtle borders, restrained status pills, and the existing purple accent; avoid heavy hero panels, full-bleed canvases, duplicated profile cards, or product-site visual language.
 - Keep legacy news, latest posts, selected papers, and announcements disabled unless deliberately reintroduced.
 
 ## Change policy
@@ -125,6 +150,6 @@ When the homepage visual layer changes:
 
 1. Update `hao-home-center-fix.css` or the homepage markdown; avoid adding another final CSS layer.
 2. Bump `STYLESHEET_VERSION` in `_plugins/site_visual_polish.rb`.
-3. Keep `test/style_contract.js` aligned with the intended al-folio-compatible shell and banner.
+3. Keep `test/style_contract.js` aligned with the intended shell, banner, and action hierarchy.
 4. Confirm the workflow artifact check passes before merging.
 5. After merge, verify the live page shows the new stylesheet version and the `hao-home-page` body class in its HTML.
