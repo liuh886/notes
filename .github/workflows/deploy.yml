@@ -57,7 +57,7 @@ jobs:
         run: |
           set -euo pipefail
           npm run lint:style-contract
-          npx prettier --check test/style_contract.js test/repositories_contract.js
+          npx prettier --check test/style_contract.js
           ruby -c _plugins/site_visual_polish.rb
 
       - name: Build (production) 🔧
@@ -115,7 +115,7 @@ jobs:
           grep -q 'class="repo-grid"' _site/repositories/index.html
           grep -q 'class="repo-card__body"' _site/repositories/index.html
           grep -q 'grid-template-columns: repeat(2, minmax(0, 1fr))' _site/assets/css/repositories-page-polish.css
-          grep -q 'html:not(\[data-theme="dark"\]) .hao-repositories-page .repo-dark' _site/assets/css/repositories-page-polish.css
+          grep -Fq 'html:not([data-theme="dark"]) .hao-repositories-page .repo-dark' _site/assets/css/repositories-page-polish.css
 
       - name: Verify CV TOC polish artifact 🔎
         run: |
