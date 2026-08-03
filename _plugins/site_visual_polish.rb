@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 module SiteVisualPolish
-  # Keep the starter close to upstream al-folio by default. The homepage owns one
-  # scoped layout stylesheet; CV and Repositories own narrow component layers.
+  # Keep the starter close to upstream al-folio by default. Each customized
+  # surface owns one narrowly scoped stylesheet and body class.
+  GLOBAL_STYLESHEETS = [
+    "footer-build.css"
+  ].freeze
+
   HOMEPAGE_STYLESHEETS = [
     "hao-home-center-fix.css",
     "hao-home-atmosphere.css"
@@ -16,6 +20,10 @@ module SiteVisualPolish
     "repositories-page-polish.css"
   ].freeze
 
+  PORTFOLIO_STYLESHEETS = [
+    "portfolio-page-polish.css"
+  ].freeze
+
   STYLESHEET_VERSION = "20260803-cv-toc-home-81".freeze
 
   def self.cv_page?(page)
@@ -24,6 +32,10 @@ module SiteVisualPolish
 
   def self.repositories_page?(page)
     page.relative_path == "_pages/repositories.md" || page.url.to_s == "/repositories/"
+  end
+
+  def self.portfolio_page?(page)
+    page.relative_path == "_pages/portfolio.md" || page.url.to_s == "/portfolio/"
   end
 
   def self.apply_cv_title(page)
@@ -61,6 +73,13 @@ module SiteVisualPolish
     page.output = page.output.sub('<body class="', '<body class="hao-repositories-page ')
   end
 
+  def self.apply_portfolio_body_class(page)
+    return unless portfolio_page?(page)
+    return if page.output.include?("hao-portfolio-page")
+
+    page.output = page.output.sub('<body class="', '<body class="hao-portfolio-page ')
+  end
+
   def self.apply_home_navbar_brand(page)
     return unless home_page?(page)
     return unless page.output.include?("hao-home--alfolio")
@@ -75,6 +94,41 @@ module SiteVisualPolish
     page.output = page.output.sub(navbar_container, "\\1\n      #{brand}")
   end
 
+  def self.apply_home_portfolio_link(page)
+    return unless home_page?(page)
+    return if page.output.include?('data-hao-portfolio-link="true"')
+
+    baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
+    href = baseurl.empty? ? "/portfolio/" : "#{baseurl}/portfolio/"
+    link = %(<a href="#{href}" data-hao-portfolio-link="true">Portfolio</a>)
+    contact_links = %r{(<div class="hao-home-contact-links">.*?)(\s*</div>)}m
+    page.output = page.output.sub(contact_links, "\\1\n      #{link}\\2")
+  end
+
+  def self.build_revision(page)
+    revision = ENV["GITHUB_SHA"].to_s
+    revision = page.site.config.dig("github", "build_revision").to_s if revision.empty?
+    revision = ENV["JEKYLL_BUILD_REVISION"].to_s if revision.empty?
+    revision.match?(/\A[0-9a-f]{7,40}\z/i) ? revision.downcase : nil
+  end
+
+  def self.apply_footer_build_revision(page)
+    revision = build_revision(page)
+    return unless revision
+    return if page.output.include?("hao-build-revision")
+
+    short_revision = revision[0, 7]
+    repo_url = page.site.config.dig("github", "repository_url").to_s
+    repo_url = "https://github.com/liuh886/notes" if repo_url.empty?
+    build_url = "#{repo_url.sub(%r{/$}, '')}/commit/#{revision}"
+    markup = %( <span class="hao-build-revision" data-build-revision="#{revision}" title="Deployed Git commit #{revision}">· Build <a href="#{build_url}" rel="noopener noreferrer">#{short_revision}</a></span>)
+
+    footer_pattern = %r{(<footer\b[^>]*role="contentinfo"[^>]*>.*?<div\b[^>]*class="[^"]*\bcontainer\b[^"]*"[^>]*>)(.*?)(</div>\s*</footer>)}m
+    page.output = page.output.sub(footer_pattern) do
+      "#{Regexp.last_match(1)}#{Regexp.last_match(2).rstrip}#{markup}\n#{Regexp.last_match(3)}"
+    end
+  end
+
   def self.apply_stylesheets(page, stylesheets)
     return unless page.output.include?("</head>")
 
@@ -87,6 +141,10 @@ module SiteVisualPolish
       tag = %(<link rel="stylesheet" href="#{href}">)
       page.output = page.output.sub("</head>", "#{tag}</head>")
     end
+  end
+
+  def self.apply_global_stylesheet(page)
+    apply_stylesheets(page, GLOBAL_STYLESHEETS)
   end
 
   def self.apply_homepage_stylesheet(page)
@@ -106,6 +164,12 @@ module SiteVisualPolish
 
     apply_stylesheets(page, REPOSITORIES_STYLESHEETS)
   end
+
+  def self.apply_portfolio_stylesheet(page)
+    return unless portfolio_page?(page)
+
+    apply_stylesheets(page, PORTFOLIO_STYLESHEETS)
+  end
 end
 
 [:pages, :documents].each do |hook_owner|
@@ -114,9 +178,14 @@ end
     SiteVisualPolish.apply_home_body_class(page)
     SiteVisualPolish.apply_cv_body_class(page)
     SiteVisualPolish.apply_repositories_body_class(page)
+    SiteVisualPolish.apply_portfolio_body_class(page)
     SiteVisualPolish.apply_home_navbar_brand(page)
+    SiteVisualPolish.apply_home_portfolio_link(page)
+    SiteVisualPolish.apply_global_stylesheet(page)
     SiteVisualPolish.apply_homepage_stylesheet(page)
     SiteVisualPolish.apply_cv_stylesheet(page)
     SiteVisualPolish.apply_repositories_stylesheet(page)
+    SiteVisualPolish.apply_portfolio_stylesheet(page)
+    SiteVisualPolish.apply_footer_build_revision(page)
   end
 end
