@@ -15,9 +15,9 @@ module SiteVisualPolish
     "repositories-page-polish.css"
   ].freeze
 
-  # Bump this value whenever any scoped visual layer changes. GitHub Pages and
-  # browsers may otherwise keep serving an older CSS response for the same path.
-  STYLESHEET_VERSION = "20260803-home-curation-repositories".freeze
+  # The homepage and CV files are unchanged in this round. The repositories
+  # stylesheet has a new path, so it does not inherit an older cached response.
+  STYLESHEET_VERSION = "20260803-cv-toc-home-81".freeze
 
   def self.cv_page?(page)
     page.relative_path == "cv.md" || page.url.to_s == "/cv/"
