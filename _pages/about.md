@@ -52,8 +52,8 @@ home_cta: false
   <section class="hao-home-section" id="current-work" aria-labelledby="current-work-title">
     <div class="hao-home-section-header">
       <p class="hao-home-eyebrow">Current work</p>
-      <h2 id="current-work-title">Five maintained product and research lanes.</h2>
-      <p>This section is limited to work that is actively maintained now. Archived projects and supporting tools appear separately below.</p>
+      <h2 id="current-work-title">Six maintained product and research lanes.</h2>
+      <p>This section is limited to work that is actively maintained or being prepared for its first public release. Archived projects and supporting tools appear separately below.</p>
     </div>
     <div class="hao-home-card-grid">
       {% for operation in site.data.current_operations.operations %}
@@ -64,9 +64,14 @@ home_cta: false
           </div>
           <h3>{{ operation.title }}</h3>
           <p>{{ operation.summary }}</p>
-          {% if operation.href %}
-            <a class="hao-home-text-link" href="{{ operation.href }}" target="_blank" rel="noopener noreferrer">{{ operation.label | default: "Open" }} →</a>
-          {% endif %}
+          <div class="hao-home-links">
+            {% if operation.href %}
+              <a class="hao-home-text-link" href="{{ operation.href }}" target="_blank" rel="noopener noreferrer">{{ operation.label | default: "Open" }} →</a>
+            {% endif %}
+            {% if operation.secondary_href %}
+              <a class="hao-home-text-link" href="{{ operation.secondary_href }}" target="_blank" rel="noopener noreferrer">{{ operation.secondary_label | default: "Repository" }} →</a>
+            {% endif %}
+          </div>
         </article>
       {% endfor %}
     </div>
@@ -99,10 +104,13 @@ home_cta: false
                 <p>{{ deployment.summary }}</p>
                 <div class="hao-home-links">
                   {% if deployment.href %}
-                    <a class="hao-home-text-link" href="{{ deployment.href }}">{{ deployment.primary_label | default: "Open" }} →</a>
+                    <a class="hao-home-text-link" href="{{ deployment.href }}" {% if deployment.href contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ deployment.primary_label | default: "Open" }} →</a>
                   {% endif %}
                   {% if deployment.secondary_href %}
-                    <a class="hao-home-text-link" href="{{ deployment.secondary_href }}" target="_blank" rel="noopener noreferrer">{{ deployment.secondary_label | default: "Repository" }} →</a>
+                    <a class="hao-home-text-link" href="{{ deployment.secondary_href }}" {% if deployment.secondary_href contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ deployment.secondary_label | default: "More" }} →</a>
+                  {% endif %}
+                  {% if deployment.repository_href %}
+                    <a class="hao-home-text-link" href="{{ deployment.repository_href }}" target="_blank" rel="noopener noreferrer">{{ deployment.repository_label | default: "Repository" }} →</a>
                   {% endif %}
                 </div>
               </article>
