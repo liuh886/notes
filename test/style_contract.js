@@ -81,7 +81,9 @@ requireIncludes(
   [
     "HOMEPAGE_STYLESHEETS",
     "hao-home-center-fix.css",
-    'STYLESHEET_VERSION = "20260802-home-width-align"',
+    'STYLESHEET_VERSION = "20260803-shell-banner-grid"',
+    "def self.apply_home_body_class(page)",
+    "hao-home-page",
     "def self.apply_home_navbar_brand(page)",
     "navbar-brand title font-weight-lighter hao-home-navbar-brand",
     "<span class=\"font-weight-bold\">Zhihao</span> LIU",
@@ -121,16 +123,18 @@ requireIncludes(
   homeAlfolioCss,
   [
     "al-folio baseline homepage enhancement",
-    "--hao-alfolio-shell-max: 72rem",
-    "Shared al-folio shell: navbar and homepage content use the same edge.",
-    "body:has(.hao-home--alfolio) main > .container",
-    "body:has(.hao-home--alfolio) .navbar > .container",
-    "body:has(.hao-home--alfolio) article > .clearfix",
-    "display: revert !important",
+    "--hao-alfolio-shell-max: 84rem",
+    "One measurable shell for both surfaces.",
+    '.hao-home-page > .container[role="main"]',
+    ".hao-home-page #navbar > .container",
+    ".hao-home-page .post > article > .clearfix",
+    "grid-template-areas:",
+    '"header profile"',
+    "display: contents;",
+    ".hao-home-page .post > article > .profile",
     ".hao-home-navbar-brand",
     ".hao-home--alfolio",
     ".hao-home-intro",
-    ".hao-home-intro .hao-home-eyebrow",
     ".hao-home-section",
     ".hao-home-knowledge-grid",
     "@media (max-width: 992px)",
@@ -143,6 +147,8 @@ requireAbsent(
   [
     'content: "Zhihao LIU"',
     "font-size: 0 !important",
+    "body:has(",
+    "main > .container",
     "--hao-page-shell",
     "--hao-prod-shell",
     ".hao-prod-hero",
@@ -158,8 +164,9 @@ requireIncludes(
   workflow,
   [
     "hao-home--alfolio",
+    "hao-home-page",
     "Research records, shipped tools, and field-informed systems.",
-    "hao-home-center-fix.css?v=20260802-home-width-align",
+    "hao-home-center-fix.css?v=20260803-shell-banner-grid",
     "hao-home-navbar-brand",
     'font-weight-bold">Zhihao</span> LIU',
     "Verify secondary pages keep al-folio baseline",
@@ -216,7 +223,7 @@ for (const hiddenNavPage of ["_pages/projects.md", "_pages/repositories.md", "cv
 }
 
 for (const requiredDoc of ["docs/DESIGN_SYSTEM.md", "docs/REDESIGN_ROADMAP.md", "docs/MISSION_LOG_PLAN.md", "docs/HOMEPAGE_FRONTEND_GOVERNANCE.md"]) {
-  if (!exists(requiredDoc)) failures.push(`Hao redesign documentation missing required path: \`${requiredDoc}\`.`);
+  if (!exists(requiredDoc)) failures.push(`Hao redesign documentation missing required path: \`${requiredPath}\`.`);
 }
 
 if (failures.length > 0) {
