@@ -11,7 +11,7 @@ module SiteVisualPolish
   # Bump this value whenever the homepage enhancement layer changes. GitHub
   # Pages and browsers may otherwise keep serving an older CSS response for the
   # same path.
-  STYLESHEET_VERSION = "20260802-home-width-align".freeze
+  STYLESHEET_VERSION = "20260803-shell-banner-grid".freeze
 
   def self.apply_cv_title(page)
     return unless page.relative_path == "cv.md"
@@ -24,6 +24,17 @@ module SiteVisualPolish
 
   def self.home_page?(page)
     page.relative_path == "_pages/about.md" || page.url.to_s == "/"
+  end
+
+  def self.apply_home_body_class(page)
+    return unless home_page?(page)
+    return unless page.output.include?("hao-home--alfolio")
+    return if page.output.include?("hao-home-page")
+
+    # Give the rendered homepage a stable, explicit scope. This avoids relying
+    # on :has(), keeps PurgeCSS selectors deterministic, and lets the stylesheet
+    # target the theme's real body-level content container.
+    page.output = page.output.sub('<body class="', '<body class="hao-home-page ')
   end
 
   def self.apply_home_navbar_brand(page)
@@ -62,6 +73,7 @@ end
 [:pages, :documents].each do |hook_owner|
   Jekyll::Hooks.register hook_owner, :post_render do |page|
     SiteVisualPolish.apply_cv_title(page)
+    SiteVisualPolish.apply_home_body_class(page)
     SiteVisualPolish.apply_home_navbar_brand(page)
     SiteVisualPolish.apply_homepage_stylesheet(page)
   end
