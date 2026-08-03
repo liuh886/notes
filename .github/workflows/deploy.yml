@@ -80,7 +80,7 @@ jobs:
           grep -q 'NuthKaab Coreg vs Gradient Descent Coreg' _site/index.html
           grep -q 'Quad 35 hybrid seismic acquisition' _site/index.html
           grep -q 'calendar.app.google/UQ267iEs4MTAGFSd7' _site/index.html
-          grep -q 'hao-home-center-fix.css?v=20260803-content-audit-optical-shell' _site/index.html
+          grep -q 'hao-home-center-fix.css?v=20260803-cv-toc-home-81' _site/index.html
           grep -q 'hao-home-navbar-brand' _site/index.html
           grep -q 'font-weight-bold">Zhihao</span> LIU' _site/index.html
           if grep -q 'id="trajectory"' _site/index.html; then
@@ -96,12 +96,23 @@ jobs:
             exit 1
           fi
 
+      - name: Verify CV TOC polish artifact 🔎
+        run: |
+          set -euo pipefail
+          test -f _site/cv/index.html
+          grep -q 'hao-cv-page' _site/cv/index.html
+          grep -q 'id="toc-sidebar"' _site/cv/index.html
+          grep -q 'cv-toc-polish.css?v=20260803-cv-toc-home-81' _site/cv/index.html
+          test -f _site/assets/css/cv-toc-polish.css
+          grep -q 'scrollbar-width: none' _site/assets/css/cv-toc-polish.css
+          grep -q '::-webkit-scrollbar' _site/assets/css/cv-toc-polish.css
+
       - name: Verify secondary pages keep al-folio baseline 🔎
         run: |
           set -euo pipefail
           test -f _site/blog/index.html
-          if grep -Eq 'site-polish.css|site-upgrade.css|hao-design.css|hao-home-safe.css|hao-home-center-fix.css' _site/blog/index.html; then
-            echo "Custom visual stylesheet leaked into blog index; secondary pages should keep the al-folio baseline."
+          if grep -Eq 'site-polish.css|site-upgrade.css|hao-design.css|hao-home-safe.css|hao-home-center-fix.css|cv-toc-polish.css' _site/blog/index.html; then
+            echo "Scoped visual stylesheet leaked into blog index; secondary pages should keep the al-folio baseline."
             exit 1
           fi
 

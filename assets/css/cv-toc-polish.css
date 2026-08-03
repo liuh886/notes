@@ -1,0 +1,24 @@
+/*
+ * CV table-of-contents polish
+ *
+ * Tocbot keeps the left navigation vertically scrollable on long CV pages. Hide
+ * the native scrollbar chrome without disabling wheel, touch, or keyboard
+ * scrolling.
+ */
+
+.hao-cv-page #toc-sidebar,
+.hao-cv-page #toc-sidebar .toc-list {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hao-cv-page #toc-sidebar::-webkit-scrollbar,
+.hao-cv-page #toc-sidebar .toc-list::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.hao-cv-page #toc-sidebar {
+  overscroll-behavior: contain;
+}
