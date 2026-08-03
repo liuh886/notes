@@ -52,8 +52,8 @@ home_cta: false
   <section class="hao-home-section" id="current-work" aria-labelledby="current-work-title">
     <div class="hao-home-section-header">
       <p class="hao-home-eyebrow">Current work</p>
-      <h2 id="current-work-title">Six maintained product and research lanes.</h2>
-      <p>This section is limited to work that is actively maintained or being prepared for its first public release. Archived projects and supporting tools appear separately below.</p>
+      <h2 id="current-work-title">Five maintained product and research lanes.</h2>
+      <p>Five active systems are maintained now; the final card shows the next product entering build. Archived projects and supporting tools appear separately below.</p>
     </div>
     <div class="hao-home-card-grid">
       {% for operation in site.data.current_operations.operations %}
@@ -72,6 +72,19 @@ home_cta: false
               <a class="hao-home-text-link" href="{{ operation.secondary_href }}" target="_blank" rel="noopener noreferrer">{{ operation.secondary_label | default: "Repository" }} →</a>
             {% endif %}
           </div>
+        </article>
+      {% endfor %}
+      {% for upcoming in site.data.current_operations.upcoming %}
+        <article class="hao-home-card">
+          <div class="hao-home-card-topline">
+            <span>{{ upcoming.id }}</span>
+            <strong>{{ upcoming.status }}</strong>
+          </div>
+          <h3>{{ upcoming.title }}</h3>
+          <p>{{ upcoming.summary }}</p>
+          {% if upcoming.href %}
+            <a class="hao-home-text-link" href="{{ upcoming.href }}" target="_blank" rel="noopener noreferrer">{{ upcoming.label | default: "Follow build" }} →</a>
+          {% endif %}
         </article>
       {% endfor %}
     </div>
