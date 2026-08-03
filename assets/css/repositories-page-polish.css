@@ -1,0 +1,333 @@
+/* Repositories page polish
+ *
+ * The repositories page owns custom card markup that is not part of upstream
+ * al-folio. Keep this layer narrowly scoped so Blog, Projects, and Publications
+ * continue to inherit the theme baseline unchanged.
+ */
+
+.hao-repositories-page {
+  --hao-repo-border: color-mix(in srgb, var(--global-text-color, #111827) 14%, transparent);
+  --hao-repo-border-soft: color-mix(in srgb, var(--global-text-color, #111827) 9%, transparent);
+  --hao-repo-muted: color-mix(in srgb, var(--global-text-color, #111827) 66%, transparent);
+  --hao-repo-surface: var(--global-bg-color, #ffffff);
+  --hao-repo-surface-soft: color-mix(in srgb, var(--global-text-color, #111827) 3%, transparent);
+  --hao-repo-radius: 10px;
+  --hao-repo-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+}
+
+html[data-theme="dark"] .hao-repositories-page {
+  --hao-repo-border: color-mix(in srgb, var(--global-text-color, #f8fafc) 20%, transparent);
+  --hao-repo-border-soft: color-mix(in srgb, var(--global-text-color, #f8fafc) 12%, transparent);
+  --hao-repo-surface: var(--global-card-bg-color, var(--global-bg-color, #111827));
+  --hao-repo-surface-soft: color-mix(in srgb, var(--global-text-color, #f8fafc) 5%, transparent);
+  --hao-repo-shadow: 0 16px 38px rgba(0, 0, 0, 0.25);
+}
+
+.hao-repositories-page .post-header {
+  margin-bottom: 1.2rem;
+}
+
+.hao-repositories-page .post-header .post-description,
+.hao-repositories-page .repo-page-intro {
+  max-width: 48rem;
+}
+
+.hao-repositories-page .repo-page-intro {
+  margin: 0 0 2rem;
+  color: var(--hao-repo-muted);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.hao-repositories-page .repo-section {
+  margin: 2.2rem 0 3rem;
+}
+
+.hao-repositories-page .repo-section__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--hao-repo-border);
+}
+
+.hao-repositories-page .repo-section__header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.hao-repositories-page .repo-section__header span {
+  flex: 0 0 auto;
+  color: var(--hao-repo-muted);
+  font-size: 0.86rem;
+  white-space: nowrap;
+}
+
+.hao-repositories-page .repo-profile-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 42rem);
+  gap: 1rem;
+}
+
+.hao-repositories-page .repo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.05rem;
+  align-items: stretch;
+}
+
+.hao-repositories-page .repo-profile-card,
+.hao-repositories-page .repo-trophy-card,
+.hao-repositories-page .repo-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--hao-repo-border);
+  border-radius: var(--hao-repo-radius);
+  background: linear-gradient(180deg, var(--hao-repo-surface), var(--hao-repo-surface-soft));
+  box-shadow: none;
+}
+
+.hao-repositories-page .repo-card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.hao-repositories-page .repo-card:hover {
+  border-color: color-mix(in srgb, var(--global-theme-color) 58%, var(--hao-repo-border));
+  box-shadow: var(--hao-repo-shadow);
+  transform: translateY(-2px);
+}
+
+.hao-repositories-page .repo-profile-card__media,
+.hao-repositories-page .repo-trophy-card__media,
+.hao-repositories-page .repo-card__stats {
+  display: block;
+  min-width: 0;
+  padding: 0.7rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--hao-repo-border-soft);
+  background: var(--hao-repo-surface-soft);
+}
+
+.hao-repositories-page .repo-profile-card__media img,
+.hao-repositories-page .repo-trophy-card__media img,
+.hao-repositories-page .repo-card__stats img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 7px;
+  background: var(--hao-repo-surface);
+  object-fit: contain;
+}
+
+html[data-theme="dark"] .hao-repositories-page .repo-light,
+html:not([data-theme="dark"]) .hao-repositories-page .repo-dark {
+  display: none !important;
+}
+
+.hao-repositories-page .repo-profile-card__fallback {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.95rem 1rem 1.05rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.hao-repositories-page .repo-profile-card__avatar {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 3rem;
+  border: 1px solid var(--hao-repo-border);
+  border-radius: 9px;
+}
+
+.hao-repositories-page .repo-profile-card__fallback h3,
+.hao-repositories-page .repo-card h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 1.02rem;
+  font-weight: 560;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.hao-repositories-page .repo-profile-card__fallback p,
+.hao-repositories-page .repo-card p {
+  margin: 0.18rem 0 0;
+  color: var(--hao-repo-muted);
+  font-size: 0.9rem;
+}
+
+.hao-repositories-page .repo-card__body {
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 1.05rem 1rem 1.1rem;
+}
+
+.hao-repositories-page .repo-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.hao-repositories-page .repo-card__title-row > div {
+  min-width: 0;
+}
+
+.hao-repositories-page .repo-card__owner {
+  color: var(--hao-repo-muted);
+}
+
+.hao-repositories-page .repo-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+  margin-top: 0.78rem;
+}
+
+.hao-repositories-page .repo-chip {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 0.32rem;
+  padding: 0.24rem 0.55rem;
+  border: 1px solid var(--hao-repo-border);
+  border-radius: 999px;
+  color: var(--hao-repo-muted);
+  font-size: 0.78rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.hao-repositories-page .repo-card__summary {
+  flex: 1 1 auto;
+  margin-top: 0.8rem;
+  padding-top: 0.78rem;
+  border-top: 1px solid var(--hao-repo-border-soft);
+}
+
+.hao-repositories-page .repo-card__summary p {
+  margin: 0;
+  color: var(--global-text-color);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.hao-repositories-page .repo-card__metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.8rem;
+  color: var(--hao-repo-muted);
+  font-size: 0.84rem;
+}
+
+.hao-repositories-page .repo-card__metrics span,
+.hao-repositories-page .repo-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.34rem;
+}
+
+.hao-repositories-page .repo-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.75rem;
+  margin-top: 1rem;
+}
+
+.hao-repositories-page .repo-card__cta {
+  margin: 0;
+  color: var(--global-theme-color);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+
+.hao-repositories-page .repo-card__cta:hover {
+  text-decoration: underline;
+}
+
+.hao-repositories-page .repo-card__cta--primary {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--global-theme-color);
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.hao-repositories-page .repo-card__cta--primary:hover {
+  color: var(--global-bg-color);
+  background: var(--global-theme-color);
+  text-decoration: none;
+}
+
+.hao-repositories-page .repo-card__cta:focus-visible,
+.hao-repositories-page .repo-profile-card__fallback:focus-visible,
+.hao-repositories-page .repo-card__stats:focus-visible {
+  border-radius: 7px;
+  outline: 2px solid var(--global-theme-color);
+  outline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+  .hao-repositories-page .repo-section__header {
+    display: block;
+  }
+
+  .hao-repositories-page .repo-section__header span {
+    display: block;
+    margin-top: 0.25rem;
+  }
+
+  .hao-repositories-page .repo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hao-repositories-page .repo-profile-card__media,
+  .hao-repositories-page .repo-card__stats {
+    padding: 0.55rem;
+  }
+
+  .hao-repositories-page .repo-card__body {
+    padding: 0.95rem;
+  }
+
+  .hao-repositories-page .repo-card__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hao-repositories-page .repo-card__cta {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hao-repositories-page .repo-card {
+    transition: none;
+  }
+
+  .hao-repositories-page .repo-card:hover {
+    transform: none;
+  }
+}
