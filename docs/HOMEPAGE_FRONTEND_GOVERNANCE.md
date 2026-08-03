@@ -14,11 +14,13 @@ The homepage must keep the native al-folio `layout: about` structure. The page c
 6. `.profile`
 7. `.clearfix`
 
-The custom homepage content root is now:
+The custom homepage content root is:
 
 ```html
 <div class="hao-home hao-home--production hao-home--alfolio">
 ```
+
+The rendered homepage body receives the explicit class `hao-home-page` from `_plugins/site_visual_polish.rb`. Homepage CSS must use that class as its scope. Do not rely on `body:has(...)`: the explicit body class is easier to audit, survives CSS processing predictably, and exposes the real theme container without affecting secondary pages.
 
 Do not reintroduce `hao-home--safe` as the active homepage root. That old rescue class hid the native al-folio title/profile surface and pushed the page toward a standalone landing-page shell.
 
@@ -30,29 +32,47 @@ The only homepage-specific visual layer is:
 
 1. `hao-home-center-fix.css`
 
-`hao-home-center-fix.css` is the al-folio-compatible wide homepage layer. It owns only the wider native container, light content cards, section rhythm, and responsive behavior for the homepage.
+`hao-home-center-fix.css` owns the widened native shell, the coordinated title/introduction/profile banner, light content cards, section rhythm, and responsive behavior for the homepage.
 
 Older Mission Log and v6 experiment styles must not be injected or kept as active production CSS.
 
 ## Shell contract
 
-The homepage should follow al-folio's native shell and widen it, rather than replacing it.
+The homepage follows al-folio's native shell and widens it rather than replacing it.
 
 Allowed shell tokens:
 
 - `--hao-alfolio-shell-max`
 - `--hao-alfolio-gutter`
 - `--hao-alfolio-shell`
+- `--hao-home-profile-width`
 
-The following elements should share the same widened shell:
+The production desktop maximum is `84rem`. The following real theme nodes must share the same calculated width and left/right edges:
 
-- `body:has(.hao-home--alfolio) main > .container`
-- `body:has(.hao-home--alfolio) .navbar > .container`
-- `body:has(.hao-home--alfolio) .navbar > .container-fluid`
+- `.hao-home-page > .container[role="main"]`
+- `.hao-home-page #navbar > .container`
+- `.hao-home-page #navbar > .container-fluid`
 
-Within that shell, the visible homepage content should also span the same available width. The `.post`, `article`, `article > .clearfix`, `.hao-home--alfolio`, `.hao-home-intro`, `.hao-home-index`, `.hao-home-section`, and `.hao-home-contact` blocks should not carry narrower outer `max-width` rules. Text paragraphs may keep readable line lengths, but the section and card-grid containers should align with the navbar's left and right edges.
+The al-folio default layout renders the content container directly below `<body>`; it does not render a `main > .container` wrapper. Homepage changes must be based on the generated DOM, not an assumed wrapper.
+
+Within that shell, the `.post`, homepage index, content sections, card grids, and contact block must not carry a narrower outer `max-width`. Individual paragraphs may keep readable line lengths, but section and card-grid containers should align with the navbar shell.
 
 Do not reintroduce competing standalone page-width tokens such as `--hao-page-shell`, old `--hao-home-shell-*`, or `--hao-prod-shell`.
+
+## Banner contract
+
+The native title, subtitle, profile image, and custom introduction form one banner rather than two unrelated vertical blocks.
+
+On desktop:
+
+- `.post` is the banner and page grid.
+- `.post-header` and `.hao-home-intro` occupy the left column.
+- the native `.profile` occupies the right column and spans the title/introduction rows.
+- `.hao-home-index` and all following sections span the full shell below the banner.
+- the upstream `article` and `.clearfix` wrappers may use `display: contents` so their children participate in the banner grid without duplicating the theme layout.
+- the profile must not remain floated.
+
+At tablet and mobile widths, the grid becomes one column. Title and introduction remain the reading lead; the profile follows as a bounded, left-aligned image before the section index.
 
 ## Navbar brand contract
 
@@ -71,8 +91,9 @@ The homepage brand must not be fabricated with `::before` content, hidden with `
 Before a Pages artifact is uploaded, the workflow must verify `_site/index.html` contains:
 
 - `hao-home--alfolio`
+- `hao-home-page`
 - `Research records, shipped tools, and field-informed systems.`
-- `hao-home-center-fix.css?v=20260802-home-width-align`
+- `hao-home-center-fix.css?v=20260803-shell-banner-grid`
 - `hao-home-navbar-brand`
 - `font-weight-bold">Zhihao</span> LIU`
 
@@ -89,9 +110,10 @@ This prevents a green CI run from publishing an artifact that either points to t
 
 The homepage should preserve these rules:
 
-- Keep the native al-folio about-page title, subtitle, profile image, article flow, and clearfix structure visible.
+- Keep the native al-folio about-page title, subtitle, profile image, article, and clearfix semantics.
 - Widen the original al-folio container instead of rebuilding a standalone landing-page shell.
 - Align the visible homepage content blocks to the same left and right shell edges as the navbar.
+- Treat the title, introduction, and profile as one coordinated banner on desktop.
 - Keep the homepage navbar brand visually aligned with al-folio's original brand style: `<span class="font-weight-bold">Zhihao</span> LIU`.
 - Place `Current work`, `Systems`, `Knowledge`, `Trajectory`, and `Contact` as compatible content modules inside the original layout.
 - Use light cards, subtle borders, and the existing purple accent; avoid heavy hero panels, full-bleed canvases, duplicated profile cards, or product-site visual language.
@@ -103,6 +125,6 @@ When the homepage visual layer changes:
 
 1. Update `hao-home-center-fix.css` or the homepage markdown; avoid adding another final CSS layer.
 2. Bump `STYLESHEET_VERSION` in `_plugins/site_visual_polish.rb`.
-3. Keep `test/style_contract.js` aligned with the intended al-folio-compatible shell.
+3. Keep `test/style_contract.js` aligned with the intended al-folio-compatible shell and banner.
 4. Confirm the workflow artifact check passes before merging.
-5. After merge, verify the live page shows the new stylesheet version in its HTML.
+5. After merge, verify the live page shows the new stylesheet version and the `hao-home-page` body class in its HTML.

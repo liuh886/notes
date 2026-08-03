@@ -1,16 +1,16 @@
 /*
  * al-folio baseline homepage enhancement
  *
- * The whole site should look like upstream al-folio by default. This single
- * homepage-only layer widens the native about-page shell and adds lightweight
- * content modules inside the original .post / article / clearfix flow. It does
- * not restyle Blog, Projects, Repositories, CV, or secondary pages.
+ * The homepage keeps the upstream about-page DOM, but gives it one explicit
+ * production shell and one coordinated banner grid. Secondary pages remain on
+ * the native al-folio baseline.
  */
 
 :root {
-  --hao-alfolio-shell-max: 72rem;
-  --hao-alfolio-gutter: clamp(1rem, 4vw, 2rem);
+  --hao-alfolio-shell-max: 84rem;
+  --hao-alfolio-gutter: clamp(1rem, 3vw, 2.5rem);
   --hao-alfolio-shell: min(calc(100% - var(--hao-alfolio-gutter) - var(--hao-alfolio-gutter)), var(--hao-alfolio-shell-max));
+  --hao-home-profile-width: clamp(17.5rem, 24vw, 20rem);
   --hao-home-ink: var(--global-text-color, #111827);
   --hao-home-muted: var(--global-text-color-light, #6b7280);
   --hao-home-accent: var(--global-theme-color, #b80fb8);
@@ -19,15 +19,18 @@
   --hao-home-soft: color-mix(in srgb, var(--hao-home-accent) 5%, var(--global-bg-color, #ffffff));
 }
 
-html:has(.hao-home--alfolio),
-body:has(.hao-home--alfolio) {
+.hao-home-page {
   overflow-x: clip;
 }
 
-/* Shared al-folio shell: navbar and homepage content use the same edge. */
-body:has(.hao-home--alfolio) main > .container,
-body:has(.hao-home--alfolio) .navbar > .container,
-body:has(.hao-home--alfolio) .navbar > .container-fluid {
+/*
+ * One measurable shell for both surfaces. The theme renders the page container
+ * as body > .container[role="main"] and the navigation shell as #navbar >
+ * .container; target those real nodes instead of an assumed <main> wrapper.
+ */
+.hao-home-page > .container[role="main"],
+.hao-home-page #navbar > .container,
+.hao-home-page #navbar > .container-fluid {
   box-sizing: border-box !important;
   width: var(--hao-alfolio-shell) !important;
   max-width: var(--hao-alfolio-shell-max) !important;
@@ -35,9 +38,9 @@ body:has(.hao-home--alfolio) .navbar > .container-fluid {
   margin-left: auto !important;
 }
 
-body:has(.hao-home--alfolio) .post,
-body:has(.hao-home--alfolio) article,
-body:has(.hao-home--alfolio) article > .clearfix,
+.hao-home-page .post,
+.hao-home-page .post > article,
+.hao-home-page .post > article > .clearfix,
 .hao-home--alfolio,
 .hao-home-intro,
 .hao-home-index,
@@ -47,45 +50,94 @@ body:has(.hao-home--alfolio) article > .clearfix,
   max-width: none;
 }
 
-body:has(.hao-home--alfolio) .post {
-  max-width: none;
-}
-
 /* Keep the native al-folio about-page surface visible. */
-body:has(.hao-home--alfolio) .post > header,
-body:has(.hao-home--alfolio) .post-header,
-body:has(.hao-home--alfolio) .post-title,
-body:has(.hao-home--alfolio) .post-description,
-body:has(.hao-home--alfolio) .profile {
-  display: revert !important;
+.hao-home-page .post > header,
+.hao-home-page .post-header,
+.hao-home-page .post-title,
+.hao-home-page .post-description,
+.hao-home-page .profile {
   visibility: visible !important;
   opacity: 1 !important;
 }
 
-body:has(.hao-home--alfolio) .post-header {
-  margin-bottom: 1.75rem;
+/*
+ * Coordinated banner: native title and custom introduction form one left-hand
+ * narrative, while the native profile occupies the right column. display:
+ * contents keeps the upstream article/clearfix markup without adding a second
+ * landing-page shell.
+ */
+.hao-home-page .post {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--hao-home-profile-width);
+  grid-template-areas:
+    "header profile"
+    "intro profile"
+    "index index";
+  column-gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
 }
 
-body:has(.hao-home--alfolio) .desc {
+.hao-home-page .post > .post-header {
+  grid-area: header;
+  min-width: 0;
+  margin: 0;
+}
+
+.hao-home-page .post > article,
+.hao-home-page .post > article > .clearfix,
+.hao-home-page .hao-home--alfolio {
+  display: contents;
+}
+
+.hao-home-page .post > article > .profile {
+  grid-area: profile;
+  float: none !important;
+  width: 100% !important;
+  max-width: var(--hao-home-profile-width) !important;
+  margin: 0 !important;
+  justify-self: end;
+}
+
+.hao-home-page .post > article > .profile figure,
+.hao-home-page .post > article > .profile picture {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+.hao-home-page .post > article > .profile img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hao-home-page .post > article > .profile .more-info {
+  margin-top: 0.75rem;
+  color: var(--hao-home-ink);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.hao-home-page .post > article > .profile .more-info p {
+  margin: 0;
+}
+
+.hao-home-page .desc {
   max-width: 42rem;
+  margin-bottom: 0;
 }
 
 /* Homepage brand: same semantic class stack as the upstream al-folio header. */
-body:has(.hao-home--alfolio) .hao-home-navbar-brand {
+.hao-home-page .hao-home-navbar-brand {
   display: inline-block !important;
   text-decoration: none !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
 
-body:has(.hao-home--alfolio) .hao-home-navbar-brand::before,
-body:has(.hao-home--alfolio) .hao-home-navbar-brand::after {
+.hao-home-page .hao-home-navbar-brand::before,
+.hao-home-page .hao-home-navbar-brand::after {
   content: none !important;
-}
-
-.hao-home--alfolio {
-  clear: both;
-  margin-top: 1.25rem;
 }
 
 .hao-home--alfolio *,
@@ -95,26 +147,16 @@ body:has(.hao-home--alfolio) .hao-home-navbar-brand::after {
 }
 
 .hao-home-intro {
-  display: grid;
-  grid-template-columns: minmax(11rem, 0.28fr) minmax(0, 1fr);
-  gap: clamp(1.2rem, 3.4vw, 2.6rem);
-  align-items: start;
-  margin: 0 0 2.25rem;
-}
-
-.hao-home-intro .hao-home-eyebrow {
-  grid-column: 1;
-}
-
-.hao-home-intro h2,
-.hao-home-intro p:not(.hao-home-eyebrow),
-.hao-home-intro .hao-home-actions {
-  grid-column: 2;
+  grid-area: intro;
+  display: block;
+  min-width: 0;
+  max-width: 50rem;
+  margin: clamp(1.75rem, 3.2vw, 2.8rem) 0 0;
 }
 
 .hao-home-eyebrow,
 .hao-home-card-label {
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.55rem;
   color: var(--hao-home-accent);
   font-size: 0.72rem;
   font-weight: 700;
@@ -124,21 +166,21 @@ body:has(.hao-home--alfolio) .hao-home-navbar-brand::after {
 }
 
 .hao-home-intro h2 {
-  max-width: 16em;
+  max-width: 15em;
   margin: 0;
   color: var(--hao-home-ink);
-  font-size: clamp(1.85rem, 3.6vw, 3rem);
+  font-size: clamp(2.15rem, 4.1vw, 3.65rem);
   font-weight: 500;
-  letter-spacing: -0.045em;
-  line-height: 1.05;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
 }
 
-.hao-home-intro p:not(.hao-home-eyebrow) {
-  max-width: 48rem;
-  margin: 0.9rem 0 0;
+.hao-home-intro > p:not(.hao-home-eyebrow) {
+  max-width: 46rem;
+  margin: 1.15rem 0 0;
   color: var(--hao-home-muted);
   font-size: 1.02rem;
-  line-height: 1.7;
+  line-height: 1.72;
 }
 
 .hao-home-actions,
@@ -151,7 +193,7 @@ body:has(.hao-home--alfolio) .hao-home-navbar-brand::after {
 }
 
 .hao-home-actions {
-  margin-top: 1.15rem;
+  margin-top: 1.2rem;
 }
 
 .hao-home-button,
@@ -191,13 +233,13 @@ body:has(.hao-home--alfolio) .hao-home-navbar-brand::after {
 }
 
 .hao-home-index {
-  clear: both;
+  grid-area: index;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem 0.7rem;
+  gap: 0.4rem 0.85rem;
   align-items: center;
-  margin: 2rem 0 0;
-  padding: 0.85rem 0;
+  margin: clamp(2.25rem, 5vw, 4rem) 0 0;
+  padding: 0.9rem 0;
   border-top: 1px solid var(--hao-home-line);
   border-bottom: 1px solid var(--hao-home-line);
 }
@@ -219,11 +261,12 @@ body:has(.hao-home--alfolio) .hao-home-navbar-brand::after {
 
 .hao-home-section,
 .hao-home-contact {
+  grid-column: 1 / -1;
   clear: both;
   display: grid;
-  grid-template-columns: minmax(11rem, 0.28fr) minmax(0, 1fr);
-  gap: clamp(1.2rem, 3.4vw, 2.6rem);
-  padding: clamp(2rem, 4.5vw, 3.4rem) 0;
+  grid-template-columns: minmax(12rem, 0.24fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(2.25rem, 5vw, 4rem) 0;
   border-bottom: 1px solid var(--hao-home-line);
   scroll-margin-top: 5rem;
 }
@@ -254,8 +297,8 @@ body:has(.hao-home--alfolio) .hao-home-navbar-brand::after {
 .hao-home-system-grid,
 .hao-home-knowledge-grid,
 .hao-home-timeline {
-  width: 100%;
   display: grid;
+  width: 100%;
   gap: 0.9rem;
 }
 
@@ -389,27 +432,44 @@ body:has(.hao-home--alfolio) .hao-home-navbar-brand::after {
   :root {
     --hao-alfolio-shell-max: 64rem;
     --hao-alfolio-gutter: clamp(0.9rem, 3.5vw, 1.5rem);
+    --hao-home-profile-width: min(22rem, 100%);
   }
 
-  .hao-home-intro,
+  .hao-home-page .post {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "header"
+      "intro"
+      "profile"
+      "index";
+  }
+
+  .hao-home-page .post > article > .profile {
+    width: min(100%, 22rem) !important;
+    max-width: 22rem !important;
+    margin-top: 2rem !important;
+    justify-self: start;
+  }
+
+  .hao-home-intro {
+    max-width: 46rem;
+  }
+
   .hao-home-section,
   .hao-home-contact {
     grid-template-columns: 1fr;
   }
-
-  .hao-home-intro .hao-home-eyebrow,
-  .hao-home-intro h2,
-  .hao-home-intro p:not(.hao-home-eyebrow),
-  .hao-home-intro .hao-home-actions {
-    grid-column: auto;
-  }
 }
 
 @media (max-width: 760px) {
-  body:has(.hao-home--alfolio) main > .container,
-  body:has(.hao-home--alfolio) .navbar > .container,
-  body:has(.hao-home--alfolio) .navbar > .container-fluid {
+  .hao-home-page > .container[role="main"],
+  .hao-home-page #navbar > .container,
+  .hao-home-page #navbar > .container-fluid {
     width: min(calc(100% - 1.25rem), 64rem) !important;
+  }
+
+  .hao-home-page .post > article > .profile {
+    width: 100% !important;
   }
 
   .hao-home-card-grid,
@@ -420,7 +480,7 @@ body:has(.hao-home--alfolio) .hao-home-navbar-brand::after {
   }
 
   .hao-home-intro h2 {
-    font-size: clamp(1.7rem, 8vw, 2.45rem);
+    font-size: clamp(1.85rem, 9vw, 2.7rem);
   }
 }
 
