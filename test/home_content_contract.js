@@ -25,14 +25,15 @@ const about = read("_pages/about.md");
 requireIncludes(
   about,
   [
-    "Six maintained product and research lanes.",
+    "Five maintained product and research lanes.",
+    "site.data.current_operations.upcoming",
     "operation.secondary_href",
     "deployment.repository_href",
     "deployment.href contains 'http'",
   ],
   "Homepage content template",
 );
-requireAbsent(about, ["Five maintained product and research lanes."], "Homepage content template");
+requireAbsent(about, ["Six maintained product and research lanes."], "Homepage content template");
 
 const operations = read("_data/current_operations.yml");
 requireIncludes(
@@ -41,6 +42,7 @@ requireIncludes(
     "title: AlphaEngine",
     "href: https://liuh886.github.io/alpha_engine/",
     "secondary_href: https://github.com/liuh886/alpha_engine",
+    "upcoming:",
     "title: NewsFlow",
     "status: COMING SOON",
     "href: https://github.com/liuh886/NewsFlow",
@@ -49,7 +51,10 @@ requireIncludes(
 );
 requireAbsent(
   operations,
-  ["href: https://github.com/liuh886/alpha_engine\n    label: View repository"],
+  [
+    "href: https://github.com/liuh886/alpha_engine\n    label: View repository",
+    "- id: OP-06",
+  ],
   "Current operations data",
 );
 
