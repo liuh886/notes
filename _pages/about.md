@@ -11,8 +11,6 @@ profile:
   align: right
   image: blog_pic.jpg
   image_circular: false
-  more_info: >
-    <p>Offshore Bergen · Aug 2020</p>
 
 news: false
 announcements:
