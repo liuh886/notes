@@ -77,8 +77,8 @@ requireAbsent(
     "12%, transparent",
     "opacity: 0.92",
     "7%, transparent) 0%",
-    "opacity: 0.52",
-    "opacity: 0.58",
+    "73% {\n    opacity: 0.52",
+    "to {\n    opacity: 0.58",
   ],
   "Homepage atmosphere stylesheet",
 );
