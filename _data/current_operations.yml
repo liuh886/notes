@@ -31,7 +31,9 @@ operations:
     summary: Lightweight rhythm and speech-practice tool for focused review sessions. Current work is content structure, subtle pronunciation marks, and PWA training flow.
     href: https://liuh886.github.io/RhythmCoach/
     label: Open app
-  - id: OP-06
+
+upcoming:
+  - id: NEXT-01
     title: NewsFlow
     status: COMING SOON
     summary: An upcoming product now entering active build. The repository is public; the app link and fuller product record will be added after the first usable release is ready.
