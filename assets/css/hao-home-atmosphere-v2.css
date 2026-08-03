@@ -15,7 +15,8 @@
 /*
  * One shared ambient field for the complete hero-to-Current work composition.
  * Its irregular long-duration path creates natural-looking drift without adding
- * a second section-specific light source.
+ * a second section-specific light source. The intensity stays deliberately low
+ * so the field reads as atmosphere rather than a colored panel.
  */
 .hao-home-page .hao-home--alfolio::before {
   position: absolute;
@@ -27,13 +28,13 @@
   border-radius: 48%;
   background: radial-gradient(
     ellipse at 64% 24%,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 14%, transparent) 0%,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 8%, transparent) 34%,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 3%, transparent) 52%,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 7%, transparent) 0%,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 4%, transparent) 34%,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 2%, transparent) 52%,
     transparent 72%
   );
   content: "";
-  filter: blur(0.6px);
+  filter: blur(0.8px);
   pointer-events: none;
   transform-origin: center;
   animation: hao-home-shared-ambient-drift 38s cubic-bezier(0.42, 0, 0.26, 1) infinite alternate;
@@ -55,7 +56,7 @@
   border-radius: 2rem;
   background: radial-gradient(
     circle at 56% 38%,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 12%, transparent),
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 7%, transparent),
     transparent 64%
   );
   content: "";
@@ -64,7 +65,7 @@
 }
 
 .hao-home-page .post > article > .profile img {
-  border: 1px solid color-mix(in srgb, var(--global-theme-color, #b80fb8) 11%, var(--global-divider-color, #e5e7eb));
+  border: 1px solid color-mix(in srgb, var(--global-theme-color, #b80fb8) 7%, var(--global-divider-color, #e5e7eb));
   border-radius: 1.05rem;
   box-shadow:
     0 1.5rem 3.25rem rgba(15, 23, 42, 0.09),
@@ -171,39 +172,39 @@ html[data-theme="dark"] .hao-home-page #contact::before {
 
 @keyframes hao-home-shared-ambient-drift {
   0% {
-    opacity: 0.74;
+    opacity: 0.38;
     transform: translate3d(2rem, -1rem, 0) scale(0.96);
   }
 
   21% {
-    opacity: 0.9;
+    opacity: 0.48;
     transform: translate3d(-5rem, 3rem, 0) scale(1.02);
   }
 
   47% {
-    opacity: 0.82;
+    opacity: 0.42;
     transform: translate3d(-11rem, 10rem, 0) scale(1.06);
   }
 
   73% {
-    opacity: 0.98;
+    opacity: 0.52;
     transform: translate3d(-3rem, 15rem, 0) scale(1.01);
   }
 
   100% {
-    opacity: 0.78;
+    opacity: 0.4;
     transform: translate3d(4rem, 7rem, 0) scale(0.98);
   }
 }
 
 @keyframes hao-home-image-halo {
   from {
-    opacity: 0.58;
+    opacity: 0.36;
     transform: translate3d(0, 0, 0) scale(0.98);
   }
 
   to {
-    opacity: 0.92;
+    opacity: 0.58;
     transform: translate3d(-0.35rem, 0.25rem, 0) scale(1.04);
   }
 }
@@ -215,7 +216,7 @@ html[data-theme="dark"] .hao-home-page #contact::before {
   }
 
   .hao-home-page .hao-home--alfolio::before {
-    opacity: 0.82;
+    opacity: 0.44;
     transform: translate3d(-4rem, 6rem, 0) scale(1);
   }
 }
