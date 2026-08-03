@@ -189,7 +189,7 @@ requireIncludes(
   aboutPage,
   [
     "hao-home--production hao-home--alfolio",
-    "Climate data · Geoscience evidence · AI tools",
+    "Data Scientist · AI Builder",
     "Research records, shipped tools, and agentic AI systems.",
     "Offshore Bergen · Aug 2020",
     "calendar.app.google/UQ267iEs4MTAGFSd7",
@@ -210,6 +210,7 @@ requireIncludes(
 requireAbsent(
   aboutPage,
   [
+    "Climate data · Geoscience evidence · AI tools",
     'id="systems"',
     'id="knowledge"',
     'id="trajectory"',
@@ -292,6 +293,7 @@ requireIncludes(
   [
     "hao-home--alfolio",
     "hao-home-page",
+    "Data Scientist · AI Builder",
     "Research records, shipped tools, and agentic AI systems.",
     "Projects &amp; code",
     "Notes &amp; publications",
