@@ -8,6 +8,13 @@ records:
     label: Read paper
     secondary_href: /publications/
     secondary_label: Publication archive
+  - id: DATA-01
+    title: Snow-depth / ICESat-2 Zenodo dataset
+    status: OPEN DATA
+    kind: Zenodo research dataset · DOI 10.5281/zenodo.10048875
+    summary: A tabular research dataset connecting ICESat-2 snow-on and snow-free measurements with DTM1, DTM10, Copernicus GLO-30, and FABDEM for reproducible DEM evaluation and snow-depth modeling.
+    href: https://doi.org/10.5281/zenodo.10048875
+    label: Open dataset
   - id: PAT-01
     title: Underwater seismic device identification system
     status: PATENT

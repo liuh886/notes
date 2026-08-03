@@ -28,16 +28,30 @@ groups:
         secondary_href: https://github.com/liuh886/4d-seismic-hub
         secondary_label: Repository
       - ref: P-04
+        title: Climate-to-energy downscaling
+        status: RESEARCH PROJECT
+        kind: Climate modeling / wind-energy planning
+        summary: Quantile-based bias adjustment and downscaling of CMIP6 wind-speed projections against ERA5, testing when corrected climate data becomes useful for energy-system modeling.
+        href: /projects/2023_downscaling/
+        primary_label: View project
+      - ref: P-05
         title: Quad 35 hybrid seismic acquisition
         status: FIELD PROJECT
         kind: Streamer + OBN / offshore Bergen
         summary: Technical review, onboard acquisition, data QC, reprocessing, and operational modeling for the first commercial hybrid streamer-and-node survey.
         href: /projects/2020_q35/
         primary_label: View project
+      - ref: P-06
+        title: OffshoreOrient Studio
+        status: ARCHIVED SOFTWARE
+        kind: Offshore seismic QC / navigation + source
+        summary: An internal Python toolbox for shot-by-shot acquisition QC, RMS and noise analysis, trace editing, and real-time gun-source alarms, used by survey colleagues and registered as software copyright.
+        href: /projects/2019_offshoreorient/
+        primary_label: View project
   - id: "code"
     kicker: REPOSITORY ARCHIVE
     title: Open-source tools and methods
-    summary: Smaller codebases and reusable artifacts that show the technical work behind the larger systems.
+    summary: Smaller codebases, reusable artifacts, and upstream contributions that show the technical work behind the larger systems.
     deployments:
       - ref: C-01
         title: iCal Pro for Obsidian
@@ -49,12 +63,14 @@ groups:
         secondary_href: https://github.com/liuh886/obsidian-ical-plugin-pro
         secondary_label: Repository
       - ref: C-02
-        title: GhostCam
-        status: WINDOWS TOOL
-        kind: Virtual camera / real-time background replacement
-        summary: A lightweight Windows virtual camera for background replacement, blur, and solid-colour video workflows.
-        href: https://github.com/liuh886/GhostCam
-        primary_label: Repository
+        title: Ductor — AI Agentic Harness
+        status: OPEN-SOURCE CONTRIBUTOR
+        kind: Agent orchestration / multi-provider CLI
+        summary: Upstream contributions covering Windows and Docker compatibility, Telegram streaming, provider and model discovery, and Antigravity runtime support for an AI agentic harness.
+        href: https://github.com/PleasePrompto/ductor
+        primary_label: Upstream project
+        secondary_href: https://github.com/PleasePrompto/ductor/pull/153
+        secondary_label: Merged contribution
       - ref: C-03
         title: HTTP to Obsidian CLI Gateway
         status: INFRASTRUCTURE

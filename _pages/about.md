@@ -34,8 +34,8 @@ home_cta: false
 
 <div class="hao-home hao-home--production hao-home--alfolio">
   <section class="hao-home-intro" aria-labelledby="hao-home-intro-title">
-    <p class="hao-home-eyebrow">Climate data · Geoscience evidence · AI tools</p>
-    <h2 id="hao-home-intro-title">Research records, shipped tools, and field-informed systems.</h2>
+    <p class="hao-home-eyebrow">Data Scientist · AI Builder</p>
+    <h2 id="hao-home-intro-title">Research records, shipped tools, and agentic AI systems.</h2>
     <p>I build evidence-driven data systems for climate, energy, and geoscience—from field observations and reproducible research to public tools that support analysis and decisions.</p>
     <div class="hao-home-actions" aria-label="Homepage contact">
       <a class="hao-home-button hao-home-button--primary" href="https://calendar.app.google/UQ267iEs4MTAGFSd7" target="_blank" rel="noopener noreferrer" aria-label="Contact — book a chat">Contact</a>
@@ -122,14 +122,14 @@ home_cta: false
     <div class="hao-home-section-header">
       <p class="hao-home-eyebrow">Notes &amp; publications</p>
       <h2 id="notes-publications-title">Formal outputs and selected working notes.</h2>
-      <p>Publications are kept distinct from projects; the notes selection points to actual writing from the blog rather than repeating product descriptions.</p>
+      <p>Formal research outputs are kept distinct from projects; the notes selection points to actual writing from the blog rather than repeating product descriptions.</p>
     </div>
 
     <div class="hao-home-knowledge-grid">
       <div class="hao-home-knowledge-panel" id="publications">
         <div class="hao-home-panel-heading">
-          <p class="hao-home-card-label">Publications</p>
-          <h3>Peer-reviewed research and patent record.</h3>
+          <p class="hao-home-card-label">Research outputs</p>
+          <h3>Peer-reviewed research, open data, and patent record.</h3>
         </div>
         <div class="hao-home-record-list">
           {% for record in site.data.research_records.records %}

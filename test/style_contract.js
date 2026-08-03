@@ -189,8 +189,8 @@ requireIncludes(
   aboutPage,
   [
     "hao-home--production hao-home--alfolio",
-    "Climate data · Geoscience evidence · AI tools",
-    "Research records, shipped tools, and field-informed systems.",
+    "Data Scientist · AI Builder",
+    "Research records, shipped tools, and agentic AI systems.",
     "Offshore Bergen · Aug 2020",
     "calendar.app.google/UQ267iEs4MTAGFSd7",
     'id="current-work"',
@@ -201,6 +201,8 @@ requireIncludes(
     "Five maintained product and research lanes.",
     "Selected work beyond the active product list.",
     "Formal outputs and selected working notes.",
+    "Research outputs",
+    "Peer-reviewed research, open data, and patent record.",
     "hao-home-contact",
   ],
   "Homepage",
@@ -208,6 +210,7 @@ requireIncludes(
 requireAbsent(
   aboutPage,
   [
+    "Climate data · Geoscience evidence · AI tools",
     'id="systems"',
     'id="knowledge"',
     'id="trajectory"',
@@ -240,26 +243,35 @@ requireIncludes(
     "dMRV is the key",
     "OceanHub",
     "4D Seismic",
+    "Climate-to-energy downscaling",
     "Quad 35 hybrid seismic acquisition",
+    "OffshoreOrient Studio",
     "iCal Pro for Obsidian",
-    "GhostCam",
+    "Ductor — AI Agentic Harness",
+    "OPEN-SOURCE CONTRIBUTOR",
     "HTTP to Obsidian CLI Gateway",
     "Open Phrasebank",
   ],
   "Selected work data",
 );
-requireAbsent(selectedWork, ["CCUS Policy Hub", "Ownly", "AlphaEngine", "FlappyK", "RhythmCoach"], "Selected work data");
+requireAbsent(
+  selectedWork,
+  ["GhostCam", "CCUS Policy Hub", "Ownly", "AlphaEngine", "FlappyK", "RhythmCoach"],
+  "Selected work data",
+);
 
 const researchRecords = read("_data/research_records.yml");
 requireIncludes(
   researchRecords,
   [
     "Retrieving snow depth distribution by downscaling ERA5 Reanalysis with ICESat-2 laser altimetry",
+    "Snow-depth / ICESat-2 Zenodo dataset",
+    "10.5281/zenodo.10048875",
     "Underwater seismic device identification system",
   ],
-  "Publication data",
+  "Research output data",
 );
-requireAbsent(researchRecords, ["CCUS Policy Hub", "4D Seismic Hub"], "Publication data");
+requireAbsent(researchRecords, ["CCUS Policy Hub", "4D Seismic Hub"], "Research output data");
 
 const fieldNotes = read("_data/field_observations.yml");
 requireIncludes(
@@ -269,6 +281,8 @@ requireIncludes(
     "Field Trip to Ice Age Museum",
     "The Agentic Brain",
     "Obsidian CLI",
+    "ICESat-2 vs DTM1, DTM10, Copernicus30, FABDEM",
+    "/blog/2023/dataset/",
   ],
   "Selected notes data",
 );
@@ -279,8 +293,15 @@ requireIncludes(
   [
     "hao-home--alfolio",
     "hao-home-page",
+    "Data Scientist · AI Builder",
+    "Research records, shipped tools, and agentic AI systems.",
     "Projects &amp; code",
     "Notes &amp; publications",
+    "Climate-to-energy downscaling",
+    "OffshoreOrient Studio",
+    "Ductor",
+    "Snow-depth / ICESat-2 Zenodo dataset",
+    "ICESat-2 vs DTM1, DTM10, Copernicus30, FABDEM",
     "NuthKaab Coreg vs Gradient Descent Coreg",
     "Quad 35 hybrid seismic acquisition",
     "hao-home-center-fix.css?v=20260803-cv-toc-home-81",
