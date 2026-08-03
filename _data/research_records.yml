@@ -1,33 +1,17 @@
 records:
-  - id: R-05.01
+  - id: PUB-01
     title: Retrieving snow depth distribution by downscaling ERA5 Reanalysis with ICESat-2 laser altimetry
     status: PEER-REVIEWED
     kind: Cold Regions Science and Technology, 2025
-    summary: A geospatial modeling record on using ICESat-2 laser altimetry, ERA5 Land, calibration, and XGBoost to map snow-depth variability.
+    summary: Geospatial modeling that combines ICESat-2, ERA5-Land, calibration, and XGBoost to map snow-depth variability at finer spatial scales.
     href: https://www.sciencedirect.com/science/article/pii/S0165232X25001636
     label: Read paper
     secondary_href: /publications/
     secondary_label: Publication archive
-  - id: R-05.02
-    title: CCUS Policy Hub
-    status: PUBLIC RESEARCH SYSTEM
-    kind: CCUS policy, deployment, and dMRV evidence
-    summary: A public-facing knowledge and data interface for tracking CCUS policy, project deployment, governance context, and MRV-related evidence questions.
-    href: https://liuh886.github.io/ccus-policy-hub/
-    label: Open system
-    secondary_href: https://github.com/liuh886/ccus-policy-hub
-    secondary_label: Repository
-  - id: R-05.03
-    title: 4D Seismic Hub
-    status: KNOWLEDGE INFRASTRUCTURE
-    kind: Geophysical monitoring and subsurface data systems
-    summary: A best-practice knowledge base for 4D seismic exploration and monitoring, connecting offshore field practice with AI-readable technical knowledge.
-    href: https://github.com/liuh886/4d-seismic-hub
-    label: Repository
-  - id: R-05.04
+  - id: PAT-01
     title: Underwater seismic device identification system
-    status: PATENT RECORD
-    kind: Underwater seismic devices, PRC patent record
-    summary: A patent record connected to offshore seismic-device identification and operational field systems.
+    status: PATENT
+    kind: PRC patent record, 2022
+    summary: An identification system developed around underwater seismic devices and offshore operational workflows.
     href: /publications/
-    label: Publication archive
+    label: Patent record
