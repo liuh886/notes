@@ -34,7 +34,7 @@ home_cta: false
 
 <div class="hao-home hao-home--production hao-home--alfolio">
   <section class="hao-home-intro" aria-labelledby="hao-home-intro-title">
-    <p class="hao-home-eyebrow">Climate data · Geoscience evidence · AI tools</p>
+    <p class="hao-home-eyebrow">Data Scientist · AI Builder</p>
     <h2 id="hao-home-intro-title">Research records, shipped tools, and agentic AI systems.</h2>
     <p>I build evidence-driven data systems for climate, energy, and geoscience—from field observations and reproducible research to public tools that support analysis and decisions.</p>
     <div class="hao-home-actions" aria-label="Homepage contact">
