@@ -35,10 +35,12 @@ operations:
 upcoming:
   - id: NEXT-01
     title: NewsFlow
-    status: COMING SOON
-    summary: An upcoming product now entering active build. The repository is public; the app link and fuller product record will be added after the first usable release is ready.
-    href: https://github.com/liuh886/NewsFlow
-    label: Follow build
+    status: LIVE APP
+    summary: A newly launched topic-intelligence publication that uses an editor-led, automated workflow to collect, filter, and organize high-quality information into recurring editions.
+    href: https://liuh886.github.io/NewsFlow/
+    label: Open app
+    secondary_href: https://github.com/liuh886/NewsFlow
+    secondary_label: Repository
 
 dispatches:
   - date: 2026-08-02
