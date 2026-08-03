@@ -38,8 +38,12 @@ requireIncludes(
   css,
   [
     "Homepage atmospheric refinement v2",
-    "@keyframes hao-home-ambient-drift",
-    "@keyframes hao-home-ambient-breathe",
+    "One shared ambient field for the complete hero-to-Current work composition.",
+    ".hao-home-page .hao-home--alfolio::before",
+    "height: 72rem",
+    "animation: hao-home-shared-ambient-drift 38s",
+    "@keyframes hao-home-shared-ambient-drift",
+    "transform: translate3d(-11rem, 10rem, 0) scale(1.06)",
     "@keyframes hao-home-image-halo",
     "@media (prefers-reduced-motion: reduce)",
     ".hao-home-page #current-work::before",
@@ -54,7 +58,14 @@ requireIncludes(
 );
 requireAbsent(
   css,
-  ["position: fixed", "animation-duration: 1s", "filter: hue-rotate", "backdrop-filter"],
+  [
+    "position: fixed",
+    "animation-duration: 1s",
+    "filter: hue-rotate",
+    "backdrop-filter",
+    ".hao-home-page .hao-home-intro::before",
+    "@keyframes hao-home-ambient-breathe",
+  ],
   "Homepage atmosphere stylesheet",
 );
 
@@ -63,14 +74,12 @@ requireIncludes(
   currentWorkFix,
   [
     "Current work scientific texture visibility correction",
+    "The purple ambient field is owned by the shared",
     ".hao-home-page #current-work::before",
-    ".hao-home-page #current-work::after",
     "z-index: 0",
     "repeating-radial-gradient",
     "background-size: auto, 56px 56px",
     "opacity: 0.58",
-    "animation: hao-home-ambient-breathe 16s",
-    "@media (prefers-reduced-motion: reduce)",
     ".hao-home-page #current-work > *",
     "z-index: 1",
   ],
@@ -84,6 +93,8 @@ requireAbsent(
     "mix-blend-mode",
     "background-size: auto, auto, 26px 26px",
     "opacity: 0.9",
+    ".hao-home-page #current-work::after",
+    "hao-home-ambient-breathe",
   ],
   "Current work texture correction",
 );

@@ -1,9 +1,10 @@
 /*
  * Homepage atmospheric refinement v2
  *
- * Keeps the existing purple visual language while adding slow ambient motion,
- * section-specific scientific textures, and a more integrated profile image.
- * The layer is homepage-only and respects reduced-motion preferences.
+ * Keeps the existing purple visual language while adding one shared ambient
+ * field across the hero and Current work, section-specific scientific textures,
+ * and a more integrated profile image. The layer is homepage-only and respects
+ * reduced-motion preferences.
  */
 
 .hao-home-page .hao-home--alfolio {
@@ -11,47 +12,35 @@
   isolation: isolate;
 }
 
+/*
+ * One shared ambient field for the complete hero-to-Current work composition.
+ * Its irregular long-duration path creates natural-looking drift without adding
+ * a second section-specific light source.
+ */
 .hao-home-page .hao-home--alfolio::before {
   position: absolute;
   z-index: -2;
-  top: -9rem;
-  right: -9rem;
-  width: 36rem;
-  height: 36rem;
-  border-radius: 50%;
+  top: -12rem;
+  right: -18rem;
+  width: 76rem;
+  height: 72rem;
+  border-radius: 48%;
   background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 13%, transparent) 0%,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 7%, transparent) 38%,
+    ellipse at 64% 24%,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 14%, transparent) 0%,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 8%, transparent) 34%,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 3%, transparent) 52%,
     transparent 72%
   );
   content: "";
-  filter: blur(0.4px);
+  filter: blur(0.6px);
   pointer-events: none;
   transform-origin: center;
-  animation: hao-home-ambient-drift 18s ease-in-out infinite alternate;
+  animation: hao-home-shared-ambient-drift 38s cubic-bezier(0.42, 0, 0.26, 1) infinite alternate;
 }
 
 .hao-home-page .hao-home-intro {
   position: relative;
-}
-
-.hao-home-page .hao-home-intro::before {
-  position: absolute;
-  z-index: -1;
-  top: -2.5rem;
-  left: -2.5rem;
-  width: 20rem;
-  height: 20rem;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 6%, transparent),
-    transparent 72%
-  );
-  content: "";
-  pointer-events: none;
-  animation: hao-home-ambient-breathe 14s ease-in-out infinite alternate;
 }
 
 .hao-home-page .post > article > .profile {
@@ -180,32 +169,30 @@ html[data-theme="dark"] .hao-home-page #contact::before {
   opacity: 0.72;
 }
 
-@keyframes hao-home-ambient-drift {
+@keyframes hao-home-shared-ambient-drift {
   0% {
-    opacity: 0.78;
-    transform: translate3d(0, 0, 0) scale(0.98);
+    opacity: 0.74;
+    transform: translate3d(2rem, -1rem, 0) scale(0.96);
   }
 
-  55% {
-    opacity: 1;
-    transform: translate3d(-1.2rem, 0.75rem, 0) scale(1.04);
+  21% {
+    opacity: 0.9;
+    transform: translate3d(-5rem, 3rem, 0) scale(1.02);
+  }
+
+  47% {
+    opacity: 0.82;
+    transform: translate3d(-11rem, 10rem, 0) scale(1.06);
+  }
+
+  73% {
+    opacity: 0.98;
+    transform: translate3d(-3rem, 15rem, 0) scale(1.01);
   }
 
   100% {
-    opacity: 0.84;
-    transform: translate3d(0.6rem, 1.25rem, 0) scale(1.01);
-  }
-}
-
-@keyframes hao-home-ambient-breathe {
-  from {
-    opacity: 0.6;
-    transform: scale(0.96);
-  }
-
-  to {
-    opacity: 0.95;
-    transform: scale(1.07);
+    opacity: 0.78;
+    transform: translate3d(4rem, 7rem, 0) scale(0.98);
   }
 }
 
@@ -223,9 +210,13 @@ html[data-theme="dark"] .hao-home-page #contact::before {
 
 @media (prefers-reduced-motion: reduce) {
   .hao-home-page .hao-home--alfolio::before,
-  .hao-home-page .hao-home-intro::before,
   .hao-home-page .post > article > .profile::before {
     animation: none;
+  }
+
+  .hao-home-page .hao-home--alfolio::before {
+    opacity: 0.82;
+    transform: translate3d(-4rem, 6rem, 0) scale(1);
   }
 }
 
@@ -237,14 +228,10 @@ html[data-theme="dark"] .hao-home-page #contact::before {
 
 @media (max-width: 760px) {
   .hao-home-page .hao-home--alfolio::before {
-    top: -5rem;
-    right: -12rem;
-    width: 25rem;
-    height: 25rem;
-  }
-
-  .hao-home-page .hao-home-intro::before {
-    display: none;
+    top: -7rem;
+    right: -20rem;
+    width: 52rem;
+    height: 58rem;
   }
 
   .hao-home-page .post > article > .profile::before {
