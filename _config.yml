@@ -24,7 +24,7 @@ lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 📓 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://zhihaol.eu.org # the base hostname & protocol for your site
-alternate_site_name: "Zhihao Liu | Geodata | Energy Transition | Bayesian Modeling"
+alternate_site_name: "Hao's Notes"
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
 last_updated: false # set to true if you want to display last updated in the footer
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
@@ -128,7 +128,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: "Hao's notes" # blog_name will be displayed in your blog page
+blog_name: "Hao's Notes" # blog_name will be displayed in your blog page
 blog_description: Mens sana in corpore sano
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
@@ -151,7 +151,7 @@ giscus:
   mapping: title # identify discussions by post title
   strict: 1 # use strict identification mode
   reactions_enabled: 1 # enable (1) or disable (0) emoji reactions
-  input_position: bottom # whether to display input form below (bottom) or above (top) the comments
+  input_position: bottom # whether to display input form below (bottom) or above (top) of the comments
   dark_theme: dark # name of the dark color scheme (preferred works well with al-folio dark mode)
   light_theme: light # name of the light color scheme (preferred works well with al-folio light mode)
   emit_metadata: 0
@@ -171,7 +171,7 @@ external_sources:
 
 newsletter:
   enabled: false
-  endpoint: # your loops endpoint (e.g., https://app.loops.so/api/newsletter-form/YOUR-ENDPOINT)
+  endpoint: # your loops endpoint (e.g. https://app.loops.so/api/newsletter-form/YOUR-ENDPOINT)
   # https://loops.so/docs/forms/custom-form
 
 # -----------------------------------------------------------------------------
@@ -353,7 +353,7 @@ scholar:
 # Display different badges withs stats for your publications
 # Customize badge behavior in _layouts/bib.liquid
 enable_publication_badges:
-  altmetric: true # Altmetric badge (Customization options: https://badge-docs.altmetric.com/index.html)
+  altmetric: true # Altmetric badge (Customization options: https://badge-docs.altmetric.com/documentation)
   dimensions: true # Dimensions badge (Customization options: https://badge.dimensions.ai/)
   google_scholar: false # Google Scholar badge (https://scholar.google.com/intl/en/scholar/citations.html)
   inspirehep: false # Inspire HEP badge (https://help.inspirehep.net/knowledge-base/citation-metrics/)
@@ -411,7 +411,7 @@ external_links:
 # Responsive WebP Images
 # -----------------------------------------------------------------------------
 
-# MAKE SURE imagemagick is installed and on your PATH before enabling imagemagick. In a terminal, run:
+# MAKE SURE imagemagick is installed and on your PATH before enabling imagemagick:
 #   convert -version
 imagemagick:
   enabled: true # enables responsive images for your site (recommended, see https://github.com/alshedivat/al-folio/issues/537)
