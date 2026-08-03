@@ -1,15 +1,23 @@
 /*
  * al-folio baseline homepage enhancement
  *
- * The homepage keeps the upstream about-page DOM, but gives it one explicit
- * production shell and one coordinated banner grid. Secondary pages remain on
- * the native al-folio baseline.
+ * The homepage keeps the upstream about-page DOM, but gives it a wider content
+ * shell, a slightly narrower navigation shell, and one coordinated banner grid.
+ * Secondary pages remain on the native al-folio baseline.
  */
 
 :root {
-  --hao-alfolio-shell-max: 84rem;
+  --hao-alfolio-content-shell-max: 84rem;
+  --hao-alfolio-nav-shell-max: 80rem;
   --hao-alfolio-gutter: clamp(1rem, 3vw, 2.5rem);
-  --hao-alfolio-shell: min(calc(100% - var(--hao-alfolio-gutter) - var(--hao-alfolio-gutter)), var(--hao-alfolio-shell-max));
+  --hao-alfolio-content-shell: min(
+    calc(100% - var(--hao-alfolio-gutter) - var(--hao-alfolio-gutter)),
+    var(--hao-alfolio-content-shell-max)
+  );
+  --hao-alfolio-nav-shell: min(
+    calc(100% - var(--hao-alfolio-gutter) - var(--hao-alfolio-gutter)),
+    var(--hao-alfolio-nav-shell-max)
+  );
   --hao-home-profile-width: clamp(17.5rem, 24vw, 20rem);
   --hao-home-ink: var(--global-text-color, #111827);
   --hao-home-muted: var(--global-text-color-light, #6b7280);
@@ -24,16 +32,24 @@
 }
 
 /*
- * One measurable shell for both surfaces. The theme renders the page container
- * as body > .container[role="main"] and the navigation shell as #navbar >
- * .container; target those real nodes instead of an assumed <main> wrapper.
+ * The homepage content is intentionally a little wider than the navigation.
+ * This keeps the navbar compact while allowing the working grids to use more
+ * horizontal space. The footer follows the navigation shell.
  */
-.hao-home-page > .container[role="main"],
-.hao-home-page #navbar > .container,
-.hao-home-page #navbar > .container-fluid {
+.hao-home-page > .container[role="main"] {
   box-sizing: border-box !important;
-  width: var(--hao-alfolio-shell) !important;
-  max-width: var(--hao-alfolio-shell-max) !important;
+  width: var(--hao-alfolio-content-shell) !important;
+  max-width: var(--hao-alfolio-content-shell-max) !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+.hao-home-page #navbar > .container,
+.hao-home-page #navbar > .container-fluid,
+.hao-home-page footer > .container {
+  box-sizing: border-box !important;
+  width: var(--hao-alfolio-nav-shell) !important;
+  max-width: var(--hao-alfolio-nav-shell-max) !important;
   margin-right: auto !important;
   margin-left: auto !important;
 }
@@ -61,17 +77,16 @@
 }
 
 /*
- * Coordinated banner: native title and custom introduction form one left-hand
- * narrative, while the native profile occupies the right column. display:
- * contents keeps the upstream article/clearfix markup without adding a second
- * landing-page shell.
+ * Coordinated banner: the custom introduction leads on the left. The native
+ * profile image occupies the right column, with the native name and role placed
+ * directly beneath it as the image identity block.
  */
 .hao-home-page .post {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--hao-home-profile-width);
   grid-template-areas:
-    "header profile"
     "intro profile"
+    "intro header"
     "index index";
   column-gap: clamp(2rem, 5vw, 5rem);
   align-items: start;
@@ -80,7 +95,25 @@
 .hao-home-page .post > .post-header {
   grid-area: header;
   min-width: 0;
+  margin: 0.9rem 0 0;
+  justify-self: stretch;
+}
+
+.hao-home-page .post > .post-header .post-title {
   margin: 0;
+  color: var(--hao-home-ink);
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.hao-home-page .post > .post-header .desc {
+  max-width: none;
+  margin: 0.3rem 0 0;
+  color: var(--hao-home-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 .hao-home-page .post > article,
@@ -112,19 +145,7 @@
 }
 
 .hao-home-page .post > article > .profile .more-info {
-  margin-top: 0.75rem;
-  color: var(--hao-home-ink);
-  font-size: 0.9rem;
-  line-height: 1.45;
-}
-
-.hao-home-page .post > article > .profile .more-info p {
-  margin: 0;
-}
-
-.hao-home-page .desc {
-  max-width: 42rem;
-  margin-bottom: 0;
+  display: none;
 }
 
 /* Homepage brand: same semantic class stack as the upstream al-folio header. */
@@ -150,8 +171,8 @@
   grid-area: intro;
   display: block;
   min-width: 0;
-  max-width: 50rem;
-  margin: clamp(1.75rem, 3.2vw, 2.8rem) 0 0;
+  max-width: 51rem;
+  margin: 0;
 }
 
 .hao-home-eyebrow,
@@ -337,9 +358,24 @@
   line-height: 1.35;
 }
 
-.hao-home-card-topline span,
-.hao-home-card-topline strong {
+.hao-home-card-topline span {
   font-weight: 650;
+}
+
+.hao-home-card-topline strong {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.45rem;
+  border: 1px solid color-mix(in srgb, var(--hao-home-accent) 20%, var(--hao-home-line));
+  border-radius: 999px;
+  padding: 0.18rem 0.48rem;
+  background: var(--hao-home-soft);
+  color: var(--hao-home-accent);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .hao-home-card h3,
@@ -430,7 +466,8 @@
 
 @media (max-width: 992px) {
   :root {
-    --hao-alfolio-shell-max: 64rem;
+    --hao-alfolio-content-shell-max: 64rem;
+    --hao-alfolio-nav-shell-max: 61rem;
     --hao-alfolio-gutter: clamp(0.9rem, 3.5vw, 1.5rem);
     --hao-home-profile-width: min(22rem, 100%);
   }
@@ -438,21 +475,26 @@
   .hao-home-page .post {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
+      "profile"
       "header"
       "intro"
-      "profile"
       "index";
   }
 
   .hao-home-page .post > article > .profile {
     width: min(100%, 22rem) !important;
     max-width: 22rem !important;
-    margin-top: 2rem !important;
     justify-self: start;
+  }
+
+  .hao-home-page .post > .post-header {
+    width: min(100%, 22rem);
+    margin-top: 0.85rem;
   }
 
   .hao-home-intro {
     max-width: 46rem;
+    margin-top: 2.4rem;
   }
 
   .hao-home-section,
@@ -464,11 +506,13 @@
 @media (max-width: 760px) {
   .hao-home-page > .container[role="main"],
   .hao-home-page #navbar > .container,
-  .hao-home-page #navbar > .container-fluid {
+  .hao-home-page #navbar > .container-fluid,
+  .hao-home-page footer > .container {
     width: min(calc(100% - 1.25rem), 64rem) !important;
   }
 
-  .hao-home-page .post > article > .profile {
+  .hao-home-page .post > article > .profile,
+  .hao-home-page .post > .post-header {
     width: 100% !important;
   }
 
