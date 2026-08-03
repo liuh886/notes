@@ -12,9 +12,24 @@ category: work
 > - **Problem:** Offshore projects often have fragmented stakeholders, unclear narratives, and slow partner onboarding.
 > - **Data:** Markdown-first focus areas and insights, maintained as a structured content collection.
 > - **Method:** Astro + Tailwind site with typed content collections; automated partner deck generation from source content.
-> - **Output:** A platform-style portal prototype + a reusable partner introduction deck (v1).
+> - **Output:** A live platform-style portal plus a reusable partner introduction deck pipeline.
 > - **Impact:** Faster alignment across ecosystem partners and a repeatable workflow to publish updates consistently.
-> - **Links:** Public reference: [SBGf Rio 25 OceanHub](https://rio25.sbgf.org.br/Pages/oceanHub.php) (conference page).
+> - **Links:** [Open OceanHub](https://liuh886.github.io/oceanhub/) · [Source code](https://github.com/liuh886/OceanHub) · [SBGf Rio 25 reference](https://rio25.sbgf.org.br/Pages/oceanHub.php)
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <a href="https://liuh886.github.io/oceanhub/" target="_blank" class="btn btn-primary w-100">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open OceanHub
+        </a>
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        <a href="https://github.com/liuh886/OceanHub" target="_blank" class="btn btn-outline-secondary w-100">
+            <i class="fa-brands fa-github"></i> View Source Code
+        </a>
+    </div>
+</div>
+
+<br>
 
 ## What I built
 
@@ -30,4 +45,3 @@ Key components:
 - **Frontend:** Astro (static-first) + Tailwind CSS, with React used only where needed.
 - **Content model:** type-safe content collections under `src/content/` (Focus Areas, Insights, Case Studies).
 - **Deck pipeline:** scripts that transform curated narrative into a partner deck artifact (PPTX) for repeatable partner onboarding.
-
