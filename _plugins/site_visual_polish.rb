@@ -4,7 +4,8 @@ module SiteVisualPolish
   # Keep the starter close to upstream al-folio by default. The homepage owns one
   # scoped layout stylesheet; CV and Repositories own narrow component layers.
   HOMEPAGE_STYLESHEETS = [
-    "hao-home-center-fix.css"
+    "hao-home-center-fix.css",
+    "hao-home-atmosphere.css"
   ].freeze
 
   CV_STYLESHEETS = [
@@ -15,8 +16,6 @@ module SiteVisualPolish
     "repositories-page-polish.css"
   ].freeze
 
-  # The homepage and CV files are unchanged in this round. The repositories
-  # stylesheet has a new path, so it does not inherit an older cached response.
   STYLESHEET_VERSION = "20260803-cv-toc-home-81".freeze
 
   def self.cv_page?(page)
