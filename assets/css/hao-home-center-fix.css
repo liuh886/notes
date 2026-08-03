@@ -7,7 +7,7 @@
  */
 
 :root {
-  --hao-alfolio-content-shell-max: 84rem;
+  --hao-alfolio-content-shell-max: 82rem;
   --hao-alfolio-nav-shell-max: 84rem;
   --hao-alfolio-gutter: clamp(1rem, 3vw, 2.5rem);
   --hao-alfolio-content-shell: min(
@@ -31,7 +31,11 @@
   overflow-x: clip;
 }
 
-/* Navigation, homepage content, and footer share the same measured edges. */
+/*
+ * Optical alignment: the navbar container keeps its native 15px inline padding.
+ * A content shell two rem narrower places the homepage's visible edges on the
+ * same lines as the navbar brand and menu, rather than its outer box.
+ */
 .hao-home-page > .container[role="main"] {
   box-sizing: border-box !important;
   width: var(--hao-alfolio-content-shell) !important;
@@ -62,54 +66,29 @@
   max-width: none;
 }
 
-/* Keep the native al-folio about-page surface visible. */
-.hao-home-page .post > header,
-.hao-home-page .post-header,
-.hao-home-page .post-title,
-.hao-home-page .post-description,
+/* Keep the native profile visible, but remove the duplicated name/role block. */
 .hao-home-page .profile {
   visibility: visible !important;
   opacity: 1 !important;
 }
 
+.hao-home-page .post > .post-header {
+  display: none !important;
+}
+
 /*
  * Coordinated banner: the custom introduction leads on the left. The native
- * profile image occupies the right column, with its field caption and native
- * name/role directly beneath it as one identity block.
+ * profile image occupies the right column, with the field caption retained as
+ * quiet metadata. The duplicate native name/role block is intentionally hidden.
  */
 .hao-home-page .post {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--hao-home-profile-width);
   grid-template-areas:
     "intro profile"
-    "intro header"
     "index index";
   column-gap: clamp(2rem, 5vw, 5rem);
   align-items: start;
-}
-
-.hao-home-page .post > .post-header {
-  grid-area: header;
-  min-width: 0;
-  margin: 0.9rem 0 0;
-  justify-self: stretch;
-}
-
-.hao-home-page .post > .post-header .post-title {
-  margin: 0;
-  color: var(--hao-home-ink);
-  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
-  font-weight: 500;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
-}
-
-.hao-home-page .post > .post-header .desc {
-  max-width: none;
-  margin: 0.3rem 0 0;
-  color: var(--hao-home-muted);
-  font-size: 0.9rem;
-  line-height: 1.45;
 }
 
 .hao-home-page .post > article,
@@ -480,7 +459,6 @@
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
       "profile"
-      "header"
       "intro"
       "index";
   }
@@ -489,11 +467,6 @@
     width: min(100%, 22rem) !important;
     max-width: 22rem !important;
     justify-self: start;
-  }
-
-  .hao-home-page .post > .post-header {
-    width: min(100%, 22rem);
-    margin-top: 0.85rem;
   }
 
   .hao-home-intro {
@@ -515,8 +488,7 @@
     width: min(calc(100% - 1.25rem), 64rem) !important;
   }
 
-  .hao-home-page .post > article > .profile,
-  .hao-home-page .post > .post-header {
+  .hao-home-page .post > article > .profile {
     width: 100% !important;
   }
 
