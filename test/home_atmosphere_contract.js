@@ -24,7 +24,11 @@ const requireAbsent = (source, values, label) => {
 const plugin = read("_plugins/site_visual_polish.rb");
 requireIncludes(
   plugin,
-  ["hao-home-center-fix.css", "hao-home-atmosphere-v2.css"],
+  [
+    "hao-home-center-fix.css",
+    "hao-home-atmosphere-v2.css",
+    "hao-home-current-work-texture-fix.css",
+  ],
   "Homepage stylesheet registration",
 );
 requireAbsent(plugin, ["hao-home-atmosphere.css"], "Homepage stylesheet registration");
@@ -52,6 +56,26 @@ requireAbsent(
   css,
   ["position: fixed", "animation-duration: 1s", "filter: hue-rotate", "backdrop-filter"],
   "Homepage atmosphere stylesheet",
+);
+
+const currentWorkFix = read("assets/css/hao-home-current-work-texture-fix.css");
+requireIncludes(
+  currentWorkFix,
+  [
+    "Current work scientific texture visibility correction",
+    ".hao-home-page #current-work::before",
+    "z-index: 0",
+    "repeating-radial-gradient",
+    ".hao-home-page #current-work > *",
+    "z-index: 1",
+    "0.9px",
+  ],
+  "Current work texture correction",
+);
+requireAbsent(
+  currentWorkFix,
+  ["position: fixed", "backdrop-filter", "mix-blend-mode"],
+  "Current work texture correction",
 );
 
 if (failures.length > 0) {
