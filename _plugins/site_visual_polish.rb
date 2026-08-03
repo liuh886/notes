@@ -9,7 +9,8 @@ module SiteVisualPolish
 
   HOMEPAGE_STYLESHEETS = [
     "hao-home-center-fix.css",
-    "hao-home-atmosphere-v2.css"
+    "hao-home-atmosphere-v2.css",
+    "hao-home-current-work-texture-fix.css"
   ].freeze
 
   CV_STYLESHEETS = [
@@ -24,7 +25,7 @@ module SiteVisualPolish
     "portfolio-page-polish.css"
   ].freeze
 
-  STYLESHEET_VERSION = "20260803-cv-toc-home-81".freeze
+  STYLESHEET_VERSION = "20260803-current-work-texture".freeze
 
   def self.cv_page?(page)
     page.relative_path == "cv.md" || page.url.to_s == "/cv/"
