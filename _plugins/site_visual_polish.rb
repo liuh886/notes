@@ -2,7 +2,7 @@
 
 module SiteVisualPolish
   # Keep the starter close to upstream al-folio by default. The homepage owns one
-  # scoped layout stylesheet; the CV owns one narrowly scoped TOC polish layer.
+  # scoped layout stylesheet; CV and Repositories own narrow component layers.
   HOMEPAGE_STYLESHEETS = [
     "hao-home-center-fix.css"
   ].freeze
@@ -11,12 +11,20 @@ module SiteVisualPolish
     "cv-toc-polish.css"
   ].freeze
 
-  # Bump this value whenever either scoped visual layer changes. GitHub Pages and
+  REPOSITORIES_STYLESHEETS = [
+    "repositories-page-polish.css"
+  ].freeze
+
+  # Bump this value whenever any scoped visual layer changes. GitHub Pages and
   # browsers may otherwise keep serving an older CSS response for the same path.
-  STYLESHEET_VERSION = "20260803-cv-toc-home-81".freeze
+  STYLESHEET_VERSION = "20260803-home-curation-repositories".freeze
 
   def self.cv_page?(page)
     page.relative_path == "cv.md" || page.url.to_s == "/cv/"
+  end
+
+  def self.repositories_page?(page)
+    page.relative_path == "_pages/repositories.md" || page.url.to_s == "/repositories/"
   end
 
   def self.apply_cv_title(page)
@@ -45,6 +53,13 @@ module SiteVisualPolish
     return if page.output.include?("hao-cv-page")
 
     page.output = page.output.sub('<body class="', '<body class="hao-cv-page ')
+  end
+
+  def self.apply_repositories_body_class(page)
+    return unless repositories_page?(page)
+    return if page.output.include?("hao-repositories-page")
+
+    page.output = page.output.sub('<body class="', '<body class="hao-repositories-page ')
   end
 
   def self.apply_home_navbar_brand(page)
@@ -86,6 +101,12 @@ module SiteVisualPolish
 
     apply_stylesheets(page, CV_STYLESHEETS)
   end
+
+  def self.apply_repositories_stylesheet(page)
+    return unless repositories_page?(page)
+
+    apply_stylesheets(page, REPOSITORIES_STYLESHEETS)
+  end
 end
 
 [:pages, :documents].each do |hook_owner|
@@ -93,8 +114,10 @@ end
     SiteVisualPolish.apply_cv_title(page)
     SiteVisualPolish.apply_home_body_class(page)
     SiteVisualPolish.apply_cv_body_class(page)
+    SiteVisualPolish.apply_repositories_body_class(page)
     SiteVisualPolish.apply_home_navbar_brand(page)
     SiteVisualPolish.apply_homepage_stylesheet(page)
     SiteVisualPolish.apply_cv_stylesheet(page)
+    SiteVisualPolish.apply_repositories_stylesheet(page)
   end
 end
