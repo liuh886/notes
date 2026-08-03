@@ -81,7 +81,7 @@ requireIncludes(
   [
     "HOMEPAGE_STYLESHEETS",
     "hao-home-center-fix.css",
-    'STYLESHEET_VERSION = "20260803-ui-polish"',
+    'STYLESHEET_VERSION = "20260803-shell-contact-caption"',
     "def self.apply_home_body_class(page)",
     "hao-home-page",
     "def self.apply_home_navbar_brand(page)",
@@ -124,8 +124,8 @@ requireIncludes(
   [
     "al-folio baseline homepage enhancement",
     "--hao-alfolio-content-shell-max: 84rem",
-    "--hao-alfolio-nav-shell-max: 80rem",
-    "The homepage content is intentionally a little wider than the navigation.",
+    "--hao-alfolio-nav-shell-max: 84rem",
+    "Navigation, homepage content, and footer share the same measured edges.",
     '.hao-home-page > .container[role="main"]',
     ".hao-home-page #navbar > .container",
     ".hao-home-page footer > .container",
@@ -136,6 +136,7 @@ requireIncludes(
     ".post-header .post-title",
     "display: contents;",
     ".hao-home-page .post > article > .profile",
+    ".profile .more-info",
     ".hao-home-card-topline strong",
     ".hao-home-navbar-brand",
     ".hao-home--alfolio",
@@ -173,8 +174,9 @@ requireIncludes(
     "hao-home-page",
     "Research records, shipped tools, and field-informed systems.",
     "I build evidence-driven data systems for climate, energy, and geoscience",
-    "Browse current work",
-    "hao-home-center-fix.css?v=20260803-ui-polish",
+    "Offshore Bergen · Aug 2020",
+    "calendar.app.google/UQ267iEs4MTAGFSd7",
+    "hao-home-center-fix.css?v=20260803-shell-contact-caption",
     "hao-home-navbar-brand",
     'font-weight-bold">Zhihao</span> LIU',
     "Verify secondary pages keep al-folio baseline",
@@ -191,13 +193,15 @@ requireIncludes(
     "Climate data · Geoscience evidence · AI tools",
     "Research records, shipped tools, and field-informed systems.",
     "I build evidence-driven data systems for climate, energy, and geoscience",
-    "Browse current work",
-    "Read notes",
+    "more_info:",
+    "Offshore Bergen · Aug 2020",
+    "calendar.app.google/UQ267iEs4MTAGFSd7",
+    "aria-label=\"Contact — book a chat\"",
+    ">Contact</a>",
     "Current work",
     "Systems",
     "Knowledge",
     "Trajectory",
-    "Contact",
     "hao-home-contact",
   ],
   "al-folio-compatible homepage",
@@ -205,8 +209,9 @@ requireIncludes(
 requireAbsent(
   aboutPage,
   [
-    "more_info:",
     "📍",
+    "Browse current work",
+    "Read notes",
     "It keeps the original al-folio homepage structure",
     "hao-home--safe",
     "hao-home--v6",
@@ -220,8 +225,8 @@ requireAbsent(
   "al-folio-compatible homepage",
 );
 const homepageActionCount = (aboutPage.match(/class="hao-home-button/g) || []).length;
-if (homepageActionCount !== 2) {
-  failures.push(`Homepage banner must keep exactly two actions; found ${homepageActionCount}.`);
+if (homepageActionCount !== 1) {
+  failures.push(`Homepage banner must keep exactly one contact action; found ${homepageActionCount}.`);
 }
 requireRegex(aboutPage, /^layout:\s*about\b/m, "Homepage must keep al-folio `layout: about`.");
 requireRegex(aboutPage, /^news:\s*false\b/m, "Hao homepage must keep legacy `news` disabled.");
