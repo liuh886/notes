@@ -190,7 +190,7 @@ requireIncludes(
   [
     "hao-home--production hao-home--alfolio",
     "Climate data · Geoscience evidence · AI tools",
-    "Research records, shipped tools, and field-informed systems.",
+    "Research records, shipped tools, and agentic AI systems.",
     "Offshore Bergen · Aug 2020",
     "calendar.app.google/UQ267iEs4MTAGFSd7",
     'id="current-work"',
@@ -292,6 +292,7 @@ requireIncludes(
   [
     "hao-home--alfolio",
     "hao-home-page",
+    "Research records, shipped tools, and agentic AI systems.",
     "Projects &amp; code",
     "Notes &amp; publications",
     "Climate-to-energy downscaling",
