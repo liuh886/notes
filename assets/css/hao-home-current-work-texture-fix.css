@@ -1,0 +1,87 @@
+/*
+ * Current work scientific texture visibility correction
+ *
+ * Keep Current work on the same scientific-texture scale and contrast as the
+ * later homepage sections, while extending the hero's purple ambient field into
+ * the top of the section so the transition reads as one continuous composition.
+ */
+
+.hao-home-page #current-work {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hao-home-page #current-work::before {
+  z-index: 0;
+  background-image:
+    repeating-radial-gradient(
+      ellipse at 92% 72%,
+      transparent 0 2.8rem,
+      color-mix(in srgb, var(--global-theme-color, #b80fb8) 6%, transparent) 2.85rem 2.91rem,
+      transparent 2.96rem 5.1rem
+    ),
+    radial-gradient(
+      color-mix(in srgb, var(--global-text-color, #111827) 6%, transparent) 0.7px,
+      transparent 0.8px
+    );
+  background-position: center, 0 0;
+  background-size: auto, 56px 56px;
+  opacity: 0.58;
+}
+
+.hao-home-page #current-work::after {
+  position: absolute;
+  z-index: 0;
+  top: -8rem;
+  right: -5rem;
+  width: 36rem;
+  height: 22rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 62% 0%,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 9%, transparent),
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 4%, transparent) 42%,
+    transparent 72%
+  );
+  content: "";
+  opacity: 0.68;
+  pointer-events: none;
+  transform-origin: 62% 0%;
+  animation: hao-home-ambient-breathe 16s ease-in-out infinite alternate;
+}
+
+.hao-home-page #current-work > * {
+  position: relative;
+  z-index: 1;
+}
+
+html[data-theme="dark"] .hao-home-page #current-work::before {
+  opacity: 0.72;
+}
+
+html[data-theme="dark"] .hao-home-page #current-work::after {
+  opacity: 0.76;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hao-home-page #current-work::after {
+    animation: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .hao-home-page #current-work::before {
+    background-position: 5rem 1rem, 0 0;
+    background-size: auto, 56px 56px;
+    opacity: 0.44;
+  }
+
+  .hao-home-page #current-work::after {
+    top: -6rem;
+    right: -10rem;
+    width: 26rem;
+    height: 18rem;
+    opacity: 0.48;
+  }
+}
