@@ -7,7 +7,7 @@
  */
 
 :root {
-  --hao-alfolio-content-shell-max: 82rem;
+  --hao-alfolio-content-shell-max: 81rem;
   --hao-alfolio-nav-shell-max: 84rem;
   --hao-alfolio-gutter: clamp(1rem, 3vw, 2.5rem);
   --hao-alfolio-content-shell: min(
@@ -33,7 +33,7 @@
 
 /*
  * Optical alignment: the navbar container keeps its native 15px inline padding.
- * A content shell two rem narrower places the homepage's visible edges on the
+ * A content shell three rem narrower places the homepage's visible edges on the
  * same lines as the navbar brand and menu, rather than its outer box.
  */
 .hao-home-page > .container[role="main"] {
