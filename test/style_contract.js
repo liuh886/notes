@@ -81,12 +81,12 @@ requireIncludes(
   [
     "HOMEPAGE_STYLESHEETS",
     "hao-home-center-fix.css",
-    'STYLESHEET_VERSION = "20260803-shell-contact-caption"',
+    'STYLESHEET_VERSION = "20260803-content-audit-optical-shell"',
     "def self.apply_home_body_class(page)",
     "hao-home-page",
     "def self.apply_home_navbar_brand(page)",
     "navbar-brand title font-weight-lighter hao-home-navbar-brand",
-    "<span class=\"font-weight-bold\">Zhihao</span> LIU",
+    '<span class="font-weight-bold">Zhihao</span> LIU',
     "def self.apply_homepage_stylesheet(page)",
     "?v=#{STYLESHEET_VERSION}",
   ],
@@ -103,54 +103,46 @@ requireAbsent(
     "hao-design.css",
     "hao-home-safe.css",
     'HOMEPAGE_BRAND = "Zhihao LIU"',
-    "mission-log-deployments.css",
-    "mission-log-records.css",
-    "mission-log-observations.css",
-    "mission-log-trajectory.css",
-    "mission-log-visual-pass.css",
-    "mission-log-canvas-reset.css",
     "mission-log-shell-v2.css",
-    "mission-log-cover-refinement.css",
     "hao-home-v6.css",
   ],
   "Site visual polish plugin",
 );
 
-if (!exists("assets/css/hao-home-center-fix.css")) failures.push("Homepage al-folio-compatible CSS missing: `assets/css/hao-home-center-fix.css`.");
+if (!exists("assets/css/hao-home-center-fix.css")) {
+  failures.push("Homepage al-folio-compatible CSS missing: `assets/css/hao-home-center-fix.css`.");
+}
 
-const homeAlfolioCss = exists("assets/css/hao-home-center-fix.css") ? read("assets/css/hao-home-center-fix.css") : "";
+const homeCss = exists("assets/css/hao-home-center-fix.css") ? read("assets/css/hao-home-center-fix.css") : "";
 requireIncludes(
-  homeAlfolioCss,
+  homeCss,
   [
     "al-folio baseline homepage enhancement",
-    "--hao-alfolio-content-shell-max: 84rem",
+    "--hao-alfolio-content-shell-max: 82rem",
     "--hao-alfolio-nav-shell-max: 84rem",
-    "Navigation, homepage content, and footer share the same measured edges.",
+    "Optical alignment: the navbar container keeps its native 15px inline padding.",
     '.hao-home-page > .container[role="main"]',
     ".hao-home-page #navbar > .container",
     ".hao-home-page footer > .container",
     ".hao-home-page .post > article > .clearfix",
-    "grid-template-areas:",
+    "display: none !important;",
     '"intro profile"',
-    '"intro header"',
-    ".post-header .post-title",
-    "display: contents;",
+    '"index index"',
     ".hao-home-page .post > article > .profile",
     ".profile .more-info",
     ".hao-home-card-topline strong",
     ".hao-home-navbar-brand",
-    ".hao-home--alfolio",
-    ".hao-home-intro",
-    ".hao-home-section",
     ".hao-home-knowledge-grid",
     "@media (max-width: 992px)",
     "@media (max-width: 760px)",
   ],
-  "Homepage al-folio-compatible CSS",
+  "Homepage CSS",
 );
 requireAbsent(
-  homeAlfolioCss,
+  homeCss,
   [
+    '"intro header"',
+    ".post-header .post-title",
     'content: "Zhihao LIU"',
     "font-size: 0 !important",
     "body:has(",
@@ -160,29 +152,9 @@ requireAbsent(
     "--hao-prod-shell",
     ".hao-prod-hero",
     ".hao-prod-profile",
-    ".navbar .navbar-brand:not(.hao-home-navbar-brand)",
     "position: fixed",
   ],
-  "Homepage al-folio-compatible CSS",
-);
-
-const workflow = read(".github/workflows/deploy.yml");
-requireIncludes(
-  workflow,
-  [
-    "hao-home--alfolio",
-    "hao-home-page",
-    "Research records, shipped tools, and field-informed systems.",
-    "I build evidence-driven data systems for climate, energy, and geoscience",
-    "Offshore Bergen · Aug 2020",
-    "calendar.app.google/UQ267iEs4MTAGFSd7",
-    "hao-home-center-fix.css?v=20260803-shell-contact-caption",
-    "hao-home-navbar-brand",
-    'font-weight-bold">Zhihao</span> LIU',
-    "Verify secondary pages keep al-folio baseline",
-    "site-polish.css|site-upgrade.css|hao-design.css|hao-home-safe.css|hao-home-center-fix.css",
-  ],
-  "Deploy workflow homepage artifact guard",
+  "Homepage CSS",
 );
 
 const aboutPage = read("_pages/about.md");
@@ -192,56 +164,106 @@ requireIncludes(
     "hao-home--production hao-home--alfolio",
     "Climate data · Geoscience evidence · AI tools",
     "Research records, shipped tools, and field-informed systems.",
-    "I build evidence-driven data systems for climate, energy, and geoscience",
-    "more_info:",
     "Offshore Bergen · Aug 2020",
     "calendar.app.google/UQ267iEs4MTAGFSd7",
-    "aria-label=\"Contact — book a chat\"",
-    ">Contact</a>",
-    "Current work",
-    "Systems",
-    "Knowledge",
-    "Trajectory",
+    'id="current-work"',
+    'id="selected-work"',
+    'id="notes-publications"',
+    "Projects &amp; code",
+    "Notes &amp; publications",
+    "Five maintained product and research lanes.",
+    "Selected work beyond the active product list.",
+    "Formal outputs and selected working notes.",
     "hao-home-contact",
   ],
-  "al-folio-compatible homepage",
+  "Homepage",
 );
 requireAbsent(
   aboutPage,
   [
+    'id="systems"',
+    'id="knowledge"',
+    'id="trajectory"',
+    "Trajectory",
+    "Public surfaces and working tools.",
+    "A path from field operations to product systems.",
     "📍",
-    "Browse current work",
-    "Read notes",
-    "It keeps the original al-folio homepage structure",
     "hao-home--safe",
     "hao-home--v6",
     "hao-prod-",
-    "Build systems that turn field evidence into usable products.",
-    "Independent Builder · Climate · Geospatial · AI",
-    "mission-log-home--product",
-    "mission-page-rail",
-    "operations-console",
   ],
-  "al-folio-compatible homepage",
+  "Homepage",
 );
+
 const homepageActionCount = (aboutPage.match(/class="hao-home-button/g) || []).length;
 if (homepageActionCount !== 1) {
   failures.push(`Homepage banner must keep exactly one contact action; found ${homepageActionCount}.`);
 }
+
 requireRegex(aboutPage, /^layout:\s*about\b/m, "Homepage must keep al-folio `layout: about`.");
 requireRegex(aboutPage, /^news:\s*false\b/m, "Hao homepage must keep legacy `news` disabled.");
-requireRegex(aboutPage, /^\s*enabled:\s*false\b/m, "Hao homepage must keep legacy announcements disabled.");
 
-if (!exists("_data/current_operations.yml")) {
-  failures.push("Current operations data missing: `_data/current_operations.yml`.");
-} else {
-  const currentOperations = read("_data/current_operations.yml");
-  requireIncludes(currentOperations, ["OP-01", "CCUS Policy Hub", "Ownly", "FlappyK", "RhythmCoach", "AlphaEngine"], "Current operations log");
-}
+const selectedWork = read("_data/selected_deployments.yml");
+requireIncludes(
+  selectedWork,
+  [
+    "dMRV is the key",
+    "OceanHub",
+    "4D Seismic",
+    "Quad 35 hybrid seismic acquisition",
+    "iCal Pro for Obsidian",
+    "GhostCam",
+    "HTTP to Obsidian CLI Gateway",
+    "Open Phrasebank",
+  ],
+  "Selected work data",
+);
+requireAbsent(selectedWork, ["CCUS Policy Hub", "Ownly", "AlphaEngine", "FlappyK", "RhythmCoach"], "Selected work data");
+
+const researchRecords = read("_data/research_records.yml");
+requireIncludes(
+  researchRecords,
+  [
+    "Retrieving snow depth distribution by downscaling ERA5 Reanalysis with ICESat-2 laser altimetry",
+    "Underwater seismic device identification system",
+  ],
+  "Publication data",
+);
+requireAbsent(researchRecords, ["CCUS Policy Hub", "4D Seismic Hub"], "Publication data");
+
+const fieldNotes = read("_data/field_observations.yml");
+requireIncludes(
+  fieldNotes,
+  [
+    "NuthKaab Coreg vs Gradient Descent Coreg",
+    "Field Trip to Ice Age Museum",
+    "The Agentic Brain",
+    "Obsidian CLI",
+  ],
+  "Selected notes data",
+);
+
+const workflow = read(".github/workflows/deploy.yml");
+requireIncludes(
+  workflow,
+  [
+    "hao-home--alfolio",
+    "hao-home-page",
+    "Projects &amp; code",
+    "Notes &amp; publications",
+    "NuthKaab Coreg vs Gradient Descent Coreg",
+    "Quad 35 hybrid seismic acquisition",
+    "hao-home-center-fix.css?v=20260803-content-audit-optical-shell",
+    "hao-home-navbar-brand",
+    'font-weight-bold">Zhihao</span> LIU',
+    "Verify secondary pages keep al-folio baseline",
+  ],
+  "Deploy workflow",
+);
 
 for (const hiddenNavPage of ["_pages/projects.md", "_pages/repositories.md", "cv.md"]) {
   if (!/^nav:\s*false$/m.test(read(hiddenNavPage))) {
-    failures.push(`Hao homepage nav strategy requires \`${hiddenNavPage}\` to keep \`nav: false\`.`);
+    failures.push(`Homepage nav strategy requires \`${hiddenNavPage}\` to keep \`nav: false\`.`);
   }
 }
 

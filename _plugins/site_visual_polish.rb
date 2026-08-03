@@ -11,7 +11,7 @@ module SiteVisualPolish
   # Bump this value whenever the homepage enhancement layer changes. GitHub
   # Pages and browsers may otherwise keep serving an older CSS response for the
   # same path.
-  STYLESHEET_VERSION = "20260803-shell-contact-caption".freeze
+  STYLESHEET_VERSION = "20260803-content-audit-optical-shell".freeze
 
   def self.apply_cv_title(page)
     return unless page.relative_path == "cv.md"
@@ -31,9 +31,6 @@ module SiteVisualPolish
     return unless page.output.include?("hao-home--alfolio")
     return if page.output.include?("hao-home-page")
 
-    # Give the rendered homepage a stable, explicit scope. This avoids relying
-    # on :has(), keeps PurgeCSS selectors deterministic, and lets the stylesheet
-    # target the theme's real body-level content container.
     page.output = page.output.sub('<body class="', '<body class="hao-home-page ')
   end
 
@@ -45,9 +42,6 @@ module SiteVisualPolish
     baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
     home_href = baseurl.empty? ? "/" : "#{baseurl}/"
 
-    # Upstream al-folio intentionally omits the navbar brand on the homepage,
-    # while secondary pages render it. Reinsert the same semantic brand pattern
-    # on this customized homepage so the site remains visually consistent.
     brand = %(<a class="navbar-brand title font-weight-lighter hao-home-navbar-brand" data-hao-home-brand="true" href="#{home_href}"><span class="font-weight-bold">Zhihao</span> LIU</a>)
 
     navbar_container = %r{(<nav[^>]*class="[^"]*\bnavbar\b[^"]*"[^>]*>\s*<div[^>]*class="[^"]*\bcontainer(?:-fluid)?\b[^"]*"[^>]*>)}m

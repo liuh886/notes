@@ -7,26 +7,21 @@ on:
     branches: [master, main]
   workflow_dispatch:
 
-# Least-privilege token for Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
 jobs:
-  # 1️⃣ BUILD the site and upload it as an artifact
   build:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout code
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      # 2. Set up GitHub Pages environment variables
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      # 3. Set up Ruby
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -45,7 +40,6 @@ jobs:
           node-version: '20'
           cache: npm
 
-      # 4. Patch your _config.yml (giscus.repo) without committing
       - name: Update _config.yml ⚙️
         uses: fjogeleit/yaml-update-action@v0.13.1
         with:
@@ -54,7 +48,6 @@ jobs:
           propertyPath: giscus.repo
           value: ${{ github.repository }}
 
-      # 5. Install extra tools and verify local contracts
       - name: Install CLI helpers 🔧
         run: |
           pip install --upgrade pip nbconvert
@@ -81,12 +74,19 @@ jobs:
           grep -q 'hao-home--alfolio' _site/index.html
           grep -q 'hao-home-page' _site/index.html
           grep -q 'Research records, shipped tools, and field-informed systems.' _site/index.html
-          grep -q 'I build evidence-driven data systems for climate, energy, and geoscience' _site/index.html
           grep -q 'Offshore Bergen · Aug 2020' _site/index.html
+          grep -q 'Projects &amp; code' _site/index.html
+          grep -q 'Notes &amp; publications' _site/index.html
+          grep -q 'NuthKaab Coreg vs Gradient Descent Coreg' _site/index.html
+          grep -q 'Quad 35 hybrid seismic acquisition' _site/index.html
           grep -q 'calendar.app.google/UQ267iEs4MTAGFSd7' _site/index.html
-          grep -q 'hao-home-center-fix.css?v=20260803-shell-contact-caption' _site/index.html
+          grep -q 'hao-home-center-fix.css?v=20260803-content-audit-optical-shell' _site/index.html
           grep -q 'hao-home-navbar-brand' _site/index.html
           grep -q 'font-weight-bold">Zhihao</span> LIU' _site/index.html
+          if grep -q 'id="trajectory"' _site/index.html; then
+            echo "Deprecated placeholder trajectory section remains in homepage artifact."
+            exit 1
+          fi
           if grep -q 'mission-log-shell-v2.css' _site/index.html; then
             echo "Deprecated Mission Log stylesheet leaked into homepage artifact."
             exit 1
@@ -111,13 +111,11 @@ jobs:
           npm install -g purgecss
           purgecss -c purgecss.config.js
 
-      # 6. Upload the _site folder as the pages artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site # explicit path = safer
+          path: ./_site
 
-  # 2️⃣ DEPLOY the uploaded artifact to Pages
   deploy:
     if: github.event_name != 'pull_request'
     needs: build

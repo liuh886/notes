@@ -44,17 +44,16 @@ home_cta: false
 
   <nav class="hao-home-index" aria-label="Homepage sections">
     <a href="#current-work">Current work</a>
-    <a href="#systems">Systems</a>
-    <a href="#knowledge">Knowledge</a>
-    <a href="#trajectory">Trajectory</a>
+    <a href="#selected-work">Projects &amp; code</a>
+    <a href="#notes-publications">Notes &amp; publications</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <section class="hao-home-section" id="current-work" aria-labelledby="current-work-title">
     <div class="hao-home-section-header">
       <p class="hao-home-eyebrow">Current work</p>
-      <h2 id="current-work-title">Active tracks, organized as working lanes.</h2>
-      <p>Updates are organized as maintained work lanes: public data systems, product builds, research engines, and training tools.</p>
+      <h2 id="current-work-title">Five maintained product and research lanes.</h2>
+      <p>This section is limited to work that is actively maintained now. Archived projects and supporting tools appear separately below.</p>
     </div>
     <div class="hao-home-card-grid">
       {% for operation in site.data.current_operations.operations %}
@@ -73,11 +72,11 @@ home_cta: false
     </div>
   </section>
 
-  <section class="hao-home-section" id="systems" aria-labelledby="systems-title">
+  <section class="hao-home-section" id="selected-work" aria-labelledby="selected-work-title">
     <div class="hao-home-section-header">
-      <p class="hao-home-eyebrow">Systems</p>
-      <h2 id="systems-title">Public surfaces and working tools.</h2>
-      <p>A manually ordered view of systems that have moved beyond notes: data products, local-first tools, training apps, and research infrastructure.</p>
+      <p class="hao-home-eyebrow">Projects &amp; code</p>
+      <h2 id="selected-work-title">Selected work beyond the active product list.</h2>
+      <p>A non-repeating selection drawn from the project and repository archives: research programmes, offshore field work, open-source tools, and teaching artifacts.</p>
     </div>
 
     <div class="hao-home-system-stack">
@@ -100,7 +99,7 @@ home_cta: false
                 <p>{{ deployment.summary }}</p>
                 <div class="hao-home-links">
                   {% if deployment.href %}
-                    <a class="hao-home-text-link" href="{{ deployment.href }}" target="_blank" rel="noopener noreferrer">{{ deployment.primary_label | default: "Open" }} →</a>
+                    <a class="hao-home-text-link" href="{{ deployment.href }}">{{ deployment.primary_label | default: "Open" }} →</a>
                   {% endif %}
                   {% if deployment.secondary_href %}
                     <a class="hao-home-text-link" href="{{ deployment.secondary_href }}" target="_blank" rel="noopener noreferrer">{{ deployment.secondary_label | default: "Repository" }} →</a>
@@ -119,18 +118,18 @@ home_cta: false
     </div>
   </section>
 
-  <section class="hao-home-section" id="knowledge" aria-labelledby="knowledge-title">
+  <section class="hao-home-section" id="notes-publications" aria-labelledby="notes-publications-title">
     <div class="hao-home-section-header">
-      <p class="hao-home-eyebrow">Knowledge</p>
-      <h2 id="knowledge-title">Research records and field notes in one workspace.</h2>
-      <p>The homepage keeps formal research artifacts and working notes close together, because the same evidence base feeds both.</p>
+      <p class="hao-home-eyebrow">Notes &amp; publications</p>
+      <h2 id="notes-publications-title">Formal outputs and selected working notes.</h2>
+      <p>Publications are kept distinct from projects; the notes selection points to actual writing from the blog rather than repeating product descriptions.</p>
     </div>
 
     <div class="hao-home-knowledge-grid">
-      <div class="hao-home-knowledge-panel" id="research">
+      <div class="hao-home-knowledge-panel" id="publications">
         <div class="hao-home-panel-heading">
-          <p class="hao-home-card-label">Research record</p>
-          <h3>Evidence, papers, and technical artifacts.</h3>
+          <p class="hao-home-card-label">Publications</p>
+          <h3>Peer-reviewed research and patent record.</h3>
         </div>
         <div class="hao-home-record-list">
           {% for record in site.data.research_records.records %}
@@ -153,12 +152,15 @@ home_cta: false
             </article>
           {% endfor %}
         </div>
+        <div class="hao-home-archive-links">
+          <a href="{{ '/publications/' | relative_url }}">Publication archive</a>
+        </div>
       </div>
 
       <div class="hao-home-knowledge-panel" id="notes">
         <div class="hao-home-panel-heading">
-          <p class="hao-home-card-label">Field observations</p>
-          <h3>Notes from the edge of the work.</h3>
+          <p class="hao-home-card-label">Selected notes</p>
+          <h3>Writing across geospatial methods, field science, and personal AI systems.</h3>
         </div>
         <div class="hao-home-note-list">
           {% for observation in site.data.field_observations.observations %}
@@ -182,34 +184,13 @@ home_cta: false
     </div>
   </section>
 
-  <section class="hao-home-section" id="trajectory" aria-labelledby="trajectory-title">
-    <div class="hao-home-section-header">
-      <p class="hao-home-eyebrow">Trajectory</p>
-      <h2 id="trajectory-title">A path from field operations to product systems.</h2>
-    </div>
-    <div class="hao-home-timeline">
-      {% for phase in site.data.career_trajectory.phases %}
-        <article class="hao-home-timeline-item">
-          <div class="hao-home-card-topline">
-            <span>{{ phase.id }}</span>
-            <strong>{{ phase.status }}</strong>
-          </div>
-          <h3>{{ phase.title }}</h3>
-          <p>{{ phase.summary }}</p>
-        </article>
-      {% endfor %}
-    </div>
-    <div class="hao-home-archive-links">
-      <a href="{{ '/cv/' | relative_url }}">Full CV archive</a>
-    </div>
-  </section>
-
   <section class="hao-home-contact" id="contact" aria-labelledby="contact-title">
     <div>
       <p class="hao-home-eyebrow">Contact</p>
-      <h2 id="contact-title">Code, records, notes, and support.</h2>
+      <h2 id="contact-title">Book a conversation or browse the full record.</h2>
     </div>
     <div class="hao-home-contact-links">
+      <a href="https://calendar.app.google/UQ267iEs4MTAGFSd7" target="_blank" rel="noopener noreferrer">Book a chat</a>
       <a href="https://github.com/liuh886" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://www.linkedin.com/in/liuzhihao" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="{{ '/cv/' | relative_url }}">CV</a>
