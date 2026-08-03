@@ -1,0 +1,251 @@
+/*
+ * Portfolio page polish
+ *
+ * Restores structure and responsive behavior to the TradingView-heavy portfolio
+ * page without turning it into a trading-terminal aesthetic. Every selector is
+ * scoped to /portfolio/ through the injected body class.
+ */
+
+.hao-portfolio-page {
+  --hao-portfolio-line: color-mix(in srgb, var(--global-text-color, #111827) 13%, transparent);
+  --hao-portfolio-line-soft: color-mix(in srgb, var(--global-text-color, #111827) 8%, transparent);
+  --hao-portfolio-muted: color-mix(in srgb, var(--global-text-color, #111827) 66%, transparent);
+  --hao-portfolio-surface: var(--global-card-bg-color, var(--global-bg-color, #ffffff));
+  --hao-portfolio-surface-soft: color-mix(in srgb, var(--global-theme-color, #b80fb8) 3%, var(--global-bg-color, #ffffff));
+  --hao-portfolio-radius: 12px;
+  --hao-portfolio-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+}
+
+html[data-theme="dark"] .hao-portfolio-page {
+  --hao-portfolio-line: color-mix(in srgb, var(--global-text-color, #f8fafc) 20%, transparent);
+  --hao-portfolio-line-soft: color-mix(in srgb, var(--global-text-color, #f8fafc) 12%, transparent);
+  --hao-portfolio-muted: color-mix(in srgb, var(--global-text-color, #f8fafc) 68%, transparent);
+  --hao-portfolio-surface-soft: color-mix(in srgb, var(--global-theme-color, #b80fb8) 6%, var(--global-bg-color, #111827));
+  --hao-portfolio-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+}
+
+.hao-portfolio-page > .container[role="main"] {
+  max-width: 80rem;
+}
+
+.hao-portfolio-page .post-header {
+  max-width: 54rem;
+  margin-bottom: 1rem;
+}
+
+.hao-portfolio-page .post-title {
+  letter-spacing: -0.035em;
+}
+
+.hao-portfolio-page .post-description {
+  max-width: 48rem;
+  color: var(--hao-portfolio-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.hao-portfolio-page article > p,
+.hao-portfolio-page article > ul {
+  max-width: 49rem;
+}
+
+.hao-portfolio-page article > p {
+  color: var(--hao-portfolio-muted);
+  line-height: 1.75;
+}
+
+.hao-portfolio-page article > ul {
+  margin: 1rem 0 2.2rem;
+  padding-left: 1.2rem;
+}
+
+.hao-portfolio-page article > ul li {
+  margin: 0.45rem 0;
+  line-height: 1.65;
+}
+
+.hao-portfolio-page article > hr {
+  margin: 2.4rem 0 2.2rem;
+  border-color: var(--hao-portfolio-line);
+}
+
+.hao-portfolio-page article > h2 {
+  margin: 2.5rem 0 1rem;
+  padding-top: 0;
+  border-top: 0;
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  font-weight: 520;
+  letter-spacing: -0.03em;
+}
+
+.hao-portfolio-page .stock-widget,
+.hao-portfolio-page .portfolio-widgets__top-stories,
+.hao-portfolio-page .portfolio-widgets__analysis {
+  min-width: 0;
+}
+
+.hao-portfolio-page .stock-widget {
+  overflow: hidden;
+  border: 1px solid var(--hao-portfolio-line);
+  border-radius: var(--hao-portfolio-radius);
+  background: linear-gradient(180deg, var(--hao-portfolio-surface), var(--hao-portfolio-surface-soft));
+  box-shadow: none;
+}
+
+.hao-portfolio-page .stock-widget--ticker {
+  padding: 0.35rem;
+}
+
+.hao-portfolio-page .stock-widget--overview {
+  height: clamp(30rem, 60vw, 42rem);
+  padding: 0.45rem;
+}
+
+.hao-portfolio-page .stock-widget--overview > .tradingview-widget-container,
+.hao-portfolio-page .stock-widget--overview .tradingview-widget-container__widget {
+  height: 100%;
+}
+
+.hao-portfolio-page .portfolio-widgets {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(20rem, 0.92fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.hao-portfolio-page .portfolio-widgets .stock-widget {
+  margin: 0 !important;
+}
+
+.hao-portfolio-page .stock-widget--story,
+.hao-portfolio-page .stock-widget--analysis {
+  min-height: 480px;
+}
+
+.hao-portfolio-page .stock-analysis__selector {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--hao-portfolio-line-soft);
+}
+
+.hao-portfolio-page .stock-analysis__label {
+  flex: 0 0 auto;
+  padding-top: 0.3rem;
+  color: var(--hao-portfolio-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hao-portfolio-page .stock-analysis__buttons {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+.hao-portfolio-page .stock-analysis__pill {
+  min-height: 2rem;
+  border: 1px solid var(--hao-portfolio-line);
+  border-radius: 999px;
+  padding: 0.38rem 0.65rem;
+  background: var(--hao-portfolio-surface);
+  color: var(--hao-portfolio-muted);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 650;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.hao-portfolio-page .stock-analysis__pill:hover,
+.hao-portfolio-page .stock-analysis__pill:focus-visible,
+.hao-portfolio-page .stock-analysis__pill.is-active {
+  border-color: color-mix(in srgb, var(--global-theme-color) 55%, var(--hao-portfolio-line));
+  background: var(--hao-portfolio-surface-soft);
+  color: var(--global-theme-color);
+}
+
+.hao-portfolio-page .stock-analysis__pill:focus-visible {
+  outline: 2px solid var(--global-theme-color);
+  outline-offset: 2px;
+}
+
+.hao-portfolio-page .stock-analysis__panel {
+  display: none;
+}
+
+.hao-portfolio-page .stock-analysis__panel.is-active {
+  display: block;
+}
+
+html[data-theme="dark"] .hao-portfolio-page .stock-widget-light,
+html:not([data-theme="dark"]) .hao-portfolio-page .stock-widget-dark {
+  display: none !important;
+}
+
+.hao-portfolio-page .tradingview-widget-container,
+.hao-portfolio-page .tradingview-widget-container__widget {
+  width: 100% !important;
+  max-width: 100%;
+}
+
+.hao-portfolio-page .hao-build-revision {
+  white-space: nowrap;
+}
+
+.hao-build-revision {
+  display: inline;
+  margin-left: 0.2em;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.hao-build-revision a {
+  color: inherit;
+  font-family: var(--global-code-font, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.hao-build-revision a:hover,
+.hao-build-revision a:focus-visible {
+  color: var(--global-theme-color);
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 992px) {
+  .hao-portfolio-page .portfolio-widgets {
+    grid-template-columns: 1fr;
+  }
+
+  .hao-portfolio-page .stock-widget--overview {
+    height: 34rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hao-portfolio-page .stock-widget--overview {
+    height: 29rem;
+  }
+
+  .hao-portfolio-page .stock-analysis__selector {
+    display: block;
+  }
+
+  .hao-portfolio-page .stock-analysis__label {
+    display: block;
+    margin-bottom: 0.6rem;
+    padding-top: 0;
+  }
+
+  .hao-portfolio-page .stock-widget--story,
+  .hao-portfolio-page .stock-widget--analysis {
+    min-height: 440px;
+  }
+}
