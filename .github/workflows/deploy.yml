@@ -73,6 +73,7 @@ jobs:
           test -f _site/index.html
           grep -q 'hao-home--alfolio' _site/index.html
           grep -q 'hao-home-page' _site/index.html
+          grep -q 'Data Scientist · AI Builder' _site/index.html
           grep -q 'Research records, shipped tools, and agentic AI systems.' _site/index.html
           grep -q 'Offshore Bergen · Aug 2020' _site/index.html
           grep -q 'Projects &amp; code' _site/index.html
@@ -88,6 +89,10 @@ jobs:
           grep -q 'hao-home-center-fix.css?v=20260803-cv-toc-home-81' _site/index.html
           grep -q 'hao-home-navbar-brand' _site/index.html
           grep -q 'font-weight-bold">Zhihao</span> LIU' _site/index.html
+          if grep -q 'Climate data · Geoscience evidence · AI tools' _site/index.html; then
+            echo "Deprecated homepage identity label remains in the built artifact."
+            exit 1
+          fi
           if grep -q 'GhostCam' _site/index.html; then
             echo "GhostCam remains in the curated homepage artifact."
             exit 1
