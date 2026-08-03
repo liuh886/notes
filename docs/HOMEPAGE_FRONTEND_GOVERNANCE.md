@@ -4,7 +4,7 @@ This document records the production rules for the Hao's Notes homepage after th
 
 ## Ownership model
 
-The site keeps upstream al-folio as its visual baseline. Blog, Projects, Repositories, CV, publications, and individual posts must not receive broad custom visual CSS from this starter repository.
+The site keeps upstream al-folio as its visual baseline. Blog, Projects, Repositories, publications, and individual posts must not receive broad custom visual CSS from this starter repository.
 
 The homepage keeps the native `layout: about` DOM and adds one scoped content root:
 
@@ -14,17 +14,19 @@ The homepage keeps the native `layout: about` DOM and adds one scoped content ro
 
 `_plugins/site_visual_polish.rb` adds `hao-home-page` to the rendered `<body>` and injects only `hao-home-center-fix.css` on `/`.
 
+The CV is the only secondary-page exception. It receives `hao-cv-page` and the narrowly scoped `cv-toc-polish.css` layer, which hides the native TOC scrollbar chrome while preserving the existing tocbot scrolling behavior.
+
 ## Optical shell contract
 
 The theme's `.container` includes 15 px of inline padding. Matching the outer boxes of the navbar and main container therefore did not match their visible content edges.
 
 The desktop shell uses:
 
-- homepage content outer width: `82rem`
+- homepage content outer width: `81rem`
 - navbar and footer outer width: `84rem`
 - shared gutter calculation: `clamp(1rem, 3vw, 2.5rem)`
 
-This two-rem difference is deliberate optical compensation. The visible left edge of the homepage should align with the navbar brand, and the visible right edge should align with the navbar controls. Do not describe the two outer containers as numerically identical.
+This three-rem difference is deliberate optical compensation. The visible left edge of the homepage should align with the navbar brand, and the visible right edge should align with the navbar controls. Do not describe the two outer containers as numerically identical.
 
 The scoped nodes are:
 
@@ -84,6 +86,17 @@ The Projects & code section draws from real archive entries such as:
 
 The Notes & publications section includes the 2025 snow-depth paper, the underwater seismic-device patent, and selected published notes.
 
+## CV TOC contract
+
+The CV keeps the upstream left-side `#toc-sidebar` and its sticky, vertically scrollable behavior. The custom layer must only remove scrollbar chrome:
+
+- use `scrollbar-width: none` for Firefox;
+- use `-ms-overflow-style: none` for legacy Microsoft engines;
+- hide `::-webkit-scrollbar` for Chromium and Safari;
+- do not set `overflow-y: hidden` or disable wheel, touch, or keyboard scrolling.
+
+The stylesheet must load only on `/cv/` and must not leak into Blog or other secondary pages.
+
 ## Navbar brand contract
 
 The homepage navbar brand is injected as real markup:
@@ -107,17 +120,19 @@ Before upload, CI must verify that `_site/index.html` contains:
 - `Notes &amp; publications`
 - representative real archive items
 - the Google booking URL
-- `hao-home-center-fix.css?v=20260803-content-audit-optical-shell`
+- `hao-home-center-fix.css?v=20260803-cv-toc-home-81`
 - the navbar brand
 
-CI must reject a homepage that still contains `id="trajectory"`. Secondary pages must not load the homepage stylesheet.
+CI must also verify that `_site/cv/index.html` contains `hao-cv-page`, `#toc-sidebar`, and `cv-toc-polish.css?v=20260803-cv-toc-home-81`.
+
+CI must reject a homepage that still contains `id="trajectory"`. Blog and other secondary pages must not load either scoped stylesheet.
 
 ## Change policy
 
-When the homepage changes:
+When the homepage or CV TOC polish changes:
 
-1. update the existing homepage markdown, data files, or `hao-home-center-fix.css`;
-2. do not add another final CSS layer;
+1. update the existing homepage markdown, data files, `hao-home-center-fix.css`, or `cv-toc-polish.css`;
+2. do not add another final CSS layer for the same surface;
 3. bump `STYLESHEET_VERSION`;
 4. update the style contract and built-artifact checks;
 5. merge only after the production Jekyll build and secondary-page isolation checks pass.
