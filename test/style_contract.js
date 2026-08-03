@@ -223,7 +223,7 @@ for (const hiddenNavPage of ["_pages/projects.md", "_pages/repositories.md", "cv
 }
 
 for (const requiredDoc of ["docs/DESIGN_SYSTEM.md", "docs/REDESIGN_ROADMAP.md", "docs/MISSION_LOG_PLAN.md", "docs/HOMEPAGE_FRONTEND_GOVERNANCE.md"]) {
-  if (!exists(requiredDoc)) failures.push(`Hao redesign documentation missing required path: \`${requiredPath}\`.`);
+  if (!exists(requiredDoc)) failures.push(`Hao redesign documentation missing required path: \`${requiredDoc}\`.`);
 }
 
 if (failures.length > 0) {
