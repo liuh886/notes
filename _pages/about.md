@@ -53,7 +53,7 @@ home_cta: false
     <div class="hao-home-section-header">
       <p class="hao-home-eyebrow">Current work</p>
       <h2 id="current-work-title">Five maintained product and research lanes.</h2>
-      <p>This section is limited to work that is actively maintained now. Archived projects and supporting tools appear separately below.</p>
+      <p>Five active systems are maintained now; the final card shows the next product entering build. Archived projects and supporting tools appear separately below.</p>
     </div>
     <div class="hao-home-card-grid">
       {% for operation in site.data.current_operations.operations %}
@@ -64,8 +64,26 @@ home_cta: false
           </div>
           <h3>{{ operation.title }}</h3>
           <p>{{ operation.summary }}</p>
-          {% if operation.href %}
-            <a class="hao-home-text-link" href="{{ operation.href }}" target="_blank" rel="noopener noreferrer">{{ operation.label | default: "Open" }} →</a>
+          <div class="hao-home-links">
+            {% if operation.href %}
+              <a class="hao-home-text-link" href="{{ operation.href }}" target="_blank" rel="noopener noreferrer">{{ operation.label | default: "Open" }} →</a>
+            {% endif %}
+            {% if operation.secondary_href %}
+              <a class="hao-home-text-link" href="{{ operation.secondary_href }}" target="_blank" rel="noopener noreferrer">{{ operation.secondary_label | default: "Repository" }} →</a>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+      {% for upcoming in site.data.current_operations.upcoming %}
+        <article class="hao-home-card">
+          <div class="hao-home-card-topline">
+            <span>{{ upcoming.id }}</span>
+            <strong>{{ upcoming.status }}</strong>
+          </div>
+          <h3>{{ upcoming.title }}</h3>
+          <p>{{ upcoming.summary }}</p>
+          {% if upcoming.href %}
+            <a class="hao-home-text-link" href="{{ upcoming.href }}" target="_blank" rel="noopener noreferrer">{{ upcoming.label | default: "Follow build" }} →</a>
           {% endif %}
         </article>
       {% endfor %}
@@ -99,10 +117,13 @@ home_cta: false
                 <p>{{ deployment.summary }}</p>
                 <div class="hao-home-links">
                   {% if deployment.href %}
-                    <a class="hao-home-text-link" href="{{ deployment.href }}">{{ deployment.primary_label | default: "Open" }} →</a>
+                    <a class="hao-home-text-link" href="{{ deployment.href }}" {% if deployment.href contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ deployment.primary_label | default: "Open" }} →</a>
                   {% endif %}
                   {% if deployment.secondary_href %}
-                    <a class="hao-home-text-link" href="{{ deployment.secondary_href }}" target="_blank" rel="noopener noreferrer">{{ deployment.secondary_label | default: "Repository" }} →</a>
+                    <a class="hao-home-text-link" href="{{ deployment.secondary_href }}" {% if deployment.secondary_href contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ deployment.secondary_label | default: "More" }} →</a>
+                  {% endif %}
+                  {% if deployment.repository_href %}
+                    <a class="hao-home-text-link" href="{{ deployment.repository_href }}" target="_blank" rel="noopener noreferrer">{{ deployment.repository_label | default: "Repository" }} →</a>
                   {% endif %}
                 </div>
               </article>
