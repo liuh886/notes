@@ -3,6 +3,10 @@
 module SiteVisualPolish
   # Keep the starter close to upstream al-folio by default. Each customized
   # surface owns one narrowly scoped stylesheet and body class.
+  GLOBAL_STYLESHEETS = [
+    "footer-build.css"
+  ].freeze
+
   HOMEPAGE_STYLESHEETS = [
     "hao-home-center-fix.css",
     "hao-home-atmosphere.css"
@@ -90,6 +94,17 @@ module SiteVisualPolish
     page.output = page.output.sub(navbar_container, "\\1\n      #{brand}")
   end
 
+  def self.apply_home_portfolio_link(page)
+    return unless home_page?(page)
+    return if page.output.include?('data-hao-portfolio-link="true"')
+
+    baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
+    href = baseurl.empty? ? "/portfolio/" : "#{baseurl}/portfolio/"
+    link = %(<a href="#{href}" data-hao-portfolio-link="true">Portfolio</a>)
+    contact_links = %r{(<div class="hao-home-contact-links">.*?)(\s*</div>)}m
+    page.output = page.output.sub(contact_links, "\\1\n      #{link}\\2")
+  end
+
   def self.build_revision(page)
     revision = ENV["GITHUB_SHA"].to_s
     revision = page.site.config.dig("github", "build_revision").to_s if revision.empty?
@@ -128,6 +143,10 @@ module SiteVisualPolish
     end
   end
 
+  def self.apply_global_stylesheet(page)
+    apply_stylesheets(page, GLOBAL_STYLESHEETS)
+  end
+
   def self.apply_homepage_stylesheet(page)
     return unless home_page?(page)
 
@@ -161,6 +180,8 @@ end
     SiteVisualPolish.apply_repositories_body_class(page)
     SiteVisualPolish.apply_portfolio_body_class(page)
     SiteVisualPolish.apply_home_navbar_brand(page)
+    SiteVisualPolish.apply_home_portfolio_link(page)
+    SiteVisualPolish.apply_global_stylesheet(page)
     SiteVisualPolish.apply_homepage_stylesheet(page)
     SiteVisualPolish.apply_cv_stylesheet(page)
     SiteVisualPolish.apply_repositories_stylesheet(page)
