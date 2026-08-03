@@ -16,17 +16,23 @@ groups:
         status: PLATFORM
         kind: Offshore energy / marine intelligence
         summary: A partner-facing offshore energy and marine intelligence portal supported by a reproducible content and presentation pipeline.
-        href: /projects/2026_oceanhub/
-        primary_label: View project
+        href: https://liuh886.github.io/oceanhub/
+        primary_label: Open app
+        secondary_href: /projects/2026_oceanhub/
+        secondary_label: Project record
+        repository_href: https://github.com/liuh886/OceanHub
+        repository_label: Repository
       - ref: P-03
-        title: 4D Seismic
+        title: 4D Seismic Hub
         status: KNOWLEDGE PRODUCT
         kind: Time-lapse seismic / monitoring
         summary: A curated knowledge hub that organizes 4D seismic best practices and case studies for early-stage technical screening.
-        href: /projects/2025_4d_seismic/
-        primary_label: View project
-        secondary_href: https://github.com/liuh886/4d-seismic-hub
-        secondary_label: Repository
+        href: https://liuh886.github.io/4d-seismic-hub/
+        primary_label: Open app
+        secondary_href: /projects/2025_4d_seismic/
+        secondary_label: Project record
+        repository_href: https://github.com/liuh886/4d-seismic-hub
+        repository_label: Repository
       - ref: P-04
         title: Climate-to-energy downscaling
         status: RESEARCH PROJECT
