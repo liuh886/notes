@@ -64,17 +64,27 @@ requireIncludes(
   [
     "Current work scientific texture visibility correction",
     ".hao-home-page #current-work::before",
+    ".hao-home-page #current-work::after",
     "z-index: 0",
     "repeating-radial-gradient",
+    "background-size: auto, 56px 56px",
+    "opacity: 0.58",
+    "animation: hao-home-ambient-breathe 16s",
+    "@media (prefers-reduced-motion: reduce)",
     ".hao-home-page #current-work > *",
     "z-index: 1",
-    "0.9px",
   ],
   "Current work texture correction",
 );
 requireAbsent(
   currentWorkFix,
-  ["position: fixed", "backdrop-filter", "mix-blend-mode"],
+  [
+    "position: fixed",
+    "backdrop-filter",
+    "mix-blend-mode",
+    "background-size: auto, auto, 26px 26px",
+    "opacity: 0.9",
+  ],
   "Current work texture correction",
 );
 
