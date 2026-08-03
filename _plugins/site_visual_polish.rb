@@ -25,7 +25,7 @@ module SiteVisualPolish
     "portfolio-page-polish.css"
   ].freeze
 
-  STYLESHEET_VERSION = "20260803-current-work-texture".freeze
+  STYLESHEET_VERSION = "20260803-cv-toc-home-81".freeze
 
   def self.cv_page?(page)
     page.relative_path == "cv.md" || page.url.to_s == "/cv/"
