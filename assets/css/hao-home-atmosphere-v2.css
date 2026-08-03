@@ -1,0 +1,263 @@
+/*
+ * Homepage atmospheric refinement v2
+ *
+ * Keeps the existing purple visual language while adding slow ambient motion,
+ * section-specific scientific textures, and a more integrated profile image.
+ * The layer is homepage-only and respects reduced-motion preferences.
+ */
+
+.hao-home-page .hao-home--alfolio {
+  position: relative;
+  isolation: isolate;
+}
+
+.hao-home-page .hao-home--alfolio::before {
+  position: absolute;
+  z-index: -2;
+  top: -9rem;
+  right: -9rem;
+  width: 36rem;
+  height: 36rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 13%, transparent) 0%,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 7%, transparent) 38%,
+    transparent 72%
+  );
+  content: "";
+  filter: blur(0.4px);
+  pointer-events: none;
+  transform-origin: center;
+  animation: hao-home-ambient-drift 18s ease-in-out infinite alternate;
+}
+
+.hao-home-page .hao-home-intro {
+  position: relative;
+}
+
+.hao-home-page .hao-home-intro::before {
+  position: absolute;
+  z-index: -1;
+  top: -2.5rem;
+  left: -2.5rem;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 6%, transparent),
+    transparent 72%
+  );
+  content: "";
+  pointer-events: none;
+  animation: hao-home-ambient-breathe 14s ease-in-out infinite alternate;
+}
+
+.hao-home-page .post > article > .profile {
+  position: relative;
+  isolation: isolate;
+}
+
+.hao-home-page .post > article > .profile::before {
+  position: absolute;
+  z-index: -1;
+  inset: -1.4rem -1.2rem 1.8rem;
+  border-radius: 2rem;
+  background: radial-gradient(
+    circle at 56% 38%,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 12%, transparent),
+    transparent 64%
+  );
+  content: "";
+  pointer-events: none;
+  animation: hao-home-image-halo 16s ease-in-out infinite alternate;
+}
+
+.hao-home-page .post > article > .profile img {
+  border: 1px solid color-mix(in srgb, var(--global-theme-color, #b80fb8) 11%, var(--global-divider-color, #e5e7eb));
+  border-radius: 1.05rem;
+  box-shadow:
+    0 1.5rem 3.25rem rgba(15, 23, 42, 0.09),
+    0 0.3rem 0.9rem rgba(15, 23, 42, 0.04);
+  filter: saturate(0.97) contrast(1.015);
+}
+
+.hao-home-page .post > article > .profile .more-info {
+  width: 100%;
+  margin-top: 0.65rem;
+  text-align: center;
+}
+
+/* Shared section canvas. Textures sit behind content and never capture input. */
+.hao-home-page .hao-home-section,
+.hao-home-page .hao-home-contact {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hao-home-page .hao-home-section::before,
+.hao-home-page .hao-home-contact::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+}
+
+/* Current work: observation points and a faint measured field. */
+.hao-home-page #current-work::before {
+  background-image:
+    radial-gradient(
+      circle at 76% 22%,
+      color-mix(in srgb, var(--global-theme-color, #b80fb8) 5%, transparent),
+      transparent 36%
+    ),
+    radial-gradient(
+      color-mix(in srgb, var(--global-text-color, #111827) 7%, transparent) 0.65px,
+      transparent 0.75px
+    );
+  background-position: center, 0 0;
+  background-size: auto, 29px 29px;
+  opacity: 0.74;
+}
+
+/* Projects & code: a subdued topographic field, offset from the reading column. */
+.hao-home-page #selected-work::before {
+  background-image:
+    repeating-radial-gradient(
+      ellipse at 88% 34%,
+      transparent 0 2.35rem,
+      color-mix(in srgb, var(--global-theme-color, #b80fb8) 8%, transparent) 2.4rem 2.47rem,
+      transparent 2.52rem 4.45rem
+    ),
+    radial-gradient(
+      circle at 90% 58%,
+      color-mix(in srgb, var(--global-theme-color, #b80fb8) 4%, transparent),
+      transparent 42%
+    );
+  opacity: 0.55;
+}
+
+/* Notes & publications: contour lines plus a very quiet observation grid. */
+.hao-home-page #notes-publications::before {
+  background-image:
+    repeating-radial-gradient(
+      ellipse at 12% 70%,
+      transparent 0 2.8rem,
+      color-mix(in srgb, var(--global-text-color, #111827) 6%, transparent) 2.85rem 2.91rem,
+      transparent 2.96rem 5.1rem
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--global-text-color, #111827) 3%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      color-mix(in srgb, var(--global-text-color, #111827) 3%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: auto, 56px 56px, 56px 56px;
+  opacity: 0.58;
+}
+
+/* Contact: a restrained closing contour, deliberately weaker than the sections. */
+.hao-home-page #contact::before {
+  background-image: repeating-radial-gradient(
+    ellipse at 82% 118%,
+    transparent 0 3rem,
+    color-mix(in srgb, var(--global-theme-color, #b80fb8) 6%, transparent) 3.05rem 3.12rem,
+    transparent 3.17rem 5.6rem
+  );
+  opacity: 0.5;
+}
+
+html[data-theme="dark"] .hao-home-page #current-work::before,
+html[data-theme="dark"] .hao-home-page #selected-work::before,
+html[data-theme="dark"] .hao-home-page #notes-publications::before,
+html[data-theme="dark"] .hao-home-page #contact::before {
+  opacity: 0.72;
+}
+
+@keyframes hao-home-ambient-drift {
+  0% {
+    opacity: 0.78;
+    transform: translate3d(0, 0, 0) scale(0.98);
+  }
+
+  55% {
+    opacity: 1;
+    transform: translate3d(-1.2rem, 0.75rem, 0) scale(1.04);
+  }
+
+  100% {
+    opacity: 0.84;
+    transform: translate3d(0.6rem, 1.25rem, 0) scale(1.01);
+  }
+}
+
+@keyframes hao-home-ambient-breathe {
+  from {
+    opacity: 0.6;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 0.95;
+    transform: scale(1.07);
+  }
+}
+
+@keyframes hao-home-image-halo {
+  from {
+    opacity: 0.58;
+    transform: translate3d(0, 0, 0) scale(0.98);
+  }
+
+  to {
+    opacity: 0.92;
+    transform: translate3d(-0.35rem, 0.25rem, 0) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hao-home-page .hao-home--alfolio::before,
+  .hao-home-page .hao-home-intro::before,
+  .hao-home-page .post > article > .profile::before {
+    animation: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .hao-home-page #selected-work::before {
+    background-position: 11rem 0, center;
+  }
+}
+
+@media (max-width: 760px) {
+  .hao-home-page .hao-home--alfolio::before {
+    top: -5rem;
+    right: -12rem;
+    width: 25rem;
+    height: 25rem;
+  }
+
+  .hao-home-page .hao-home-intro::before {
+    display: none;
+  }
+
+  .hao-home-page .post > article > .profile::before {
+    inset: -1rem -0.8rem 1.4rem;
+  }
+
+  .hao-home-page #current-work::before,
+  .hao-home-page #notes-publications::before {
+    opacity: 0.44;
+  }
+
+  .hao-home-page #selected-work::before,
+  .hao-home-page #contact::before {
+    opacity: 0.38;
+  }
+}

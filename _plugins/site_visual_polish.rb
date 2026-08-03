@@ -9,7 +9,7 @@ module SiteVisualPolish
 
   HOMEPAGE_STYLESHEETS = [
     "hao-home-center-fix.css",
-    "hao-home-atmosphere.css"
+    "hao-home-atmosphere-v2.css"
   ].freeze
 
   CV_STYLESHEETS = [
