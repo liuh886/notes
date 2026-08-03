@@ -9,15 +9,21 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+
+concurrency:
+  group: notes-site-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: Validate and build site
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    permissions:
+      contents: read
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -29,15 +35,15 @@ jobs:
           bundler-cache: true
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.13'
           cache: pip
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '24'
           cache: npm
 
       - name: Update _config.yml ⚙️
@@ -50,7 +56,7 @@ jobs:
 
       - name: Install CLI helpers 🔧
         run: |
-          pip install --upgrade pip nbconvert
+          python -m pip install --upgrade pip nbconvert
           npm ci
 
       - name: Verify frontend contracts 🔎
@@ -145,22 +151,25 @@ jobs:
       - name: PurgeCSS 🔧
         run: |
           set -euo pipefail
-          npm install -g purgecss
-          purgecss -c purgecss.config.js
+          npx --yes purgecss@7.0.2 -c purgecss.config.js
 
-      - name: Upload artifact
+      - name: Upload validated Pages artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
 
   deploy:
+    name: Deploy validated site
     if: github.event_name != 'pull_request'
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     permissions:
+      contents: read
       pages: write
       id-token: write
     steps:
