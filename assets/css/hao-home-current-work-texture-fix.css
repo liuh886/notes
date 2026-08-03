@@ -1,0 +1,54 @@
+/*
+ * Current work scientific texture visibility correction
+ *
+ * The first v2 texture was technically present but sat on a negative layer and
+ * used sub-pixel marks at very low contrast. This correction keeps the texture
+ * restrained while ensuring it survives high-DPI rendering and remains visible
+ * in the open space around the Current work cards.
+ */
+
+.hao-home-page #current-work {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hao-home-page #current-work::before {
+  z-index: 0;
+  background-image:
+    radial-gradient(
+      circle at 78% 20%,
+      color-mix(in srgb, var(--global-theme-color, #b80fb8) 8%, transparent),
+      transparent 40%
+    ),
+    repeating-radial-gradient(
+      ellipse at 94% 78%,
+      transparent 0 2.55rem,
+      color-mix(in srgb, var(--global-theme-color, #b80fb8) 9%, transparent) 2.62rem 2.7rem,
+      transparent 2.77rem 4.95rem
+    ),
+    radial-gradient(
+      color-mix(in srgb, var(--global-text-color, #111827) 11%, transparent) 0.9px,
+      transparent 1.05px
+    );
+  background-position: center, center, 0 0;
+  background-size: auto, auto, 26px 26px;
+  opacity: 0.9;
+}
+
+.hao-home-page #current-work > * {
+  position: relative;
+  z-index: 1;
+}
+
+html[data-theme="dark"] .hao-home-page #current-work::before {
+  opacity: 0.82;
+}
+
+@media (max-width: 760px) {
+  .hao-home-page #current-work::before {
+    background-position: center, 7rem 2rem, 0 0;
+    background-size: auto, auto, 24px 24px;
+    opacity: 0.58;
+  }
+}
