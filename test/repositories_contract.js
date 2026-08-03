@@ -8,18 +8,24 @@ const failures = [];
 
 const requireIncludes = (source, values, label) => {
   for (const value of values) {
-    if (!source.includes(value)) failures.push(`${label} must include: \`${value}\`.`);
+    if (!source.includes(value)) {
+      failures.push(`${label} must include: \`${value}\`.`);
+    }
   }
 };
 
 const requireAbsent = (source, values, label) => {
   for (const value of values) {
-    if (source.includes(value)) failures.push(`${label} must not include: \`${value}\`.`);
+    if (source.includes(value)) {
+      failures.push(`${label} must not include: \`${value}\`.`);
+    }
   }
 };
 
 const cssPath = "assets/css/repositories-page-polish.css";
-if (!exists(cssPath)) failures.push(`Missing scoped repositories stylesheet: \`${cssPath}\`.`);
+if (!exists(cssPath)) {
+  failures.push(`Missing scoped repositories stylesheet: \`${cssPath}\`.`);
+}
 
 const plugin = read("_plugins/site_visual_polish.rb");
 requireIncludes(
@@ -58,7 +64,11 @@ requireIncludes(
   ],
   "Repositories stylesheet",
 );
-requireAbsent(css, ["body:has(", "position: fixed", "overflow-x: scroll"], "Repositories stylesheet");
+requireAbsent(
+  css,
+  ["body:has(", "position: fixed", "overflow-x: scroll"],
+  "Repositories stylesheet",
+);
 
 const page = read("_pages/repositories.md");
 requireIncludes(
