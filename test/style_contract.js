@@ -81,13 +81,20 @@ requireIncludes(
   [
     "HOMEPAGE_STYLESHEETS",
     "hao-home-center-fix.css",
-    'STYLESHEET_VERSION = "20260803-content-audit-optical-shell"',
+    "CV_STYLESHEETS",
+    "cv-toc-polish.css",
+    'STYLESHEET_VERSION = "20260803-cv-toc-home-81"',
+    "def self.cv_page?(page)",
     "def self.apply_home_body_class(page)",
     "hao-home-page",
+    "def self.apply_cv_body_class(page)",
+    "hao-cv-page",
     "def self.apply_home_navbar_brand(page)",
     "navbar-brand title font-weight-lighter hao-home-navbar-brand",
     '<span class="font-weight-bold">Zhihao</span> LIU',
+    "def self.apply_stylesheets(page, stylesheets)",
     "def self.apply_homepage_stylesheet(page)",
+    "def self.apply_cv_stylesheet(page)",
     "?v=#{STYLESHEET_VERSION}",
   ],
   "Site visual polish plugin",
@@ -118,9 +125,10 @@ requireIncludes(
   homeCss,
   [
     "al-folio baseline homepage enhancement",
-    "--hao-alfolio-content-shell-max: 82rem",
+    "--hao-alfolio-content-shell-max: 81rem",
     "--hao-alfolio-nav-shell-max: 84rem",
     "Optical alignment: the navbar container keeps its native 15px inline padding.",
+    "A content shell three rem narrower",
     '.hao-home-page > .container[role="main"]',
     ".hao-home-page #navbar > .container",
     ".hao-home-page footer > .container",
@@ -156,6 +164,25 @@ requireAbsent(
   ],
   "Homepage CSS",
 );
+
+if (!exists("assets/css/cv-toc-polish.css")) {
+  failures.push("CV TOC polish CSS missing: `assets/css/cv-toc-polish.css`.");
+}
+
+const cvTocCss = exists("assets/css/cv-toc-polish.css") ? read("assets/css/cv-toc-polish.css") : "";
+requireIncludes(
+  cvTocCss,
+  [
+    "CV table-of-contents polish",
+    ".hao-cv-page #toc-sidebar",
+    "scrollbar-width: none",
+    "-ms-overflow-style: none",
+    "::-webkit-scrollbar",
+    "overscroll-behavior: contain",
+  ],
+  "CV TOC CSS",
+);
+requireAbsent(cvTocCss, ["overflow-y: hidden", "display: none !important"], "CV TOC CSS");
 
 const aboutPage = read("_pages/about.md");
 requireIncludes(
@@ -202,6 +229,9 @@ if (homepageActionCount !== 1) {
 
 requireRegex(aboutPage, /^layout:\s*about\b/m, "Homepage must keep al-folio `layout: about`.");
 requireRegex(aboutPage, /^news:\s*false\b/m, "Hao homepage must keep legacy `news` disabled.");
+
+const cvPage = read("cv.md");
+requireIncludes(cvPage, ["layout: cv", "sidebar: left"], "CV page");
 
 const selectedWork = read("_data/selected_deployments.yml");
 requireIncludes(
@@ -253,9 +283,13 @@ requireIncludes(
     "Notes &amp; publications",
     "NuthKaab Coreg vs Gradient Descent Coreg",
     "Quad 35 hybrid seismic acquisition",
-    "hao-home-center-fix.css?v=20260803-content-audit-optical-shell",
+    "hao-home-center-fix.css?v=20260803-cv-toc-home-81",
     "hao-home-navbar-brand",
     'font-weight-bold">Zhihao</span> LIU',
+    "Verify CV TOC polish artifact",
+    "hao-cv-page",
+    "cv-toc-polish.css?v=20260803-cv-toc-home-81",
+    "scrollbar-width: none",
     "Verify secondary pages keep al-folio baseline",
   ],
   "Deploy workflow",
