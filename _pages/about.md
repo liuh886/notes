@@ -53,7 +53,7 @@ home_cta: false
     <div class="hao-home-section-header">
       <p class="hao-home-eyebrow">Current work</p>
       <h2 id="current-work-title">Five maintained product and research lanes.</h2>
-      <p>Five active systems are maintained now; the final card shows the next product entering build. Archived projects and supporting tools appear separately below.</p>
+      <p>Five established systems are maintained here; the final card highlights NewsFlow, the newest live release. Archived projects and supporting tools appear separately below.</p>
     </div>
     <div class="hao-home-card-grid">
       {% for operation in site.data.current_operations.operations %}
@@ -82,9 +82,14 @@ home_cta: false
           </div>
           <h3>{{ upcoming.title }}</h3>
           <p>{{ upcoming.summary }}</p>
-          {% if upcoming.href %}
-            <a class="hao-home-text-link" href="{{ upcoming.href }}" target="_blank" rel="noopener noreferrer">{{ upcoming.label | default: "Follow build" }} →</a>
-          {% endif %}
+          <div class="hao-home-links">
+            {% if upcoming.href %}
+              <a class="hao-home-text-link" href="{{ upcoming.href }}" target="_blank" rel="noopener noreferrer">{{ upcoming.label | default: "Open" }} →</a>
+            {% endif %}
+            {% if upcoming.secondary_href %}
+              <a class="hao-home-text-link" href="{{ upcoming.secondary_href }}" target="_blank" rel="noopener noreferrer">{{ upcoming.secondary_label | default: "Repository" }} →</a>
+            {% endif %}
+          </div>
         </article>
       {% endfor %}
     </div>
