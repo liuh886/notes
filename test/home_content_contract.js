@@ -26,14 +26,16 @@ requireIncludes(
   about,
   [
     "Five maintained product and research lanes.",
+    "NewsFlow, the newest live release.",
     "site.data.current_operations.upcoming",
     "operation.secondary_href",
+    "upcoming.secondary_href",
     "deployment.repository_href",
     "deployment.href contains 'http'",
   ],
   "Homepage content template",
 );
-requireAbsent(about, ["Six maintained product and research lanes."], "Homepage content template");
+requireAbsent(about, ["the next product entering build", "Six maintained product and research lanes."], "Homepage content template");
 
 const operations = read("_data/current_operations.yml");
 requireIncludes(
@@ -44,8 +46,10 @@ requireIncludes(
     "secondary_href: https://github.com/liuh886/alpha_engine",
     "upcoming:",
     "title: NewsFlow",
-    "status: COMING SOON",
-    "href: https://github.com/liuh886/NewsFlow",
+    "status: LIVE APP",
+    "href: https://liuh886.github.io/NewsFlow/",
+    "label: Open app",
+    "secondary_href: https://github.com/liuh886/NewsFlow",
   ],
   "Current operations data",
 );
@@ -53,6 +57,8 @@ requireAbsent(
   operations,
   [
     "href: https://github.com/liuh886/alpha_engine\n    label: View repository",
+    "status: COMING SOON",
+    "label: Follow build",
     "- id: OP-06",
   ],
   "Current operations data",
