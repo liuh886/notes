@@ -14,11 +14,11 @@ category: work
 > - **Method:** Astro + Tailwind site with typed content collections; automated partner deck generation from source content.
 > - **Output:** A live platform-style portal plus a reusable partner introduction deck pipeline.
 > - **Impact:** Faster alignment across ecosystem partners and a repeatable workflow to publish updates consistently.
-> - **Links:** [Open OceanHub](https://liuh886.github.io/oceanhub/) · [Source code](https://github.com/liuh886/OceanHub) · [SBGf Rio 25 reference](https://rio25.sbgf.org.br/Pages/oceanHub.php)
+> - **Links:** [Open OceanHub](https://liuh886.github.io/OceanHub/) · [Source code](https://github.com/liuh886/OceanHub) · [SBGf Rio 25 reference](https://rio25.sbgf.org.br/Pages/oceanHub.php)
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        <a href="https://liuh886.github.io/oceanhub/" target="_blank" class="btn btn-primary w-100">
+        <a href="https://liuh886.github.io/OceanHub/" target="_blank" class="btn btn-primary w-100">
             <i class="fa-solid fa-arrow-up-right-from-square"></i> Open OceanHub
         </a>
     </div>

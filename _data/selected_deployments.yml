@@ -16,7 +16,7 @@ groups:
         status: PLATFORM
         kind: Offshore energy / marine intelligence
         summary: A partner-facing offshore energy and marine intelligence portal supported by a reproducible content and presentation pipeline.
-        href: https://liuh886.github.io/oceanhub/
+        href: https://liuh886.github.io/OceanHub/
         primary_label: Open app
         secondary_href: /projects/2026_oceanhub/
         secondary_label: Project record

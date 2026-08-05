@@ -69,7 +69,7 @@ requireIncludes(
   deployments,
   [
     "title: OceanHub",
-    "href: https://liuh886.github.io/oceanhub/",
+    "href: https://liuh886.github.io/OceanHub/",
     "repository_href: https://github.com/liuh886/OceanHub",
     "title: 4D Seismic Hub",
     "href: https://liuh886.github.io/4d-seismic-hub/",
@@ -77,18 +77,20 @@ requireIncludes(
   ],
   "Selected deployments data",
 );
+requireAbsent(deployments, ["https://liuh886.github.io/oceanhub/"], "Selected deployments data");
 
 const oceanHub = read("_projects/2026_oceanhub.md");
 requireIncludes(
   oceanHub,
   [
-    "https://liuh886.github.io/oceanhub/",
+    "https://liuh886.github.io/OceanHub/",
     "https://github.com/liuh886/OceanHub",
     "Open OceanHub",
     "View Source Code",
   ],
   "OceanHub project record",
 );
+requireAbsent(oceanHub, ["https://liuh886.github.io/oceanhub/"], "OceanHub project record");
 
 if (failures.length > 0) {
   console.error("Homepage content contract check failed:");
