@@ -7,8 +7,8 @@ date: 2022-10-13
 categories:
   - notes
 tags:
-  - Permafrost
-  - Climate
+  - permafrost
+  - climate
 lang: eng
 publish: true
 filename: 2022-10-13-permafrost-m

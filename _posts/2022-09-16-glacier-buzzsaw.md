@@ -6,8 +6,8 @@ date: 2022-09-16
 author: Zhihao
 publish: true
 tags:
-  - Glacier
-  - Geomorphology
+  - glacier
+  - geomorphology
 categories:
   - notes
 filename: 2022-09-16-glacier-buzzsaw
