@@ -12,21 +12,40 @@ permissions:
 
 concurrency:
   group: notes-site-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
     name: Validate and build site
     runs-on: ubuntu-24.04
-    timeout-minutes: 45
+    timeout-minutes: 30
     permissions:
       contents: read
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+      - name: Classify responsive-image impact
+        id: impact
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT_NAME" != "pull_request" ]]; then
+            echo "responsive_images=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git diff --name-only "$BASE_SHA" "$GITHUB_SHA" > changed-files.txt
+          cat changed-files.txt
+          if grep -Eq '^(assets/img/|_config\.yml$|Gemfile$|Gemfile\.lock$)' changed-files.txt; then
+            echo "responsive_images=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "responsive_images=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -46,32 +65,44 @@ jobs:
           node-version: '24'
           cache: npm
 
-      - name: Update _config.yml ⚙️
-        uses: fjogeleit/yaml-update-action@v0.13.1
-        with:
-          commitChange: false
-          valueFile: _config.yml
-          propertyPath: giscus.repo
-          value: ${{ github.repository }}
-
-      - name: Install CLI helpers 🔧
+      - name: Install locked helpers 🔧
         run: |
-          python -m pip install --upgrade pip nbconvert
-          npm ci
+          python -m pip install --disable-pip-version-check --no-input 'nbconvert==7.17.1'
+          npm ci --no-audit --no-fund
 
-      - name: Verify frontend contracts 🔎
+      - name: Verify source contracts 🔎
         run: |
           set -euo pipefail
+          python scripts/check_site_sources.py
           npm run lint:style-contract
           npx prettier --check test/style_contract.js
           ruby -c _plugins/site_visual_polish.rb
 
-      - name: Build (production) 🔧
+      - name: Install responsive-image runtime
+        if: steps.impact.outputs.responsive_images == 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends imagemagick
+
+      - name: Build production site 🔧
+        env:
+          RESPONSIVE_IMAGES: ${{ steps.impact.outputs.responsive_images }}
         run: |
           set -euo pipefail
-          sudo apt-get update && sudo apt-get install -y imagemagick
           export JEKYLL_ENV=production
-          bundle exec jekyll build
+          config_args=(--config _config.yml)
+          if [[ "$RESPONSIVE_IMAGES" != "true" ]]; then
+            cat > .ci-jekyll.yml <<'YAML'
+          imagemagick:
+            enabled: false
+          YAML
+            config_args=(--config _config.yml,.ci-jekyll.yml)
+          fi
+          bundle exec jekyll build "${config_args[@]}" 2>&1 | tee .build-jekyll.log
+          if grep -q 'Conflict: The following destination is shared by multiple files' .build-jekyll.log; then
+            echo 'Jekyll emitted an ambiguous destination conflict.' >&2
+            exit 1
+          fi
 
       - name: Verify built homepage artifact 🔎
         run: |
@@ -149,13 +180,15 @@ jobs:
           fi
 
       - name: PurgeCSS 🔧
-        run: |
-          set -euo pipefail
-          npx --yes purgecss@7.0.2 -c purgecss.config.js
+        run: npx --yes purgecss@7.0.2 -c purgecss.config.js
+
+      - name: Configure GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v6
 
       - name: Upload validated Pages artifact
         if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./_site
 
@@ -164,7 +197,7 @@ jobs:
     if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
