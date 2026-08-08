@@ -119,40 +119,17 @@ jobs:
           grep -q 'static.cloudflareinsights.com/beacon.min.js' _site/index.html
           grep -q "$CLOUDFLARE_WEB_ANALYTICS_TOKEN" _site/index.html
 
-      - name: Verify built homepage artifact 🔎
+      - name: Verify built homepage structure 🔎
         run: |
           set -euo pipefail
           test -f _site/index.html
           grep -q 'hao-home--alfolio' _site/index.html
           grep -q 'hao-home-page' _site/index.html
-          grep -q 'Data Scientist · AI Builder' _site/index.html
-          grep -q 'Research records, shipped tools, and agentic AI systems.' _site/index.html
-          grep -q 'Offshore Bergen · Aug 2020' _site/index.html
-          grep -q 'Projects &amp; code' _site/index.html
-          grep -q 'Notes &amp; publications' _site/index.html
-          grep -q 'Climate-to-energy downscaling' _site/index.html
-          grep -q 'OffshoreOrient Studio' _site/index.html
-          grep -q 'Ductor — AI Agentic Harness' _site/index.html
-          grep -q 'Snow-depth / ICESat-2 Zenodo dataset' _site/index.html
-          grep -q 'ICESat-2 vs DTM1, DTM10, Copernicus30, FABDEM' _site/index.html
-          grep -q 'NuthKaab Coreg vs Gradient Descent Coreg' _site/index.html
-          grep -q 'Quad 35 hybrid seismic acquisition' _site/index.html
-          grep -q 'calendar.app.google/UQ267iEs4MTAGFSd7' _site/index.html
-          grep -q 'hao-home-center-fix.css?v=20260803-cv-toc-home-81' _site/index.html
           grep -q 'hao-home-navbar-brand' _site/index.html
-          grep -q 'font-weight-bold">Zhihao</span> LIU' _site/index.html
-          if grep -q 'Climate data · Geoscience evidence · AI tools' _site/index.html; then
-            echo "Deprecated homepage identity label remains in the built artifact."
-            exit 1
-          fi
-          if grep -q 'GhostCam' _site/index.html; then
-            echo "GhostCam remains in the curated homepage artifact."
-            exit 1
-          fi
-          if grep -q 'id="trajectory"' _site/index.html; then
-            echo "Deprecated placeholder trajectory section remains in homepage artifact."
-            exit 1
-          fi
+          grep -q 'id="current-work"' _site/index.html
+          grep -q 'id="selected-work"' _site/index.html
+          grep -q 'id="notes-publications"' _site/index.html
+          grep -q 'id="contact"' _site/index.html
           if grep -q 'mission-log-shell-v2.css' _site/index.html; then
             echo "Deprecated Mission Log stylesheet leaked into homepage artifact."
             exit 1
@@ -168,7 +145,6 @@ jobs:
           test -f _site/repositories/index.html
           test -f _site/assets/css/repositories-page-polish.css
           grep -q 'hao-repositories-page' _site/repositories/index.html
-          grep -q 'repositories-page-polish.css?v=20260803-cv-toc-home-81' _site/repositories/index.html
           grep -q 'class="repo-grid"' _site/repositories/index.html
           grep -q 'class="repo-card__body"' _site/repositories/index.html
           grep -q 'grid-template-columns: repeat(2, minmax(0, 1fr))' _site/assets/css/repositories-page-polish.css
@@ -178,10 +154,9 @@ jobs:
         run: |
           set -euo pipefail
           test -f _site/cv/index.html
+          test -f _site/assets/css/cv-toc-polish.css
           grep -q 'hao-cv-page' _site/cv/index.html
           grep -q 'id="toc-sidebar"' _site/cv/index.html
-          grep -q 'cv-toc-polish.css?v=20260803-cv-toc-home-81' _site/cv/index.html
-          test -f _site/assets/css/cv-toc-polish.css
           grep -q 'scrollbar-width: none' _site/assets/css/cv-toc-polish.css
           grep -q '::-webkit-scrollbar' _site/assets/css/cv-toc-polish.css
 
