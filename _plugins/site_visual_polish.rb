@@ -25,7 +25,11 @@ module SiteVisualPolish
     "portfolio-page-polish.css"
   ].freeze
 
-  STYLESHEET_VERSION = "20260803-cv-toc-home-81".freeze
+  LEGAL_STYLESHEETS = [
+    "legal-page.css"
+  ].freeze
+
+  STYLESHEET_VERSION = "20260809-legal".freeze
 
   def self.cv_page?(page)
     page.relative_path == "cv.md" || page.url.to_s == "/cv/"
@@ -37,6 +41,10 @@ module SiteVisualPolish
 
   def self.portfolio_page?(page)
     page.relative_path == "_pages/portfolio.md" || page.url.to_s == "/portfolio/"
+  end
+
+  def self.legal_page?(page)
+    ["/privacy/", "/terms/"].include?(page.url.to_s)
   end
 
   def self.apply_cv_title(page)
@@ -81,6 +89,13 @@ module SiteVisualPolish
     page.output = page.output.sub('<body class="', '<body class="hao-portfolio-page ')
   end
 
+  def self.apply_legal_body_class(page)
+    return unless legal_page?(page)
+    return if page.output.include?("hao-legal-page")
+
+    page.output = page.output.sub('<body class="', '<body class="hao-legal-page ')
+  end
+
   def self.apply_home_navbar_brand(page)
     return unless home_page?(page)
     return unless page.output.include?("hao-home--alfolio")
@@ -104,6 +119,20 @@ module SiteVisualPolish
     link = %(<a href="#{href}" data-hao-portfolio-link="true">Portfolio</a>)
     contact_links = %r{(<div class="hao-home-contact-links">.*?)(\s*</div>)}m
     page.output = page.output.sub(contact_links, "\\1\n      #{link}\\2")
+  end
+
+  def self.apply_footer_legal_links(page)
+    return if page.output.include?('data-hao-legal-links="true"')
+
+    baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
+    privacy_href = baseurl.empty? ? "/privacy/" : "#{baseurl}/privacy/"
+    terms_href = baseurl.empty? ? "/terms/" : "#{baseurl}/terms/"
+    markup = %(<span class="hao-legal-links" data-hao-legal-links="true"><a href="#{privacy_href}">Privacy</a><span aria-hidden="true">·</span><a href="#{terms_href}">Terms</a></span>)
+
+    footer_pattern = %r{(<footer\b[^>]*role="contentinfo"[^>]*>.*?<div\b[^>]*class="[^"]*\bcontainer\b[^"]*"[^>]*>)(.*?)(</div>\s*</footer>)}m
+    page.output = page.output.sub(footer_pattern) do
+      "#{Regexp.last_match(1)}#{Regexp.last_match(2).rstrip} #{markup}\n#{Regexp.last_match(3)}"
+    end
   end
 
   def self.build_revision(page)
@@ -171,6 +200,12 @@ module SiteVisualPolish
 
     apply_stylesheets(page, PORTFOLIO_STYLESHEETS)
   end
+
+  def self.apply_legal_stylesheet(page)
+    return unless legal_page?(page)
+
+    apply_stylesheets(page, LEGAL_STYLESHEETS)
+  end
 end
 
 [:pages, :documents].each do |hook_owner|
@@ -180,6 +215,7 @@ end
     SiteVisualPolish.apply_cv_body_class(page)
     SiteVisualPolish.apply_repositories_body_class(page)
     SiteVisualPolish.apply_portfolio_body_class(page)
+    SiteVisualPolish.apply_legal_body_class(page)
     SiteVisualPolish.apply_home_navbar_brand(page)
     SiteVisualPolish.apply_home_portfolio_link(page)
     SiteVisualPolish.apply_global_stylesheet(page)
@@ -187,6 +223,8 @@ end
     SiteVisualPolish.apply_cv_stylesheet(page)
     SiteVisualPolish.apply_repositories_stylesheet(page)
     SiteVisualPolish.apply_portfolio_stylesheet(page)
+    SiteVisualPolish.apply_legal_stylesheet(page)
+    SiteVisualPolish.apply_footer_legal_links(page)
     SiteVisualPolish.apply_footer_build_revision(page)
   end
 end
