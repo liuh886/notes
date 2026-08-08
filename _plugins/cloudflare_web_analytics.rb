@@ -4,13 +4,14 @@ require "json"
 
 module CloudflareWebAnalytics
   BEACON_SRC = "https://static.cloudflareinsights.com/beacon.min.js".freeze
-  TOKEN = "b047ab48e64f47a49ae504d0e92c43e2".freeze
 
   def self.inject(page)
+    token = ENV.fetch("CLOUDFLARE_WEB_ANALYTICS_TOKEN", "").strip
+    return if token.empty?
     return unless page.output.include?("</head>")
     return if page.output.include?(BEACON_SRC)
 
-    config = JSON.generate(token: TOKEN)
+    config = JSON.generate(token: token)
     tag = %(<script type="module" src="#{BEACON_SRC}" data-cf-beacon='#{config}'></script>)
     page.output = page.output.sub("</head>", "#{tag}</head>")
   end
