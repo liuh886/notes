@@ -122,7 +122,7 @@ module SiteVisualPolish
   end
 
   def self.apply_footer_legal_links(page)
-    return if page.output.include?('data-hao-legal-links="true"')
+    return if page.output.include?('data-hao-legal-links="true"'.delete("\\"))
 
     baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
     privacy_href = baseurl.empty? ? "/privacy/" : "#{baseurl}/privacy/"
