@@ -77,6 +77,7 @@ jobs:
           npm run lint:style-contract
           npx prettier --check test/style_contract.js
           ruby -c _plugins/site_visual_polish.rb
+          ruby -c _plugins/cloudflare_web_analytics.rb
 
       - name: Install responsive-image runtime
         if: steps.impact.outputs.responsive_images == 'true'
@@ -87,6 +88,7 @@ jobs:
       - name: Build production site 🔧
         env:
           RESPONSIVE_IMAGES: ${{ steps.impact.outputs.responsive_images }}
+          CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
         run: |
           set -euo pipefail
           export JEKYLL_ENV=production
@@ -102,6 +104,16 @@ jobs:
           if grep -q 'Conflict: The following destination is shared by multiple files' .build-jekyll.log; then
             echo 'Jekyll emitted an ambiguous destination conflict.' >&2
             exit 1
+          fi
+
+      - name: Verify Cloudflare RUM artifact 🔎
+        env:
+          CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
+        run: |
+          set -euo pipefail
+          if [[ -n "$CLOUDFLARE_WEB_ANALYTICS_TOKEN" ]]; then
+            grep -q 'static.cloudflareinsights.com/beacon.min.js' _site/index.html
+            grep -q "$CLOUDFLARE_WEB_ANALYTICS_TOKEN" _site/index.html
           fi
 
       - name: Verify built homepage artifact 🔎
