@@ -1,0 +1,108 @@
+/* Shared legal-document treatment for Privacy Policy and Terms of Service. */
+
+.hao-legal-page > .container[role="main"] {
+  max-width: 58rem;
+}
+
+.hao-legal-page .post-header {
+  max-width: 46rem;
+  margin: 0 auto 1.25rem;
+}
+
+.hao-legal-page .post-title {
+  letter-spacing: -0.035em;
+}
+
+.hao-legal-page .post-description {
+  max-width: 42rem;
+  color: color-mix(in srgb, var(--global-text-color, #111827) 62%, transparent);
+  line-height: 1.65;
+}
+
+.hao-legal-document {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0 0 3.5rem;
+}
+
+.hao-legal-document p,
+.hao-legal-document li {
+  color: color-mix(in srgb, var(--global-text-color, #111827) 82%, transparent);
+  font-size: 1rem;
+  line-height: 1.78;
+}
+
+.hao-legal-document .hao-legal-lead {
+  max-width: 43rem;
+  margin: 0 0 0.85rem;
+  color: var(--global-text-color);
+  font-size: clamp(1.08rem, 1.5vw, 1.2rem);
+  line-height: 1.7;
+}
+
+.hao-legal-document .hao-legal-meta {
+  margin: 0 0 2.6rem;
+  color: color-mix(in srgb, var(--global-text-color, #111827) 56%, transparent);
+  font-size: 0.86rem;
+  letter-spacing: 0.01em;
+}
+
+.hao-legal-document h2 {
+  margin: 2.7rem 0 0.8rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid color-mix(in srgb, var(--global-text-color, #111827) 11%, transparent);
+  font-size: clamp(1.22rem, 2vw, 1.48rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.hao-legal-document ul {
+  margin: 0.7rem 0 1.2rem;
+  padding-left: 1.25rem;
+}
+
+.hao-legal-document li + li {
+  margin-top: 0.45rem;
+}
+
+.hao-legal-document a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.hao-legal-related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.15rem;
+  margin-top: 3.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--global-text-color, #111827) 11%, transparent);
+  font-size: 0.92rem;
+}
+
+.hao-legal-related a {
+  color: var(--global-theme-color);
+  font-weight: 550;
+  text-decoration: none;
+}
+
+.hao-legal-related a:hover,
+.hao-legal-related a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 576px) {
+  .hao-legal-document {
+    padding-bottom: 2.5rem;
+  }
+
+  .hao-legal-document .hao-legal-meta {
+    margin-bottom: 2.1rem;
+  }
+
+  .hao-legal-document h2 {
+    margin-top: 2.2rem;
+  }
+}
