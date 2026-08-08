@@ -88,7 +88,6 @@ jobs:
       - name: Build production site 🔧
         env:
           RESPONSIVE_IMAGES: ${{ steps.impact.outputs.responsive_images }}
-          CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
         run: |
           set -euo pipefail
           export JEKYLL_ENV=production
@@ -107,14 +106,10 @@ jobs:
           fi
 
       - name: Verify Cloudflare RUM artifact 🔎
-        env:
-          CLOUDFLARE_WEB_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_WEB_ANALYTICS_TOKEN || '' }}
         run: |
           set -euo pipefail
-          if [[ -n "$CLOUDFLARE_WEB_ANALYTICS_TOKEN" ]]; then
-            grep -q 'static.cloudflareinsights.com/beacon.min.js' _site/index.html
-            grep -q "$CLOUDFLARE_WEB_ANALYTICS_TOKEN" _site/index.html
-          fi
+          grep -q 'static.cloudflareinsights.com/beacon.min.js' _site/index.html
+          grep -q 'b047ab48e64f47a49ae504d0e92c43e2' _site/index.html
 
       - name: Verify built homepage artifact 🔎
         run: |
