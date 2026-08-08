@@ -83,7 +83,6 @@ requireIncludes(
     "hao-home-center-fix.css",
     "CV_STYLESHEETS",
     "cv-toc-polish.css",
-    'STYLESHEET_VERSION = "20260803-cv-toc-home-81"',
     "def self.cv_page?(page)",
     "def self.apply_home_body_class(page)",
     "hao-home-page",
@@ -98,6 +97,11 @@ requireIncludes(
     "?v=#{STYLESHEET_VERSION}",
   ],
   "Site visual polish plugin",
+);
+requireRegex(
+  visualPlugin,
+  /^\s*STYLESHEET_VERSION\s*=\s*"[A-Za-z0-9._-]+"\.freeze\s*$/m,
+  "Site visual polish plugin must define a non-empty cache-busting STYLESHEET_VERSION.",
 );
 requireAbsent(
   visualPlugin,
