@@ -47,17 +47,11 @@ requireIncludes(
   [
     "LEGAL_STYLESHEETS",
     "legal-page.css",
-    '[/privacy/, /terms/]'.replaceAll("/", '\"/').replaceAll(', ', '\", \"'),
-  ],
-  "Site visual polish plugin",
-);
-requireIncludes(
-  plugin,
-  [
+    '["/privacy/", "/terms/"]',
     "def self.legal_page?(page)",
     "hao-legal-page",
     "def self.apply_footer_legal_links(page)",
-    'data-hao-legal-links=\\"true\\"'.replaceAll("\\", ""),
+    'data-hao-legal-links="true"',
     "Privacy",
     "Terms",
   ],
