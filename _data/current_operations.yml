@@ -1,42 +1,40 @@
 operations:
   - id: OP-01
     title: CCUS Policy Hub
-    status: LIVE SYSTEM
-    summary: Public policy and project intelligence layer for CCUS deployment, regulation, and dMRV evidence. Current work focuses on keeping the data and policy pages coherent as the database changes.
+    status: CLIMATE INTELLIGENCE
+    summary: Open-source CCUS intelligence platform connecting policy, regulation, project deployment, capacity, and governance evidence across regions.
     href: https://liuh886.github.io/ccus-policy-hub/
     label: Open system
   - id: OP-02
     title: Ownly
-    status: PRODUCT BUILD
-    summary: Local-first ownership memory across Obsidian, web, PWA, and agent-readable CLI surfaces. The active track is reliability, terminology, onboarding, and cross-surface consistency.
+    status: LOCAL-FIRST APP
+    summary: A local-first ownership memory and decision ledger for tracking what you own, what it costs, how you use it, and what you learn.
     href: https://liuh886.github.io/ownly/
     label: Open app
   - id: OP-03
     title: AlphaEngine
-    status: RESEARCH ENGINE
-    summary: Experimental research platform for data foundations, factor panels, model training, and reproducible strategy records across selected US and China pools.
+    status: QUANT RESEARCH
+    summary: A governed medium-frequency strategy research platform connecting market data, model research, backtests, signals, and auditable evidence.
     href: https://liuh886.github.io/alpha_engine/
     label: Open app
     secondary_href: https://github.com/liuh886/alpha_engine
     secondary_label: Repository
   - id: OP-04
     title: FlappyK
-    status: LIVE ITERATION
-    summary: Market-intuition game built around hidden historical K-line decisions. Current work is product polish, PWA quality, analytics, and a clearer arcade identity.
+    status: MARKET GAME
+    summary: A trading game that tests market intuition on hidden historical K-line windows—trade first, discover the asset and period afterward.
     href: https://liuh886.github.io/FlappyK/
     label: Play game
   - id: OP-05
     title: RhythmCoach
-    status: TRAINING TOOL
-    summary: Lightweight rhythm and speech-practice tool for focused review sessions. Current work is content structure, subtle pronunciation marks, and PWA training flow.
+    status: SPEECH TRAINING
+    summary: A rehearsal tool for speakers and podcasters, combining scripts, recording, timing, and interpretable rhythm feedback.
     href: https://liuh886.github.io/RhythmCoach/
     label: Open app
-
-upcoming:
-  - id: NEXT-01
+  - id: OP-06
     title: NewsFlow
-    status: LIVE APP
-    summary: A newly launched topic-intelligence publication that uses an editor-led, automated workflow to collect, filter, and organize high-quality information into recurring editions.
+    status: EDITORIAL SYSTEM
+    summary: An editor-led publication system that turns automated discovery into curated recurring issues through a governed review workflow.
     href: https://liuh886.github.io/NewsFlow/
     label: Open app
     secondary_href: https://github.com/liuh886/NewsFlow
