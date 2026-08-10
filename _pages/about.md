@@ -52,8 +52,8 @@ home_cta: false
   <section class="hao-home-section" id="current-work" aria-labelledby="current-work-title">
     <div class="hao-home-section-header">
       <p class="hao-home-eyebrow">Current work</p>
-      <h2 id="current-work-title">Five maintained product and research lanes.</h2>
-      <p>Five established systems are maintained here; the final card highlights NewsFlow, the newest live release. Archived projects and supporting tools appear separately below.</p>
+      <h2 id="current-work-title">Six active products, built and maintained.</h2>
+      <p>Independent products spanning climate intelligence, systematic strategy research, personal software, speech training, market games, and editorial systems.</p>
     </div>
     <div class="hao-home-card-grid">
       {% for operation in site.data.current_operations.operations %}
@@ -70,24 +70,6 @@ home_cta: false
             {% endif %}
             {% if operation.secondary_href %}
               <a class="hao-home-text-link" href="{{ operation.secondary_href }}" target="_blank" rel="noopener noreferrer">{{ operation.secondary_label | default: "Repository" }} →</a>
-            {% endif %}
-          </div>
-        </article>
-      {% endfor %}
-      {% for upcoming in site.data.current_operations.upcoming %}
-        <article class="hao-home-card">
-          <div class="hao-home-card-topline">
-            <span>{{ upcoming.id }}</span>
-            <strong>{{ upcoming.status }}</strong>
-          </div>
-          <h3>{{ upcoming.title }}</h3>
-          <p>{{ upcoming.summary }}</p>
-          <div class="hao-home-links">
-            {% if upcoming.href %}
-              <a class="hao-home-text-link" href="{{ upcoming.href }}" target="_blank" rel="noopener noreferrer">{{ upcoming.label | default: "Open" }} →</a>
-            {% endif %}
-            {% if upcoming.secondary_href %}
-              <a class="hao-home-text-link" href="{{ upcoming.secondary_href }}" target="_blank" rel="noopener noreferrer">{{ upcoming.secondary_label | default: "Repository" }} →</a>
             {% endif %}
           </div>
         </article>
