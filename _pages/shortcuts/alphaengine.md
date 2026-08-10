@@ -1,7 +1,7 @@
 ---
 layout: null
 title: AlphaEngine
-permalink: /alphaengine/
+permalink: /alpha_engine/
 redirect_to: https://liuh886.github.io/alpha_engine/
 sitemap: false
 ---

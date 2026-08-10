@@ -25,28 +25,45 @@ const about = read("_pages/about.md");
 requireIncludes(
   about,
   [
-    "Five maintained product and research lanes.",
-    "NewsFlow, the newest live release.",
-    "site.data.current_operations.upcoming",
+    "Six active products, built and maintained.",
+    "Independent products spanning climate intelligence",
+    "site.data.current_operations.operations",
     "operation.secondary_href",
-    "upcoming.secondary_href",
     "deployment.repository_href",
     "deployment.href contains 'http'",
   ],
   "Homepage content template",
 );
-requireAbsent(about, ["the next product entering build", "Six maintained product and research lanes."], "Homepage content template");
+requireAbsent(
+  about,
+  [
+    "Five maintained product and research lanes.",
+    "NewsFlow, the newest live release.",
+    "site.data.current_operations.upcoming",
+    "the next product entering build",
+  ],
+  "Homepage content template",
+);
 
 const operations = read("_data/current_operations.yml");
 requireIncludes(
   operations,
   [
+    "- id: OP-01",
+    "status: CLIMATE INTELLIGENCE",
+    "title: Ownly",
+    "status: LOCAL-FIRST APP",
     "title: AlphaEngine",
+    "status: QUANT RESEARCH",
     "href: https://liuh886.github.io/alpha_engine/",
     "secondary_href: https://github.com/liuh886/alpha_engine",
-    "upcoming:",
+    "title: FlappyK",
+    "status: MARKET GAME",
+    "title: RhythmCoach",
+    "status: SPEECH TRAINING",
+    "- id: OP-06",
     "title: NewsFlow",
-    "status: LIVE APP",
+    "status: EDITORIAL SYSTEM",
     "href: https://liuh886.github.io/NewsFlow/",
     "label: Open app",
     "secondary_href: https://github.com/liuh886/NewsFlow",
@@ -56,10 +73,16 @@ requireIncludes(
 requireAbsent(
   operations,
   [
-    "href: https://github.com/liuh886/alpha_engine\n    label: View repository",
+    "upcoming:",
+    "NEXT-01",
     "status: COMING SOON",
+    "status: LIVE APP",
+    "status: LIVE SYSTEM",
+    "status: PRODUCT BUILD",
+    "status: RESEARCH ENGINE",
+    "status: LIVE ITERATION",
+    "status: TRAINING TOOL",
     "label: Follow build",
-    "- id: OP-06",
   ],
   "Current operations data",
 );

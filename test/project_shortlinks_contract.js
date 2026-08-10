@@ -1,36 +1,36 @@
 import fs from "node:fs";
 
 const expected = new Map([
-  ["flappyk", "https://liuh886.github.io/FlappyK/"],
-  ["rhythmcoach", "https://liuh886.github.io/RhythmCoach/"],
-  ["newsflow", "https://liuh886.github.io/NewsFlow/"],
-  ["ownly", "https://liuh886.github.io/ownly/"],
-  ["alphaengine", "https://liuh886.github.io/alpha_engine/"],
-  ["admin", "https://liuh886.github.io/admin/"],
-  ["notes", "https://zhihaol.eu.org/"],
+  ["flappyk", { permalink: "flappyk", target: "https://liuh886.github.io/FlappyK/" }],
+  ["rhythmcoach", { permalink: "rhythmcoach", target: "https://liuh886.github.io/RhythmCoach/" }],
+  ["newsflow", { permalink: "newsflow", target: "https://liuh886.github.io/NewsFlow/" }],
+  ["ownly", { permalink: "ownly", target: "https://liuh886.github.io/ownly/" }],
+  ["alphaengine", { permalink: "alpha_engine", target: "https://liuh886.github.io/alpha_engine/" }],
+  ["admin", { permalink: "admin", target: "https://liuh886.github.io/admin/" }],
+  ["notes", { permalink: "notes", target: "https://zhihaol.eu.org/" }],
 ]);
 
 if (fs.existsSync("_layouts/redirect.html")) {
   throw new Error("Shortlinks must not take ownership of the theme layout directory");
 }
 
-for (const [slug, target] of expected) {
-  const page = fs.readFileSync(`_pages/shortcuts/${slug}.md`, "utf8");
-  if (!page.includes("layout: null")) throw new Error(`${slug} must stay theme-independent`);
-  if (!page.includes(`permalink: /${slug}/`)) throw new Error(`${slug} permalink is incorrect`);
-  if (!page.includes(`redirect_to: ${target}`)) throw new Error(`${slug} target is incorrect`);
-  if (!page.includes("sitemap: false")) throw new Error(`${slug} must stay out of the sitemap`);
+for (const [file, { permalink, target }] of expected) {
+  const page = fs.readFileSync(`_pages/shortcuts/${file}.md`, "utf8");
+  if (!page.includes("layout: null")) throw new Error(`${file} must stay theme-independent`);
+  if (!page.includes(`permalink: /${permalink}/`)) throw new Error(`${file} permalink is incorrect`);
+  if (!page.includes(`redirect_to: ${target}`)) throw new Error(`${file} target is incorrect`);
+  if (!page.includes("sitemap: false")) throw new Error(`${file} must stay out of the sitemap`);
   if (!page.includes('meta name="robots" content="noindex,nofollow,noarchive"')) {
-    throw new Error(`${slug} must remain unindexed`);
+    throw new Error(`${file} must remain unindexed`);
   }
   if (!page.includes("window.location.replace")) {
-    throw new Error(`${slug} must preserve the immediate JavaScript redirect`);
+    throw new Error(`${file} must preserve the immediate JavaScript redirect`);
   }
   if (!page.includes('http-equiv="refresh"')) {
-    throw new Error(`${slug} must retain the no-JavaScript fallback`);
+    throw new Error(`${file} must retain the no-JavaScript fallback`);
   }
   if (!page.includes('rel="canonical"')) {
-    throw new Error(`${slug} must declare the destination as canonical`);
+    throw new Error(`${file} must declare the destination as canonical`);
   }
 }
 

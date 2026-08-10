@@ -202,7 +202,7 @@ requireIncludes(
     'id="notes-publications"',
     "Projects &amp; code",
     "Notes &amp; publications",
-    "Five maintained product and research lanes.",
+    "Six active products, built and maintained.",
     "Selected work beyond the active product list.",
     "Formal outputs and selected working notes.",
     "Research outputs",
@@ -214,6 +214,7 @@ requireIncludes(
 requireAbsent(
   aboutPage,
   [
+    "Five maintained product and research lanes.",
     "Climate data · Geoscience evidence · AI tools",
     'id="systems"',
     'id="knowledge"',
