@@ -25,7 +25,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v6
         with:
-          fetch-depth: 0
+          fetch-depth: 2
 
       - name: Classify responsive-image impact
         id: impact
@@ -78,6 +78,7 @@ jobs:
           npx prettier --check test/style_contract.js
           ruby -c _plugins/site_visual_polish.rb
           ruby -c _plugins/cloudflare_web_analytics.rb
+          ruby -c _plugins/site_name_metadata.rb
 
       - name: Install responsive-image runtime
         if: steps.impact.outputs.responsive_images == 'true'
@@ -130,6 +131,28 @@ jobs:
           grep -q 'id="selected-work"' _site/index.html
           grep -q 'id="notes-publications"' _site/index.html
           grep -q 'id="contact"' _site/index.html
+          ruby <<'RUBY'
+          require "json"
+
+          html = File.read("_site/index.html")
+          nodes = html.scan(%r{<script\b[^>]*\btype=(?:["']application/ld\+json["']|application/ld\+json)[^>]*>(.*?)</script>}m).filter_map do |match|
+            JSON.parse(match.first)
+          rescue JSON::ParserError
+            nil
+          end
+          websites = nodes.select { |node| node["@type"] == "WebSite" }
+          abort "Expected exactly one WebSite JSON-LD node, found #{websites.length}." unless websites.length == 1
+
+          expected = {
+            "name" => "Zhihao LIU",
+            "alternateName" => "zhihaol.eu.org",
+            "url" => "https://zhihaol.eu.org/"
+          }
+          expected.each do |key, value|
+            actual = websites.first[key]
+            abort "WebSite #{key} mismatch: expected #{value.inspect}, got #{actual.inspect}." unless actual == value
+          end
+          RUBY
           if grep -q 'mission-log-shell-v2.css' _site/index.html; then
             echo "Deprecated Mission Log stylesheet leaked into homepage artifact."
             exit 1
