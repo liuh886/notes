@@ -4,7 +4,7 @@ require "json"
 require "uri"
 
 module SiteNameMetadata
-  JSON_LD_SCRIPT = %r{<script\s+type=["']application/ld\+json["']>\s*(\{.*?\})\s*</script>}m
+  JSON_LD_SCRIPT = %r{<script\s+type=["']application/ld\+json["']>\s*(.*?)\s*</script>}m
 
   def self.rewrite(page)
     return unless page.url == "/"
