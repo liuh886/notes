@@ -17,7 +17,7 @@ module SiteNameMetadata
     host = URI.parse(site_url).host&.downcase
     return if host.nil? || host.empty?
 
-    page.output = page.output.sub(JSON_LD_SCRIPT) do |script|
+    page.output = page.output.gsub(JSON_LD_SCRIPT) do |script|
       data = JSON.parse(Regexp.last_match(1))
       next script unless data["@type"] == "WebSite"
 
