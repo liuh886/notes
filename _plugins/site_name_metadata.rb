@@ -4,34 +4,29 @@ require "json"
 require "uri"
 
 module SiteNameMetadata
-  JSON_LD_SCRIPT = %r{<script\b[^>]*\btype=(?:["']application/ld\+json["']|application/ld\+json)[^>]*>\s*(.*?)\s*</script>}m
-
-  def self.rewrite(page)
+  def self.inject(page)
     return unless page.url == "/"
-    return unless page.output.include?("application/ld+json")
 
-    site_url = page.site.config.fetch("url", "").to_s.strip
-    site_name = page.site.config.fetch("title", "").to_s.strip
-    return if site_url.empty? || site_name.empty?
+    site_url = page.site.config.fetch("url").to_s.sub(%r{/+\z}, "")
+    site_name = page.site.config.fetch("title").to_s
+    host = URI.parse(site_url).host
+    raise "Invalid site.url for WebSite metadata: #{site_url}" if host.nil? || host.empty?
 
-    host = URI.parse(site_url).host&.downcase
-    return if host.nil? || host.empty?
+    website = {
+      "@context" => "https://schema.org",
+      "@type" => "WebSite",
+      "name" => site_name,
+      "alternateName" => host.downcase,
+      "url" => "#{site_url}/"
+    }
+    script = %(<script type="application/ld+json">#{JSON.generate(website)}</script>)
 
-    page.output = page.output.gsub(JSON_LD_SCRIPT) do |script|
-      data = JSON.parse(Regexp.last_match(1))
-      next script unless data["@type"] == "WebSite"
+    raise "Homepage output has no </head> for WebSite metadata injection" unless page.output.include?("</head>")
 
-      data["name"] = site_name
-      data["alternateName"] = host
-      data["url"] = "#{site_url.sub(%r{/+\z}, "")}/"
-
-      %(<script type="application/ld+json">#{JSON.generate(data)}</script>)
-    rescue JSON::ParserError
-      script
-    end
+    page.output = page.output.sub("</head>", "#{script}</head>")
   end
 end
 
 Jekyll::Hooks.register :pages, :post_render do |page|
-  SiteNameMetadata.rewrite(page)
+  SiteNameMetadata.inject(page)
 end
