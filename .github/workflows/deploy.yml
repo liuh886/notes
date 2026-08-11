@@ -135,7 +135,7 @@ jobs:
           require "json"
 
           html = File.read("_site/index.html")
-          nodes = html.scan(%r{<script[^>]*type=["']application/ld\+json["'][^>]*>(.*?)</script>}m).filter_map do |match|
+          nodes = html.scan(%r{<script\b[^>]*\btype=(?:["']application/ld\+json["']|application/ld\+json)[^>]*>(.*?)</script>}m).filter_map do |match|
             JSON.parse(match.first)
           rescue JSON::ParserError
             nil
