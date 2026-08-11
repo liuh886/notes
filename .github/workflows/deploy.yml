@@ -78,6 +78,7 @@ jobs:
           npx prettier --check test/style_contract.js
           ruby -c _plugins/site_visual_polish.rb
           ruby -c _plugins/cloudflare_web_analytics.rb
+          ruby -c _plugins/site_name_metadata.rb
 
       - name: Install responsive-image runtime
         if: steps.impact.outputs.responsive_images == 'true'
@@ -130,6 +131,10 @@ jobs:
           grep -q 'id="selected-work"' _site/index.html
           grep -q 'id="notes-publications"' _site/index.html
           grep -q 'id="contact"' _site/index.html
+          grep -Fq '"@type":"WebSite"' _site/index.html
+          grep -Fq '"name":"Zhihao LIU"' _site/index.html
+          grep -Fq '"alternateName":"zhihaol.eu.org"' _site/index.html
+          grep -Fq '"url":"https://zhihaol.eu.org/"' _site/index.html
           if grep -q 'mission-log-shell-v2.css' _site/index.html; then
             echo "Deprecated Mission Log stylesheet leaked into homepage artifact."
             exit 1
