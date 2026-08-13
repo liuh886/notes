@@ -1,39 +1,50 @@
 # Homepage Frontend Governance
 
-This document records the production rules for the Hao's Notes homepage after the August 2026 return to an al-folio-compatible design.
+This document records implementation-specific production rules for the Hao's Notes homepage. `docs/DESIGN_SYSTEM.md` is the canonical site-wide design and information-architecture contract.
+
+## Source of truth
+
+The current production homepage is the visual baseline. Refactors must preserve its optical alignment, profile placement, spacing, responsive behavior, dark mode, and interaction quality unless an explicit design change improves them.
+
+Do not use historical Mission Log or abandoned redesign plans as implementation guidance.
 
 ## Ownership model
 
-The site keeps upstream al-folio as its visual baseline. Blog, Projects, publications, and individual posts must not receive broad custom visual CSS from this starter repository.
-
-The homepage keeps the native `layout: about` DOM and adds one scoped content root:
+The homepage keeps the native `layout: about` runtime and one scoped content root:
 
 ```html
 <div class="hao-home hao-home--production hao-home--alfolio">
 ```
 
-`_plugins/site_visual_polish.rb` adds `hao-home-page` to the rendered `<body>` and injects only `hao-home-center-fix.css` on `/`.
+`_plugins/site_visual_polish.rb` still performs a small set of bounded post-render operations that depend on upstream theme markup. These are technical debt, not a preferred extension mechanism.
 
-Two secondary pages have narrow component exceptions:
+Remove a post-render patch only when its replacement can live in owned source without changing production output.
 
-- CV receives `hao-cv-page` and `cv-toc-polish.css`, which hides only the native TOC scrollbar chrome while preserving scrolling.
-- Repositories receives `hao-repositories-page` and `repositories-page-polish.css`, because its custom repository-card markup is not styled by upstream al-folio.
+The `Portfolio` contact link is now owned directly by `_pages/about.md`; the corresponding post-render injection has been removed.
 
-Neither exception may leak into Blog, Projects, publications, or individual posts.
+## Production stylesheet contract
+
+The homepage loads exactly these local stylesheets, in this order:
+
+1. `hao-home-center-fix.css`
+2. `hao-home-atmosphere-v2.css`
+3. `hao-home-current-work-texture-fix.css`
+
+Do not add another homepage fallback or patch layer. If the homepage changes, modify the stylesheet that owns the relevant behavior.
 
 ## Optical shell contract
 
-The theme's `.container` includes 15 px of inline padding. Matching the outer boxes of the navbar and main container therefore did not match their visible content edges.
+The theme's `.container` includes inline padding. Matching outer boxes numerically does not match visible content edges.
 
-The desktop shell uses:
+Desktop production uses:
 
-- homepage content outer width: `81rem`
-- navbar and footer outer width: `84rem`
-- shared gutter calculation: `clamp(1rem, 3vw, 2.5rem)`
+- homepage content outer width: `81rem`;
+- navbar and footer outer width: `84rem`;
+- shared gutter calculation: `clamp(1rem, 3vw, 2.5rem)`.
 
-This three-rem difference is deliberate optical compensation. The visible left edge of the homepage should align with the navbar brand, and the visible right edge should align with the navbar controls. Do not describe the two outer containers as numerically identical.
+The three-rem difference is deliberate optical compensation. Preserve visible alignment rather than forcing identical numeric container widths.
 
-The scoped nodes are:
+Scoped nodes:
 
 - `.hao-home-page > .container[role="main"]`
 - `.hao-home-page #navbar > .container`
@@ -42,23 +53,21 @@ The scoped nodes are:
 
 ## Banner contract
 
-The desktop banner contains:
+Desktop banner:
 
-- the custom introduction on the left;
-- the native profile image on the right;
+- custom introduction on the left;
+- native profile image on the right;
 - `Offshore Bergen · Aug 2020` directly under the image;
 - one `Contact` action linked to the Google booking page;
-- the section index below both columns.
+- section index below both columns.
 
-The headline is:
+The headline remains:
 
 > Research records, shipped tools, and agentic AI systems.
 
-Use the established English term `agentic AI`; do not reverse it to `AI agentic`.
+The duplicate native about-page name/role block stays hidden. The real navbar brand stays visible.
 
-The native about-page `.post-header` is hidden on the homepage. The duplicate `Zhihao LIU` and `Climate & Energy Data Scientist` block must not appear beneath the photograph. The real navbar brand remains visible.
-
-At tablet and mobile widths, the order is:
+Tablet/mobile order:
 
 1. profile image and field caption;
 2. introduction and contact action;
@@ -66,77 +75,48 @@ At tablet and mobile widths, the order is:
 
 ## Homepage information architecture
 
-The homepage has four sections:
+The active homepage sections are:
 
-1. **Current work** — only the five actively maintained product and research lanes.
-2. **Projects & code** — a non-overlapping selection from the Projects and Repositories archives.
-3. **Notes & publications** — one combined section containing formal research outputs and selected real blog writing.
-4. **Contact** — booking, professional profiles, CV, publication archive, and notes archive.
+1. **Current work** — six actively maintained products and systems;
+2. **Projects & code** — a non-overlapping selection from project and repository archives;
+3. **Notes & publications** — formal research outputs plus selected real writing;
+4. **Contact** — portfolio, booking, professional profiles, CV, publications, and notes archive.
 
-The generic `Trajectory` block is not part of the homepage. Career history belongs in the CV.
+`Current work` remains unchanged until an explicit product decision changes it.
 
-### Duplication rules
+A `Latest notes` section is implemented but disabled by default through:
+
+```yaml
+home:
+  latest_notes:
+    enabled: false
+    limit: 3
+```
+
+When disabled, it must render no section and no navigation item. Enabling it must reuse existing homepage visual primitives rather than introducing a new card system.
+
+## Duplication rules
 
 - Items in `_data/current_operations.yml` must not be repeated in `_data/selected_deployments.yml`.
-- `_data/research_records.yml` is reserved for formal research outputs, datasets, and patent records, not products or knowledge hubs.
-- `_data/field_observations.yml` must link to real blog entries.
-- Project and repository selections should link back to their full archives.
-- Upstream projects must be described as contributions, not represented as personally owned repositories.
+- `_data/research_records.yml` is for formal research outputs, datasets, and patent records.
+- `_data/field_observations.yml` links to real published notes.
+- Project and repository selections link back to their full archives.
+- Upstream projects must be described as contributions rather than personally owned repositories.
 
-## Current selected sources
+## Secondary-page isolation
 
-The Projects & code section draws from real archive entries and upstream work including:
+The homepage visual layer must not leak into Blog, Projects, publications, or individual posts.
 
-- dMRV is the key
-- OceanHub
-- 4D Seismic
-- Climate-to-energy downscaling
-- Quad 35 hybrid seismic acquisition
-- OffshoreOrient Studio
-- iCal Pro for Obsidian
-- Ductor — AI Agentic Harness, explicitly marked as an open-source contribution
-- HTTP to Obsidian CLI Gateway
-- Open Phrasebank
+Narrow exceptions remain:
 
-GhostCam is not part of the homepage selection.
-
-The Notes & publications section includes:
-
-- the 2025 snow-depth paper;
-- the Snow-depth / ICESat-2 Zenodo dataset, DOI `10.5281/zenodo.10048875`;
-- the underwater seismic-device patent;
-- selected published notes, including `ICESat-2 vs DTM1, DTM10, Copernicus30, FABDEM`.
-
-## Repositories page contract
-
-The Repositories page uses custom markup from `_pages/repositories.md`; without its scoped stylesheet, GitHub profile images, light/dark stats images, repository details, chips, metrics, and calls to action collapse into an unstructured vertical flow.
-
-The scoped layer must provide:
-
-- one profile column;
-- a two-column repository grid on desktop and one column below 768 px;
-- equal-height card bodies with actions anchored after summaries;
-- one theme-appropriate stats image, hiding `.repo-light` or `.repo-dark` as appropriate;
-- constrained images and `min-width: 0`/`overflow-wrap` protection for long repository names;
-- visible focus states and reduced-motion handling;
-- no broad selectors outside `.hao-repositories-page`.
-
-The stylesheet must load only on `/repositories/` and must not be replaced by the older broad `site-polish.css` or `site-upgrade.css` layers.
-
-## CV TOC contract
-
-The CV keeps the upstream left-side `#toc-sidebar` and its sticky, vertically scrollable behavior. The custom layer must only remove scrollbar chrome:
-
-- use `scrollbar-width: none` for Firefox;
-- use `-ms-overflow-style: none` for legacy Microsoft engines;
-- hide `::-webkit-scrollbar` for Chromium and Safari;
-- do not set `overflow-y: hidden` or disable wheel, touch, or keyboard scrolling.
-
-The stylesheet must load only on `/cv/` and must not leak into Blog or other secondary pages.
+- CV: `cv-toc-polish.css`;
+- Repositories: `repositories-page-polish.css`;
+- Portfolio: `portfolio-page-polish.css`;
+- Legal pages: `legal-page.css`.
 
 ## Navbar brand contract
 
-The homepage navbar brand is injected as real markup:
+The homepage navbar brand is currently injected as real markup by `_plugins/site_visual_polish.rb`:
 
 ```html
 <a class="navbar-brand title font-weight-lighter hao-home-navbar-brand" data-hao-home-brand="true" href="/">
@@ -144,37 +124,29 @@ The homepage navbar brand is injected as real markup:
 </a>
 ```
 
-Do not fabricate the brand with pseudo-elements or hide its real text.
+This patch remains until an upstream-supported or source-owned replacement can preserve the exact current navbar behavior. Do not fabricate the brand with pseudo-elements.
 
 ## Deployment contract
 
-Before upload, CI must verify that `_site/index.html` contains:
+CI should verify structural invariants rather than editorial copy. At minimum, the built site must preserve:
 
-- `hao-home--alfolio`
-- `hao-home-page`
-- the profile caption
-- the current agentic-AI headline
-- `Projects &amp; code`
-- `Notes &amp; publications`
-- representative curated projects, code, dataset, and notes
-- the Google booking URL
-- `hao-home-center-fix.css?v=20260803-cv-toc-home-81`
-- the navbar brand
+- `hao-home--alfolio`;
+- `hao-home-page`;
+- the profile caption;
+- `current-work`, `selected-work`, `notes-publications`, and `contact` anchors;
+- the Google booking URL;
+- the homepage stylesheet set;
+- the navbar brand;
+- CV and repositories scoped styles;
+- isolation of homepage styles from Blog and other secondary pages.
 
-CI must also verify:
-
-- `_site/cv/index.html` contains `hao-cv-page`, `#toc-sidebar`, and `cv-toc-polish.css?v=20260803-cv-toc-home-81`;
-- `_site/repositories/index.html` contains `hao-repositories-page`, the repository grid, and `repositories-page-polish.css?v=20260803-cv-toc-home-81`;
-- Blog does not load any of the scoped homepage, CV, or repositories stylesheets.
-
-CI must reject a homepage that still contains `GhostCam` or `id="trajectory"`.
+Feature-flagged `latest-notes` must be absent from the built homepage while disabled.
 
 ## Change policy
 
-When the homepage, CV TOC, or Repositories layout changes:
-
-1. update the existing markdown, data files, or the one stylesheet that owns that surface;
-2. do not add another final CSS layer for the same surface;
-3. change the stylesheet path or bump `STYLESHEET_VERSION` when cached CSS contents change;
-4. update the relevant frontend contract and built-artifact checks;
-5. merge only after the production Jekyll build and secondary-page isolation checks pass.
+1. Update the owning Markdown, data file, plugin, or existing stylesheet.
+2. Do not add a new final CSS layer for the same surface.
+3. Remove post-render patches only after source-level parity exists.
+4. Delete obsolete docs and unused visual assets rather than keeping migration or fallback layers.
+5. Update relevant contracts whenever an invariant changes.
+6. Merge only after build and visual checks pass.
