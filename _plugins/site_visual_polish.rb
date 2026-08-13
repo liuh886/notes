@@ -110,17 +110,6 @@ module SiteVisualPolish
     page.output = page.output.sub(navbar_container, "\\1\n      #{brand}")
   end
 
-  def self.apply_home_portfolio_link(page)
-    return unless home_page?(page)
-    return if page.output.include?('data-hao-portfolio-link="true"')
-
-    baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
-    href = baseurl.empty? ? "/portfolio/" : "#{baseurl}/portfolio/"
-    link = %(<a href="#{href}" data-hao-portfolio-link="true">Portfolio</a>)
-    contact_links = %r{(<div class="hao-home-contact-links">.*?)(\s*</div>)}m
-    page.output = page.output.sub(contact_links, "\\1\n      #{link}\\2")
-  end
-
   def self.apply_footer_legal_links(page)
     return if page.output.include?(%q(data-hao-legal-links="true"))
 
@@ -217,7 +206,6 @@ end
     SiteVisualPolish.apply_portfolio_body_class(page)
     SiteVisualPolish.apply_legal_body_class(page)
     SiteVisualPolish.apply_home_navbar_brand(page)
-    SiteVisualPolish.apply_home_portfolio_link(page)
     SiteVisualPolish.apply_global_stylesheet(page)
     SiteVisualPolish.apply_homepage_stylesheet(page)
     SiteVisualPolish.apply_cv_stylesheet(page)

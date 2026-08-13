@@ -23,6 +23,5 @@ remove_plugin_and_build() {
 
 remove_plugin_and_build "al_analytics"
 remove_plugin_and_build "al_img_tools"
-remove_plugin_and_build "al_search"
 
 echo "plugin toggle integration checks passed"

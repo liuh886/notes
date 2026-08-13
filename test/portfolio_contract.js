@@ -32,8 +32,6 @@ requireIncludes(
     "def self.portfolio_page?(page)",
     "def self.apply_portfolio_body_class(page)",
     "hao-portfolio-page",
-    "def self.apply_home_portfolio_link(page)",
-    'data-hao-portfolio-link="true"',
     "def self.build_revision(page)",
     'ENV["GITHUB_SHA"]',
     "def self.apply_footer_build_revision(page)",
@@ -42,6 +40,21 @@ requireIncludes(
     "def self.apply_portfolio_stylesheet(page)",
   ],
   "Site visual polish plugin",
+);
+requireAbsent(
+  plugin,
+  ["def self.apply_home_portfolio_link(page)", 'data-hao-portfolio-link="true"'],
+  "Site visual polish plugin",
+);
+
+const aboutPage = read("_pages/about.md");
+requireIncludes(
+  aboutPage,
+  [
+    '<div class="hao-home-contact-links">',
+    '<a href="{{ \'/portfolio/\' | relative_url }}">Portfolio</a>',
+  ],
+  "Homepage source",
 );
 
 const portfolioCss = read("assets/css/portfolio-page-polish.css");

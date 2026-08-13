@@ -91,10 +91,14 @@ al_folio:
 
 navbar_fixed: true
 footer_fixed: false
-search_enabled: false
+search_enabled: true
 socials_in_search: false
-posts_in_search: false
+posts_in_search: true
 bib_search: false
+
+home_latest_notes:
+  enabled: false
+  limit: 3
 
 # Dimensions
 max_width: 920px
@@ -171,7 +175,7 @@ external_sources:
 
 newsletter:
   enabled: false
-  endpoint: # your loops endpoint (e.g., https://app.loops.so/api/newsletter-form/YOUR-ENDPOINT)
+  endpoint: # your loops endpoint (e.g. https://loops.so/api/newsletter-form/YOUR-ENDPOINT)
   # https://loops.so/docs/forms/custom-form
 
 # -----------------------------------------------------------------------------
