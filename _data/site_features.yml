@@ -1,9 +1,3 @@
-search:
-  enabled: true
-  posts: true
-  socials: false
-  bibliography: false
-
 home:
   latest_notes:
     enabled: false
