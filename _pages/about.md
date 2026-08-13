@@ -32,7 +32,7 @@ social: false
 home_cta: false
 ---
 
-{% assign latest_notes_feature = site.data.site_features.home.latest_notes %}
+{% assign latest_notes_feature = site.home_latest_notes %}
 
 <div class="hao-home hao-home--production hao-home--alfolio">
   <section class="hao-home-intro" aria-labelledby="hao-home-intro-title">
