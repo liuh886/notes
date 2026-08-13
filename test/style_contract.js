@@ -100,13 +100,7 @@ requireIncludes(
 );
 requireAbsent(
   visualPlugin,
-  [
-    "site-polish.css",
-    "site-upgrade.css",
-    "hao-design.css",
-    "hao-home-safe.css",
-    "apply_home_portfolio_link",
-  ],
+  ["site-polish.css", "site-upgrade.css", "hao-design.css", "hao-home-safe.css", "apply_home_portfolio_link"],
   "Site visual polish plugin",
 );
 
@@ -141,34 +135,40 @@ const blogPage = read("_pages/blog.md");
 requireIncludes(
   blogPage,
   [
-    "Research notes on climate, geospatial data, AI systems, and things I build.",
-    "Mens sana in corpore sano.",
+    '<div class="post">',
+    "site.blog_name",
+    "site.blog_description",
+    "site.display_tags",
+    "site.display_categories",
+    '{% assign featured_posts = site.posts | where: "featured", "true" %}',
+    "{% assign postlist = paginator.posts %}",
+    'class="post-title"',
+    "{% include pagination.liquid %}",
+  ],
+  "Blog index",
+);
+requireAbsent(
+  blogPage,
+  [
+    "hao-blog-index",
+    "Editorial lanes",
+    'site.posts | where: "lane"',
     'id="research-notes"',
     'id="build-logs"',
     'id="field-notes"',
     'id="essays"',
-    'site.posts | where: "lane", "research"',
-    'site.posts | where: "lane", "build"',
-    'site.posts | where: "lane", "field"',
-    'site.posts | where: "lane", "essay"',
-    "Research Notes",
-    "Build Logs",
-    "Field Notes",
-    "Essays",
     'id="all-notes"',
   ],
   "Blog index",
 );
-requireAbsent(blogPage, ["text-lowercase", "post.url contains '/"], "Blog index");
 
-const lanePosts = {
-  "_posts/2025-11-01-crst-publication.md": "research",
-  "_posts/2026-03-08-lifeos-5-agentic-brain.md": "build",
-  "_posts/2022-05-04-ice-block-expedition.md": "field",
-  "_posts/2021-03-31-90s.md": "essay",
-};
-for (const [postPath, lane] of Object.entries(lanePosts)) {
-  requireRegex(read(postPath), new RegExp(`^lane:\\s*${lane}\\s*$`, "m"), `${postPath} must declare lane: ${lane}.`);
+for (const postPath of [
+  "_posts/2025-11-01-crst-publication.md",
+  "_posts/2026-03-08-lifeos-5-agentic-brain.md",
+  "_posts/2022-05-04-ice-block-expedition.md",
+  "_posts/2021-03-31-90s.md",
+]) {
+  requireAbsent(read(postPath), ["lane:"], `${postPath} front matter`);
 }
 
 const currentOperations = read("_data/current_operations.yml");
@@ -210,10 +210,9 @@ requireIncludes(
   [
     "Research & Product Studio",
     "The current production site is the source of truth.",
-    "Research Notes",
-    "Build Logs",
-    "Field Notes",
-    "Essays",
+    "Blog keeps the native al-folio chronological reading flow",
+    "Existing `tags` and `categories` are the only editorial taxonomy mechanism.",
+    "Do not introduce a second classification field such as `lane`",
     "Post-render HTML regex rewriting is technical debt.",
     "Feature switches should use existing Jekyll/al-folio configuration directly.",
   ],
