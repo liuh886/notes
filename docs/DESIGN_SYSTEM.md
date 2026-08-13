@@ -45,7 +45,7 @@ Home remains the front door and the asset directory. Its current four-section st
 
 `Current work` remains a six-item asset directory until an explicit product decision changes it.
 
-A `Latest notes` block exists behind `site.data.site_features.home.latest_notes.enabled`. It is disabled by default and must cause no visual change while disabled.
+A `Latest notes` block exists behind `_config.yml` → `home_latest_notes.enabled`. It is disabled by default and must cause no visual change while disabled.
 
 ### Blog
 
@@ -101,13 +101,13 @@ Post-render HTML regex rewriting is technical debt. Remove it incrementally only
 
 The first completed step is moving the homepage `Portfolio` contact link into `_pages/about.md` instead of injecting it after render.
 
+Feature switches should use existing Jekyll/al-folio configuration directly. Do not add a parallel feature-config bridge when `_config.yml` already owns the capability.
+
 ## Search
 
 Site search uses the existing maintained al-folio search capability. Do not build a parallel search implementation.
 
-Reader-facing search flags live in `_data/site_features.yml` and are applied before render by `_plugins/site_features.rb`. Search includes posts by default and excludes social and bibliography results unless a later product decision changes that scope.
-
-The native search UI is preferred because it matches the site's runtime visual language without an additional modal or CSS layer.
+The native `_config.yml` switches enable search and post indexing while leaving social and bibliography search disabled. The native search UI is preferred because it matches the site's runtime visual language without an additional modal, stylesheet, or dependency.
 
 ## Accessibility and performance
 
