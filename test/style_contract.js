@@ -28,7 +28,7 @@ const frontMatterOf = (source) => {
 };
 
 const categoriesFromFrontMatter = (frontMatter) => {
-  const match = frontMatter.match(/^categories:\s*(.*)$/m);
+  const match = frontMatter.match(/^categories:[ \t]*(.*)$/m);
   if (!match) return [];
 
   const inline = match[1].trim();
