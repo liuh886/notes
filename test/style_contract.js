@@ -22,6 +22,34 @@ const requireRegex = (source, regex, message) => {
   if (!regex.test(source)) failures.push(message);
 };
 
+const frontMatterOf = (source) => {
+  const match = source.match(/^---\s*\n([\s\S]*?)\n---\s*(?:\n|$)/);
+  return match ? match[1] : "";
+};
+
+const categoriesFromFrontMatter = (frontMatter) => {
+  const match = frontMatter.match(/^categories:[ \t]*(.*)$/m);
+  if (!match) return [];
+
+  const inline = match[1].trim();
+  if (inline) {
+    const value = inline.replace(/^\[/, "").replace(/\]$/, "");
+    return value
+      .split(",")
+      .map((category) => category.trim().replace(/^['"]|['"]$/g, ""))
+      .filter(Boolean);
+  }
+
+  const afterCategories = frontMatter.slice(match.index + match[0].length).split("\n");
+  const categories = [];
+  for (const line of afterCategories) {
+    if (/^\S/.test(line)) break;
+    const item = line.match(/^\s*-\s*(.+?)\s*$/);
+    if (item) categories.push(item[1].trim().replace(/^['"]|['"]$/g, ""));
+  }
+  return categories;
+};
+
 const config = read("_config.yml");
 requireRegex(config, /^\s*theme:\s*al_folio_core\s*$/m, "`_config.yml` must keep `theme: al_folio_core`.");
 for (const pluginName of ["al_folio_core", "al_folio_distill", "al_cookie", "al_icons", "al_math", "al_search"]) {
@@ -165,16 +193,27 @@ requireAbsent(
   "Blog index",
 );
 
-const representativeCategories = new Map([
-  ["_posts/2025-11-01-crst-publication.md", "Research Notes"],
-  ["_posts/2026-03-08-lifeos-5-agentic-brain.md", "Build Logs"],
-  ["_posts/2022-05-04-ice-block-expedition.md", "Field Notes"],
-  ["_posts/2021-03-31-90s.md", "Essays"],
-]);
-for (const [postPath, category] of representativeCategories) {
-  const post = read(postPath);
-  requireAbsent(post, ["lane:"], `${postPath} front matter`);
-  requireIncludes(post, [category, "tags:"], `${postPath} taxonomy`);
+const allowedBlogCategories = new Set(["Research Notes", "Build Logs", "Field Notes", "Essays"]);
+const postFiles = fs.readdirSync(path.join(root, "_posts")).filter((file) => file.endsWith(".md"));
+for (const postFile of postFiles) {
+  const postPath = path.join("_posts", postFile);
+  const frontMatter = frontMatterOf(read(postPath));
+  if (!frontMatter) {
+    failures.push(`${postPath} must have YAML front matter.`);
+    continue;
+  }
+
+  if (/^lane:\s*/m.test(frontMatter)) failures.push(`${postPath} must not use the obsolete \`lane\` taxonomy.`);
+
+  const categories = categoriesFromFrontMatter(frontMatter);
+  if (categories.length !== 1) {
+    failures.push(`${postPath} must have exactly one primary Blog category; found ${categories.length}.`);
+    continue;
+  }
+
+  if (!allowedBlogCategories.has(categories[0])) {
+    failures.push(`${postPath} uses unsupported Blog category \`${categories[0]}\`.`);
+  }
 }
 
 const currentOperations = read("_data/current_operations.yml");
@@ -219,8 +258,10 @@ requireIncludes(
     "Blog keeps the native al-folio chronological reading flow",
     "Existing `tags` and `categories` are the only editorial taxonomy mechanism.",
     "`categories` define the top-level Blog information architecture",
+    "Every post has exactly one primary category",
     "**Research Notes**, **Build Logs**, **Field Notes**, and **Essays**",
     "`tags` remain fine-grained descriptors",
+    "Legacy topical categories belong in `tags`",
     "Do not introduce a second classification field such as `lane`",
     "Post-render HTML regex rewriting is technical debt.",
     "Feature switches should use existing Jekyll/al-folio configuration directly.",

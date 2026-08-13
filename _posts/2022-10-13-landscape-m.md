@@ -5,7 +5,7 @@ author: Zhihao
 description: large scale of geomorphology - erosion vs tectonic uplift
 date: 2022-10-13
 categories:
-  - notes
+  - Research Notes
 tags:
   - geomorphology
 bibliography: lib.bib

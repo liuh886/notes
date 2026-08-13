@@ -9,7 +9,7 @@ tags:
   - glacier
   - geomorphology
 categories:
-  - notes
+  - Research Notes
 filename: 2022-09-16-glacier-buzzsaw
 ---
 

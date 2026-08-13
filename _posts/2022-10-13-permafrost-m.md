@@ -5,7 +5,7 @@ author: Zhihao
 description: Thawing permafrost is the function of the global warming
 date: 2022-10-13
 categories:
-  - notes
+  - Research Notes
 tags:
   - permafrost
   - climate
