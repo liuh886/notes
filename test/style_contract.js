@@ -27,9 +27,20 @@ requireRegex(config, /^\s*theme:\s*al_folio_core\s*$/m, "`_config.yml` must keep
 for (const pluginName of ["al_folio_core", "al_folio_distill", "al_cookie", "al_icons", "al_math", "al_search"]) {
   requireRegex(config, new RegExp(`^\\s*-\\s*${pluginName}\\s*$`, "m"), `\`_config.yml\` plugins must include \`${pluginName}\`.`);
 }
+requireRegex(config, /^search_enabled:\s*true\s*$/m, "Native al-folio search must be enabled.");
+requireRegex(config, /^posts_in_search:\s*true\s*$/m, "Post search indexing must be enabled.");
+requireRegex(config, /^socials_in_search:\s*false\s*$/m, "Social search must remain disabled.");
+requireRegex(config, /^bib_search:\s*false\s*$/m, "Bibliography search must remain disabled.");
+requireRegex(config, /^home_latest_notes:\s*$/m, "Homepage latest-notes config must exist.");
+requireRegex(config, /^\s{2}enabled:\s*false\s*$/m, "Homepage latest notes must remain disabled by default.");
+requireRegex(config, /^\s{2}limit:\s*3\s*$/m, "Homepage latest-notes default limit must remain 3.");
 
 for (const forbiddenPath of ["_includes", "_layouts", "_sass", "_scripts", "assets/tailwind", "tailwind.config.js", "assets/webfonts"]) {
   if (exists(forbiddenPath)) failures.push(`Starter must not own core theme path \`${forbiddenPath}\`.`);
+}
+
+for (const removedFeatureLayer of ["_data/site_features.yml", "_plugins/site_features.rb"]) {
+  if (exists(removedFeatureLayer)) failures.push(`Redundant feature configuration layer must be removed: \`${removedFeatureLayer}\`.`);
 }
 
 const productionCss = [
@@ -101,36 +112,6 @@ requireAbsent(
   "Site visual polish plugin",
 );
 
-const featureFlags = read("_data/site_features.yml");
-requireIncludes(
-  featureFlags,
-  [
-    "search:",
-    "enabled: true",
-    "posts: true",
-    "socials: false",
-    "bibliography: false",
-    "latest_notes:",
-    "enabled: false",
-    "limit: 3",
-  ],
-  "Site feature flags",
-);
-
-const featurePlugin = read("_plugins/site_features.rb");
-requireIncludes(
-  featurePlugin,
-  [
-    'site.data.fetch("site_features", {})',
-    'site.config["search_enabled"]',
-    'site.config["posts_in_search"]',
-    'site.config["socials_in_search"]',
-    'site.config["bib_search"]',
-    "Jekyll::Hooks.register :site, :post_read",
-  ],
-  "Site feature plugin",
-);
-
 const aboutPage = read("_pages/about.md");
 requireIncludes(
   aboutPage,
@@ -144,7 +125,7 @@ requireIncludes(
     'id="notes-publications"',
     'id="contact"',
     "Six active products, built and maintained.",
-    "site.data.site_features.home.latest_notes",
+    "site.home_latest_notes",
     'id="latest-notes"',
     "latest_notes_feature.enabled",
     "Full notes archive",
@@ -222,9 +203,14 @@ requireIncludes(
     "Field Notes",
     "Essays",
     "Post-render HTML regex rewriting is technical debt.",
+    "Feature switches should use existing Jekyll/al-folio configuration directly.",
   ],
   "Design system",
 );
+
+const pluginToggleContract = read("test/integration_plugin_toggles.sh");
+requireIncludes(pluginToggleContract, ['remove_plugin_and_build "al_analytics"', 'remove_plugin_and_build "al_img_tools"'], "Plugin toggle contract");
+requireAbsent(pluginToggleContract, ['remove_plugin_and_build "al_search"'], "Plugin toggle contract");
 
 for (const hiddenNavPage of ["_pages/projects.md", "_pages/repositories.md", "cv.md"]) {
   if (!/^nav:\s*false$/m.test(read(hiddenNavPage))) {
