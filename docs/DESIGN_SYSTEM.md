@@ -1,139 +1,133 @@
 # Hao's Notes Design System
 
-Hao's Notes is no longer treated as an al-folio visual variant. The site should now be maintained as an independent personal knowledge site, professional portfolio, and product directory. al-folio remains useful as a Jekyll/runtime layer, but it should not define the site's visual identity or information architecture.
+This document is the canonical visual and information-architecture contract for Hao's Notes.
 
-## Design positioning
+## Product positioning
+
+**Research & Product Studio.**
+
+Hao's Notes is Zhihao Liu's personal research and product studio: a public surface for research records, shipped tools, working notes, and selected professional outputs. The site should connect research, evidence, software, and writing without turning into a SaaS landing page or a raw project database.
+
+## Production baseline
+
+The current production site is the source of truth.
+
+- Jekyll and `al_folio_core` remain the runtime and broad visual baseline.
+- Local styling is intentionally narrow and page-scoped.
+- The current homepage structure, spacing, profile placement, card treatment, dark mode, and mobile behavior must not regress during refactors.
+- A refactor is successful only when it preserves the current visual result or improves it deliberately.
+
+Do not introduce a second visual system in parallel with production.
+
+## Visual direction
 
 **Calm, editorial, technical, product-aware.**
 
-The site should feel like a quiet professional workspace: readable, precise, credible, and easy to scan. It should not feel like a loud SaaS landing page, a generic academic template, or a portfolio overloaded with animation.
+The site should feel like a quiet professional workspace: readable, precise, credible, and easy to scan.
 
-## Design principles
+It should not feel like:
 
-1. **Content first** — typography, spacing, and hierarchy should make writing and project information easy to read.
-2. **One optical system** — Home, Blog, Projects, Repositories, and CV should feel like one site, not theme fragments.
-3. **Product-aware, not product-hype** — FlappyK, RhythmCoach, Ownly, and iCal Pro can have product CTAs, but cards should remain restrained.
-4. **Local ownership over upstream inheritance** — new visual decisions belong to Hao's Notes, not al-folio defaults.
-5. **Accessible by default** — keyboard focus, reduced motion, dark mode, and mobile layout are part of the design system, not afterthoughts.
+- a loud SaaS landing page;
+- a generic academic template;
+- a dashboard made entirely of equal-weight cards;
+- an animation-heavy portfolio.
 
-## Subagent contracts
-
-### Design Systems subagent
-
-Owns the visual language:
-
-- typography scale and line height;
-- page width and reading width;
-- spacing rhythm;
-- card surfaces, borders, radius, and shadows;
-- CTA hierarchy;
-- focus states;
-- dark mode parity.
-
-Deliverables should be expressed through `assets/css/hao-design.css` and this document.
-
-### Frontend Architecture subagent
-
-Owns implementation boundaries:
-
-- keep al-folio as runtime only;
-- avoid copying `_layouts`, `_includes`, `_sass`, or upstream assets unless the page is intentionally localized;
-- prefer Hao-specific classes and variables over brittle upstream selectors;
-- keep `site-polish.css` and `site-upgrade.css` as transitional layers until the design system can absorb them safely;
-- document every new layer in the style contract.
-
-### Content / IA subagent
-
-Owns site structure and content clarity:
-
-- Homepage should introduce who Zhihao is, what he builds, and where to go next;
-- Repositories should separate products/apps from research code and utility projects;
-- Projects should read as a portfolio narrative, not a raw archive;
-- Blog should feel editorial and readable;
-- CV should remain formal, but visually native to Hao's Notes.
-
-### QA / Performance subagent
-
-Owns guardrails:
-
-- preserve GitHub Pages deploy;
-- preserve dark mode;
-- preserve mobile layout;
-- preserve keyboard focus;
-- preserve reduced-motion support;
-- prevent native CV scrollbar regressions;
-- avoid unbounded visual effects and heavyweight assets;
-- expand `test/style_contract.js` when design-system assumptions become important.
-
-## Core tokens
-
-The canonical Hao layer is `assets/css/hao-design.css`. It should define tokens with the `--hao-*` prefix. Existing `--note-*` variables may remain during transition but should not be the long-term source of truth.
-
-Recommended token groups:
-
-```css
---hao-page-max
---hao-reading-max
---hao-radius-sm
---hao-radius-md
---hao-radius-lg
---hao-border-subtle
---hao-surface-base
---hao-surface-soft
---hao-surface-hover
---hao-shadow-card
---hao-shadow-card-hover
---hao-focus-ring
---hao-space-section
---hao-space-card
-```
-
-## Page contracts
+## Information architecture
 
 ### Home
 
-Home is the front door. It should answer:
+Home remains the front door and the asset directory. Its current four-section structure stays authoritative:
 
-- Who is this person?
-- What does he build?
-- What should I open next?
+1. **Current work** — the six actively maintained products and systems.
+2. **Projects & code** — selected work beyond the active product list.
+3. **Notes & publications** — formal outputs and selected working notes.
+4. **Contact** — portfolio, booking, professional profiles, CV, publications, and notes archive.
 
-It should not be only a CV-like academic about page.
+`Current work` remains a six-item asset directory until an explicit product decision changes it.
+
+A `Latest notes` block exists behind `site.data.site_features.home.latest_notes.enabled`. It is disabled by default and must cause no visual change while disabled.
 
 ### Blog
 
-Blog is editorial. It should prioritize:
+Blog is the editorial reading surface. Its reader-facing lanes are:
 
-- clear list rhythm;
-- readable titles;
-- useful summaries;
-- tags/categories as navigation aids, not decoration;
-- comfortable reading width.
+- **Research Notes** — methods, datasets, papers, and technical reasoning;
+- **Build Logs** — architecture decisions, agentic workflows, and shipped systems;
+- **Field Notes** — field work, expeditions, travel, and direct operational observations;
+- **Essays** — longer-form reflections on ideas, judgment, learning, and life beyond technical work.
 
-### Projects
+The four lanes are editorial entry points. The chronological `All notes` archive remains complete beneath them.
 
-Projects are portfolio narratives. Cards should make categories and relevance obvious.
+Historical tags and categories remain useful archive metadata, but they do not define the top-level Blog information architecture.
 
-### Repositories
+### Projects and repositories
 
-Repositories are product and code entry points. Product/app cards can expose primary CTAs such as `Open app`, `Play game`, or `Open plugin`, while still retaining source-code links.
+Projects are portfolio narratives. Repositories are product and code entry points. They should remain distinct from the actively maintained `Current work` list and should not duplicate it without a clear reason.
 
 ### CV
 
-CV remains formal. It should be clean, readable, and aligned with the site's visual system. The left navigation must remain scrollable without showing a heavy native scrollbar.
+CV remains formal and visually native to the site. Its sidebar must stay scrollable without heavy native scrollbar chrome.
 
-## Migration policy
+## CSS ownership
 
-Do not perform a full rewrite in one PR. Use this sequence:
+Only production-loaded stylesheets should remain.
 
-1. add independent Hao design tokens and contract;
-2. migrate repeated visual rules from `site-upgrade.css` into `hao-design.css` when safe;
-3. localize page layouts only when a page requires structural control;
-4. remove obsolete al-folio-specific overrides after visual parity is confirmed.
+### Global
 
-## Non-goals
+- `assets/css/footer-build.css`
 
-- Do not chase upstream al-folio visual updates.
-- Do not migrate to Next.js, Astro, or another framework unless the Jekyll runtime becomes a bottleneck.
-- Do not embed separate app builds into the main site unless a future multi-app publishing plan is approved.
-- Do not add heavy animation, large JS dependencies, or decorative visual noise.
+### Homepage
+
+- `assets/css/hao-home-center-fix.css`
+- `assets/css/hao-home-atmosphere-v2.css`
+- `assets/css/hao-home-current-work-texture-fix.css`
+
+### Secondary pages
+
+- `assets/css/cv-toc-polish.css`
+- `assets/css/repositories-page-polish.css`
+- `assets/css/portfolio-page-polish.css`
+- `assets/css/legal-page.css`
+
+Do not add another `safe`, `fix`, `vN`, `upgrade`, or fallback stylesheet for an existing surface. Change the stylesheet that owns that surface.
+
+Unused historical visual layers should be deleted once production injection and source references confirm they are not used.
+
+## Frontend architecture
+
+Content belongs in Markdown or `_data` files. Styling belongs in the stylesheet that owns the surface. Build-time Ruby should be limited to behavior that cannot yet be expressed cleanly in the owned page source or supported theme configuration.
+
+Post-render HTML regex rewriting is technical debt. Remove it incrementally only when an equivalent source-level implementation is available and the existing visual contract is preserved. Do not replace working output with an incomplete local layout merely to eliminate a regex.
+
+The first completed step is moving the homepage `Portfolio` contact link into `_pages/about.md` instead of injecting it after render.
+
+## Search
+
+Site search uses the existing maintained al-folio search capability. Do not build a parallel search implementation.
+
+Reader-facing search flags live in `_data/site_features.yml` and are applied before render by `_plugins/site_features.rb`. Search includes posts by default and excludes social and bibliography results unless a later product decision changes that scope.
+
+The native search UI is preferred because it matches the site's runtime visual language without an additional modal or CSS layer.
+
+## Accessibility and performance
+
+Every change must preserve:
+
+- keyboard focus states;
+- dark mode;
+- reduced-motion behavior;
+- mobile layout;
+- responsive and lazy-loaded images;
+- readable line lengths;
+- GitHub Pages build stability.
+
+Do not add heavyweight animation, search, or UI dependencies when the existing runtime already provides the required capability.
+
+## Change policy
+
+1. Treat current production output as the visual baseline.
+2. Change the smallest owning surface.
+3. Prefer existing maintained runtime capabilities before adding packages or custom implementations.
+4. Delete obsolete layers instead of preserving compatibility shims.
+5. Update contract tests when an architectural invariant changes.
+6. Merge only after production build and visual/interaction checks pass.
