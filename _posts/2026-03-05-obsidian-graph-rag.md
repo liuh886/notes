@@ -2,7 +2,12 @@
 layout: post
 title: "让 AI 看见你的大脑：Obsidian CLI 的价值与意义"
 date: 2026-03-05
-categories: [AI, Obsidian, LifeOS]
+tags:
+  - AI
+  - Obsidian
+  - LifeOS
+categories:
+  - Build Logs
 ---
 
 当我们谈论“第二大脑”时，大多数人的直觉依然停留在“容器”的概念上：一个存放笔记、文档和碎片的数字仓库。然而，Obsidian 的本质从未仅仅是文件夹的堆砌，它的生命力源于点（Node）与线（Edge）的交织。
