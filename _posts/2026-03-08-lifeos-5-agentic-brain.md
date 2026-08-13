@@ -2,7 +2,8 @@
 layout: post
 title: 'The Agentic Brain: A Blueprint for Personal AI OS with LifeOS 5.0'
 date: 2026-03-08
-categories: [AI, LifeOS, Architecture]
+tags: [AI, LifeOS, Architecture]
+categories: ["Build Logs"]
 thumbnail: assets/img/lifeos-5-logo.svg
 img: assets/img/lifeos-5-logo.svg
 og_image: assets/img/lifeos-5-logo.svg

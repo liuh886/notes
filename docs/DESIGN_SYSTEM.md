@@ -53,11 +53,12 @@ Blog keeps the native al-folio chronological reading flow as its visual and stru
 
 - The main surface remains one paginated post stream.
 - Existing `tags` and `categories` are the only editorial taxonomy mechanism.
-- `display_tags` and `display_categories` may be curated to improve discovery without changing the post-list layout.
+- `categories` define the top-level Blog information architecture and are shown at the top of the Blog: **Research Notes**, **Build Logs**, **Field Notes**, and **Essays**.
+- `tags` remain fine-grained descriptors for subject matter, technologies, methods, places, and other cross-cutting themes.
 - Featured posts may remain above the chronological stream using the theme's existing card treatment.
 - Do not introduce a second classification field such as `lane`, parallel sectioned feeds, or a custom Blog-only layout system.
 
-Information-architecture improvements should therefore be incremental: improve names, descriptions, and the existing taxonomy first; do not restructure the page when a metadata or copy change is sufficient.
+Information-architecture improvements should therefore be incremental: keep the four category entry points stable, improve tags and post metadata in place, and preserve the chronological stream as the reading backbone.
 
 ### Projects and repositories
 

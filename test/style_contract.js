@@ -138,8 +138,11 @@ requireIncludes(
     '<div class="post">',
     "site.blog_name",
     "site.blog_description",
-    "site.display_tags",
-    "site.display_categories",
+    "primary_categories",
+    "Research Notes|Build Logs|Field Notes|Essays",
+    "'/blog/category/'",
+    "post.tags",
+    "'/blog/tag/'",
     '{% assign featured_posts = site.posts | where: "featured", "true" %}',
     "{% assign postlist = paginator.posts %}",
     'class="post-title"',
@@ -162,13 +165,16 @@ requireAbsent(
   "Blog index",
 );
 
-for (const postPath of [
-  "_posts/2025-11-01-crst-publication.md",
-  "_posts/2026-03-08-lifeos-5-agentic-brain.md",
-  "_posts/2022-05-04-ice-block-expedition.md",
-  "_posts/2021-03-31-90s.md",
-]) {
-  requireAbsent(read(postPath), ["lane:"], `${postPath} front matter`);
+const representativeCategories = new Map([
+  ["_posts/2025-11-01-crst-publication.md", "Research Notes"],
+  ["_posts/2026-03-08-lifeos-5-agentic-brain.md", "Build Logs"],
+  ["_posts/2022-05-04-ice-block-expedition.md", "Field Notes"],
+  ["_posts/2021-03-31-90s.md", "Essays"],
+]);
+for (const [postPath, category] of representativeCategories) {
+  const post = read(postPath);
+  requireAbsent(post, ["lane:"], `${postPath} front matter`);
+  requireIncludes(post, [category, "tags:"], `${postPath} taxonomy`);
 }
 
 const currentOperations = read("_data/current_operations.yml");
@@ -212,6 +218,9 @@ requireIncludes(
     "The current production site is the source of truth.",
     "Blog keeps the native al-folio chronological reading flow",
     "Existing `tags` and `categories` are the only editorial taxonomy mechanism.",
+    "`categories` define the top-level Blog information architecture",
+    "**Research Notes**, **Build Logs**, **Field Notes**, and **Essays**",
+    "`tags` remain fine-grained descriptors",
     "Do not introduce a second classification field such as `lane`",
     "Post-render HTML regex rewriting is technical debt.",
     "Feature switches should use existing Jekyll/al-folio configuration directly.",
