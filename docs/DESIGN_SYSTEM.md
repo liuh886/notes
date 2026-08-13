@@ -49,16 +49,15 @@ A `Latest notes` block exists behind `_config.yml` → `home_latest_notes.enable
 
 ### Blog
 
-Blog is the editorial reading surface. Its reader-facing lanes are:
+Blog keeps the native al-folio chronological reading flow as its visual and structural baseline.
 
-- **Research Notes** — methods, datasets, papers, and technical reasoning;
-- **Build Logs** — architecture decisions, agentic workflows, and shipped systems;
-- **Field Notes** — field work, expeditions, travel, and direct operational observations;
-- **Essays** — longer-form reflections on ideas, judgment, learning, and life beyond technical work.
+- The main surface remains one paginated post stream.
+- Existing `tags` and `categories` are the only editorial taxonomy mechanism.
+- `display_tags` and `display_categories` may be curated to improve discovery without changing the post-list layout.
+- Featured posts may remain above the chronological stream using the theme's existing card treatment.
+- Do not introduce a second classification field such as `lane`, parallel sectioned feeds, or a custom Blog-only layout system.
 
-The four lanes are editorial entry points. The chronological `All notes` archive remains complete beneath them.
-
-Historical tags and categories remain useful archive metadata, but they do not define the top-level Blog information architecture.
+Information-architecture improvements should therefore be incremental: improve names, descriptions, and the existing taxonomy first; do not restructure the page when a metadata or copy change is sufficient.
 
 ### Projects and repositories
 
