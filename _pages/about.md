@@ -32,6 +32,8 @@ social: false
 home_cta: false
 ---
 
+{% assign latest_notes_feature = site.data.site_features.home.latest_notes %}
+
 <div class="hao-home hao-home--production hao-home--alfolio">
   <section class="hao-home-intro" aria-labelledby="hao-home-intro-title">
     <p class="hao-home-eyebrow">Data Scientist · AI Builder</p>
@@ -44,6 +46,7 @@ home_cta: false
 
   <nav class="hao-home-index" aria-label="Homepage sections">
     <a href="#current-work">Current work</a>
+    {% if latest_notes_feature.enabled %}<a href="#latest-notes">Latest notes</a>{% endif %}
     <a href="#selected-work">Projects &amp; code</a>
     <a href="#notes-publications">Notes &amp; publications</a>
     <a href="#contact">Contact</a>
@@ -76,6 +79,33 @@ home_cta: false
       {% endfor %}
     </div>
   </section>
+
+  {% if latest_notes_feature.enabled %}
+    <section class="hao-home-section" id="latest-notes" aria-labelledby="latest-notes-title">
+      <div class="hao-home-section-header">
+        <p class="hao-home-eyebrow">Latest notes</p>
+        <h2 id="latest-notes-title">Recent writing from Hao's Notes.</h2>
+        <p>A compact chronological window into current research, build logs, field notes, and essays.</p>
+      </div>
+      <div class="hao-home-note-list">
+        {% assign latest_notes_limit = latest_notes_feature.limit | default: 3 %}
+        {% for post in site.posts limit: latest_notes_limit %}
+          <article class="hao-home-note">
+            <div class="hao-home-card-topline">
+              <span>{{ post.date | date: "%Y.%m.%d" }}</span>
+              <strong>NOTE</strong>
+            </div>
+            <h4>{{ post.title }}</h4>
+            {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+            <a class="hao-home-text-link" href="{{ post.url | relative_url }}">Read →</a>
+          </article>
+        {% endfor %}
+      </div>
+      <div class="hao-home-archive-links">
+        <a href="{{ '/blog/' | relative_url }}">Full notes archive</a>
+      </div>
+    </section>
+  {% endif %}
 
   <section class="hao-home-section" id="selected-work" aria-labelledby="selected-work-title">
     <div class="hao-home-section-header">
@@ -198,6 +228,7 @@ home_cta: false
       <h2 id="contact-title">Book a conversation or browse the full record.</h2>
     </div>
     <div class="hao-home-contact-links">
+      <a href="{{ '/portfolio/' | relative_url }}">Portfolio</a>
       <a href="https://calendar.app.google/UQ267iEs4MTAGFSd7" target="_blank" rel="noopener noreferrer">Book a chat</a>
       <a href="https://github.com/liuh886" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://www.linkedin.com/in/liuzhihao" target="_blank" rel="noopener noreferrer">LinkedIn</a>
