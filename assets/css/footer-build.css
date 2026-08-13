@@ -1,5 +1,14 @@
 /* Compact deployment identifier and legal links appended to the inherited al-folio footer. */
 
+/* Keep native search behavior and shortcut support, but show only the search icon in the navbar. */
+#search-toggle .nav-link {
+  font-size: 0;
+}
+
+#search-toggle .nav-link .fa-magnifying-glass {
+  font-size: 1rem;
+}
+
 .hao-legal-links {
   display: inline-flex;
   align-items: center;
