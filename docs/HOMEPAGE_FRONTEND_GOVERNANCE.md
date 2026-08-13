@@ -84,13 +84,12 @@ The active homepage sections are:
 
 `Current work` remains unchanged until an explicit product decision changes it.
 
-A `Latest notes` section is implemented but disabled by default through:
+A `Latest notes` section is implemented but disabled by default through `_config.yml`:
 
 ```yaml
-home:
-  latest_notes:
-    enabled: false
-    limit: 3
+home_latest_notes:
+  enabled: false
+  limit: 3
 ```
 
 When disabled, it must render no section and no navigation item. Enabling it must reuse existing homepage visual primitives rather than introducing a new card system.
@@ -120,8 +119,7 @@ The homepage navbar brand is currently injected as real markup by `_plugins/site
 
 ```html
 <a class="navbar-brand title font-weight-lighter hao-home-navbar-brand" data-hao-home-brand="true" href="/">
-  <span class="font-weight-bold">Zhihao</span> LIU
-</a>
+  <span class="font-weight-bold">Zhihao</span> LIU</a>
 ```
 
 This patch remains until an upstream-supported or source-owned replacement can preserve the exact current navbar behavior. Do not fabricate the brand with pseudo-elements.
@@ -144,7 +142,7 @@ Feature-flagged `latest-notes` must be absent from the built homepage while disa
 
 ## Change policy
 
-1. Update the owning Markdown, data file, plugin, or existing stylesheet.
+1. Update the owning Markdown, configuration, plugin, or existing stylesheet.
 2. Do not add a new final CSS layer for the same surface.
 3. Remove post-render patches only after source-level parity exists.
 4. Delete obsolete docs and unused visual assets rather than keeping migration or fallback layers.
