@@ -35,74 +35,78 @@ pagination:
     </ul>
   </nav>
 
+  {% assign research_posts = site.posts | where: "lane", "research" %}
   <section id="research-notes" aria-labelledby="research-notes-title">
     <h2 id="research-notes-title">Research Notes</h2>
     <p>Methods, datasets, papers, and technical reasoning from climate, remote sensing, geospatial analysis, and geoscience.</p>
     <ul class="post-list">
-      {% for post in site.posts %}
-        {% if post.url contains '/crst-publication/' or post.url contains '/dataset/' %}
-          <li>
-            <h3><a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-            {% if post.description %}<p>{{ post.description }}</p>{% endif %}
-            <p class="post-meta">{{ post.date | date: '%B %d, %Y' }}</p>
-          </li>
-        {% endif %}
+      {% for post in research_posts %}
+        <li>
+          <h3>
+            {% if post.redirect == blank %}
+              <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            {% elsif post.redirect contains '://' %}
+              <a class="post-title" href="{{ post.redirect }}" target="_blank" rel="noopener noreferrer">{{ post.title }}</a>
+            {% else %}
+              <a class="post-title" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
+            {% endif %}
+          </h3>
+          {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+          <p class="post-meta">{{ post.date | date: '%B %d, %Y' }}</p>
+        </li>
       {% endfor %}
     </ul>
   </section>
 
+  {% assign build_posts = site.posts | where: "lane", "build" %}
   <section id="build-logs" aria-labelledby="build-logs-title">
     <h2 id="build-logs-title">Build Logs</h2>
     <p>Architecture decisions, agentic workflows, personal software, and lessons from turning ideas into working systems.</p>
     <ul class="post-list">
-      {% for post in site.posts %}
-        {% if post.url contains '/lifeos-5-agentic-brain/' or post.url contains '/obsidian-graph-rag/' or post.url contains '/obsidian-001/' %}
-          <li>
-            <h3><a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-            {% if post.description %}<p>{{ post.description }}</p>{% endif %}
-            <p class="post-meta">{{ post.date | date: '%B %d, %Y' }}</p>
-          </li>
-        {% endif %}
+      {% for post in build_posts %}
+        <li>
+          <h3><a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+          <p class="post-meta">{{ post.date | date: '%B %d, %Y' }}</p>
+        </li>
       {% endfor %}
     </ul>
   </section>
 
+  {% assign field_posts = site.posts | where: "lane", "field" %}
   <section id="field-notes" aria-labelledby="field-notes-title">
     <h2 id="field-notes-title">Field Notes</h2>
     <p>Observations from field work, expeditions, travel, and direct encounters with landscapes, instruments, and operational problems.</p>
     <ul class="post-list">
-      {% for post in site.posts %}
-        {% if post.url contains '/ice-block-expedition/' or post.url contains '/ski-trip-2022/' %}
-          <li>
-            <h3>
-              {% if post.redirect == blank %}
-                <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              {% elsif post.redirect contains '://' %}
-                <a class="post-title" href="{{ post.redirect }}" target="_blank" rel="noopener noreferrer">{{ post.title }}</a>
-              {% else %}
-                <a class="post-title" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
-              {% endif %}
-            </h3>
-            {% if post.description %}<p>{{ post.description }}</p>{% endif %}
-            <p class="post-meta">{{ post.date | date: '%B %d, %Y' }}</p>
-          </li>
-        {% endif %}
+      {% for post in field_posts %}
+        <li>
+          <h3>
+            {% if post.redirect == blank %}
+              <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            {% elsif post.redirect contains '://' %}
+              <a class="post-title" href="{{ post.redirect }}" target="_blank" rel="noopener noreferrer">{{ post.title }}</a>
+            {% else %}
+              <a class="post-title" href="{{ post.redirect | relative_url }}">{{ post.title }}</a>
+            {% endif %}
+          </h3>
+          {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+          <p class="post-meta">{{ post.date | date: '%B %d, %Y' }}</p>
+        </li>
       {% endfor %}
     </ul>
   </section>
 
+  {% assign essay_posts = site.posts | where: "lane", "essay" %}
   <section id="essays" aria-labelledby="essays-title">
     <h2 id="essays-title">Essays</h2>
     <p>Longer-form reflections on ideas, judgment, learning, and the relationship between technical work and a wider life.</p>
     <ul class="post-list">
-      {% for post in site.posts %}
-        {% if post.url contains '/yangming/' or post.url contains '/tea/' or post.url contains '/90s/' %}
-          <li>
-            <h3><a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-            {% if post.description %}<p>{{ post.description }}</p>{% endif %}
-            <p class="post-meta">{{ post.date | date: '%B %d, %Y' }}</p>
-          </li>
-        {% endif %}
+      {% for post in essay_posts %}
+        <li>
+          <h3><a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+          <p class="post-meta">{{ post.date | date: '%B %d, %Y' }}</p>
+        </li>
       {% endfor %}
     </ul>
   </section>
