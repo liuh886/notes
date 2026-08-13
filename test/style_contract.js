@@ -31,9 +31,7 @@ requireRegex(config, /^search_enabled:\s*true\s*$/m, "Native al-folio search mus
 requireRegex(config, /^posts_in_search:\s*true\s*$/m, "Post search indexing must be enabled.");
 requireRegex(config, /^socials_in_search:\s*false\s*$/m, "Social search must remain disabled.");
 requireRegex(config, /^bib_search:\s*false\s*$/m, "Bibliography search must remain disabled.");
-requireRegex(config, /^home_latest_notes:\s*$/m, "Homepage latest-notes config must exist.");
-requireRegex(config, /^\s{2}enabled:\s*false\s*$/m, "Homepage latest notes must remain disabled by default.");
-requireRegex(config, /^\s{2}limit:\s*3\s*$/m, "Homepage latest-notes default limit must remain 3.");
+requireIncludes(config, ["home_latest_notes:\n  enabled: false\n  limit: 3"], "Site config");
 
 for (const forbiddenPath of ["_includes", "_layouts", "_sass", "_scripts", "assets/tailwind", "tailwind.config.js", "assets/webfonts"]) {
   if (exists(forbiddenPath)) failures.push(`Starter must not own core theme path \`${forbiddenPath}\`.`);
@@ -149,6 +147,10 @@ requireIncludes(
     'id="build-logs"',
     'id="field-notes"',
     'id="essays"',
+    'site.posts | where: "lane", "research"',
+    'site.posts | where: "lane", "build"',
+    'site.posts | where: "lane", "field"',
+    'site.posts | where: "lane", "essay"',
     "Research Notes",
     "Build Logs",
     "Field Notes",
@@ -157,7 +159,17 @@ requireIncludes(
   ],
   "Blog index",
 );
-requireAbsent(blogPage, ["text-lowercase"], "Blog index");
+requireAbsent(blogPage, ["text-lowercase", "post.url contains '/"], "Blog index");
+
+const lanePosts = {
+  "_posts/2025-11-01-crst-publication.md": "research",
+  "_posts/2026-03-08-lifeos-5-agentic-brain.md": "build",
+  "_posts/2022-05-04-ice-block-expedition.md": "field",
+  "_posts/2021-03-31-90s.md": "essay",
+};
+for (const [postPath, lane] of Object.entries(lanePosts)) {
+  requireRegex(read(postPath), new RegExp(`^lane:\\s*${lane}\\s*$`, "m"), `${postPath} must declare lane: ${lane}.`);
+}
 
 const currentOperations = read("_data/current_operations.yml");
 for (const product of ["CCUS Policy Hub", "Ownly", "AlphaEngine", "FlappyK", "RhythmCoach", "NewsFlow"]) {
