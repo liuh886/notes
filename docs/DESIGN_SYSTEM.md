@@ -138,7 +138,8 @@ Per-page runtimes must not be paid for by every page.
 - MathJax stays off globally (`enable_math: false`). `_plugins/site_visual_polish.rb` re-adds the tags only on pages whose content contains math delimiters, so a new math page needs no extra wiring.
 - Masonry stays off (`enable_masonry: false`). No template emits `.grid`/`.grid-item`.
 - `og_image` must be an absolute URL; relative values break social preview scrapers.
-- Third-party libraries that nothing renders (currently the `academicons` and `scholar-icons` icon sets, and the `Roboto Slab` / `Material Icons` font families) must not be configured.
+- Third-party libraries that nothing renders (currently the `academicons` and `scholar-icons` icon sets) must not be configured.
+- Fonts are self-hosted: `assets/fonts/roboto.css` plus `assets/fonts/roboto/*.woff2`, byte-identical to what Google serves. No page may depend on `fonts.googleapis.com` or `fonts.gstatic.com` being reachable before first paint. Bump the `?v=` on the configured font stylesheet when re-syncing.
 - The profile image keeps its theme-provided `srcset`; `hao-home-center-fix.css` reserves its box with `aspect-ratio` because the theme emits non-numeric `width`/`height` attributes.
 - The homepage profile `alt` text comes from `profile.alt` in `_pages/about.md`; the plugin only copies it onto the rendered image.
 

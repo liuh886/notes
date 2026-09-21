@@ -145,6 +145,16 @@ requireAbsent(
   ["Roboto+Slab", "Material+Icons", "academicons@", "scholar-icons@"],
   "`_config.yml` third-party libraries (unused families and icon sets)",
 );
+// Fonts are self-hosted so no page depends on fonts.googleapis.com or
+// fonts.gstatic.com being reachable before first paint.
+requireAbsent(config, ["fonts.googleapis.com", "fonts.gstatic.com"], "`_config.yml` font sources");
+requireRegex(config, /^\s*fonts:\s*"\/assets\/fonts\/roboto\.css\?v=\d+"/m, "`_config.yml` must load the self-hosted font stylesheet.");
+requireIncludes(read("assets/fonts/roboto.css"), ["@font-face", "font-family: 'Roboto'"], "Self-hosted font stylesheet");
+// The header comment keeps the upstream source URL for re-syncing, so only the
+// font references themselves have to be local.
+requireAbsent(read("assets/fonts/roboto.css"), ["gstatic", "url(https://", "url(http://"], "Self-hosted font stylesheet");
+const fontFiles = fs.readdirSync(path.join(root, "assets/fonts/roboto")).filter((file) => file.endsWith(".woff2"));
+if (fontFiles.length === 0) failures.push("Self-hosted font directory must contain woff2 files.");
 requireIncludes(
   visualPlugin,
   [

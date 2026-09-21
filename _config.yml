@@ -514,7 +514,10 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      fonts: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      # Self-hosted: the woff2 files and @font-face rules live in assets/fonts/,
+      # byte-identical to what Google serves. Bump ?v= when re-syncing so cached
+      # copies are revalidated.
+      fonts: "/assets/fonts/roboto.css?v=20260921"
   highlightjs:
     integrity:
       css:
