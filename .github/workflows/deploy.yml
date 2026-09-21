@@ -165,7 +165,7 @@ jobs:
       - name: Verify homepage runtime payload 🔎
         run: |
           set -euo pipefail
-          for leaked in mathjax polyfill masonry imagesloaded academicons scholar-icons Roboto+Slab Material+Icons; do
+          for leaked in mathjax polyfill masonry imagesloaded academicons scholar-icons Roboto+Slab Material+Icons d1bxh8uas1mnw7.cloudfront.net badge.dimensions.ai; do
             if grep -qi -- "$leaked" _site/index.html; then
               echo "Homepage must not reference \`$leaked\`." >&2
               exit 1
