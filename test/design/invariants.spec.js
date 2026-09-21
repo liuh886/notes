@@ -129,7 +129,18 @@ const wheelY = async (target) => {
 
 test.describe("consent", () => {
   test("analytics wait for a choice, and the choice is offered", async ({ browser }) => {
-    const context = await browser.newContext();
+    // The consent library hides itself from automated browsers by default
+    // (`hideFromBots` checks `navigator.webdriver`), so the dialog never renders
+    // in a plain Playwright context and the assertion below would be vacuous.
+    // Masking the flag and presenting a normal user agent reproduces what a real
+    // visitor gets; it changes nothing about how the scripts are gated.
+    const context = await browser.newContext({
+      userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    });
+    await context.addInitScript(() => {
+      Object.defineProperty(navigator, "webdriver", { get: () => false });
+    });
+
     const requests = [];
     context.on("request", (request) => requests.push(request.url()));
     const page = await context.newPage();
@@ -143,7 +154,8 @@ test.describe("consent", () => {
     expect(loaded, `nothing may load from Google Analytics before a choice, saw ${loaded.length}`).toEqual([]);
 
     // The choice has to be offered, or the gate would only be a silent block.
-    await expect(page.locator("#cc-main, .cc-window, [class*='cc']").first()).toBeVisible();
+    await expect(page.locator("#cc-main").first()).toBeVisible();
+    await expect(page.locator("html")).toHaveClass(/show--consent/);
 
     await context.close();
   });
