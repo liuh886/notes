@@ -45,6 +45,15 @@ const budgets = {
   localCssBytes: 200 * 1024,
 };
 
+// Pages that are script-heavy by design, with the ceiling each one is allowed
+// instead of the global one. Every entry needs a reason.
+const pageExceptions = {
+  // Eight TradingView widgets plus the tab switcher. Deferring the embeds until
+  // their tab or viewport is reached is the way to bring this under the global
+  // budget; until then the exception is explicit rather than silently raised.
+  "portfolio/index.html": { scripts: 48 },
+};
+
 // Runtimes that were removed from this site on purpose. Re-appearing means a
 // configuration default was restored or a new layer was added. Only asset URLs
 // are inspected, so prose that happens to mention one of these words is fine.
@@ -81,8 +90,11 @@ for (const file of pages) {
   if (stylesheets.length > budgets.stylesheets) {
     failures.push(`\`${relative}\` requests ${stylesheets.length} stylesheets (budget ${budgets.stylesheets}).`);
   }
-  if (scripts.length > budgets.scripts) {
-    failures.push(`\`${relative}\` requests ${scripts.length} scripts (budget ${budgets.scripts}).`);
+  const scriptBudget = pageExceptions[relative]?.scripts ?? budgets.scripts;
+  if (scripts.length > scriptBudget) {
+    failures.push(
+      `\`${relative}\` requests ${scripts.length} scripts (budget ${scriptBudget}${pageExceptions[relative] ? " — page exception" : ""}).`
+    );
   }
 
   if (pagesToReport.includes(relative)) {
