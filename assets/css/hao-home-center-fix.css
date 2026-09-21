@@ -117,6 +117,11 @@
   display: block;
   width: 100%;
   height: auto;
+  /* The theme emits width="100%" height="auto", which reserves no space and
+     shifts the banner when the hero photo loads. Reserve the box here instead;
+     object-fit keeps a swapped photo cropped rather than distorted. */
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
 }
 
 .hao-home-page .post > article > .profile .more-info {

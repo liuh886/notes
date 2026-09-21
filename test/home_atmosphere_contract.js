@@ -2,7 +2,9 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const root = process.cwd();
-const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8");
+// Normalize CRLF so multi-line contract patterns hold on Windows checkouts too.
+const read = (relativePath) =>
+  fs.readFileSync(path.join(root, relativePath), "utf8").replace(/\r\n/g, "\n");
 const failures = [];
 
 const requireIncludes = (source, values, label) => {

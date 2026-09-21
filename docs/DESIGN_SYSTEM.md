@@ -125,6 +125,19 @@ Every change must preserve:
 
 Do not add heavyweight animation, search, or UI dependencies when the existing runtime already provides the required capability.
 
+### Runtime payload rules
+
+Per-page runtimes must not be paid for by every page.
+
+- MathJax stays off globally (`enable_math: false`). `_plugins/site_visual_polish.rb` re-adds the tags only on pages whose content contains math delimiters, so a new math page needs no extra wiring.
+- Masonry stays off (`enable_masonry: false`). No template emits `.grid`/`.grid-item`.
+- `og_image` must be an absolute URL; relative values break social preview scrapers.
+- Third-party libraries that nothing renders (currently the `academicons` and `scholar-icons` icon sets, and the `Roboto Slab` / `Material Icons` font families) must not be configured.
+- The profile image keeps its theme-provided `srcset`; `hao-home-center-fix.css` reserves its box with `aspect-ratio` because the theme emits non-numeric `width`/`height` attributes.
+- The homepage profile `alt` text comes from `profile.alt` in `_pages/about.md`; the plugin only copies it onto the rendered image.
+
+Every rule above is asserted by `test/style_contract.js`; the runtime ones are also proven against the built artifact in `.github/workflows/deploy.yml`.
+
 ## Change policy
 
 1. Treat current production output as the visual baseline.

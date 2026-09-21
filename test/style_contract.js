@@ -2,7 +2,8 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const root = process.cwd();
-const read = (relPath) => fs.readFileSync(path.join(root, relPath), "utf8");
+// Normalize CRLF so multi-line contract patterns hold on Windows checkouts too.
+const read = (relPath) => fs.readFileSync(path.join(root, relPath), "utf8").replace(/\r\n/g, "\n");
 const exists = (relPath) => fs.existsSync(path.join(root, relPath));
 const failures = [];
 
@@ -130,6 +131,57 @@ requireAbsent(
   visualPlugin,
   ["site-polish.css", "site-upgrade.css", "hao-design.css", "hao-home-safe.css", "apply_home_portfolio_link"],
   "Site visual polish plugin",
+);
+
+// Runtime wiring: per-page runtimes must not be paid for by every page.
+requireRegex(config, /^enable_math:\s*false\b/m, "`_config.yml` must not load MathJax globally (`enable_math: false`).");
+requireRegex(
+  config,
+  /^enable_masonry:\s*false\b/m,
+  "`_config.yml` must not load Masonry globally (`enable_masonry: false`).",
+);
+requireRegex(config, /^og_image:\s*https:\/\/\S+/m, "`_config.yml` `og_image` must be an absolute URL for social scrapers.");
+requireAbsent(
+  config,
+  ["Roboto+Slab", "Material+Icons", "academicons@", "scholar-icons@"],
+  "`_config.yml` third-party libraries (unused families and icon sets)",
+);
+requireIncludes(
+  visualPlugin,
+  [
+    "MATH_MARKERS",
+    "def self.apply_math_scripts(page)",
+    "def self.apply_home_profile_alt(page)",
+    "assets/al_math/js/mathjax-setup.js",
+  ],
+  "Site visual polish plugin runtime wiring",
+);
+requireAbsent(visualPlugin, ["polyfill"], "Site visual polish plugin runtime wiring");
+
+// Every delimiter the theme's MathJax setup understands must stay detectable,
+// otherwise a math page silently loses its MathJax runtime.
+requireIncludes(
+  visualPlugin,
+  [
+    String.raw`/\$\$/`,
+    String.raw`/\\\(/`,
+    String.raw`/\\\[/`,
+    String.raw`/\\begin\{(?:equation|align|math)\}/`,
+    String.raw`/\$[^$\n]+\$/`,
+  ],
+  "Site visual polish plugin math markers",
+);
+
+requireIncludes(
+  read("assets/css/hao-home-center-fix.css"),
+  ["aspect-ratio"],
+  "Homepage profile stylesheet (reserved hero image box)",
+);
+
+requireRegex(
+  read("_pages/about.md"),
+  /^\s*alt:\s*\S/m,
+  "Homepage `profile` metadata must declare accessible alternative text.",
 );
 
 const aboutPage = read("_pages/about.md");

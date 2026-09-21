@@ -19,10 +19,11 @@ This site presents research, projects, working notes, and selected open-source t
 The site is built with Jekyll and the al-folio runtime, with local customizations kept intentionally thin:
 
 - `_config.yml` owns site identity, routing, analytics, and plugin configuration.
-- `_plugins/site_visual_polish.rb` injects local presentation layers after theme rendering.
-- `assets/css/site-polish.css` contains the established visual polish layer.
-- `assets/css/site-upgrade.css` contains newer page-level layout and performance refinements.
-- `.github/workflows/deploy.yml` builds and deploys the site through GitHub Pages.
+- `_plugins/site_visual_polish.rb` injects local presentation layers and per-page runtimes after theme rendering.
+- `assets/css/*.css` holds one scoped stylesheet per customized surface (see `docs/DESIGN_SYSTEM.md` for the ownership list).
+- `.github/workflows/deploy.yml` builds, verifies, and deploys the site through GitHub Pages.
+
+Theme files (`_includes/`, `_layouts/`, `_sass/`, `assets/tailwind/`) are provided by the `al_folio_core` and `al_*` gems and must not be forked into this repository; `test/style_contract.js` enforces that boundary.
 
 ## Local development
 
@@ -34,13 +35,15 @@ bundle exec jekyll serve
 
 Then open the local Jekyll URL shown in the terminal.
 
+On Windows, `bundle install` needs a working Ruby 3.3 install; if none is available, the Docker path (`docker compose up`) or CI is the supported alternative.
+
 ## Verification
 
 Use these checks before opening or merging visual/layout changes:
 
 ```bash
 npm run lint:style-contract
-npx prettier --check README.md assets/css/site-upgrade.css .github/workflows/deploy.yml test/style_contract.js
+npx prettier --check test/style_contract.js
 ruby -c _plugins/site_visual_polish.rb
 bundle exec jekyll build
 ```
