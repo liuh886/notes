@@ -133,7 +133,7 @@ html[data-theme="dark"] .hao-repositories-page {
 
 html[data-theme="dark"] .hao-repositories-page .repo-light,
 html:not([data-theme="dark"]) .hao-repositories-page .repo-dark {
-  display: none !important;
+  display: none;
 }
 
 .hao-repositories-page .repo-profile-card__fallback {

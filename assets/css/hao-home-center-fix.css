@@ -50,21 +50,21 @@ html[data-theme="dark"] .hao-home-page {
  * same lines as the navbar brand and menu, rather than its outer box.
  */
 .hao-home-page > .container[role="main"] {
-  box-sizing: border-box !important;
-  width: var(--hao-alfolio-content-shell) !important;
-  max-width: var(--hao-alfolio-content-shell-max) !important;
-  margin-right: auto !important;
-  margin-left: auto !important;
+  box-sizing: border-box;
+  width: var(--hao-alfolio-content-shell);
+  max-width: var(--hao-alfolio-content-shell-max);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .hao-home-page #navbar > .container,
 .hao-home-page #navbar > .container-fluid,
 .hao-home-page footer > .container {
-  box-sizing: border-box !important;
-  width: var(--hao-alfolio-nav-shell) !important;
-  max-width: var(--hao-alfolio-nav-shell-max) !important;
-  margin-right: auto !important;
-  margin-left: auto !important;
+  box-sizing: border-box;
+  width: var(--hao-alfolio-nav-shell);
+  max-width: var(--hao-alfolio-nav-shell-max);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .hao-home-page .post,
@@ -81,12 +81,12 @@ html[data-theme="dark"] .hao-home-page {
 
 /* Keep the native profile visible, but remove the duplicated name/role block. */
 .hao-home-page .profile {
-  visibility: visible !important;
-  opacity: 1 !important;
+  visibility: visible;
+  opacity: 1;
 }
 
 .hao-home-page .post > .post-header {
-  display: none !important;
+  display: none;
 }
 
 /*
@@ -112,10 +112,10 @@ html[data-theme="dark"] .hao-home-page {
 
 .hao-home-page .post > article > .profile {
   grid-area: profile;
-  float: none !important;
-  width: 100% !important;
-  max-width: var(--hao-home-profile-width) !important;
-  margin: 0 !important;
+  float: none;
+  width: 100%;
+  max-width: var(--hao-home-profile-width);
+  margin: 0;
   justify-self: end;
 }
 
@@ -151,15 +151,15 @@ html[data-theme="dark"] .hao-home-page {
 
 /* Homepage brand: same semantic class stack as the upstream al-folio header. */
 .hao-home-page .hao-home-navbar-brand {
-  display: inline-block !important;
-  text-decoration: none !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  display: inline-block;
+  text-decoration: none;
+  visibility: visible;
+  opacity: 1;
 }
 
 .hao-home-page .hao-home-navbar-brand::before,
 .hao-home-page .hao-home-navbar-brand::after {
-  content: none !important;
+  content: none;
 }
 
 .hao-home--alfolio *,
@@ -229,11 +229,11 @@ html[data-theme="dark"] .hao-home-page {
   border-radius: 999px;
   padding: 0.58rem 0.82rem;
   background: var(--hao-home-card-bg);
-  color: var(--hao-home-ink) !important;
+  color: var(--hao-home-ink);
   font-size: 0.86rem;
   font-weight: 600;
   line-height: 1;
-  text-decoration: none !important;
+  text-decoration: none;
   transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
 }
 
@@ -245,13 +245,13 @@ html[data-theme="dark"] .hao-home-page {
 .hao-home-archive-links a:focus-visible {
   border-color: color-mix(in srgb, var(--hao-home-accent) 45%, var(--hao-home-line));
   background: var(--hao-home-soft);
-  color: var(--hao-home-accent) !important;
+  color: var(--hao-home-accent);
 }
 
 .hao-home-button--primary {
   border-color: color-mix(in srgb, var(--hao-home-accent) 55%, var(--hao-home-line));
   background: var(--hao-home-soft);
-  color: var(--hao-home-accent) !important;
+  color: var(--hao-home-accent);
 }
 
 .hao-home-index {
@@ -404,24 +404,27 @@ html[data-theme="dark"] .hao-home-page {
   line-height: 1.58;
 }
 
-.hao-home-kind {
-  color: var(--hao-home-accent) !important;
-  font-size: 0.78rem !important;
+/* The kind label is always a paragraph inside a record/card, so it has to
+   out-specify `.hao-home-record p` by element + class instead of by a flag.
+   Both markup sites use `<p class="hao-home-kind">`. */
+p.hao-home-kind {
+  color: var(--hao-home-accent);
+  font-size: 0.78rem;
   font-weight: 650;
 }
 
 .hao-home-text-link {
   display: inline-flex;
   margin-top: 0.75rem;
-  color: var(--hao-home-accent) !important;
+  color: var(--hao-home-accent);
   font-size: 0.88rem;
   font-weight: 650;
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 .hao-home-text-link:hover,
 .hao-home-text-link:focus-visible {
-  text-decoration: underline !important;
+  text-decoration: underline;
 }
 
 .hao-home-system-group + .hao-home-system-group,
@@ -482,8 +485,8 @@ html[data-theme="dark"] .hao-home-page {
   }
 
   .hao-home-page .post > article > .profile {
-    width: min(100%, 22rem) !important;
-    max-width: 22rem !important;
+    width: min(100%, 22rem);
+    max-width: 22rem;
     justify-self: start;
   }
 
@@ -503,11 +506,11 @@ html[data-theme="dark"] .hao-home-page {
   .hao-home-page #navbar > .container,
   .hao-home-page #navbar > .container-fluid,
   .hao-home-page footer > .container {
-    width: min(calc(100% - 1.25rem), 64rem) !important;
+    width: min(calc(100% - 1.25rem), 64rem);
   }
 
   .hao-home-page .post > article > .profile {
-    width: 100% !important;
+    width: 100%;
   }
 
   .hao-home-card-grid,
