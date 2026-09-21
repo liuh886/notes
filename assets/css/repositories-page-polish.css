@@ -6,20 +6,20 @@
  */
 
 .hao-repositories-page {
-  --hao-repo-border: color-mix(in srgb, var(--global-text-color, #111827) 14%, transparent);
-  --hao-repo-border-soft: color-mix(in srgb, var(--global-text-color, #111827) 9%, transparent);
-  --hao-repo-muted: color-mix(in srgb, var(--global-text-color, #111827) 66%, transparent);
-  --hao-repo-surface: var(--global-bg-color, #ffffff);
-  --hao-repo-surface-soft: color-mix(in srgb, var(--global-text-color, #111827) 3%, transparent);
+  --hao-repo-border: color-mix(in srgb, var(--global-text-color) 14%, transparent);
+  --hao-repo-border-soft: color-mix(in srgb, var(--global-text-color) 9%, transparent);
+  --hao-repo-muted: color-mix(in srgb, var(--global-text-color) 66%, transparent);
+  --hao-repo-surface: var(--global-bg-color);
+  --hao-repo-surface-soft: color-mix(in srgb, var(--global-text-color) 3%, transparent);
   --hao-repo-radius: 10px;
   --hao-repo-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
 }
 
 html[data-theme="dark"] .hao-repositories-page {
-  --hao-repo-border: color-mix(in srgb, var(--global-text-color, #f8fafc) 20%, transparent);
-  --hao-repo-border-soft: color-mix(in srgb, var(--global-text-color, #f8fafc) 12%, transparent);
-  --hao-repo-surface: var(--global-card-bg-color, var(--global-bg-color, #111827));
-  --hao-repo-surface-soft: color-mix(in srgb, var(--global-text-color, #f8fafc) 5%, transparent);
+  --hao-repo-border: color-mix(in srgb, var(--global-text-color) 20%, transparent);
+  --hao-repo-border-soft: color-mix(in srgb, var(--global-text-color) 12%, transparent);
+  --hao-repo-surface: var(--global-card-bg-color);
+  --hao-repo-surface-soft: color-mix(in srgb, var(--global-text-color) 5%, transparent);
   --hao-repo-shadow: 0 16px 38px rgba(0, 0, 0, 0.25);
 }
 
@@ -289,7 +289,7 @@ html:not([data-theme="dark"]) .hao-repositories-page .repo-dark {
   outline-offset: 3px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .hao-repositories-page .repo-section__header {
     display: block;
   }

@@ -6,7 +6,13 @@
  * Secondary pages remain on the native al-folio baseline.
  */
 
-:root {
+/*
+ * Homepage tokens are scoped to the homepage body class so they cannot leak
+ * into secondary pages. Global `--global-*` values are owned by the theme and
+ * are always defined, so no fallbacks are declared for them; the only
+ * exception is `--global-code-font`, which the theme does not define.
+ */
+.hao-home-page {
   --hao-alfolio-content-shell-max: 81rem;
   --hao-alfolio-nav-shell-max: 84rem;
   --hao-alfolio-gutter: clamp(1rem, 3vw, 2.5rem);
@@ -19,12 +25,19 @@
     var(--hao-alfolio-nav-shell-max)
   );
   --hao-home-profile-width: clamp(17.5rem, 24vw, 20rem);
-  --hao-home-ink: var(--global-text-color, #111827);
-  --hao-home-muted: var(--global-text-color-light, #6b7280);
-  --hao-home-accent: var(--global-theme-color, #b80fb8);
-  --hao-home-line: var(--global-divider-color, #e5e7eb);
-  --hao-home-card-bg: var(--global-bg-color, #ffffff);
-  --hao-home-soft: color-mix(in srgb, var(--hao-home-accent) 5%, var(--global-bg-color, #ffffff));
+  --hao-home-ink: var(--global-text-color);
+  /* The theme's `--global-text-color-light` is #828282, which is only 3.8:1 on
+     the white card surface. Homepage captions are small text, so they own an
+     AA-compliant pair instead (4.8:1 light, 5.6:1 dark). */
+  --hao-home-muted: #6b7280;
+  --hao-home-accent: var(--global-theme-color);
+  --hao-home-line: var(--global-divider-color);
+  --hao-home-card-bg: var(--global-bg-color);
+  --hao-home-soft: color-mix(in srgb, var(--hao-home-accent) 5%, var(--global-bg-color));
+}
+
+html[data-theme="dark"] .hao-home-page {
+  --hao-home-muted: #9a9a9a;
 }
 
 .hao-home-page {
@@ -453,7 +466,7 @@
 }
 
 @media (max-width: 992px) {
-  :root {
+  .hao-home-page {
     --hao-alfolio-content-shell-max: 64rem;
     --hao-alfolio-nav-shell-max: 64rem;
     --hao-alfolio-gutter: clamp(0.9rem, 3.5vw, 1.5rem);
@@ -485,7 +498,7 @@
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .hao-home-page > .container[role="main"],
   .hao-home-page #navbar > .container,
   .hao-home-page #navbar > .container-fluid,

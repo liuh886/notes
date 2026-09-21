@@ -28,9 +28,9 @@
   border-radius: 48%;
   background: radial-gradient(
     ellipse at 64% 24%,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 10%, transparent) 0%,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 6%, transparent) 34%,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 3%, transparent) 52%,
+    color-mix(in srgb, var(--global-theme-color) 10%, transparent) 0%,
+    color-mix(in srgb, var(--global-theme-color) 6%, transparent) 34%,
+    color-mix(in srgb, var(--global-theme-color) 3%, transparent) 52%,
     transparent 72%
   );
   content: "";
@@ -56,7 +56,7 @@
   border-radius: 2rem;
   background: radial-gradient(
     circle at 56% 38%,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 9%, transparent),
+    color-mix(in srgb, var(--global-theme-color) 9%, transparent),
     transparent 64%
   );
   content: "";
@@ -65,7 +65,7 @@
 }
 
 .hao-home-page .post > article > .profile img {
-  border: 1px solid color-mix(in srgb, var(--global-theme-color, #b80fb8) 7%, var(--global-divider-color, #e5e7eb));
+  border: 1px solid color-mix(in srgb, var(--global-theme-color) 7%, var(--global-divider-color));
   border-radius: 1.05rem;
   box-shadow:
     0 1.5rem 3.25rem rgba(15, 23, 42, 0.09),
@@ -96,21 +96,32 @@
   pointer-events: none;
 }
 
-/* Current work: observation points and a faint measured field. */
+/*
+ * Current work: observation points plus a contour ring, held on the same
+ * contrast scale as the later sections. This texture owns `z-index: 0` instead
+ * of the shared `-1`, so its own children are lifted above it explicitly.
+ */
 .hao-home-page #current-work::before {
+  z-index: 0;
   background-image:
-    radial-gradient(
-      circle at 76% 22%,
-      color-mix(in srgb, var(--global-theme-color, #b80fb8) 5%, transparent),
-      transparent 36%
+    repeating-radial-gradient(
+      ellipse at 92% 72%,
+      transparent 0 2.8rem,
+      color-mix(in srgb, var(--global-theme-color) 6%, transparent) 2.85rem 2.91rem,
+      transparent 2.96rem 5.1rem
     ),
     radial-gradient(
-      color-mix(in srgb, var(--global-text-color, #111827) 7%, transparent) 0.65px,
-      transparent 0.75px
+      color-mix(in srgb, var(--global-text-color) 6%, transparent) 0.7px,
+      transparent 0.8px
     );
   background-position: center, 0 0;
-  background-size: auto, 29px 29px;
-  opacity: 0.74;
+  background-size: auto, 56px 56px;
+  opacity: 0.58;
+}
+
+.hao-home-page #current-work > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Projects & code: a subdued topographic field, offset from the reading column. */
@@ -119,12 +130,12 @@
     repeating-radial-gradient(
       ellipse at 88% 34%,
       transparent 0 2.35rem,
-      color-mix(in srgb, var(--global-theme-color, #b80fb8) 8%, transparent) 2.4rem 2.47rem,
+      color-mix(in srgb, var(--global-theme-color) 8%, transparent) 2.4rem 2.47rem,
       transparent 2.52rem 4.45rem
     ),
     radial-gradient(
       circle at 90% 58%,
-      color-mix(in srgb, var(--global-theme-color, #b80fb8) 4%, transparent),
+      color-mix(in srgb, var(--global-theme-color) 4%, transparent),
       transparent 42%
     );
   opacity: 0.55;
@@ -136,16 +147,16 @@
     repeating-radial-gradient(
       ellipse at 12% 70%,
       transparent 0 2.8rem,
-      color-mix(in srgb, var(--global-text-color, #111827) 6%, transparent) 2.85rem 2.91rem,
+      color-mix(in srgb, var(--global-text-color) 6%, transparent) 2.85rem 2.91rem,
       transparent 2.96rem 5.1rem
     ),
     linear-gradient(
       90deg,
-      color-mix(in srgb, var(--global-text-color, #111827) 3%, transparent) 1px,
+      color-mix(in srgb, var(--global-text-color) 3%, transparent) 1px,
       transparent 1px
     ),
     linear-gradient(
-      color-mix(in srgb, var(--global-text-color, #111827) 3%, transparent) 1px,
+      color-mix(in srgb, var(--global-text-color) 3%, transparent) 1px,
       transparent 1px
     );
   background-size: auto, 56px 56px, 56px 56px;
@@ -157,7 +168,7 @@
   background-image: repeating-radial-gradient(
     ellipse at 82% 118%,
     transparent 0 3rem,
-    color-mix(in srgb, var(--global-theme-color, #b80fb8) 6%, transparent) 3.05rem 3.12rem,
+    color-mix(in srgb, var(--global-theme-color) 6%, transparent) 3.05rem 3.12rem,
     transparent 3.17rem 5.6rem
   );
   opacity: 0.5;
@@ -227,7 +238,7 @@ html[data-theme="dark"] .hao-home-page #contact::before {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .hao-home-page .hao-home--alfolio::before {
     top: -7rem;
     right: -20rem;
@@ -239,7 +250,11 @@ html[data-theme="dark"] .hao-home-page #contact::before {
     inset: -1rem -0.8rem 1.4rem;
   }
 
-  .hao-home-page #current-work::before,
+  .hao-home-page #current-work::before {
+    background-position: 5rem 1rem, 0 0;
+    opacity: 0.44;
+  }
+
   .hao-home-page #notes-publications::before {
     opacity: 0.44;
   }

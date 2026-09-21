@@ -30,9 +30,12 @@ The homepage loads exactly these local stylesheets, in this order:
 
 1. `hao-home-center-fix.css`
 2. `hao-home-atmosphere-v2.css`
-3. `hao-home-current-work-texture-fix.css`
 
 Do not add another homepage fallback or patch layer. If the homepage changes, modify the stylesheet that owns the relevant behavior.
+
+- Homepage tokens live on `.hao-home-page`.
+- The Current work texture is owned by the atmosphere layer and uses `z-index: 0` rather than the shared `-1`, so `.hao-home-page #current-work > *` is lifted with `z-index: 1`. Keep those two rules together.
+- Homepage captions use the AA-compliant `--hao-home-muted` pair, not the theme's `--global-text-color-light`.
 
 ## Optical shell contract
 
