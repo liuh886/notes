@@ -127,6 +127,54 @@ const wheelY = async (target) => {
   return y;
 };
 
+test.describe("CV detail rows", () => {
+  test("stack on small screens so long values never break mid-token", async ({ browser }) => {
+    const context = await browser.newContext({ viewport: { width: 320, height: 800 } });
+    const target = await context.newPage();
+    await target.goto("/cv/", { waitUntil: "domcontentloaded" });
+
+    const data = await target.evaluate(() => {
+      const table = document.querySelector("table.table-cv");
+      const card = table.closest(".card").getBoundingClientRect();
+      const cells = [...table.querySelectorAll("td")].map((cell) => {
+        const rect = cell.getBoundingClientRect();
+        const style = getComputedStyle(cell);
+        return {
+          text: (cell.textContent || "").trim(),
+          x: Math.round(rect.left),
+          right: Math.round(rect.right),
+          y: Math.round(rect.top),
+          width: Math.round(rect.width),
+          height: Number(rect.height.toFixed(1)),
+          lineHeight: parseFloat(style.lineHeight),
+          display: style.display,
+        };
+      });
+      return { cardLeft: Math.round(card.left), cardRight: Math.round(card.right), cells };
+    });
+
+    expect(data.cells.length).toBeGreaterThanOrEqual(6);
+
+    // Label above value, both full width: two columns cannot fit the longest
+    // value at this width without breaking it mid-token.
+    for (let i = 0; i + 1 < data.cells.length; i += 2) {
+      const [label, value] = [data.cells[i], data.cells[i + 1]];
+      expect(label.display, `${label.text} should be stacked`).toBe("block");
+      expect(value.display, `${value.text} should be stacked`).toBe("block");
+      expect(Math.abs(label.width - value.width)).toBeLessThanOrEqual(2);
+      expect(value.y, `${value.text} should sit below ${label.text}`).toBeGreaterThan(label.y);
+    }
+
+    for (const cell of data.cells) {
+      expect(cell.x, `${cell.text} must stay inside the card`).toBeGreaterThanOrEqual(data.cardLeft);
+      expect(cell.right, `${cell.text} must stay inside the card`).toBeLessThanOrEqual(data.cardRight);
+      expect(cell.height, `${cell.text} should render on one line`).toBeLessThanOrEqual(cell.lineHeight * 1.5);
+    }
+
+    await context.close();
+  });
+});
+
 test.describe("pages cannot be scrolled sideways", () => {
   test("every page fits every breakpoint", async ({ browser }) => {
     const problems = [];

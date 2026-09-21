@@ -29,13 +29,34 @@
 }
 
 @media (max-width: 576px) {
-  .hao-cv-page table.table-cv {
+  /*
+   * Stack the detail rows instead of keeping two columns. Two columns left the
+   * value column narrower than its longest token, which pushed the table 4px
+   * past a 320px viewport and let the page be dragged sideways; squeezing it
+   * with `overflow-wrap: anywhere` fixed the overflow but broke the email
+   * mid-token. Stacked, the value gets the full card width and needs no
+   * mid-word break.
+   */
+  .hao-cv-page table.table-cv,
+  .hao-cv-page table.table-cv tbody,
+  .hao-cv-page table.table-cv tr,
+  .hao-cv-page table.table-cv td {
+    display: block;
     width: 100%;
     max-width: 100%;
   }
 
-  .hao-cv-page table.table-cv td,
-  .hao-cv-page table.table-cv th {
-    overflow-wrap: anywhere;
+  .hao-cv-page table.table-cv tr + tr {
+    margin-top: 0.7rem;
+  }
+
+  .hao-cv-page table.table-cv td {
+    padding: 0;
+  }
+
+  /* Safety net for a token longer than the card. */
+  .hao-cv-page table.table-cv td + td {
+    margin-top: 0.1rem;
+    overflow-wrap: break-word;
   }
 }
