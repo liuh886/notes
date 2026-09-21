@@ -148,10 +148,9 @@ test.describe("consent", () => {
     await page.goto("/", { waitUntil: "load" });
     await page.waitForTimeout(2000);
 
-    // Cloudflare Web Analytics is deliberately excluded: it is cookieless and
-    // sets no visitor identifier, so it is not part of the consent choice.
-    const loaded = requests.filter((url) => url.includes("googletagmanager.com"));
-    expect(loaded, `nothing may load from Google Analytics before a choice, saw ${loaded.length}`).toEqual([]);
+    // Nothing analytics-shaped may load before a choice.
+    const beforeChoice = requests.filter((url) => /googletagmanager\.com|cloudflareinsights\.com/.test(url));
+    expect(beforeChoice, `nothing may load from analytics before a choice, saw ${beforeChoice.length}`).toEqual([]);
 
     // The choice has to be offered, or the gate would only be a silent block.
     // `#cc-main` is an empty `position: fixed` wrapper (0x0 box), so visibility
@@ -160,6 +159,25 @@ test.describe("consent", () => {
     await expect(page.locator("#cc-main .cm")).toBeVisible({ timeout: 20000 });
     await expect(page.getByRole("button", { name: /accept all/i }).first()).toBeVisible();
     await expect(page.getByRole("button", { name: /reject all/i }).first()).toBeVisible();
+
+    // Accepting has to actually release the gate, otherwise the consent choice
+    // would be a permanent silent block instead of a choice.
+    await page
+      .getByRole("button", { name: /accept all/i })
+      .first()
+      .click();
+    await expect
+      .poll(() => requests.filter((url) => url.includes("cloudflareinsights.com")).length, {
+        timeout: 30000,
+        message: "the Cloudflare beacon should load once analytics is accepted",
+      })
+      .toBeGreaterThan(0);
+    await expect
+      .poll(() => requests.filter((url) => url.includes("googletagmanager.com")).length, {
+        timeout: 30000,
+        message: "Google Analytics should load once analytics is accepted",
+      })
+      .toBeGreaterThan(0);
 
     await context.close();
   });
