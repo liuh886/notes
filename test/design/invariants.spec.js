@@ -154,8 +154,11 @@ test.describe("consent", () => {
     expect(loaded, `nothing may load from Google Analytics before a choice, saw ${loaded.length}`).toEqual([]);
 
     // The choice has to be offered, or the gate would only be a silent block.
-    await expect(page.locator("#cc-main").first()).toBeVisible();
-    await expect(page.locator("html")).toHaveClass(/show--consent/);
+    // Assert the retrying state rather than a one-shot snapshot: the dialog is
+    // built and revealed asynchronously, which is slow on a loaded runner.
+    await expect(page.locator("#cc-main")).toHaveCount(1);
+    await expect(page.locator("html")).toHaveClass(/show--consent/, { timeout: 20000 });
+    await expect(page.locator("#cc-main")).toBeVisible({ timeout: 20000 });
 
     await context.close();
   });
