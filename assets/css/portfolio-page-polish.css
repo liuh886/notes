@@ -7,20 +7,20 @@
  */
 
 .hao-portfolio-page {
-  --hao-portfolio-line: color-mix(in srgb, var(--global-text-color, #111827) 13%, transparent);
-  --hao-portfolio-line-soft: color-mix(in srgb, var(--global-text-color, #111827) 8%, transparent);
-  --hao-portfolio-muted: color-mix(in srgb, var(--global-text-color, #111827) 66%, transparent);
-  --hao-portfolio-surface: var(--global-card-bg-color, var(--global-bg-color, #ffffff));
-  --hao-portfolio-surface-soft: color-mix(in srgb, var(--global-theme-color, #b80fb8) 3%, var(--global-bg-color, #ffffff));
+  --hao-portfolio-line: color-mix(in srgb, var(--global-text-color) 13%, transparent);
+  --hao-portfolio-line-soft: color-mix(in srgb, var(--global-text-color) 8%, transparent);
+  --hao-portfolio-muted: color-mix(in srgb, var(--global-text-color) 66%, transparent);
+  --hao-portfolio-surface: var(--global-card-bg-color);
+  --hao-portfolio-surface-soft: color-mix(in srgb, var(--global-theme-color) 3%, var(--global-bg-color));
   --hao-portfolio-radius: 12px;
   --hao-portfolio-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
 }
 
 html[data-theme="dark"] .hao-portfolio-page {
-  --hao-portfolio-line: color-mix(in srgb, var(--global-text-color, #f8fafc) 20%, transparent);
-  --hao-portfolio-line-soft: color-mix(in srgb, var(--global-text-color, #f8fafc) 12%, transparent);
-  --hao-portfolio-muted: color-mix(in srgb, var(--global-text-color, #f8fafc) 68%, transparent);
-  --hao-portfolio-surface-soft: color-mix(in srgb, var(--global-theme-color, #b80fb8) 6%, var(--global-bg-color, #111827));
+  --hao-portfolio-line: color-mix(in srgb, var(--global-text-color) 20%, transparent);
+  --hao-portfolio-line-soft: color-mix(in srgb, var(--global-text-color) 12%, transparent);
+  --hao-portfolio-muted: color-mix(in srgb, var(--global-text-color) 68%, transparent);
+  --hao-portfolio-surface-soft: color-mix(in srgb, var(--global-theme-color) 6%, var(--global-bg-color));
   --hao-portfolio-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
 }
 

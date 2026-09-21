@@ -74,7 +74,6 @@ const productionCss = [
   "assets/css/footer-build.css",
   "assets/css/hao-home-center-fix.css",
   "assets/css/hao-home-atmosphere-v2.css",
-  "assets/css/hao-home-current-work-texture-fix.css",
   "assets/css/cv-toc-polish.css",
   "assets/css/repositories-page-polish.css",
   "assets/css/portfolio-page-polish.css",
@@ -89,6 +88,7 @@ const obsoleteCss = [
   "assets/css/hao-home-safe.css",
   "assets/css/site-polish.css",
   "assets/css/site-upgrade.css",
+  "assets/css/hao-home-current-work-texture-fix.css",
   "assets/css/mission-log-deployments.css",
   "assets/css/mission-log-records.css",
   "assets/css/mission-log-observations.css",
@@ -110,7 +110,6 @@ requireIncludes(
     "HOMEPAGE_STYLESHEETS",
     "hao-home-center-fix.css",
     "hao-home-atmosphere-v2.css",
-    "hao-home-current-work-texture-fix.css",
     "CV_STYLESHEETS",
     "cv-toc-polish.css",
     "REPOSITORIES_STYLESHEETS",
@@ -285,10 +284,29 @@ requireIncludes(
     '"index index"',
     ".hao-home-navbar-brand",
     "@media (max-width: 992px)",
-    "@media (max-width: 760px)",
+    "@media (max-width: 768px)",
+    // Homepage tokens are body-scoped, and muted captions own an AA pair
+    // (4.8:1 light, 5.6:1 dark) instead of the theme's 3.8:1 text-light value.
+    ".hao-home-page {\n  --hao-alfolio-content-shell-max: 81rem",
+    "--hao-home-muted: #6b7280",
   ],
   "Homepage CSS",
 );
+requireIncludes(homeCss, ["html[data-theme=\"dark\"] .hao-home-page {\n  --hao-home-muted: #9a9a9a"], "Homepage CSS");
+
+// The theme defines every `--global-*` token these layers read, so declaring a
+// fallback would silently shadow theme changes and reintroduce dead literals.
+const themeOwnedTokens = [
+  "var(--global-theme-color,",
+  "var(--global-text-color,",
+  "var(--global-text-color-light,",
+  "var(--global-bg-color,",
+  "var(--global-divider-color,",
+  "var(--global-card-bg-color,",
+];
+for (const cssPath of productionCss) {
+  requireAbsent(read(cssPath), themeOwnedTokens, `${cssPath} (theme-owned tokens must have no fallback)`);
+}
 
 const cvCss = read("assets/css/cv-toc-polish.css");
 requireIncludes(cvCss, ["scrollbar-width: none", "-ms-overflow-style: none", "::-webkit-scrollbar"], "CV TOC CSS");

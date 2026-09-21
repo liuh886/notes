@@ -59,7 +59,7 @@ requireIncludes(
     'html[data-theme="dark"] .hao-repositories-page .repo-light',
     'html:not([data-theme="dark"]) .hao-repositories-page .repo-dark',
     "overflow-wrap: anywhere",
-    "@media (max-width: 767px)",
+    "@media (max-width: 768px)",
     "grid-template-columns: 1fr",
   ],
   "Repositories stylesheet",

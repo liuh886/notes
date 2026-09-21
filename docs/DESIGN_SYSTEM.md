@@ -82,7 +82,6 @@ Only production-loaded stylesheets should remain.
 
 - `assets/css/hao-home-center-fix.css`
 - `assets/css/hao-home-atmosphere-v2.css`
-- `assets/css/hao-home-current-work-texture-fix.css`
 
 ### Secondary pages
 
@@ -94,6 +93,13 @@ Only production-loaded stylesheets should remain.
 Do not add another `safe`, `fix`, `vN`, `upgrade`, or fallback stylesheet for an existing surface. Change the stylesheet that owns that surface.
 
 Unused historical visual layers should be deleted once production injection and source references confirm they are not used.
+
+### Token rules
+
+- Theme tokens (`--global-*`) are owned by the theme. Every one this repository reads except `--global-code-font` is always defined, so local layers must not declare fallbacks for them: a fallback that never applies hides theme drift and reintroduces dead literals.
+- Surface tokens (`--hao-*`) are declared on the narrowest selector that can own them. The homepage declares its tokens on `.hao-home-page` so they cannot leak into secondary pages.
+- Muted text is a contrast decision, not an inherited default. The theme's `--global-text-color-light` (#828282) is 3.8:1 on the white surface, so homepage captions declare their own pair (#6b7280 light, #9a9a9a dark) to stay above 4.5:1.
+- Breakpoints come from the shared scale only: 576, 768, 992. Do not introduce one-off thresholds.
 
 ## Frontend architecture
 

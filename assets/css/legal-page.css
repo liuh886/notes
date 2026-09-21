@@ -15,7 +15,7 @@
 
 .hao-legal-page .post-description {
   max-width: 42rem;
-  color: color-mix(in srgb, var(--global-text-color, #111827) 62%, transparent);
+  color: color-mix(in srgb, var(--global-text-color) 62%, transparent);
   line-height: 1.65;
 }
 
@@ -27,7 +27,7 @@
 
 .hao-legal-document p,
 .hao-legal-document li {
-  color: color-mix(in srgb, var(--global-text-color, #111827) 82%, transparent);
+  color: color-mix(in srgb, var(--global-text-color) 82%, transparent);
   font-size: 1rem;
   line-height: 1.78;
 }
@@ -42,7 +42,7 @@
 
 .hao-legal-document .hao-legal-meta {
   margin: 0 0 2.6rem;
-  color: color-mix(in srgb, var(--global-text-color, #111827) 56%, transparent);
+  color: color-mix(in srgb, var(--global-text-color) 56%, transparent);
   font-size: 0.86rem;
   letter-spacing: 0.01em;
 }
@@ -50,7 +50,7 @@
 .hao-legal-document h2 {
   margin: 2.7rem 0 0.8rem;
   padding-top: 1.35rem;
-  border-top: 1px solid color-mix(in srgb, var(--global-text-color, #111827) 11%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--global-text-color) 11%, transparent);
   font-size: clamp(1.22rem, 2vw, 1.48rem);
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -77,7 +77,7 @@
   gap: 0.7rem 1.15rem;
   margin-top: 3.25rem;
   padding-top: 1.25rem;
-  border-top: 1px solid color-mix(in srgb, var(--global-text-color, #111827) 11%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--global-text-color) 11%, transparent);
   font-size: 0.92rem;
 }
 
