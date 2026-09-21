@@ -455,7 +455,11 @@ lazy_loading_images: true # enables lazy loading of images (recommended)
 
 enable_google_verification: true # enables google site verification
 enable_bing_verification: false # enables bing site verification
-enable_cookie_consent: false # enables GDPR-compliant cookie consent dialog (https://github.com/orestbida/cookieconsent)
+# Enabling this gates every configured analytics script behind an explicit
+# consent choice: `al_analytics` then emits `type="text/plain"
+# data-category="analytics"`, which never loads until the visitor accepts, and
+# `al_cookie` ships the banner, the consent record, and the dark-mode sync.
+enable_cookie_consent: true # enables GDPR-compliant cookie consent dialog (https://github.com/orestbida/cookieconsent)
 enable_masonry: false # no template emits `.grid`/`.grid-item`; Masonry was a no-op on every page
 enable_math: false # MathJax is requested per page by the math posts/projects themselves
 enable_tooltips: false # enables automatic tooltip links generated for each section titles on pages and posts

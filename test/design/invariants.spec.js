@@ -127,6 +127,28 @@ const wheelY = async (target) => {
   return y;
 };
 
+test.describe("consent", () => {
+  test("analytics wait for a choice, and the choice is offered", async ({ browser }) => {
+    const context = await browser.newContext();
+    const requests = [];
+    context.on("request", (request) => requests.push(request.url()));
+    const page = await context.newPage();
+
+    await page.goto("/", { waitUntil: "load" });
+    await page.waitForTimeout(2000);
+
+    // Cloudflare Web Analytics is deliberately excluded: it is cookieless and
+    // sets no visitor identifier, so it is not part of the consent choice.
+    const loaded = requests.filter((url) => url.includes("googletagmanager.com"));
+    expect(loaded, `nothing may load from Google Analytics before a choice, saw ${loaded.length}`).toEqual([]);
+
+    // The choice has to be offered, or the gate would only be a silent block.
+    await expect(page.locator("#cc-main, .cc-window, [class*='cc']").first()).toBeVisible();
+
+    await context.close();
+  });
+});
+
 test.describe("portfolio widgets", () => {
   test("only promote the variants that are on screen", async ({ page }) => {
     await page.goto("/portfolio/", { waitUntil: "domcontentloaded" });
