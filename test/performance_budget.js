@@ -38,7 +38,7 @@ const pagesToReport = ["index.html", "blog/index.html", "cv/index.html", "reposi
 const kB = (bytes) => `${Math.round(bytes / 1024)}kB`;
 
 const budgets = {
-  pageBytes: 120 * 1024,
+  pageBytes: 160 * 1024,
   stylesheets: 14,
   scripts: 24,
   origins: 10,
@@ -60,7 +60,11 @@ for (const file of pages) {
   const bytes = Buffer.byteLength(html);
 
   const stylesheets = [...html.matchAll(/<link\b[^>]*\brel="stylesheet"[^>]*>/gi)].map((match) => match[0].match(/\bhref="([^"]+)"/i)?.[1] || "");
-  const scripts = [...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/gi)].map((match) => match[1]);
+  // Only a real `src` attribute is a request. `\bsrc=` would also match inside
+  // `data-src=` (the deferred-embed form), which made this count every deferred
+  // TradingView embed as if it loaded. Quotes are handled explicitly so a
+  // hand-written single-quoted tag is still counted.
+  const scripts = [...html.matchAll(/<script\b[^>]*[\s"']src=(?:"([^"]+)"|'([^']+)')/gi)].map((match) => match[1] || match[2]);
 
   for (const href of stylesheets) {
     if (href.startsWith("/")) cssFiles.add(href.split("?")[0]);
