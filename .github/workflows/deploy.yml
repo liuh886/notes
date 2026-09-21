@@ -220,6 +220,9 @@ jobs:
       - name: PurgeCSS 🔧
         run: npx --yes purgecss@7.0.2 -c purgecss.config.js
 
+      - name: Enforce page-weight budget 📉
+        run: node test/performance_budget.js _site
+
       - name: Configure GitHub Pages
         if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v6
