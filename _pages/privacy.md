@@ -10,7 +10,7 @@ sitemap: true
 <div class="hao-legal-document">
   <p class="hao-legal-lead">This Privacy Policy explains how Hao Apps and zhihaol.eu.org handle information when you visit the website, use supported applications, or choose to sign in with a third-party account.</p>
 
-  <p class="hao-legal-meta"><strong>Effective date:</strong> 9 August 2026</p>
+  <p class="hao-legal-meta"><strong>Effective date:</strong> 22 September 2026</p>
 
   <h2>1. Scope</h2>
   <p>Hao Apps is a collection of web applications and research tools maintained by Zhihao LIU. This policy applies to zhihaol.eu.org and to Hao Apps that reference this page as their privacy policy.</p>
@@ -33,6 +33,8 @@ sitemap: true
 
   <h2>5. Analytics</h2>
   <p>Analytics are intentionally kept lightweight. Cloudflare Web Analytics may be used for aggregate traffic and performance measurement. Where Google Analytics is enabled, it is used for page views and a small number of explicit product events. Sensitive user content is not intentionally included in analytics event payloads.</p>
+
+  <p>Analytics only run after you accept them. The website asks once, and no analytics script is requested until the analytics category is accepted; the answer is stored in a first-party cookie named <code>cc_cookie</code> that expires after about six months. Clearing your browser storage for this site removes that answer, and you will be asked again on your next visit. Cloudflare Web Analytics is cookieless and sets no visitor identifier.</p>
 
   <h2>6. Service providers</h2>
   <p>Information may be processed by service providers that are necessary to operate the services, including hosting, authentication, analytics, and infrastructure providers. For example, supported applications may use Supabase for authentication and account services, GitHub Pages for hosting, Cloudflare for web analytics and delivery-related services, and third-party identity providers selected by the user.</p>

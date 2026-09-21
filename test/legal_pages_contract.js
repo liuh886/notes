@@ -9,6 +9,15 @@ const requireIncludes = (source, values, label) => {
   }
 };
 
+const requireRegex = (source, regex, message) => {
+  if (!regex.test(source)) failures.push(message);
+};
+
+// The effective date is editorial copy that legitimately changes when a policy
+// is revised, so only its shape is an invariant here. Pinning the exact date
+// meant every policy edit needed a test edit in the same change.
+const effectiveDate = /Effective date:<\/strong>\s*\d{1,2} [A-Z][a-z]+ \d{4}/;
+
 const privacy = read("_pages/privacy.md");
 requireIncludes(
   privacy,
@@ -21,10 +30,11 @@ requireIncludes(
     "Google Analytics",
     "We do not sell personal information.",
     "does not use social-login access to read timelines",
-    "Effective date:</strong> 9 August 2026",
+    "cc_cookie",
   ],
   "Privacy Policy",
 );
+requireRegex(privacy, effectiveDate, "Privacy Policy must carry an effective date.");
 
 const terms = read("_pages/terms.md");
 requireIncludes(
@@ -36,10 +46,10 @@ requireIncludes(
     "Google, GitHub, X, or Apple",
     "do not constitute personalized investment",
     "Historical performance, model outputs, forecasts, rankings, and simulations do not guarantee future results.",
-    "Effective date:</strong> 9 August 2026",
   ],
   "Terms of Service",
 );
+requireRegex(terms, effectiveDate, "Terms of Service must carry an effective date.");
 
 const plugin = read("_plugins/site_visual_polish.rb");
 requireIncludes(
