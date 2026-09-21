@@ -356,9 +356,16 @@ scholar:
   group_order: descending
 # Display different badges withs stats for your publications
 # Customize badge behavior in _layouts/bib.liquid
+#
+# The badge markup is gated by these flags, and so are the third-party scripts
+# (Altmetric, Dimensions) that the theme loads on EVERY page. No entry in
+# _bibliography/papers.bib uses the `altmetric` or `dimensions` field, so both
+# scripts were fetched site-wide to render nothing. Enable a badge in the same
+# change that starts using its field: test/style_contract.js fails if a field is
+# used while its badge is off, and if a badge is on while its field is unused.
 enable_publication_badges:
-  altmetric: true # Altmetric badge (Customization options: https://badge-docs.altmetric.com/index.html)
-  dimensions: true # Dimensions badge (Customization options: https://badge.dimensions.ai/)
+  altmetric: false # Altmetric badge (Customization options: https://badge-docs.altmetric.com/index.html)
+  dimensions: false # Dimensions badge (https://badge.dimensions.ai/)
   google_scholar: false # Google Scholar badge (https://scholar.google.com/intl/en/scholar/citations.html)
   inspirehep: false # Inspire HEP badge (https://help.inspirehep.net/knowledge-base/citation-metrics/)
 

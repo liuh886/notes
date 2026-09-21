@@ -155,6 +155,24 @@ requireIncludes(read("assets/fonts/roboto.css"), ["@font-face", "font-family: 'R
 requireAbsent(read("assets/fonts/roboto.css"), ["gstatic", "url(https://", "url(http://"], "Self-hosted font stylesheet");
 const fontFiles = fs.readdirSync(path.join(root, "assets/fonts/roboto")).filter((file) => file.endsWith(".woff2"));
 if (fontFiles.length === 0) failures.push("Self-hosted font directory must contain woff2 files.");
+
+// Publication badges cost a third-party script on every page, so the
+// bibliography field and the badge flag have to agree. Without this, adding
+// `altmetric` to a paper silently renders no badge, and leaving the flag on
+// with no field silently loads an unused tracker site-wide.
+const bibliography = read("_bibliography/papers.bib");
+for (const field of ["altmetric", "dimensions"]) {
+  const fieldUsed = new RegExp(`^\\s*${field}\\s*=`, "m").test(bibliography);
+  const badgeEnabled = new RegExp(`^\\s*${field}:\\s*true\\b`, "m").test(config);
+  if (fieldUsed && !badgeEnabled) {
+    failures.push(`\`_bibliography/papers.bib\` uses \`${field}\` but \`enable_publication_badges.${field}\` is false.`);
+  }
+  if (!fieldUsed && badgeEnabled) {
+    failures.push(
+      `\`enable_publication_badges.${field}\` loads a third-party script on every page while no bibliography entry uses \`${field}\`.`,
+    );
+  }
+}
 requireIncludes(
   visualPlugin,
   [
