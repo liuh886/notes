@@ -239,6 +239,22 @@ jobs:
           curl -fsS http://127.0.0.1:8080/ >/dev/null
           npx playwright test --config test/design/playwright.config.js
 
+      - name: Verify consent gating 🔒
+        run: |
+          set -euo pipefail
+          if ! grep -q 'type="text/plain" data-category="analytics"' _site/index.html; then
+            echo "Analytics must be authored as a consent-gated script block." >&2
+            exit 1
+          fi
+          grep -q 'CookieConsent.run' _site/index.html
+          grep -q 'vanilla-cookieconsent' _site/index.html
+          for ungated in '<script async src="https://www.googletagmanager.com' '<script defer src="https://www.googletagmanager.com' '<script src="https://www.googletagmanager.com'; do
+            if grep -qF -- "$ungated" _site/index.html; then
+              echo "Google Analytics must not be able to load before consent: $ungated" >&2
+              exit 1
+            fi
+          done
+
       - name: Configure GitHub Pages
         if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v6

@@ -127,6 +127,44 @@ const wheelY = async (target) => {
   return y;
 };
 
+test.describe("consent", () => {
+  test("analytics wait for a choice, and the choice is offered", async ({ browser }) => {
+    // The consent library hides itself from automated browsers by default
+    // (`hideFromBots` checks `navigator.webdriver`), so the dialog never renders
+    // in a plain Playwright context and the assertion below would be vacuous.
+    // Masking the flag and presenting a normal user agent reproduces what a real
+    // visitor gets; it changes nothing about how the scripts are gated.
+    const context = await browser.newContext({
+      userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    });
+    await context.addInitScript(() => {
+      Object.defineProperty(navigator, "webdriver", { get: () => false });
+    });
+
+    const requests = [];
+    context.on("request", (request) => requests.push(request.url()));
+    const page = await context.newPage();
+
+    await page.goto("/", { waitUntil: "load" });
+    await page.waitForTimeout(2000);
+
+    // Cloudflare Web Analytics is deliberately excluded: it is cookieless and
+    // sets no visitor identifier, so it is not part of the consent choice.
+    const loaded = requests.filter((url) => url.includes("googletagmanager.com"));
+    expect(loaded, `nothing may load from Google Analytics before a choice, saw ${loaded.length}`).toEqual([]);
+
+    // The choice has to be offered, or the gate would only be a silent block.
+    // `#cc-main` is an empty `position: fixed` wrapper (0x0 box), so visibility
+    // has to be asserted on the dialog it contains, not on the host.
+    await expect(page.locator("html")).toHaveClass(/show--consent/, { timeout: 20000 });
+    await expect(page.locator("#cc-main .cm")).toBeVisible({ timeout: 20000 });
+    await expect(page.getByRole("button", { name: /accept all/i }).first()).toBeVisible();
+    await expect(page.getByRole("button", { name: /reject all/i }).first()).toBeVisible();
+
+    await context.close();
+  });
+});
+
 test.describe("portfolio widgets", () => {
   test("only promote the variants that are on screen", async ({ page }) => {
     await page.goto("/portfolio/", { waitUntil: "domcontentloaded" });
