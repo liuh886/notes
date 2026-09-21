@@ -4,6 +4,11 @@
  * Tocbot keeps the left navigation vertically scrollable on long CV pages. Hide
  * the native scrollbar chrome without disabling wheel, touch, or keyboard
  * scrolling.
+ *
+ * The CV body also lives here because it is CV-only: the two-column detail table
+ * could not shrink below the min-content width of its longest value, so it
+ * pushed 4px past the viewport on a 320px screen and the page could be dragged
+ * sideways. Letting those cells break lets the table fit its card.
  */
 
 .hao-cv-page #toc-sidebar,
@@ -21,4 +26,16 @@
 
 .hao-cv-page #toc-sidebar {
   overscroll-behavior: contain;
+}
+
+@media (max-width: 576px) {
+  .hao-cv-page table.table-cv {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hao-cv-page table.table-cv td,
+  .hao-cv-page table.table-cv th {
+    overflow-wrap: anywhere;
+  }
 }

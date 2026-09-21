@@ -223,6 +223,22 @@ jobs:
       - name: Enforce page-weight budget 📉
         run: node test/performance_budget.js _site
 
+      - name: Install browser for design checks 🌐
+        run: npx playwright install --with-deps chromium
+
+      - name: Verify design invariants in a browser 🎨
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8080 --directory _site >/dev/null 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for _ in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8080/ >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:8080/ >/dev/null
+          npx playwright test --config test/design/playwright.config.js
+
       - name: Configure GitHub Pages
         if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v6
