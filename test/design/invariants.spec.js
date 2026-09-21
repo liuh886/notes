@@ -1,7 +1,9 @@
 const { test, expect } = require("@playwright/test");
 
-const LIGHT = { accent: "#b509ac", muted: "rgb(107, 114, 128)" };
-const DARK = { accent: "#2698ba", muted: "rgb(154, 154, 154)" };
+// `--global-theme-color` is read as an authored value (hex), while toHaveCSS
+// compares computed values (rgb), so both forms are kept side by side.
+const LIGHT = { accent: "#b509ac", accentRgb: "rgb(181, 9, 172)", muted: "rgb(107, 114, 128)" };
+const DARK = { accent: "#2698ba", accentRgb: "rgb(38, 152, 186)", muted: "rgb(154, 154, 154)" };
 
 const viewports = [
   { name: "mobile-320", width: 320, height: 720 },
@@ -59,10 +61,10 @@ test.describe("homepage design invariants", () => {
 
     // The kind label used to rely on !important to out-rank `.hao-home-record p`.
     // Assert the rendered result so the cascade cannot regress silently.
-    await expect(page.locator("p.hao-home-kind").first()).toHaveCSS("color", LIGHT.accent);
+    await expect(page.locator("p.hao-home-kind").first()).toHaveCSS("color", LIGHT.accentRgb);
     await expect(page.locator("p.hao-home-kind").first()).toHaveCSS("font-size", "12.48px");
     await setTheme(page, "dark");
-    await expect(page.locator("p.hao-home-kind").first()).toHaveCSS("color", DARK.accent);
+    await expect(page.locator("p.hao-home-kind").first()).toHaveCSS("color", DARK.accentRgb);
   });
 
   test("uses the theme accent and an AA muted caption in both modes", async ({ page }) => {
