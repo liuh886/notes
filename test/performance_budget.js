@@ -38,20 +38,11 @@ const pagesToReport = ["index.html", "blog/index.html", "cv/index.html", "reposi
 const kB = (bytes) => `${Math.round(bytes / 1024)}kB`;
 
 const budgets = {
-  pageBytes: 150 * 1024,
-  stylesheets: 16,
-  scripts: 40,
+  pageBytes: 120 * 1024,
+  stylesheets: 14,
+  scripts: 24,
   origins: 10,
   localCssBytes: 200 * 1024,
-};
-
-// Pages that are script-heavy by design, with the ceiling each one is allowed
-// instead of the global one. Every entry needs a reason.
-const pageExceptions = {
-  // Eight TradingView widgets plus the tab switcher. Deferring the embeds until
-  // their tab or viewport is reached is the way to bring this under the global
-  // budget; until then the exception is explicit rather than silently raised.
-  "portfolio/index.html": { scripts: 48 },
 };
 
 // Runtimes that were removed from this site on purpose. Re-appearing means a
@@ -90,11 +81,8 @@ for (const file of pages) {
   if (stylesheets.length > budgets.stylesheets) {
     failures.push(`\`${relative}\` requests ${stylesheets.length} stylesheets (budget ${budgets.stylesheets}).`);
   }
-  const scriptBudget = pageExceptions[relative]?.scripts ?? budgets.scripts;
-  if (scripts.length > scriptBudget) {
-    failures.push(
-      `\`${relative}\` requests ${scripts.length} scripts (budget ${scriptBudget}${pageExceptions[relative] ? " — page exception" : ""}).`
-    );
+  if (scripts.length > budgets.scripts) {
+    failures.push(`\`${relative}\` requests ${scripts.length} scripts (budget ${budgets.scripts}).`);
   }
 
   if (pagesToReport.includes(relative)) {

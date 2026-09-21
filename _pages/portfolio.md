@@ -28,7 +28,7 @@ Understanding market volatility and correlations is crucial for the energy trans
 <div class="stock-widget my-4 stock-widget--ticker">
   <div class="tradingview-widget-container stock-widget-light">
     <div class="tradingview-widget-container__widget"></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    <script type="text/tradingview" data-src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
       {
         "symbols": [
           {% for symbol in stock_symbols %}
@@ -49,7 +49,7 @@ Understanding market volatility and correlations is crucial for the energy trans
 
   <div class="tradingview-widget-container stock-widget-dark">
     <div class="tradingview-widget-container__widget"></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    <script type="text/tradingview" data-src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
       {
         "symbols": [
           {% for symbol in stock_symbols %}
@@ -72,7 +72,7 @@ Understanding market volatility and correlations is crucial for the energy trans
 <div class="stock-widget stock-widget--overview my-4">
   <div class="tradingview-widget-container stock-widget-light">
     <div class="tradingview-widget-container__widget"></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+    <script type="text/tradingview" data-src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js">
       {
         "symbols": [
           {% for symbol in stock_symbols %}["{{ symbol | escape }}"]{% unless forloop.last %},{% endunless %}{% endfor %}
@@ -99,7 +99,7 @@ Understanding market volatility and correlations is crucial for the energy trans
 
   <div class="tradingview-widget-container stock-widget-dark">
     <div class="tradingview-widget-container__widget"></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+    <script type="text/tradingview" data-src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js">
       {
         "symbols": [
           {% for symbol in stock_symbols %}["{{ symbol | escape }}"]{% unless forloop.last %},{% endunless %}{% endfor %}
@@ -132,7 +132,7 @@ Understanding market volatility and correlations is crucial for the energy trans
     <div class="stock-widget my-4">
       <div class="tradingview-widget-container stock-widget-light stock-widget--story">
         <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+        <script type="text/tradingview" data-src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js">
           {
             "feedMode": "all_symbols",
             "isTransparent": false,
@@ -147,7 +147,7 @@ Understanding market volatility and correlations is crucial for the energy trans
 
       <div class="tradingview-widget-container stock-widget-dark stock-widget--story">
         <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+        <script type="text/tradingview" data-src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js">
           {
             "feedMode": "all_symbols",
             "isTransparent": false,
@@ -183,7 +183,7 @@ Understanding market volatility and correlations is crucial for the energy trans
           <div class="stock-analysis__panel{% if symbol == default_symbol %} is-active{% endif %}" data-analysis-panel="{{ widget_id }}" data-symbol="{{ symbol | escape }}">
             <div class="tradingview-widget-container stock-widget-light stock-widget--analysis">
               <div class="tradingview-widget-container__widget"></div>
-              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+              <script type="text/tradingview" data-src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js">
                 {
                   "interval": "1D",
                   "width": "100%",
@@ -200,7 +200,7 @@ Understanding market volatility and correlations is crucial for the energy trans
 
             <div class="tradingview-widget-container stock-widget-dark stock-widget--analysis">
               <div class="tradingview-widget-container__widget"></div>
-              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+              <script type="text/tradingview" data-src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js">
                 {
                   "interval": "1D",
                   "width": "100%",
@@ -221,6 +221,8 @@ Understanding market volatility and correlations is crucial for the energy trans
 
   </div>
 </div>
+
+<script src="{{ '/assets/js/tradingview-deferred.js' | relative_url }}"></script>
 
 <script>
   (function () {

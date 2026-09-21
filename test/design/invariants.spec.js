@@ -127,6 +127,28 @@ const wheelY = async (target) => {
   return y;
 };
 
+test.describe("portfolio widgets", () => {
+  test("only promote the variants that are on screen", async ({ page }) => {
+    await page.goto("/portfolio/", { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(500);
+
+    const state = await page.evaluate(() => {
+      const pending = [...document.querySelectorAll('script[type="text/tradingview"]')];
+      return {
+        pending: pending.length,
+        promoted: pending.filter((node) => node.hasAttribute("data-promoted")).length,
+      };
+    });
+
+    // The page ships every widget once per theme and once per analysis symbol.
+    expect(state.pending).toBeGreaterThanOrEqual(12);
+    expect(state.promoted, "at least the widgets in the default tab must load").toBeGreaterThan(0);
+    expect(state.pending, `only visible variants may load, but ${state.promoted} of ${state.pending} were promoted`).toBeGreaterThan(
+      state.promoted * 3
+    );
+  });
+});
+
 test.describe("CV detail rows", () => {
   test("stack on small screens so long values never break mid-token", async ({ browser }) => {
     const context = await browser.newContext({ viewport: { width: 320, height: 800 } });
