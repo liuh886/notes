@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "让 AI 看见你的大脑：Obsidian CLI 的价值与意义"
+description: "文件夹只是低维分类，真正的结构在笔记之间的链接里。为什么 AI Agent 需要的不是 GUI 而是 CLI：从外部读者变成内部观察者。"
 date: 2026-03-05
 tags:
   - AI

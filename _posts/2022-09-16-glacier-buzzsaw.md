@@ -1,6 +1,7 @@
 ---
 layout: post
 title: An old hypothesis that glacier limit mountain height
+description: "Glacier erosion at the ELA may be strong enough to limit long-term tectonic uplift: notes on the buzzsaw hypothesis, hypsometric evidence, and the modelling behind it."
 subtitle: Glacier buzzsaw
 date: 2022-09-16
 author: Zhihao
