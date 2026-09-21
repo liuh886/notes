@@ -39,22 +39,15 @@ requireIncludes(
     "· Build",
     "def self.apply_portfolio_stylesheet(page)",
   ],
-  "Site visual polish plugin",
+  "Site visual polish plugin"
 );
-requireAbsent(
-  plugin,
-  ["def self.apply_home_portfolio_link(page)", 'data-hao-portfolio-link="true"'],
-  "Site visual polish plugin",
-);
+requireAbsent(plugin, ["def self.apply_home_portfolio_link(page)", 'data-hao-portfolio-link="true"'], "Site visual polish plugin");
 
 const aboutPage = read("_pages/about.md");
 requireIncludes(
   aboutPage,
-  [
-    '<div class="hao-home-contact-links">',
-    '<a href="{{ \'/portfolio/\' | relative_url }}">Portfolio</a>',
-  ],
-  "Homepage source",
+  ['<div class="hao-home-contact-links">', "<a href=\"{{ '/portfolio/' | relative_url }}\">Portfolio</a>"],
+  "Homepage source"
 );
 
 const portfolioCss = read("assets/css/portfolio-page-polish.css");
@@ -70,20 +63,12 @@ requireIncludes(
     'html:not([data-theme="dark"]) .hao-portfolio-page .stock-widget-dark',
     "@media (max-width: 992px)",
   ],
-  "Portfolio stylesheet",
+  "Portfolio stylesheet"
 );
-requireAbsent(
-  portfolioCss,
-  ["body:has(", "position: fixed", "overflow-x: scroll"],
-  "Portfolio stylesheet",
-);
+requireAbsent(portfolioCss, ["body:has(", "position: fixed", "overflow-x: scroll"], "Portfolio stylesheet");
 
 const footerCss = read("assets/css/footer-build.css");
-requireIncludes(
-  footerCss,
-  [".hao-build-revision", ".hao-build-revision a", "white-space: nowrap"],
-  "Footer build stylesheet",
-);
+requireIncludes(footerCss, [".hao-build-revision", ".hao-build-revision a", "white-space: nowrap"], "Footer build stylesheet");
 
 const portfolioPage = read("_pages/portfolio.md");
 requireIncludes(
@@ -94,8 +79,33 @@ requireIncludes(
     "stock-widget--overview",
     "portfolio-widgets",
     "stock-analysis__selector",
+    "assets/js/tradingview-deferred.js",
   ],
-  "Portfolio page",
+  "Portfolio page"
+);
+
+// Every TradingView embed is deferred: the page ships each widget once per
+// colour theme plus once per analysis symbol, and only the visible variant may
+// load. `type="text/tradingview"` keeps the JSON body in the HTML without
+// executing it; the loader promotes the visible ones at runtime.
+const tradingviewEmbeds = portfolioPage.match(/data-src="https:\/\/s3\.tradingview\.com/g) || [];
+if (tradingviewEmbeds.length === 0) {
+  failures.push("Portfolio page must author its TradingView embeds as deferred `data-src` scripts.");
+}
+requireAbsent(portfolioPage, ['type="text/javascript" src="https://s3.tradingview.com'], "Portfolio page");
+requireIncludes(portfolioPage, ['type="text/tradingview" data-src='], "Portfolio page");
+
+const deferredLoader = read("assets/js/tradingview-deferred.js");
+requireIncludes(
+  deferredLoader,
+  [
+    'script[type="text/tradingview"]',
+    "data-promoted",
+    'closest(".tradingview-widget-container")',
+    'attributeFilter: ["data-theme"]',
+    "stock-analysis__selector",
+  ],
+  "Deferred TradingView loader"
 );
 
 if (failures.length > 0) {
