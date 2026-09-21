@@ -162,6 +162,31 @@ jobs:
             exit 1
           fi
 
+      - name: Verify homepage runtime payload 🔎
+        run: |
+          set -euo pipefail
+          for leaked in mathjax polyfill masonry imagesloaded academicons scholar-icons Roboto+Slab Material+Icons; do
+            if grep -qi -- "$leaked" _site/index.html; then
+              echo "Homepage must not reference \`$leaked\`." >&2
+              exit 1
+            fi
+          done
+          grep -q 'og:image" content="https://zhihaol.eu.org/' _site/index.html
+          grep -q 'alt="Portrait of Zhihao Liu' _site/index.html
+          grep -q 'aspect-ratio: 3 / 4' _site/assets/css/hao-home-center-fix.css
+
+      - name: Verify per-page math runtime 🔎
+        run: |
+          set -euo pipefail
+          for math_page in _site/blog/2022/permafrost-m/index.html _site/projects/2023_downscaling/index.html; do
+            test -f "$math_page"
+            grep -q 'mathjax-setup.js' "$math_page"
+          done
+          if grep -q 'polyfill' _site/blog/2022/permafrost-m/index.html; then
+            echo "ES6 polyfill must not be shipped with the math runtime." >&2
+            exit 1
+          fi
+
       - name: Verify repositories page layout artifact 🔎
         run: |
           set -euo pipefail

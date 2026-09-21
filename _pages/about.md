@@ -10,6 +10,7 @@ subtitle_extra: "Caixin ESG30 Young Scholar"
 profile:
   align: right
   image: blog_pic.jpg
+  alt: "Portrait of Zhihao Liu, offshore on a seismic survey vessel"
   image_circular: false
   more_info: >
     <p>Offshore Bergen · Aug 2020</p>

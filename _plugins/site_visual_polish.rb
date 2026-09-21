@@ -31,6 +31,71 @@ module SiteVisualPolish
 
   STYLESHEET_VERSION = "20260809-legal".freeze
 
+  # MathJax is 1.1 MB of runtime. `_config.yml` keeps `enable_math: false` so the
+  # theme never loads it globally; this plugin re-adds the same tags only on pages
+  # that actually contain math, mirroring the upstream `al_math` tag minus the
+  # legacy ES6 shim that no supported browser needs.
+  #
+  # Markers cover block math (`$$`, `\[`, environments) and inline math (`\(`,
+  # single `$`), because the theme enables all four delimiters in MathJax.
+  MATH_MARKERS = [
+    /\$\$/,
+    /\\\(/,
+    /\\\[/,
+    /\\begin\{(?:equation|align|math)\}/,
+    /\$[^$\n]+\$/
+  ].freeze
+
+  def self.truthy?(value)
+    value == true || value.to_s == "true"
+  end
+
+  def self.script_tag(config, key)
+    library = (config["third_party_libraries"] || {})[key]
+    return nil unless library.is_a?(Hash)
+
+    url = library.dig("url", "js").to_s
+    return nil if url.empty?
+
+    integrity = library.dig("integrity", "js").to_s
+    if integrity.empty?
+      %(<script defer src="#{url}"></script>)
+    else
+      %(<script defer src="#{url}" integrity="#{integrity}" crossorigin="anonymous"></script>)
+    end
+  end
+
+  def self.math_page?(page)
+    return true if truthy?(page.data["math"]) || truthy?(page.data["pseudocode"]) || truthy?(page.data["tikzjax"])
+
+    source = page.respond_to?(:content) ? page.content.to_s : ""
+    source = page.output.to_s if source.empty?
+    MATH_MARKERS.any? { |marker| source.match?(marker) }
+  end
+
+  def self.apply_math_scripts(page)
+    return unless page.output.include?("</body>")
+    return if page.output.include?("mathjax-setup.js") || page.output.include?("pseudocode-setup.js")
+    return unless math_page?(page)
+
+    baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
+    scripts = []
+
+    if truthy?(page.data["pseudocode"])
+      scripts << %(<script src="#{baseurl}/assets/al_math/js/pseudocode-setup.js"></script>)
+      scripts << script_tag(page.site.config, "pseudocode")
+    else
+      scripts << script_tag(page.site.config, "mathjax")
+      scripts << %(<script src="#{baseurl}/assets/al_math/js/mathjax-setup.js"></script>)
+    end
+    scripts << script_tag(page.site.config, "tikzjax") if truthy?(page.data["tikzjax"])
+
+    markup = scripts.compact.join("\n")
+    return if markup.empty?
+
+    page.output = page.output.sub("</body>", "#{markup}\n</body>")
+  end
+
   def self.cv_page?(page)
     page.relative_path == "cv.md" || page.url.to_s == "/cv/"
   end
@@ -108,6 +173,18 @@ module SiteVisualPolish
 
     navbar_container = %r{(<nav[^>]*class="[^"]*\bnavbar\b[^"]*"[^>]*>\s*<div[^>]*class="[^"]*\bcontainer(?:-fluid)?\b[^"]*"[^>]*>)}m
     page.output = page.output.sub(navbar_container, "\\1\n      #{brand}")
+  end
+
+  def self.apply_home_profile_alt(page)
+    return unless home_page?(page)
+
+    alt = page.data.dig("profile", "alt").to_s
+    image = page.data.dig("profile", "image").to_s
+    return if alt.empty? || image.empty?
+
+    return unless page.output.include?(%(alt="#{image}"))
+
+    page.output = page.output.sub(%(alt="#{image}"), %(alt="#{alt}"))
   end
 
   def self.apply_footer_legal_links(page)
@@ -206,6 +283,7 @@ end
     SiteVisualPolish.apply_portfolio_body_class(page)
     SiteVisualPolish.apply_legal_body_class(page)
     SiteVisualPolish.apply_home_navbar_brand(page)
+    SiteVisualPolish.apply_home_profile_alt(page)
     SiteVisualPolish.apply_global_stylesheet(page)
     SiteVisualPolish.apply_homepage_stylesheet(page)
     SiteVisualPolish.apply_cv_stylesheet(page)
@@ -214,5 +292,6 @@ end
     SiteVisualPolish.apply_legal_stylesheet(page)
     SiteVisualPolish.apply_footer_legal_links(page)
     SiteVisualPolish.apply_footer_build_revision(page)
+    SiteVisualPolish.apply_math_scripts(page)
   end
 end
