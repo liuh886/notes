@@ -1,7 +1,9 @@
 const { test, expect } = require("@playwright/test");
 
-const LIGHT = { accent: "#b509ac", muted: "rgb(107, 114, 128)" };
-const DARK = { accent: "#2698ba", muted: "rgb(154, 154, 154)" };
+// `--global-theme-color` is read as an authored value (hex), while toHaveCSS
+// compares computed values (rgb), so both forms are kept side by side.
+const LIGHT = { accent: "#b509ac", accentRgb: "rgb(181, 9, 172)", muted: "rgb(107, 114, 128)" };
+const DARK = { accent: "#2698ba", accentRgb: "rgb(38, 152, 186)", muted: "rgb(154, 154, 154)" };
 
 const viewports = [
   { name: "mobile-320", width: 320, height: 720 },
@@ -43,6 +45,26 @@ test.describe("homepage design invariants", () => {
     } else {
       console.log("note: this build has no responsive webp variants, skipping the srcset assertion");
     }
+  });
+
+  test("keeps the optical shell and the kind-label contract", async ({ page }) => {
+    await page.goto("/");
+
+    // The shell contract from docs/HOMEPAGE_FRONTEND_GOVERNANCE.md: the navbar and
+    // footer shell is deliberately 3rem wider than the content shell, which is the
+    // optical compensation that puts their visible edges on the same line.
+    const contentShell = await page.evaluate(() => getComputedStyle(document.querySelector('.hao-home-page > .container[role="main"]')).maxWidth);
+    const navShell = await page.evaluate(() => getComputedStyle(document.querySelector(".hao-home-page #navbar > .container")).maxWidth);
+    expect(contentShell).toBe("1296px"); // 81rem
+    expect(navShell).toBe("1344px"); // 84rem
+    expect(parseFloat(navShell) - parseFloat(contentShell)).toBe(48); // 3rem
+
+    // The kind label used to rely on !important to out-rank `.hao-home-record p`.
+    // Assert the rendered result so the cascade cannot regress silently.
+    await expect(page.locator("p.hao-home-kind").first()).toHaveCSS("color", LIGHT.accentRgb);
+    await expect(page.locator("p.hao-home-kind").first()).toHaveCSS("font-size", "12.48px");
+    await setTheme(page, "dark");
+    await expect(page.locator("p.hao-home-kind").first()).toHaveCSS("color", DARK.accentRgb);
   });
 
   test("uses the theme accent and an AA muted caption in both modes", async ({ page }) => {

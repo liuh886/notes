@@ -318,6 +318,21 @@ for (const cssPath of productionCss) {
   requireAbsent(read(cssPath), themeOwnedTokens, `${cssPath} (theme-owned tokens must have no fallback)`);
 }
 
+// `!important` is a last resort. The only accepted uses are the reduced-motion
+// overrides, which have to out-rank the theme's own `html.transition *` rules.
+// Everything else must win on specificity and source order, so that a later
+// layer can still override it deliberately.
+for (const cssPath of productionCss) {
+  const offenders = read(cssPath)
+    .split("\n")
+    .filter((line) => line.includes("!important"))
+    .filter((line) => !/(transition-duration|animation-duration|scroll-behavior):/.test(line))
+    .map((line) => line.trim());
+  if (offenders.length > 0) {
+    failures.push(`${cssPath} must not use !important except for reduced-motion overrides: ${offenders.join(" / ")}`);
+  }
+}
+
 const cvCss = read("assets/css/cv-toc-polish.css");
 requireIncludes(cvCss, ["scrollbar-width: none", "-ms-overflow-style: none", "::-webkit-scrollbar"], "CV TOC CSS");
 requireAbsent(cvCss, ["overflow-y: hidden"], "CV TOC CSS");

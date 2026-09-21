@@ -101,6 +101,12 @@ Unused historical visual layers should be deleted once production injection and 
 - Muted text is a contrast decision, not an inherited default. The theme's `--global-text-color-light` (#828282) is 3.8:1 on the white surface, so homepage captions declare their own pair (#6b7280 light, #9a9a9a dark) to stay above 4.5:1.
 - Breakpoints come from the shared scale only: 576, 768, 992. Do not introduce one-off thresholds.
 
+### Cascade rules
+
+- `!important` is a last resort. Win on specificity and source order instead, so a later layer can still override a rule deliberately. The only accepted uses are the reduced-motion overrides, which must out-rank the theme's own `html.transition *` rules. `test/style_contract.js` enforces this across every production stylesheet.
+- When a rule needs to out-rank a broader one in the same stylesheet (for example a label inside a card body), add the element to the selector (`p.hao-home-kind`) rather than reaching for a flag.
+- Verify a CSS refactor by swapping the stylesheet in place on a live page and diffing every element's computed style. Appending the sheet to the end of `<head>` changes cascade order and makes the comparison meaningless.
+
 ## Frontend architecture
 
 Content belongs in Markdown or `_data` files. Styling belongs in the stylesheet that owns the surface. Build-time Ruby should be limited to behavior that cannot yet be expressed cleanly in the owned page source or supported theme configuration.

@@ -114,7 +114,7 @@ html[data-theme="dark"] .hao-portfolio-page {
 }
 
 .hao-portfolio-page .portfolio-widgets .stock-widget {
-  margin: 0 !important;
+  margin: 0;
 }
 
 .hao-portfolio-page .stock-widget--story,
@@ -184,12 +184,12 @@ html[data-theme="dark"] .hao-portfolio-page {
 
 html[data-theme="dark"] .hao-portfolio-page .stock-widget-light,
 html:not([data-theme="dark"]) .hao-portfolio-page .stock-widget-dark {
-  display: none !important;
+  display: none;
 }
 
 .hao-portfolio-page .tradingview-widget-container,
 .hao-portfolio-page .tradingview-widget-container__widget {
-  width: 100% !important;
+  width: 100%;
   max-width: 100%;
 }
 

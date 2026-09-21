@@ -46,6 +46,16 @@ npm run lint:style-contract
 npx prettier --check test/style_contract.js
 ruby -c _plugins/site_visual_polish.rb
 bundle exec jekyll build
+node test/performance_budget.js _site
+```
+
+`test/design` holds browser assertions for the things that cannot be reviewed by
+reading CSS (shell geometry, colour tokens in both themes, reduced motion, focus,
+and sideways scrolling). CI serves the fresh build over localhost and runs them;
+locally you can point them at any deployed site:
+
+```bash
+DESIGN_BASE_URL=https://zhihaol.eu.org npx playwright test --config test/design/playwright.config.js
 ```
 
 For visual changes, manually check at least:
