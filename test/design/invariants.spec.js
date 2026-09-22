@@ -127,6 +127,40 @@ const wheelY = async (target) => {
   return y;
 };
 
+test.describe("secondary page shells", () => {
+  test("content lines up with the navbar on every secondary page", async ({ browser }) => {
+    // The homepage is excluded on purpose: its 3rem optical compensation is a
+    // documented, separately asserted contract.
+    const secondaryPages = ["/portfolio/", "/repositories/", "/blog/", "/cv/", "/publications/", "/projects/", "/privacy/", "/terms/"];
+    const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    const target = await context.newPage();
+    const problems = [];
+
+    for (const path of secondaryPages) {
+      await target.goto(path, { waitUntil: "domcontentloaded" });
+      const edges = await target.evaluate(() => {
+        const box = (selector) => {
+          const el = document.querySelector(selector);
+          if (!el) return null;
+          const rect = el.getBoundingClientRect();
+          return { left: Math.round(rect.left), right: Math.round(rect.right) };
+        };
+        return { nav: box("#navbar > .container"), main: box('.container[role="main"]') };
+      });
+      if (!edges.nav || !edges.main) {
+        problems.push(`${path}: navbar or content container missing`);
+        continue;
+      }
+      if (Math.abs(edges.nav.left - edges.main.left) > 1 || Math.abs(edges.nav.right - edges.main.right) > 1) {
+        problems.push(`${path}: navbar [${edges.nav.left}..${edges.nav.right}] vs content [${edges.main.left}..${edges.main.right}]`);
+      }
+    }
+
+    expect(problems, problems.join("; ")).toEqual([]);
+    await context.close();
+  });
+});
+
 test.describe("consent", () => {
   test("analytics wait for a choice, and the choice is offered", async ({ browser }) => {
     // The consent library hides itself from automated browsers by default

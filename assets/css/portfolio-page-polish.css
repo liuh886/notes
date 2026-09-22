@@ -24,8 +24,15 @@ html[data-theme="dark"] .hao-portfolio-page {
   --hao-portfolio-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
 }
 
+/*
+ * The content shell has to line up with the navbar, like every other secondary
+ * page. This was `80rem`, which pushed the content edges 180px past the navbar
+ * on each side of a 1440px screen; the theme's own content width keeps the two
+ * in the same box, and the widget grid still holds two columns (472/402px at
+ * 1440px, above its 20rem minimum).
+ */
 .hao-portfolio-page > .container[role="main"] {
-  max-width: 80rem;
+  max-width: var(--max-content-width);
 }
 
 .hao-portfolio-page .post-header {
