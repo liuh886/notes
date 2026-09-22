@@ -252,6 +252,8 @@ jobs:
             echo "The Cloudflare beacon must be gated behind the analytics consent category." >&2
             exit 1
           fi
+          grep -q 'data-hao-cookie-settings="true"' _site/index.html
+          grep -q '/assets/js/cookie-settings.js' _site/index.html
           for ungated in '<script async src="https://www.googletagmanager.com' '<script defer src="https://www.googletagmanager.com' '<script src="https://www.googletagmanager.com' '<script defer src="https://static.cloudflareinsights.com' '<script type="module" src="https://static.cloudflareinsights.com'; do
             if grep -qF -- "$ungated" _site/index.html; then
               echo "Google Analytics must not be able to load before consent: $ungated" >&2

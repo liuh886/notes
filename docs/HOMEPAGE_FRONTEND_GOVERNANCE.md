@@ -22,7 +22,7 @@ Remove a post-render patch only when its replacement can live in owned source wi
 
 The `Portfolio` contact link is now owned directly by `_pages/about.md`; the corresponding post-render injection has been removed.
 
-The remaining patches are: the homepage body class, the navbar brand, the profile `alt` (copied from `profile.alt`), the footer legal links and build revision, the per-page stylesheet links, and the per-page math runtime. Each one is bounded to a page or content type that the theme owns, and none of them may be replaced by a forked theme file — `test/style_contract.js` forbids `_includes/` and `_layouts/` in this repository.
+The remaining patches are: the homepage body class, the navbar brand, the profile `alt` (copied from `profile.alt`), the footer legal links and build revision, the footer cookie settings control, the per-page stylesheet links, and the per-page math runtime. Each one is bounded to a page or content type that the theme owns, and none of them may be replaced by a forked theme file — `test/style_contract.js` forbids `_includes/` and `_layouts/` in this repository.
 
 ## Production stylesheet contract
 
