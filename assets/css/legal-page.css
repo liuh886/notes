@@ -1,7 +1,12 @@
 /* Shared legal-document treatment for Privacy Policy and Terms of Service. */
 
+/*
+ * Match the navbar shell, like every other secondary page. This was `58rem`
+ * (928px), which sat 4px proud of the 920px navbar on each side; the reading
+ * column is capped separately below, so only the card edges move.
+ */
 .hao-legal-page > .container[role="main"] {
-  max-width: 58rem;
+  max-width: var(--max-content-width);
 }
 
 .hao-legal-page .post-header {

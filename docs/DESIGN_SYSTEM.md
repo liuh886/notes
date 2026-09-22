@@ -100,6 +100,7 @@ Unused historical visual layers should be deleted once production injection and 
 - Surface tokens (`--hao-*`) are declared on the narrowest selector that can own them. The homepage declares its tokens on `.hao-home-page` so they cannot leak into secondary pages.
 - Muted text is a contrast decision, not an inherited default. The theme's `--global-text-color-light` (#828282) is 3.8:1 on the white surface, so homepage captions declare their own pair (#6b7280 light, #9a9a9a dark) to stay above 4.5:1.
 - Breakpoints come from the shared scale only: 576, 768, 992. Do not introduce one-off thresholds.
+- Secondary pages keep the theme's content width (`--max-content-width`, from `_config.yml` → `max_width`) for **both** the navbar and the content shell, so their visible edges line up. Only the homepage deviates, by its documented 3rem optical compensation. `test/design` fails if a secondary page's content edges stop matching its navbar.
 
 ### Cascade rules
 
