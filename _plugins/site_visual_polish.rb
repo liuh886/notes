@@ -186,18 +186,38 @@ module SiteVisualPolish
     page.output = page.output.sub(%(alt="#{image}"), %(alt="#{alt}"))
   end
 
+  def self.cookie_consent_enabled?(page)
+    page.site.config["enable_cookie_consent"] ? true : false
+  end
+
   def self.apply_footer_legal_links(page)
     return if page.output.include?(%q(data-hao-legal-links="true"))
 
     baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
     privacy_href = baseurl.empty? ? "/privacy/" : "#{baseurl}/privacy/"
     terms_href = baseurl.empty? ? "/terms/" : "#{baseurl}/terms/"
-    markup = %(<span class="hao-legal-links" data-hao-legal-links="true"><a href="#{privacy_href}">Privacy</a><span aria-hidden="true">·</span><a href="#{terms_href}">Terms</a></span>)
+    links = %(<a href="#{privacy_href}">Privacy</a><span aria-hidden="true">·</span><a href="#{terms_href}">Terms</a>)
+    if cookie_consent_enabled?(page)
+      # Withdrawal has to be as easy as giving consent, and the theme ships no
+      # way back into the dialog once a choice is stored.
+      links += %(<span aria-hidden="true">·</span><button type="button" class="hao-cookie-settings" data-hao-cookie-settings="true">Cookie settings</button>)
+    end
+    markup = %(<span class="hao-legal-links" data-hao-legal-links="true">#{links}</span>)
 
     footer_pattern = %r{(<footer\b[^>]*role="contentinfo"[^>]*>.*?<div\b[^>]*class="[^"]*\bcontainer\b[^"]*"[^>]*>)(.*?)(</div>\s*</footer>)}m
     page.output = page.output.sub(footer_pattern) do
       "#{Regexp.last_match(1)}#{Regexp.last_match(2).rstrip} #{markup}\n#{Regexp.last_match(3)}"
     end
+  end
+
+  def self.apply_cookie_settings_script(page)
+    return unless cookie_consent_enabled?(page)
+    return unless page.output.include?("</body>")
+    return if page.output.include?("cookie-settings.js")
+
+    baseurl = page.site.config["baseurl"].to_s.sub(%r{/$}, "")
+    tag = %(<script defer src="#{baseurl}/assets/js/cookie-settings.js"></script>)
+    page.output = page.output.sub("</body>", "#{tag}\n</body>")
   end
 
   def self.build_revision(page)
@@ -291,6 +311,7 @@ end
     SiteVisualPolish.apply_legal_stylesheet(page)
     SiteVisualPolish.apply_footer_legal_links(page)
     SiteVisualPolish.apply_footer_build_revision(page)
+    SiteVisualPolish.apply_cookie_settings_script(page)
     SiteVisualPolish.apply_math_scripts(page)
   end
 end

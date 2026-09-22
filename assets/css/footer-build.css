@@ -14,8 +14,23 @@
   opacity: 0.8;
 }
 
+/* The cookie settings control is a real button (withdrawal has to be as easy as
+   giving consent), so it inherits the link treatment rather than looking like a
+   form control. */
+.hao-legal-links button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .hao-legal-links a:hover,
-.hao-legal-links a:focus-visible {
+.hao-legal-links a:focus-visible,
+.hao-legal-links button:hover,
+.hao-legal-links button:focus-visible {
   color: var(--global-theme-color);
   opacity: 1;
   text-decoration: underline;

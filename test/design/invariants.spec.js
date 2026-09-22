@@ -179,6 +179,14 @@ test.describe("consent", () => {
       })
       .toBeGreaterThan(0);
 
+    // Withdrawal has to be reachable, not just documented: the footer control
+    // must reopen the preferences dialog after a choice is stored.
+    const settings = page.getByRole("button", { name: /cookie settings/i });
+    await expect(settings).toBeVisible();
+    await settings.click();
+    await expect(page.locator("html")).toHaveClass(/show--preferences/, { timeout: 20000 });
+    await expect(page.locator("#cc-main .pm")).toBeVisible({ timeout: 20000 });
+
     await context.close();
   });
 });

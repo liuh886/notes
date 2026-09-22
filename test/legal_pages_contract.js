@@ -32,7 +32,7 @@ requireIncludes(
     "does not use social-login access to read timelines",
     "cc_cookie",
   ],
-  "Privacy Policy",
+  "Privacy Policy"
 );
 requireRegex(privacy, effectiveDate, "Privacy Policy must carry an effective date.");
 
@@ -47,7 +47,7 @@ requireIncludes(
     "do not constitute personalized investment",
     "Historical performance, model outputs, forecasts, rankings, and simulations do not guarantee future results.",
   ],
-  "Terms of Service",
+  "Terms of Service"
 );
 requireRegex(terms, effectiveDate, "Terms of Service must carry an effective date.");
 
@@ -65,24 +65,30 @@ requireIncludes(
     "Privacy",
     "Terms",
   ],
-  "Site visual polish plugin",
+  "Site visual polish plugin"
 );
 
 const legalCss = read("assets/css/legal-page.css");
 requireIncludes(
   legalCss,
-  [
-    ".hao-legal-page > .container[role=\"main\"]",
-    ".hao-legal-document",
-    ".hao-legal-document h2",
-    ".hao-legal-related",
-    "@media (max-width: 576px)",
-  ],
-  "Legal page stylesheet",
+  ['.hao-legal-page > .container[role="main"]', ".hao-legal-document", ".hao-legal-document h2", ".hao-legal-related", "@media (max-width: 576px)"],
+  "Legal page stylesheet"
 );
 
 const footerCss = read("assets/css/footer-build.css");
 requireIncludes(footerCss, [".hao-legal-links", ".hao-legal-links a"], "Footer stylesheet");
+
+// Withdrawal has to be as easy as consent: the footer carries a control that
+// reopens the consent preferences, and the policy points at it.
+const cookieSettingsJs = read("assets/js/cookie-settings.js");
+requireIncludes(cookieSettingsJs, ["data-hao-cookie-settings", "showPreferences", "CookieConsent"], "Cookie settings control");
+requireIncludes(
+  plugin,
+  ["def self.apply_cookie_settings_script(page)", 'data-hao-cookie-settings="true"', "cookie-settings.js", 'site.config["enable_cookie_consent"]'],
+  "Site visual polish plugin cookie settings wiring"
+);
+requireIncludes(footerCss, [".hao-legal-links button"], "Footer stylesheet cookie settings button");
+requireIncludes(privacy, ["Cookie settings"], "Privacy Policy withdrawal path");
 
 if (failures.length > 0) {
   console.error("Legal page contract check failed:");
