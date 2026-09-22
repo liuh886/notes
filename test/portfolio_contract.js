@@ -67,6 +67,24 @@ requireIncludes(
 );
 requireAbsent(portfolioCss, ["body:has(", "position: fixed", "overflow-x: scroll"], "Portfolio stylesheet");
 
+// The dashboard declares its own shell (80rem) for the navbar, the content and
+// the footer together. Widening only the content is what made its edges miss the
+// navbar by 180px per side, so the contract pins all three surfaces plus the
+// shared gutter that keeps them equal below the maximum width.
+requireIncludes(
+  portfolioCss,
+  [
+    "--hao-portfolio-shell-max: 80rem",
+    '.hao-portfolio-page > .container[role="main"]',
+    ".hao-portfolio-page #navbar > .container",
+    ".hao-portfolio-page #navbar > .container-fluid",
+    ".hao-portfolio-page footer > .container",
+    ".hao-portfolio-page #navbar",
+    "padding-left: 15px",
+  ],
+  "Portfolio shell contract"
+);
+
 const footerCss = read("assets/css/footer-build.css");
 requireIncludes(footerCss, [".hao-build-revision", ".hao-build-revision a", "white-space: nowrap"], "Footer build stylesheet");
 

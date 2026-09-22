@@ -161,6 +161,35 @@ test.describe("secondary page shells", () => {
   });
 });
 
+test.describe("portfolio shell", () => {
+  test("keeps its wider dashboard shell, with navbar and footer in the same box", async ({ browser }) => {
+    const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    const target = await context.newPage();
+    await target.goto("/portfolio/", { waitUntil: "domcontentloaded" });
+
+    const shell = await target.evaluate(() => {
+      const box = (selector) => {
+        const el = document.querySelector(selector);
+        const rect = el.getBoundingClientRect();
+        return { left: Math.round(rect.left), right: Math.round(rect.right), width: Math.round(rect.width) };
+      };
+      return {
+        nav: box("#navbar > .container"),
+        main: box('.container[role="main"]'),
+        footer: box("footer > .container"),
+      };
+    });
+
+    // 80rem, deliberately wider than the 920px reading pages: the dashboard needs
+    // the canvas, so it declares its own shell instead of inheriting theirs.
+    expect(shell.main.width, "the portfolio shell should stay 80rem wide").toBe(1280);
+    expect(shell.nav).toEqual(shell.main);
+    expect(shell.footer).toEqual(shell.main);
+
+    await context.close();
+  });
+});
+
 test.describe("consent", () => {
   test("analytics wait for a choice, and the choice is offered", async ({ browser }) => {
     // The consent library hides itself from automated browsers by default

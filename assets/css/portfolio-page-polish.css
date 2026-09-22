@@ -14,6 +14,14 @@
   --hao-portfolio-surface-soft: color-mix(in srgb, var(--global-theme-color) 3%, var(--global-bg-color));
   --hao-portfolio-radius: 12px;
   --hao-portfolio-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+  /*
+   * The dashboard needs more canvas than the reading pages, so this surface
+   * declares its own shell - the same way the homepage does - and applies it to
+   * the navbar, the content and the footer together. Widening only the content
+   * is what made the edges miss the navbar by 180px on each side of a 1440px
+   * screen; the shell has to be one value for all three surfaces.
+   */
+  --hao-portfolio-shell-max: 80rem;
 }
 
 html[data-theme="dark"] .hao-portfolio-page {
@@ -25,14 +33,28 @@ html[data-theme="dark"] .hao-portfolio-page {
 }
 
 /*
- * The content shell has to line up with the navbar, like every other secondary
- * page. This was `80rem`, which pushed the content edges 180px past the navbar
- * on each side of a 1440px screen; the theme's own content width keeps the two
- * in the same box, and the widget grid still holds two columns (472/402px at
- * 1440px, above its 20rem minimum).
+ * One shell for the whole surface: navbar, content and footer share
+ * `--hao-portfolio-shell-max`, so their visible edges line up.
+ *
+ * The theme insets the navbar two ways that the content does not have: `#navbar`
+ * carries 16px of its own inline padding, and `.navbar-expand-sm > .container`
+ * zeroes the container's gutter below 576px. Left alone, the navbar box drifts
+ * away from the content box as soon as the shell no longer fits with room to
+ * spare, and the brand loses its gutter entirely on small screens. The surface
+ * owns one gutter instead - the theme's own 15px - on all three containers.
  */
-.hao-portfolio-page > .container[role="main"] {
-  max-width: var(--max-content-width);
+.hao-portfolio-page #navbar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.hao-portfolio-page > .container[role="main"],
+.hao-portfolio-page #navbar > .container,
+.hao-portfolio-page #navbar > .container-fluid,
+.hao-portfolio-page footer > .container {
+  max-width: var(--hao-portfolio-shell-max);
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .hao-portfolio-page .post-header {
