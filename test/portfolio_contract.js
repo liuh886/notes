@@ -30,14 +30,16 @@ requireIncludes(
     "PORTFOLIO_STYLESHEETS",
     "portfolio-page-polish.css",
     "def self.portfolio_page?(page)",
-    "def self.apply_portfolio_body_class(page)",
+    "SURFACE_BODY_CLASSES",
+    "PAGE_STYLESHEETS",
+    "def self.apply_surface_body_class(page)",
     "hao-portfolio-page",
     "def self.build_revision(page)",
     'ENV["GITHUB_SHA"]',
     "def self.apply_footer_build_revision(page)",
     "hao-build-revision",
     "· Build",
-    "def self.apply_portfolio_stylesheet(page)",
+    "def self.apply_page_stylesheets(page)",
   ],
   "Site visual polish plugin"
 );

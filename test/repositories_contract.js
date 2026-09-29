@@ -36,13 +36,15 @@ requireIncludes(
     "def self.repositories_page?(page)",
     'page.relative_path == "_pages/repositories.md"',
     'page.url.to_s == "/repositories/"',
-    "def self.apply_repositories_body_class(page)",
+    "SURFACE_BODY_CLASSES",
+    "PAGE_STYLESHEETS",
+    "def self.apply_surface_body_class(page)",
     "hao-repositories-page",
-    "def self.apply_repositories_stylesheet(page)",
-    "SiteVisualPolish.apply_repositories_body_class(page)",
-    "SiteVisualPolish.apply_repositories_stylesheet(page)",
+    "def self.apply_page_stylesheets(page)",
+    "SiteVisualPolish.apply_surface_body_class(page)",
+    "SiteVisualPolish.apply_page_stylesheets(page)",
   ],
-  "Site visual polish plugin",
+  "Site visual polish plugin"
 );
 
 const css = exists(cssPath) ? read(cssPath) : "";
@@ -62,27 +64,15 @@ requireIncludes(
     "@media (max-width: 768px)",
     "grid-template-columns: 1fr",
   ],
-  "Repositories stylesheet",
+  "Repositories stylesheet"
 );
-requireAbsent(
-  css,
-  ["body:has(", "position: fixed", "overflow-x: scroll"],
-  "Repositories stylesheet",
-);
+requireAbsent(css, ["body:has(", "position: fixed", "overflow-x: scroll"], "Repositories stylesheet");
 
 const page = read("_pages/repositories.md");
 requireIncludes(
   page,
-  [
-    "repo-page-intro",
-    "repo-profile-grid",
-    "repo-section__header",
-    "repo-grid",
-    "repo-card__stats",
-    "repo-card__body",
-    "repo-card__actions",
-  ],
-  "Repositories page",
+  ["repo-page-intro", "repo-profile-grid", "repo-section__header", "repo-grid", "repo-card__stats", "repo-card__body", "repo-card__actions"],
+  "Repositories page"
 );
 
 if (failures.length > 0) {

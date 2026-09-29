@@ -30,6 +30,27 @@ module SiteVisualPolish
 
   STYLESHEET_VERSION = "20260809-legal".freeze
 
+  # One row per non-homepage surface that needs a scoping body class. Adding a
+  # surface means adding a row, not a new post-render method. The homepage keeps
+  # its own method because it carries the extra `hao-home--alfolio` guard.
+  SURFACE_BODY_CLASSES = [
+    [:cv_page?, "hao-cv-page"],
+    [:repositories_page?, "hao-repositories-page"],
+    [:portfolio_page?, "hao-portfolio-page"],
+    [:legal_page?, "hao-legal-page"]
+  ].freeze
+
+  # Global stylesheets load everywhere; each row below loads only on its own
+  # surface. The dispatcher preserves the previous call order (global first,
+  # then at most one surface), so the emitted `<link>` order is unchanged.
+  PAGE_STYLESHEETS = [
+    [:home_page?, HOMEPAGE_STYLESHEETS],
+    [:cv_page?, CV_STYLESHEETS],
+    [:repositories_page?, REPOSITORIES_STYLESHEETS],
+    [:portfolio_page?, PORTFOLIO_STYLESHEETS],
+    [:legal_page?, LEGAL_STYLESHEETS]
+  ].freeze
+
   # MathJax is 1.1 MB of runtime. `_config.yml` keeps `enable_math: false` so the
   # theme never loads it globally; this plugin re-adds the same tags only on pages
   # that actually contain math, mirroring the upstream `al_math` tag minus the
@@ -132,32 +153,13 @@ module SiteVisualPolish
     page.output = page.output.sub('<body class="', '<body class="hao-home-page ')
   end
 
-  def self.apply_cv_body_class(page)
-    return unless cv_page?(page)
-    return if page.output.include?("hao-cv-page")
+  def self.apply_surface_body_class(page)
+    SURFACE_BODY_CLASSES.each do |(predicate, body_class)|
+      next unless send(predicate, page)
+      next if page.output.include?(body_class)
 
-    page.output = page.output.sub('<body class="', '<body class="hao-cv-page ')
-  end
-
-  def self.apply_repositories_body_class(page)
-    return unless repositories_page?(page)
-    return if page.output.include?("hao-repositories-page")
-
-    page.output = page.output.sub('<body class="', '<body class="hao-repositories-page ')
-  end
-
-  def self.apply_portfolio_body_class(page)
-    return unless portfolio_page?(page)
-    return if page.output.include?("hao-portfolio-page")
-
-    page.output = page.output.sub('<body class="', '<body class="hao-portfolio-page ')
-  end
-
-  def self.apply_legal_body_class(page)
-    return unless legal_page?(page)
-    return if page.output.include?("hao-legal-page")
-
-    page.output = page.output.sub('<body class="', '<body class="hao-legal-page ')
+      page.output = page.output.sub('<body class="', %(<body class="#{body_class} "))
+    end
   end
 
   def self.apply_home_navbar_brand(page)
@@ -258,38 +260,11 @@ module SiteVisualPolish
     end
   end
 
-  def self.apply_global_stylesheet(page)
+  def self.apply_page_stylesheets(page)
     apply_stylesheets(page, GLOBAL_STYLESHEETS)
-  end
-
-  def self.apply_homepage_stylesheet(page)
-    return unless home_page?(page)
-
-    apply_stylesheets(page, HOMEPAGE_STYLESHEETS)
-  end
-
-  def self.apply_cv_stylesheet(page)
-    return unless cv_page?(page)
-
-    apply_stylesheets(page, CV_STYLESHEETS)
-  end
-
-  def self.apply_repositories_stylesheet(page)
-    return unless repositories_page?(page)
-
-    apply_stylesheets(page, REPOSITORIES_STYLESHEETS)
-  end
-
-  def self.apply_portfolio_stylesheet(page)
-    return unless portfolio_page?(page)
-
-    apply_stylesheets(page, PORTFOLIO_STYLESHEETS)
-  end
-
-  def self.apply_legal_stylesheet(page)
-    return unless legal_page?(page)
-
-    apply_stylesheets(page, LEGAL_STYLESHEETS)
+    PAGE_STYLESHEETS.each do |(predicate, stylesheets)|
+      apply_stylesheets(page, stylesheets) if send(predicate, page)
+    end
   end
 end
 
@@ -297,18 +272,10 @@ end
   Jekyll::Hooks.register hook_owner, :post_render do |page|
     SiteVisualPolish.apply_cv_title(page)
     SiteVisualPolish.apply_home_body_class(page)
-    SiteVisualPolish.apply_cv_body_class(page)
-    SiteVisualPolish.apply_repositories_body_class(page)
-    SiteVisualPolish.apply_portfolio_body_class(page)
-    SiteVisualPolish.apply_legal_body_class(page)
+    SiteVisualPolish.apply_surface_body_class(page)
     SiteVisualPolish.apply_home_navbar_brand(page)
     SiteVisualPolish.apply_home_profile_alt(page)
-    SiteVisualPolish.apply_global_stylesheet(page)
-    SiteVisualPolish.apply_homepage_stylesheet(page)
-    SiteVisualPolish.apply_cv_stylesheet(page)
-    SiteVisualPolish.apply_repositories_stylesheet(page)
-    SiteVisualPolish.apply_portfolio_stylesheet(page)
-    SiteVisualPolish.apply_legal_stylesheet(page)
+    SiteVisualPolish.apply_page_stylesheets(page)
     SiteVisualPolish.apply_footer_legal_links(page)
     SiteVisualPolish.apply_footer_build_revision(page)
     SiteVisualPolish.apply_cookie_settings_script(page)
