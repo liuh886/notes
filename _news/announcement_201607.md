@@ -1,5 +1,6 @@
 ---
 layout: post
+title: "Organized the 2016 SCO Kunming Marathon"
 date: 2016-07-01 07:59:00-0400
 inline: true
 related_posts: false

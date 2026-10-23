@@ -6,12 +6,6 @@ operations:
     href: https://liuh886.github.io/ccus-policy-hub/
     label: Open system
   - id: OP-02
-    title: Ownly
-    status: LOCAL-FIRST APP
-    summary: A local-first ownership memory and decision ledger for tracking what you own, what it costs, how you use it, and what you learn.
-    href: https://liuh886.github.io/ownly/
-    label: Open app
-  - id: OP-03
     title: Ductor — AI Agentic Harness
     status: AGENT HARNESS
     summary: Upstream contributions covering Windows and Docker compatibility, Telegram streaming, provider and model discovery, and Antigravity runtime support for an AI agentic harness.
@@ -19,12 +13,18 @@ operations:
     label: Upstream project
     secondary_href: https://github.com/PleasePrompto/ductor/pull/153
     secondary_label: Merged contribution
-  - id: OP-04
+  - id: OP-03
     title: Climate-to-energy downscaling
     status: RESEARCH MODEL
     summary: Quantile-based bias adjustment and downscaling of CMIP6 wind-speed projections against ERA5, testing when corrected climate data becomes useful for energy-system modeling.
     href: /projects/2023_downscaling/
     label: View project
+  - id: OP-04
+    title: Ownly
+    status: LOCAL-FIRST APP
+    summary: A local-first ownership memory and decision ledger for tracking what you own, what it costs, how you use it, and what you learn.
+    href: https://liuh886.github.io/ownly/
+    label: Open app
 
 dispatches:
   - date: 2026-08-02

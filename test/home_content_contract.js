@@ -53,14 +53,15 @@ requireIncludes(
   [
     "- id: OP-01",
     "status: CLIMATE INTELLIGENCE",
-    "title: Ownly",
-    "status: LOCAL-FIRST APP",
-    "- id: OP-03",
+    "- id: OP-02",
     "title: Ductor — AI Agentic Harness",
     "status: AGENT HARNESS",
-    "- id: OP-04",
+    "- id: OP-03",
     "title: Climate-to-energy downscaling",
     "status: RESEARCH MODEL",
+    "- id: OP-04",
+    "title: Ownly",
+    "status: LOCAL-FIRST APP",
   ],
   "Current operations data"
 );
