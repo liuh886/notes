@@ -216,14 +216,14 @@ requireIncludes(
   aboutPage,
   [
     "hao-home--production hao-home--alfolio",
-    "Research records, shipped tools, and agentic AI systems.",
+    "Turning climate and energy data into decision tools.",
     "Offshore Bergen · Aug 2020",
     "calendar.app.google/UQ267iEs4MTAGFSd7",
     'id="current-work"',
     'id="selected-work"',
     'id="notes-publications"',
     'id="contact"',
-    "Six active products, built and maintained.",
+    "Research records, shipped tools, and agentic AI systems.",
     "site.home_latest_notes",
     'id="latest-notes"',
     "latest_notes_feature.enabled",
@@ -296,7 +296,7 @@ for (const postFile of postFiles) {
 }
 
 const currentOperations = read("_data/current_operations.yml");
-for (const product of ["CCUS Policy Hub", "Ownly", "AlphaEngine", "FlappyK", "RhythmCoach", "NewsFlow"]) {
+for (const product of ["CCUS Policy Hub", "Ownly", "AlphaEngine", "RhythmCoach", "NewsFlow"]) {
   if (!currentOperations.includes(product)) failures.push(`Current work must retain ${product}.`);
 }
 
