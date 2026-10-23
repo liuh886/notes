@@ -38,12 +38,12 @@ It should not feel like:
 
 Home remains the front door and the asset directory. Its current four-section structure stays authoritative:
 
-1. **Current work** — the five actively maintained products and systems.
+1. **Current work** — the four actively maintained products and systems.
 2. **Projects & code** — selected work beyond the active product list.
 3. **Notes & publications** — formal outputs and selected working notes.
 4. **Contact** — portfolio, booking, professional profiles, CV, publications, and notes archive.
 
-`Current work` remains a five-item asset directory until an explicit product decision changes it.
+`Current work` remains a four-item asset directory until an explicit product decision changes it.
 
 A `Latest notes` block exists behind `_config.yml` → `home_latest_notes.enabled`. It is disabled by default and must cause no visual change while disabled.
 

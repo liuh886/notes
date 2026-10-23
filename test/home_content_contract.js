@@ -27,7 +27,7 @@ requireIncludes(
   [
     "Turning climate and energy data into decision tools.",
     "Research records, shipped tools, and agentic AI systems.",
-    "Independent products spanning climate intelligence",
+    "spanning climate intelligence",
     "site.data.current_operations.operations",
     "operation.secondary_href",
     "deployment.repository_href",
@@ -39,6 +39,7 @@ requireAbsent(
   about,
   [
     "Five maintained product and research lanes.",
+    "Six active products, built and maintained.",
     "NewsFlow, the newest live release.",
     "site.data.current_operations.upcoming",
     "the next product entering build",
@@ -54,24 +55,21 @@ requireIncludes(
     "status: CLIMATE INTELLIGENCE",
     "title: Ownly",
     "status: LOCAL-FIRST APP",
-    "title: AlphaEngine",
-    "status: QUANT RESEARCH",
-    "href: https://liuh886.github.io/alpha_engine/",
-    "secondary_href: https://github.com/liuh886/alpha_engine",
-    "title: RhythmCoach",
-    "status: SPEECH TRAINING",
-    "- id: OP-06",
-    "title: NewsFlow",
-    "status: EDITORIAL SYSTEM",
-    "href: https://liuh886.github.io/NewsFlow/",
-    "label: Open app",
-    "secondary_href: https://github.com/liuh886/NewsFlow",
+    "- id: OP-03",
+    "title: Ductor — AI Agentic Harness",
+    "status: AGENT HARNESS",
+    "- id: OP-04",
+    "title: Climate-to-energy downscaling",
+    "status: RESEARCH MODEL",
   ],
   "Current operations data"
 );
 requireAbsent(
   operations,
   [
+    "title: AlphaEngine",
+    "title: NewsFlow",
+    "title: RhythmCoach",
     "upcoming:",
     "NEXT-01",
     "status: COMING SOON",
@@ -96,6 +94,8 @@ requireIncludes(
     "title: 4D Seismic Hub",
     "href: https://liuh886.github.io/4d-seismic-hub/",
     "repository_href: https://github.com/liuh886/4d-seismic-hub",
+    "- ref: C-02",
+    "title: RhythmCoach",
   ],
   "Selected deployments data"
 );

@@ -34,20 +34,13 @@ groups:
         repository_href: https://github.com/liuh886/4d-seismic-hub
         repository_label: Repository
       - ref: P-04
-        title: Climate-to-energy downscaling
-        status: RESEARCH PROJECT
-        kind: Climate modeling / wind-energy planning
-        summary: Quantile-based bias adjustment and downscaling of CMIP6 wind-speed projections against ERA5, testing when corrected climate data becomes useful for energy-system modeling.
-        href: /projects/2023_downscaling/
-        primary_label: View project
-      - ref: P-05
         title: Quad 35 hybrid seismic acquisition
         status: FIELD PROJECT
         kind: Streamer + OBN / offshore Bergen
         summary: Technical review, onboard acquisition, data QC, reprocessing, and operational modeling for the first commercial hybrid streamer-and-node survey.
         href: /projects/2020_q35/
         primary_label: View project
-      - ref: P-06
+      - ref: P-05
         title: OffshoreOrient Studio
         status: ARCHIVED SOFTWARE
         kind: Offshore seismic QC / navigation + source
@@ -69,14 +62,14 @@ groups:
         secondary_href: https://github.com/liuh886/obsidian-ical-plugin-pro
         secondary_label: Repository
       - ref: C-02
-        title: Ductor — AI Agentic Harness
-        status: OPEN-SOURCE CONTRIBUTOR
-        kind: Agent orchestration / multi-provider CLI
-        summary: Upstream contributions covering Windows and Docker compatibility, Telegram streaming, provider and model discovery, and Antigravity runtime support for an AI agentic harness.
-        href: https://github.com/PleasePrompto/ductor
-        primary_label: Upstream project
-        secondary_href: https://github.com/PleasePrompto/ductor/pull/153
-        secondary_label: Merged contribution
+        title: RhythmCoach
+        status: SPEECH APP
+        kind: Speech rehearsal / prosody feedback
+        summary: A rehearsal tool for speakers and podcasters, combining scripts, recording, timing, and interpretable rhythm feedback.
+        href: https://liuh886.github.io/RhythmCoach/
+        primary_label: Open app
+        secondary_href: https://github.com/liuh886/RhythmCoach
+        secondary_label: Repository
       - ref: C-03
         title: HTTP to Obsidian CLI Gateway
         status: INFRASTRUCTURE

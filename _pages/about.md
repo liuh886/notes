@@ -57,7 +57,7 @@ home_cta: false
     <div class="hao-home-section-header">
       <p class="hao-home-eyebrow">Current work</p>
       <h2 id="current-work-title">Research records, shipped tools, and agentic AI systems.</h2>
-      <p>Independent products spanning climate intelligence, systematic strategy research, personal software, speech training, and editorial systems.</p>
+      <p>Independent products and research records spanning climate intelligence, local-first software, agentic AI systems, and renewable energy modeling.</p>
     </div>
     <div class="hao-home-card-grid">
       {% for operation in site.data.current_operations.operations %}
