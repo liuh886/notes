@@ -39,6 +39,16 @@ cv:
           - Bias correction and spatial downscaling workflows for climate/weather data with energy applications in mind.
           - Remote sensing and ML for seasonal snow; contributed to reproducible research workflows and open-source tooling.
 
+      - company: BGP Offshore, CNPC
+        position: Field Engineer & Assistant Project Manager
+        location: Global Offshore
+        start_date: 2014-07
+        end_date: 2021-07
+        highlights:
+          - Executed 12+ global 3D/4D offshore seismic surveys (North Sea, West Africa) as shift-lead navigator; Licensed Registered Surveyor (2018).
+          - Developed OffshoreOrient Studio (Python) to automate shot-by-shot QC, real-time near-field gun alarms, and noise analysis.
+          - Patented an underwater seismic device identification system; promoted to Assistant Project Manager (2021).
+
     Education:
       - institution: University of Oslo
         location: Norway
