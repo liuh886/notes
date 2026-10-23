@@ -19,12 +19,6 @@ operations:
     label: Open app
     secondary_href: https://github.com/liuh886/alpha_engine
     secondary_label: Repository
-  - id: OP-04
-    title: FlappyK
-    status: MARKET GAME
-    summary: A trading game that tests market intuition on hidden historical K-line windows—trade first, discover the asset and period afterward.
-    href: https://liuh886.github.io/FlappyK/
-    label: Play game
   - id: OP-05
     title: RhythmCoach
     status: SPEECH TRAINING

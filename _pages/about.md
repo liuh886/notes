@@ -38,7 +38,7 @@ home_cta: false
 <div class="hao-home hao-home--production hao-home--alfolio">
   <section class="hao-home-intro" aria-labelledby="hao-home-intro-title">
     <p class="hao-home-eyebrow">Data Scientist · AI Builder</p>
-    <h2 id="hao-home-intro-title">Research records, shipped tools, and agentic AI systems.</h2>
+    <h2 id="hao-home-intro-title">Turning climate and energy data into decision tools.</h2>
     <p>I build evidence-driven data systems for climate, energy, and geoscience—from field observations and reproducible research to public tools that support analysis and decisions.</p>
     <div class="hao-home-actions" aria-label="Homepage contact">
       <a class="hao-home-button hao-home-button--primary" href="https://calendar.app.google/UQ267iEs4MTAGFSd7" target="_blank" rel="noopener noreferrer" aria-label="Contact — book a chat">Contact</a>
@@ -56,8 +56,8 @@ home_cta: false
   <section class="hao-home-section" id="current-work" aria-labelledby="current-work-title">
     <div class="hao-home-section-header">
       <p class="hao-home-eyebrow">Current work</p>
-      <h2 id="current-work-title">Six active products, built and maintained.</h2>
-      <p>Independent products spanning climate intelligence, systematic strategy research, personal software, speech training, market games, and editorial systems.</p>
+      <h2 id="current-work-title">Research records, shipped tools, and agentic AI systems.</h2>
+      <p>Independent products spanning climate intelligence, systematic strategy research, personal software, speech training, and editorial systems.</p>
     </div>
     <div class="hao-home-card-grid">
       {% for operation in site.data.current_operations.operations %}

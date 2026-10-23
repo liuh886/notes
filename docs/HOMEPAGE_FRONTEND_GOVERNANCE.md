@@ -68,7 +68,7 @@ Desktop banner:
 
 The headline remains:
 
-> Research records, shipped tools, and agentic AI systems.
+> Turning climate and energy data into decision tools.
 
 The duplicate native about-page name/role block stays hidden. The real navbar brand stays visible.
 
@@ -84,7 +84,7 @@ Tablet/mobile order:
 
 The active homepage sections are:
 
-1. **Current work** — six actively maintained products and systems;
+1. **Current work** — five actively maintained products and systems;
 2. **Projects & code** — a non-overlapping selection from project and repository archives;
 3. **Notes & publications** — formal research outputs plus selected real writing;
 4. **Contact** — portfolio, booking, professional profiles, CV, publications, and notes archive.

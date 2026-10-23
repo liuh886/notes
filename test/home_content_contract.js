@@ -25,14 +25,15 @@ const about = read("_pages/about.md");
 requireIncludes(
   about,
   [
-    "Six active products, built and maintained.",
+    "Turning climate and energy data into decision tools.",
+    "Research records, shipped tools, and agentic AI systems.",
     "Independent products spanning climate intelligence",
     "site.data.current_operations.operations",
     "operation.secondary_href",
     "deployment.repository_href",
     "deployment.href contains 'http'",
   ],
-  "Homepage content template",
+  "Homepage content template"
 );
 requireAbsent(
   about,
@@ -42,7 +43,7 @@ requireAbsent(
     "site.data.current_operations.upcoming",
     "the next product entering build",
   ],
-  "Homepage content template",
+  "Homepage content template"
 );
 
 const operations = read("_data/current_operations.yml");
@@ -57,8 +58,6 @@ requireIncludes(
     "status: QUANT RESEARCH",
     "href: https://liuh886.github.io/alpha_engine/",
     "secondary_href: https://github.com/liuh886/alpha_engine",
-    "title: FlappyK",
-    "status: MARKET GAME",
     "title: RhythmCoach",
     "status: SPEECH TRAINING",
     "- id: OP-06",
@@ -68,7 +67,7 @@ requireIncludes(
     "label: Open app",
     "secondary_href: https://github.com/liuh886/NewsFlow",
   ],
-  "Current operations data",
+  "Current operations data"
 );
 requireAbsent(
   operations,
@@ -84,7 +83,7 @@ requireAbsent(
     "status: TRAINING TOOL",
     "label: Follow build",
   ],
-  "Current operations data",
+  "Current operations data"
 );
 
 const deployments = read("_data/selected_deployments.yml");
@@ -98,20 +97,15 @@ requireIncludes(
     "href: https://liuh886.github.io/4d-seismic-hub/",
     "repository_href: https://github.com/liuh886/4d-seismic-hub",
   ],
-  "Selected deployments data",
+  "Selected deployments data"
 );
 requireAbsent(deployments, ["https://liuh886.github.io/oceanhub/"], "Selected deployments data");
 
 const oceanHub = read("_projects/2026_oceanhub.md");
 requireIncludes(
   oceanHub,
-  [
-    "https://liuh886.github.io/OceanHub/",
-    "https://github.com/liuh886/OceanHub",
-    "Open OceanHub",
-    "View Source Code",
-  ],
-  "OceanHub project record",
+  ["https://liuh886.github.io/OceanHub/", "https://github.com/liuh886/OceanHub", "Open OceanHub", "View Source Code"],
+  "OceanHub project record"
 );
 requireAbsent(oceanHub, ["https://liuh886.github.io/oceanhub/"], "OceanHub project record");
 
