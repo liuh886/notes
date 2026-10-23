@@ -296,7 +296,7 @@ for (const postFile of postFiles) {
 }
 
 const currentOperations = read("_data/current_operations.yml");
-for (const product of ["CCUS Policy Hub", "Ownly", "AlphaEngine", "RhythmCoach", "NewsFlow"]) {
+for (const product of ["CCUS Policy Hub", "Ownly", "Ductor — AI Agentic Harness", "Climate-to-energy downscaling"]) {
   if (!currentOperations.includes(product)) failures.push(`Current work must retain ${product}.`);
 }
 

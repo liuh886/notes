@@ -12,27 +12,19 @@ operations:
     href: https://liuh886.github.io/ownly/
     label: Open app
   - id: OP-03
-    title: AlphaEngine
-    status: QUANT RESEARCH
-    summary: A governed medium-frequency strategy research platform connecting market data, model research, backtests, signals, and auditable evidence.
-    href: https://liuh886.github.io/alpha_engine/
-    label: Open app
-    secondary_href: https://github.com/liuh886/alpha_engine
-    secondary_label: Repository
-  - id: OP-05
-    title: RhythmCoach
-    status: SPEECH TRAINING
-    summary: A rehearsal tool for speakers and podcasters, combining scripts, recording, timing, and interpretable rhythm feedback.
-    href: https://liuh886.github.io/RhythmCoach/
-    label: Open app
-  - id: OP-06
-    title: NewsFlow
-    status: EDITORIAL SYSTEM
-    summary: An editor-led publication system that turns automated discovery into curated recurring issues through a governed review workflow.
-    href: https://liuh886.github.io/NewsFlow/
-    label: Open app
-    secondary_href: https://github.com/liuh886/NewsFlow
-    secondary_label: Repository
+    title: Ductor — AI Agentic Harness
+    status: AGENT HARNESS
+    summary: Upstream contributions covering Windows and Docker compatibility, Telegram streaming, provider and model discovery, and Antigravity runtime support for an AI agentic harness.
+    href: https://github.com/PleasePrompto/ductor
+    label: Upstream project
+    secondary_href: https://github.com/PleasePrompto/ductor/pull/153
+    secondary_label: Merged contribution
+  - id: OP-04
+    title: Climate-to-energy downscaling
+    status: RESEARCH MODEL
+    summary: Quantile-based bias adjustment and downscaling of CMIP6 wind-speed projections against ERA5, testing when corrected climate data becomes useful for energy-system modeling.
+    href: /projects/2023_downscaling/
+    label: View project
 
 dispatches:
   - date: 2026-08-02
