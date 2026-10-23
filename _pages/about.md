@@ -1,6 +1,6 @@
 ---
 layout: about
-title: Hao's Notes
+title: about
 permalink: /
 nav: false
 nav_order: 0
@@ -37,7 +37,7 @@ home_cta: false
 
 <div class="hao-home hao-home--production hao-home--alfolio">
   <section class="hao-home-intro" aria-labelledby="hao-home-intro-title">
-    <p class="hao-home-eyebrow">Data Scientist · AI Builder</p>
+    <p class="hao-home-eyebrow">Climate &amp; Energy Data Scientist · Caixin ESG30 Young Scholar</p>
     <h2 id="hao-home-intro-title">Turning climate and energy data into decision tools.</h2>
     <p>I build evidence-driven data systems for climate, energy, and geoscience—from field observations and reproducible research to public tools that support analysis and decisions.</p>
     <div class="hao-home-actions" aria-label="Homepage contact">

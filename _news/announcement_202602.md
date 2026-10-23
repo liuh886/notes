@@ -1,5 +1,6 @@
 ---
 layout: post
+title: "Selected for Caixin ESG30 Young Scholars"
 date: 2026-02-14 10:00:00-0400
 inline: true
 related_posts: false

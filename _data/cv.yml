@@ -70,6 +70,13 @@ cv:
           - "Thesis: A WebGIS system for urban infrastructure management."
 
     Publications:
+      - title: Caixin ESG30 Young Scholars
+        authors:
+          - Zhihao Liu
+        publisher: Caixin Media
+        releaseDate: 2026
+        summary: "Focus: building the Digital Base for CCUS clusters — agent-driven digital MRV."
+
       - title: Retrieving snow depth distribution by downscaling ERA5 reanalysis with ICESat-2 laser altimetry
         authors:
           - Zhihao Liu
@@ -103,11 +110,11 @@ cv:
 
     Skills:
       - name: Programming
-        keywords: Python, SQL, Git
+        keywords: Python, SQL, TypeScript / JavaScript, Git
       - name: ML & Statistics
         keywords: Bayesian inference, Kalman filtering, machine learning, evaluation under uncertainty
       - name: Data & Engineering
-        keywords: FastAPI, PostgreSQL, Docker, ETL, REST APIs
+        keywords: FastAPI, PostgreSQL, Docker, ETL, REST APIs, LLM agent harnesses & tooling
       - name: Geospatial
         keywords: Xarray, GeoPandas, Rasterio, Shapely, GIS automation
       - name: Domains

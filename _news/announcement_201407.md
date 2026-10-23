@@ -1,5 +1,6 @@
 ---
 layout: post
+title: "Joined BGP Offshore, CNPC"
 date: 2014-07-01 15:59:00-0400
 inline: true
 related_posts: false
