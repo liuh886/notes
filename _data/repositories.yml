@@ -1,35 +1,40 @@
 github_users:
   - liuh886
 
-github_repos:
-  - liuh886/RhythmCoach
-  - liuh886/FlappyK
-  - liuh886/ownly
-  - liuh886/obsidian-ical-plugin-pro
-  - liuh886/4d-seismic-hub
-  - liuh886/ccus-policy-hub
-  - liuh886/GhostCam
-  - liuh886/http-to-obsidian-cli-gateway
+upstream_contributions:
+  - GlacioHack/xdem
   - PleasePrompto/ductor
-  - liuh886/the_ice_block_expedition_1959
+
+github_repos:
   - liuh886/open-phrasebank
-  - liuh886/GEO4300_2023
+  - liuh886/obsidian-ical-plugin-pro
+  - liuh886/ownly
+  - liuh886/ccus-policy-hub
+  - liuh886/the_ice_block_expedition_1959
 
 repo_metadata:
-  liuh886/RhythmCoach:
-    description: Local-first, lightweight web coach for timed speech practice, rhythm control, recording, and post-session review.
+  GlacioHack/xdem:
+    description: Upstream contribution — GradientDescending coregistration (PR #346, merged 2023), now DhMinimize. DEM and elevation point-cloud analysis.
+    language: Python
+    stars: 220
+    forks: 53
+  PleasePrompto/ductor:
+    description: Upstream contributions — Windows and Docker compatibility, Telegram streaming, provider and model discovery, and Antigravity runtime support for an AI agentic harness.
+    language: Python
+    stars: 466
+    forks: 92
+  liuh886/open-phrasebank:
+    description: Custom phrasebank generation from selected texts and corpora.
+    language: Python
+    stars: 15
+    forks: 0
+  liuh886/obsidian-ical-plugin-pro:
+    description: Obsidian plugin that turns Markdown tasks into standards-compliant iCalendar feeds for Google, Apple, and Outlook.
     language: TypeScript
-    live_url: https://liuh886.github.io/RhythmCoach/
-    live_label: Open app
-    stars: 0
-    forks: 0
-  liuh886/FlappyK:
-    description: Browser trading game built around one rule：beat an unknown historical market by achieving positive excess return.
-    language: JavaScript
-    live_url: https://liuh886.github.io/FlappyK/
-    live_label: Play game
-    stars: 0
-    forks: 0
+    live_url: https://community.obsidian.md/plugins/ical-plugin-pro
+    live_label: Open plugin
+    stars: 5
+    forks: 1
   liuh886/ownly:
     description: Local-first ownership memory for humans and AI agents, with Obsidian, Web, and stable JSON CLI surfaces.
     language: TypeScript
@@ -37,52 +42,15 @@ repo_metadata:
     live_label: Open app
     secondary_url: https://obsidian.md/plugins?id=ownly
     secondary_label: Obsidian plugin
-    stars: 0
-    forks: 0
-  liuh886/obsidian-ical-plugin-pro:
-    description: Obsidian plugin that turns Markdown tasks into standards-compliant iCalendar feeds for Google, Apple, and Outlook.
-    language: TypeScript
-    live_url: https://community.obsidian.md/plugins/ical-plugin-pro
-    live_label: Open plugin
-    stars: 0
-    forks: 0
-  liuh886/4d-seismic-hub:
-    description: Best-practice 4D seismic exploration knowledge base with an AI-agent website interface.
-    language: Python
-    stars: 2
+    stars: 3
     forks: 0
   liuh886/ccus-policy-hub:
-    description: Global CCUS policy hub for tracking policy, regulation, and energy-transition context.
+    description: Agent-first CCUS context layer linking policy, facility, and country evidence; now tracking AIDC configured with CCS.
     language: JavaScript
     stars: 3
     forks: 1
-  liuh886/GhostCam:
-    description: Ultra-light Windows virtual camera for real-time background replacement, blur, and solid-color backgrounds.
-    language: C++
-    stars: 1
-    forks: 0
-  liuh886/http-to-obsidian-cli-gateway:
-    description: Lightweight HTTP proxy gateway that lets sandboxed AI agents reach a host Obsidian CLI safely.
-    language: JavaScript
-    stars: 1
-    forks: 0
-  PleasePrompto/ductor:
-    description: Telegram control layer for Claude Code, Codex CLI, and Gemini CLI with streaming, memory, cron, webhooks, and Docker sandboxing.
-    language: Python
-    stars: 390
-    forks: 68
   liuh886/the_ice_block_expedition_1959:
     description: Energy-balance and heat-equation simulation of the 1959 ice block expedition.
     language: Jupyter Notebook
     stars: 3
-    forks: 0
-  liuh886/open-phrasebank:
-    description: Custom phrasebank generation from selected texts and corpora.
-    language: Python
-    stars: 12
-    forks: 0
-  liuh886/GEO4300_2023:
-    description: Exercise template for GEO4300 Geophysical Data Science.
-    language: Jupyter Notebook
-    stars: 0
     forks: 0

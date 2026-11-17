@@ -1,28 +1,23 @@
 ---
 layout: page
-title: Global Carbon Compass
-description: Decoding global CCUS regulatory dynamics and policy landscapes.
-img: assets/img/ccus-policy-hub.svg
-importance: 2
-year: 2025-2026
+title: CCUS Policy Hub
+description: Agent-first context layer for CCUS policy, facility, and country evidence.
+img: assets/img/ccus-policy-hub-logo.png
+importance: 1
 category: work
+related_publications: false
 ---
 
-> **TL;DR**
-> - **Strategic Gap:** Fragmentation in global CCUS policies creates uncertainty for large-scale energy deployment.
-> - **Data & Architecture:** Aggregating cross-jurisdictional frameworks, tax mechanisms (e.g., 45Q), and ETS protocols into a structured knowledge base.
-> - **Method:** Continuous policy tracking + version-controlled gap analysis + regulatory mapping.
-> - **Strategic Value:** Lowering the information barrier for cross-border carbon management and investment strategy.
-> - **Impact:** A unified "Carbon Compass" that bridges the gap between technical engineering and international policy governance.
-
-## CCUS Policy Hub
-
-The CCUS Policy Hub is more than a repository; it is a strategic decision-support tool. It provides a structured overview of how leading regions (China, EU, US, Middle East) are defining the "rules of the game" for carbon management.
+The CCUS Policy Hub is an agent-first, human-readable context layer for CCUS-domain agents. It connects policy, facility, and country evidence in a governed structure designed for automation, retrieval, and traceability.
 
 ### Key Capabilities:
 - **Regulatory Deep-dives:** Analyzing storage permits and long-term liability frameworks.
 - **Incentive Tracking:** Mapping financial mechanisms to project de-risking strategies.
 - **Geographic Coverage:** Providing a localized yet global context for project developers and ESG strategists.
+
+### Since Nov 2026
+
+Demand-side tracking for AIDC configured with CCS (PRD §10); inclusion needs an identifiable capture step, operator, and storage destination/hub. Seed case: Google Wyoming (702 MW Bloom fuel cells + CCS via AEP, CO₂ to Tallgrass's Eastern Wyoming hub). US 45Q text-layer pilot next (IRS Notice 2026-50).
 
 ## Links
 

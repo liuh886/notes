@@ -1,25 +1,17 @@
-observations:
-  - id: "NOTE-01"
-    title: "NuthKaab Coreg vs Gradient Descent Coreg"
-    status: "GEOSPATIAL / METHODS"
-    summary: "A detailed comparison of DEM co-registration approaches and the design of a gradient-descent coregistration tool."
-    href: "/blog/2023/gdc/"
-    label: "Read note"
-  - id: "NOTE-02"
-    title: "Field Trip to Ice Age Museum"
-    status: "FIELD SCIENCE"
-    summary: "A long-form field note on Quaternary geomorphology and the glacial history visible in the Norwegian landscape."
-    href: "/blog/2022/Quaternary-geomorphology-of-Norway/"
-    label: "Read note"
-  - id: "NOTE-03"
-    title: "The Agentic Brain: A Blueprint for Personal AI OS with LifeOS 5.0"
-    status: "AI / ARCHITECTURE"
-    summary: "A systems note on moving from passive digital storage to an active, agent-readable personal knowledge environment."
-    href: "/blog/2026/lifeos-5-agentic-brain/"
-    label: "Read note"
-  - id: "NOTE-04"
-    title: "ICESat-2 vs DTM1, DTM10, Copernicus30, FABDEM"
-    status: "GEOSPATIAL / DATASET"
-    summary: "A practical comparison of four elevation products against ICESat-2, covering co-registration, residual terrain bias, uncertainty, and bias-correction limits."
-    href: "/blog/2023/dataset/"
-    label: "Read note"
+field_observations:
+  - id: NOTE-01
+    title: Gradient Descent Coregistration (GDC)
+    summary: Standalone v0.1 repo live (gradient-descent-coregistration) — sparse-point DEM QC with a compass search that beats L-BFGS-B on synthetic tests; real-data benchmark pending.
+    href: /blog/2023/gdc/
+  - id: NOTE-02
+    title: 4D seismic repeatability
+    summary: Practical QA notes for 4D seismic repeatability from the Qatar offshore programme.
+    href: /blog/2023/4d-seismic-qa/
+  - id: NOTE-03
+    title: Climate data from a sailor's perspective
+    summary: Lessons from offshore operations that shape how climate and energy data are used.
+    href: /blog/2023/offshore-climate-data/
+  - id: NOTE-04
+    title: Machine learning in oil and gas
+    summary: Where ML helps (and where it does not) in subsurface interpretation and field decisions.
+    href: /blog/2023/ml-in-oil-and-gas/
