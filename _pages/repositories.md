@@ -1,77 +1,127 @@
 ---
 layout: page
+title: repositories
 permalink: /repositories/
-title: Repositories
-nav_title: Repositories
-description: Selected open-source repositories and code projects.
-nav: false
+description: Upstream contributions and selected open-source tools.
+nav: true
 nav_order: 3
 ---
 
-<p class="repo-page-intro">Selected GitHub work, with external stats cards where they are useful and local metadata kept visible when those services are slow or unavailable.</p>
+<!-- profile -->
+<div class="repo-page-intro">
+  <p>Selected GitHub work, with external stats cards where they are useful and local metadata kept visible when those services are slow or unavailable.</p>
+</div>
 
 {% if site.data.repositories.github_users %}
 
 <section class="repo-section" aria-labelledby="github-profile">
   <div class="repo-section__header">
     <h2 id="github-profile">GitHub profile</h2>
-    <span>{{ site.data.repositories.github_users | size }} profile</span>
   </div>
 
   <div class="repo-profile-grid">
     {% for user in site.data.repositories.github_users %}
-      <article class="repo-profile-card">
-        <a class="repo-profile-card__media" href="https://github.com/{{ user }}" target="_blank" rel="noopener noreferrer" aria-label="Open {{ user }} on GitHub">
-          <img
-            class="repo-light"
-            src="{{ site.external_services.github_readme_stats_url }}/api/?username={{ user }}&theme={{ site.repo_theme_light }}&show_icons=true"
-            alt="{{ user }} GitHub profile stats"
-            loading="lazy"
-            onerror="this.style.display='none'"
-          >
-          <img
-            class="repo-dark"
-            src="{{ site.external_services.github_readme_stats_url }}/api/?username={{ user }}&theme={{ site.repo_theme_dark }}&show_icons=true"
-            alt="{{ user }} GitHub profile stats"
-            loading="lazy"
-            onerror="this.style.display='none'"
-          >
-        </a>
-        <a class="repo-profile-card__fallback" href="https://github.com/{{ user }}" target="_blank" rel="noopener noreferrer">
-          <img class="repo-profile-card__avatar" src="https://github.com/{{ user }}.png?size=120" alt="{{ user }} avatar" loading="lazy">
-          <span>
-            <h3><i class="fa-brands fa-github"></i> {{ user }}</h3>
-            <p>Open GitHub profile</p>
-          </span>
-        </a>
+      <div class="repo-profile-card">
+        <div class="repo-profile-card__media">
+          <img class="repo-light" src="https://github-readme-stats.vercel.app/api?username={{ user }}&show_icons=true&theme=default" alt="GitHub stats for {{ user }}" loading="lazy">
+          <img class="repo-dark" src="https://github-readme-stats.vercel.app/api?username={{ user }}&show_icons=true&theme=dark" alt="GitHub stats for {{ user }}" loading="lazy">
+        </div>
+      </div>
+    {% endfor %}
+    <div class="repo-profile-card">
+      <div class="repo-profile-card__media">
+        <img class="repo-light" src="https://github-readme-stats.vercel.app/api/top-langs/?username=liuh886&layout=compact&theme=default" alt="Top languages for liuh886" loading="lazy">
+        <img class="repo-dark" src="https://github-readme-stats.vercel.app/api/top-langs/?username=liuh886&layout=compact&theme=dark" alt="Top languages for liuh886" loading="lazy">
+      </div>
+    </div>
+    <div class="repo-profile-card">
+      <div class="repo-profile-card__media">
+        <img class="repo-light" src="https://github-readme-streak-stats.herokuapp.com/?user=liuh886&theme=default" alt="GitHub streak for liuh886" loading="lazy">
+        <img class="repo-dark" src="https://github-readme-streak-stats.herokuapp.com/?user=liuh886&theme=dark" alt="GitHub streak for liuh886" loading="lazy">
+      </div>
+    </div>
+    <div class="repo-profile-card">
+      <div class="repo-profile-card__media">
+        <img class="repo-light" src="https://github-readme-stats.vercel.app/api/wakatime?username=liuh886&theme=default" alt="Wakatime stats for liuh886" loading="lazy">
+        <img class="repo-dark" src="https://github-readme-stats.vercel.app/api/wakatime?username=liuh886&theme=dark" alt="Wakatime stats for liuh886" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="repo-section" aria-labelledby="github-trophies">
+  <div class="repo-section__header">
+    <h2 id="github-trophies">GitHub trophies</h2>
+  </div>
+
+  <div class="repo-profile-grid">
+    <div class="repo-profile-card">
+      <div class="repo-profile-card__media">
+        <img class="repo-light" src="https://github-profile-trophy.vercel.app/?username=liuh886&theme=flat&no-frame=true&no-bg=true&column=7" alt="GitHub trophies for liuh886" loading="lazy">
+        <img class="repo-dark" src="https://github-profile-trophy.vercel.app/?username=liuh886&theme=dark&no-frame=true&no-bg=true&column=7" alt="GitHub trophies for liuh886" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endif %}
+
+{% if site.data.repositories.upstream_contributions %}
+
+<section class="repo-section" aria-labelledby="upstream-contributions">
+  <div class="repo-section__header">
+    <h2 id="upstream-contributions">Upstream contributions</h2>
+    <span>{{ site.data.repositories.upstream_contributions | size }} projects</span>
+  </div>
+
+  <p>Work merged into libraries maintained by others — described as contributions, not as my own repositories.</p>
+
+  <div class="repo-grid">
+    {% for repo in site.data.repositories.upstream_contributions %}
+      {% assign owner = repo | split: "/" | first %}
+      {% assign name = repo | split: "/" | last %}
+      {% assign meta = site.data.repositories.repo_metadata[repo] %}
+      {% assign show_owner = true %}
+      {% if site.data.repositories.github_users contains owner %}
+        {% assign show_owner = false %}
+      {% endif %}
+      <article class="repo-card">
+        <div class="repo-card__header">
+          <div>
+            <h3>
+              <a href="https://github.com/{{ repo }}">{{ repo }}</a>
+            </h3>
+            {% if meta.language %}
+              <span class="repo-card__language">{{ meta.language }}</span>
+            {% endif %}
+          </div>
+          <span class="repo-chip"><i class="fa-solid fa-code-branch"></i> Contribution</span>
+        </div>
+        <div class="repo-card__body">
+          <p>{{ meta.description }}</p>
+          {% if meta.stars or meta.forks %}
+            <div class="repo-card__stats">
+              {% if meta.stars %}<span>★ {{ meta.stars }}</span>{% endif %}
+              {% if meta.forks %}<span>⑂ {{ meta.forks }}</span>{% endif %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="repo-card__actions">
+          <a class="repo-card__cta repo-card__cta--primary" href="https://github.com/{{ repo }}">View Source Code</a>
+          {% if meta.live_url %}
+            <a class="repo-card__cta" href="{{ meta.live_url }}">{{ meta.live_label | default: "Open live site" }}</a>
+          {% endif %}
+          {% if meta.secondary_url %}
+            <a class="repo-card__cta" href="{{ meta.secondary_url }}">{{ meta.secondary_label | default: "Secondary link" }}</a>
+          {% endif %}
+        </div>
+        <div class="repo-card__media">
+          <img class="repo-light" src="https://github-readme-stats.vercel.app/api/pin/?username={{ owner }}&repo={{ name }}&show_owner={{ show_owner }}&theme=default" alt="GitHub repository card for {{ repo }}" loading="lazy">
+          <img class="repo-dark" src="https://github-readme-stats.vercel.app/api/pin/?username={{ owner }}&repo={{ name }}&show_owner={{ show_owner }}&theme=dark" alt="GitHub repository card for {{ repo }}" loading="lazy">
+        </div>
       </article>
     {% endfor %}
   </div>
-
-{% if site.repo_trophies.enabled %}
-{% for user in site.data.repositories.github_users %}
-
-<article class="repo-trophy-card repo-section">
-<a class="repo-trophy-card__media" href="https://github.com/ryo-ma/github-profile-trophy" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile trophies">
-<img
-            class="repo-light"
-            src="{{ site.external_services.github_profile_trophy_url }}/?username={{ user }}&theme={{ site.repo_trophies.theme_light }}&locale={{ site.lang }}&margin-w=15&margin-h=15&no-bg=true&rank=-C&column=6"
-            alt="{{ user }} GitHub trophies"
-            loading="lazy"
-            onerror="this.style.display='none'"
-          >
-<img
-            class="repo-dark"
-            src="{{ site.external_services.github_profile_trophy_url }}/?username={{ user }}&theme={{ site.repo_trophies.theme_dark }}&locale={{ site.lang }}&margin-w=15&margin-h=15&no-bg=true&rank=-C&column=6"
-            alt="{{ user }} GitHub trophies"
-            loading="lazy"
-            onerror="this.style.display='none'"
-          >
-</a>
-</article>
-{% endfor %}
-{% endif %}
-
 </section>
 
 {% endif %}
@@ -80,86 +130,52 @@ nav_order: 3
 
 <section class="repo-section" aria-labelledby="github-repositories">
   <div class="repo-section__header">
-    <h2 id="github-repositories">Selected repositories</h2>
+    <h2 id="github-repositories">Own tools</h2>
     <span>{{ site.data.repositories.github_repos | size }} repos</span>
   </div>
 
   <div class="repo-grid">
     {% for repo in site.data.repositories.github_repos %}
-      {% assign repo_parts = repo | split: "/" %}
-      {% assign owner = repo_parts[0] %}
-      {% assign name = repo_parts[1] %}
+      {% assign owner = repo | split: "/" | first %}
+      {% assign name = repo | split: "/" | last %}
       {% assign meta = site.data.repositories.repo_metadata[repo] %}
       {% assign show_owner = true %}
       {% if site.data.repositories.github_users contains owner %}
         {% assign show_owner = false %}
       {% endif %}
       <article class="repo-card">
-        <a class="repo-card__stats" href="https://github.com/{{ repo }}" target="_blank" rel="noopener noreferrer" aria-label="Open {{ repo }} on GitHub">
-          <img
-            class="repo-light"
-            src="{{ site.external_services.github_readme_stats_url }}/api/pin/?username={{ owner }}&repo={{ name }}&theme={{ site.repo_theme_light }}&show_owner={{ show_owner }}&description_lines_count={{ site.data.repositories.repo_description_lines_max | default: 2 }}"
-            alt="{{ repo }} repository stats"
-            loading="lazy"
-            onerror="this.style.display='none'"
-          >
-          <img
-            class="repo-dark"
-            src="{{ site.external_services.github_readme_stats_url }}/api/pin/?username={{ owner }}&repo={{ name }}&theme={{ site.repo_theme_dark }}&show_owner={{ show_owner }}&description_lines_count={{ site.data.repositories.repo_description_lines_max | default: 2 }}"
-            alt="{{ repo }} repository stats"
-            loading="lazy"
-            onerror="this.style.display='none'"
-          >
-        </a>
-        <div class="repo-card__body">
-          <div class="repo-card__title-row">
-            <div>
-              <h3>{{ name }}</h3>
-              <p><span class="repo-card__owner">{{ owner }}</span></p>
-            </div>
-            <a class="repo-card__cta" href="https://github.com/{{ repo }}" target="_blank" rel="noopener noreferrer" aria-label="Open {{ repo }} on GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-          </div>
-          <div class="repo-card__chips">
-            <span class="repo-chip"><i class="fa-solid fa-code-branch"></i> Repository</span>
+        <div class="repo-card__header">
+          <div>
+            <h3>
+              <a href="https://github.com/{{ repo }}">{{ repo }}</a>
+            </h3>
             {% if meta.language %}
-              <span class="repo-chip">{{ meta.language }}</span>
-            {% endif %}
-            <span class="repo-chip">{{ owner }}/{{ name }}</span>
-          </div>
-          <div class="repo-card__summary">
-            {% if meta.description %}
-              <p>{{ meta.description }}</p>
-            {% else %}
-              <p>Selected source code and project artifacts from {{ owner }}.</p>
-            {% endif %}
-            {% if meta.stars or meta.forks %}
-              <div class="repo-card__metrics" aria-label="{{ repo }} GitHub metrics">
-                {% if meta.stars != nil %}
-                  <span><i class="fa-regular fa-star"></i> {{ meta.stars }}</span>
-                {% endif %}
-                {% if meta.forks != nil %}
-                  <span><i class="fa-solid fa-code-fork"></i> {{ meta.forks }}</span>
-                {% endif %}
-              </div>
+              <span class="repo-card__language">{{ meta.language }}</span>
             {% endif %}
           </div>
-          <div class="repo-card__actions">
-            {% if meta.live_url %}
-              <a class="repo-card__cta repo-card__cta--primary" href="{{ meta.live_url }}" target="_blank" rel="noopener noreferrer">
-                {{ meta.live_label | default: "Open app" }} <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            {% endif %}
-            {% if meta.secondary_url %}
-              <a class="repo-card__cta" href="{{ meta.secondary_url }}" target="_blank" rel="noopener noreferrer">
-                {{ meta.secondary_label | default: "Open link" }} <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            {% endif %}
-            <a class="repo-card__cta" href="https://github.com/{{ repo }}" target="_blank" rel="noopener noreferrer">
-              View repository <i class="fa-brands fa-github"></i>
-            </a>
-          </div>
+          <span class="repo-chip"><i class="fa-solid fa-code-branch"></i> Repository</span>
+        </div>
+        <div class="repo-card__body">
+          <p>{{ meta.description }}</p>
+          {% if meta.stars or meta.forks %}
+            <div class="repo-card__stats">
+              {% if meta.stars %}<span>★ {{ meta.stars }}</span>{% endif %}
+              {% if meta.forks %}<span>⑂ {{ meta.forks }}</span>{% endif %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="repo-card__actions">
+          <a class="repo-card__cta repo-card__cta--primary" href="https://github.com/{{ repo }}">View Source Code</a>
+          {% if meta.live_url %}
+            <a class="repo-card__cta" href="{{ meta.live_url }}">{{ meta.live_label | default: "Open live site" }}</a>
+          {% endif %}
+          {% if meta.secondary_url %}
+            <a class="repo-card__cta" href="{{ meta.secondary_url }}">{{ meta.secondary_label | default: "Secondary link" }}</a>
+          {% endif %}
+        </div>
+        <div class="repo-card__media">
+          <img class="repo-light" src="https://github-readme-stats.vercel.app/api/pin/?username={{ owner }}&repo={{ name }}&show_owner={{ show_owner }}&theme=default" alt="GitHub repository card for {{ repo }}" loading="lazy">
+          <img class="repo-dark" src="https://github-readme-stats.vercel.app/api/pin/?username={{ owner }}&repo={{ name }}&show_owner={{ show_owner }}&theme=dark" alt="GitHub repository card for {{ repo }}" loading="lazy">
         </div>
       </article>
     {% endfor %}
