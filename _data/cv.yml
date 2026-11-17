@@ -45,7 +45,7 @@ cv:
         start_date: 2014-07
         end_date: 2021-07
         highlights:
-          - Executed 12+ global 3D/4D offshore seismic surveys (North Sea, West Africa) as shift-lead navigator; Licensed Registered Surveyor (2018).
+          - Executed 12+ global 3D/4D offshore seismic surveys (North Sea, West Africa); Licensed Registered Surveyor (2018).
           - Developed OffshoreOrient Studio (Python) to automate shot-by-shot QC, real-time near-field gun alarms, and noise analysis.
           - Patented an underwater seismic device identification system; promoted to Assistant Project Manager (2021).
 
@@ -75,7 +75,7 @@ cv:
           - Zhihao Liu
         publisher: Caixin Media
         releaseDate: 2026
-        summary: "Focus: building the Digital Base for CCUS clusters — agent-driven digital MRV."
+        summary: "Report on China's domestic CCUS industry development, presented at the ESG30 forum on 13 November 2026 and included in the 2026 China ESG Development White Paper. Focus: building the Digital Base for CCUS clusters — agent-driven digital MRV."
 
       - title: Retrieving snow depth distribution by downscaling ERA5 reanalysis with ICESat-2 laser altimetry
         authors:

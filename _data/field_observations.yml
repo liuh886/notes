@@ -2,7 +2,7 @@ observations:
   - id: "NOTE-01"
     title: "NuthKaab Coreg vs Gradient Descent Coreg"
     status: "GEOSPATIAL / METHODS"
-    summary: "A detailed comparison of DEM co-registration approaches and the design of a gradient-descent coregistration tool."
+    summary: "Standalone v0.1 repo live (gradient-descent-coregistration) — sparse-point DEM QC with a compass search that beats L-BFGS-B on synthetic tests; real-data benchmark pending."
     href: "/blog/2023/gdc/"
     label: "Read note"
   - id: "NOTE-02"

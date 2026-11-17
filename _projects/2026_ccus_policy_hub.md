@@ -24,6 +24,10 @@ The CCUS Policy Hub is more than a repository; it is a strategic decision-suppor
 - **Incentive Tracking:** Mapping financial mechanisms to project de-risking strategies.
 - **Geographic Coverage:** Providing a localized yet global context for project developers and ESG strategists.
 
+### Since Nov 2026
+
+Demand-side tracking for AIDC configured with CCS (PRD §10); inclusion needs an identifiable capture step, operator, and storage destination/hub. Seed case: Google Wyoming (702 MW Bloom fuel cells + CCS via AEP, CO₂ to Tallgrass's Eastern Wyoming hub). US 45Q text-layer pilot next (IRS Notice 2026-50).
+
 ## Links
 
 - Source Code: [https://github.com/liuh886/ccus-policy-hub](https://github.com/liuh886/ccus-policy-hub)

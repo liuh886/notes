@@ -27,5 +27,5 @@ Key workstreams:
 
 ## Current status
 
-The research is ongoing. I can share slides and detailed materials privately.
+The ESG30 report was presented on 13 November 2026 and included in the 2026 China ESG Development White Paper. Slides and detailed materials available on request.
 
