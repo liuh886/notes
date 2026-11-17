@@ -15,29 +15,30 @@ cv:
     Experience:
       - company: BGP CNPC
         position: Business Development Manager (New Energy)
-        location: Tianjin, China
-        start_date: 2024-06
-        end_date: ""
-        highlights:
-          - Architecting Digital Carbon Monitoring & MRV frameworks for offshore CO₂ transport & storage.
-          - Leading CCUS and offshore CCS market development and investment proposals.
-          - Designing and delivering the CCUS Policy Hub, an agent-first context layer.
+        location: China
+        start_date: 2024-07
+        end_date: present
+        summary: Client-facing work translating technical constraints into commercial proposals and delivery plans; architecting Digital Carbon Monitoring & MRV frameworks to strengthen a data-to-decision mindset.
+
       - company: LIU GEOCONSULTING
         position: Principal
-        location: Oslo, Norway
-        start_date: 2023-01
+        location: Norway
+        start_date: 2023-12
         end_date: 2024-06
         highlights:
-          - Built Eurostar — a real-time state-estimation prototype for a fleet of trains.
-          - Developed data-engineering patterns for streaming and batch geospatial data.
+          - Built a real-time state-estimation prototype with Unscented Kalman Filter, FastAPI, and PostgreSQL.
+          - Converted modeling output into user-facing service features as a blueprint for scalable B2B decision tools.
+          - Consulting service for Eurostar.
+
       - company: University of Oslo
         position: Research Assistant (Energy & Climate Data Science)
         location: Oslo, Norway
-        start_date: 2021-08
+        start_date: 2021-11
         end_date: 2023-12
         highlights:
-          - Energy & climate data science research (satellite laser altimetry, ML, reanalysis).
-          - Snow depth retrieval and downscaling methods.
+          - Bias correction and spatial downscaling workflows for climate/weather data with energy applications in mind.
+          - Remote sensing and ML for seasonal snow; contributed to reproducible research workflows and open-source tooling.
+
       - company: BGP Offshore, CNPC
         position: Field Engineer & Assistant Project Manager
         location: Global Offshore
@@ -47,23 +48,27 @@ cv:
           - Executed 12+ global 3D/4D offshore seismic surveys (North Sea, West Africa); Licensed Registered Surveyor (2018).
           - Developed OffshoreOrient Studio (Python) to automate shot-by-shot QC, real-time near-field gun alarms, and noise analysis.
           - Patented an underwater seismic device identification system; promoted to Assistant Project Manager (2021).
+
     Education:
       - institution: University of Oslo
+        location: Norway
         area: Geoscience
-        studyType: MSc
-        location: Oslo, Norway
-        start_date: 2021-08
-        end_date: 2023-06
+        studyType: M.Sc.
+        start_date: 2021
+        end_date: 2023
+        score: GPA 3.9/4.0
         highlights:
-          - Thesis: snow depth retrieval/downscaling using satellite laser altimetry, machine learning, and climate reanalysis.
+          - "Thesis: Snow depth retrieval and downscaling using satellite laser altimetry, machine learning, and climate reanalysis."
+
       - institution: Southwest Petroleum University
+        location: China
         area: Geodesy & Geomatics
-        studyType: BSc
-        location: Chengdu, China
-        start_date: 2010-09
-        end_date: 2014-06
+        studyType: B.Sc.
+        start_date: 2010
+        end_date: 2014
         highlights:
-          - Thesis: a WebGIS system for urban infrastructure management.
+          - "Thesis: A WebGIS system for urban infrastructure management."
+
     Publications:
       - title: Caixin ESG30 Young Scholars
         authors:
@@ -71,43 +76,46 @@ cv:
         publisher: Caixin Media
         releaseDate: 2026
         summary: "Report on China's domestic CCUS industry development, presented at the ESG30 forum on 13 November 2026 and included in the 2026 China ESG Development White Paper. Focus: building the Digital Base for CCUS clusters — agent-driven digital MRV."
-      - title: How to build a small yet powerful WebGIS platform for city infrastructure management
+
+      - title: Retrieving snow depth distribution by downscaling ERA5 reanalysis with ICESat-2 laser altimetry
         authors:
           - Zhihao Liu
-          - Jun Wang
-          - Lian Wu
-          - Shijie Wang
-          - Yubin Deng
-        publisher: Computer Applications and Software
-        releaseDate: 2014
-        summary: "BSc thesis work on a WebGIS platform for urban infrastructure."
+        publisher: Cold Regions Science and Technology
+        releaseDate: 2025
+        summary: Cryosphere remote sensing and machine learning.
+
+      - title: Snow depth retrieval and downscaling using satellite laser altimetry, machine learning and climate reanalysis
+        authors:
+          - Zhihao Liu
+        publisher: IUGG 2023 Berlin
+        releaseDate: 2023
+
+      - title: Unlocking the Secrets of Snow Depth
+        authors:
+          - Zhihao Liu
+        publisher: Student presentation at SDG Conference, University of Oslo
+        releaseDate: 2023
+
+      - title: An identification system for underwater seismic devices
+        authors:
+          - Zhihao Liu
+        publisher: Patent, PRC
+        releaseDate: 2022
+
+      - title: Offshoreorient v1.0
+        authors:
+          - Zhihao Liu
+        publisher: Software Copyright
+        releaseDate: 2020
+
     Skills:
-      - name: Climate & Energy
-        keywords:
-          - CCUS
-          - Carbon MRV
-          - Energy Data
-          - Geospatial Analysis
-          - Remote Sensing
-      - name: AI & Agents
-        keywords:
-          - LLM Agents
-          - Agentic AI
-          - FastAPI
-          - Docker
-          - ETL
-          - PostgreSQL
-      - name: Data Science
-        keywords:
-          - Python
-          - SQL
-          - Git
-          - Bayesian Inference
-          - Kalman Filtering
-          - Machine Learning
-      - name: Field Operations
-        keywords:
-          - Marine Seismic Acquisition
-          - 3D/4D Seismic
-          - Survey QC
-          - Real-Time Monitoring
+      - name: Programming
+        keywords: Python, SQL, TypeScript / JavaScript, Git
+      - name: ML & Statistics
+        keywords: Bayesian inference, Kalman filtering, machine learning, evaluation under uncertainty
+      - name: Data & Engineering
+        keywords: FastAPI, PostgreSQL, Docker, ETL, REST APIs, LLM agent harnesses & tooling
+      - name: Geospatial
+        keywords: Xarray, GeoPandas, Rasterio, Shapely, GIS automation
+      - name: Domains
+        keywords: CCUS, climate and energy datasets, remote sensing, geophysical data

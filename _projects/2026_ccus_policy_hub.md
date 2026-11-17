@@ -1,14 +1,23 @@
 ---
 layout: page
-title: CCUS Policy Hub
-description: Agent-first context layer for CCUS policy, facility, and country evidence.
-img: assets/img/ccus-policy-hub-logo.png
-importance: 1
+title: Global Carbon Compass
+description: Decoding global CCUS regulatory dynamics and policy landscapes.
+img: assets/img/ccus-policy-hub.svg
+importance: 2
+year: 2025-2026
 category: work
-related_publications: false
 ---
 
-The CCUS Policy Hub is an agent-first, human-readable context layer for CCUS-domain agents. It connects policy, facility, and country evidence in a governed structure designed for automation, retrieval, and traceability.
+> **TL;DR**
+> - **Strategic Gap:** Fragmentation in global CCUS policies creates uncertainty for large-scale energy deployment.
+> - **Data & Architecture:** Aggregating cross-jurisdictional frameworks, tax mechanisms (e.g., 45Q), and ETS protocols into a structured knowledge base.
+> - **Method:** Continuous policy tracking + version-controlled gap analysis + regulatory mapping.
+> - **Strategic Value:** Lowering the information barrier for cross-border carbon management and investment strategy.
+> - **Impact:** A unified "Carbon Compass" that bridges the gap between technical engineering and international policy governance.
+
+## CCUS Policy Hub
+
+The CCUS Policy Hub is more than a repository; it is a strategic decision-support tool. It provides a structured overview of how leading regions (China, EU, US, Middle East) are defining the "rules of the game" for carbon management.
 
 ### Key Capabilities:
 - **Regulatory Deep-dives:** Analyzing storage permits and long-term liability frameworks.

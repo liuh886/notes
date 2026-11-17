@@ -13,6 +13,27 @@ github_repos:
   - liuh886/the_ice_block_expedition_1959
 
 repo_metadata:
+  liuh886/ownly:
+    description: Local-first ownership memory for humans and AI agents, with Obsidian, Web, and stable JSON CLI surfaces.
+    language: TypeScript
+    live_url: https://liuh886.github.io/ownly/
+    live_label: Open app
+    secondary_url: https://obsidian.md/plugins?id=ownly
+    secondary_label: Obsidian plugin
+    stars: 3
+    forks: 0
+  liuh886/obsidian-ical-plugin-pro:
+    description: Obsidian plugin that turns Markdown tasks into standards-compliant iCalendar feeds for Google, Apple, and Outlook.
+    language: TypeScript
+    live_url: https://community.obsidian.md/plugins/ical-plugin-pro
+    live_label: Open plugin
+    stars: 5
+    forks: 1
+  liuh886/ccus-policy-hub:
+    description: Agent-first CCUS context layer linking policy, facility, and country evidence; now tracking AIDC configured with CCS.
+    language: JavaScript
+    stars: 3
+    forks: 1
   GlacioHack/xdem:
     description: Upstream contribution — GradientDescending coregistration (PR #346, merged 2023), now DhMinimize. DEM and elevation point-cloud analysis.
     language: Python
@@ -23,34 +44,13 @@ repo_metadata:
     language: Python
     stars: 466
     forks: 92
-  liuh886/open-phrasebank:
-    description: Custom phrasebank generation from selected texts and corpora.
-    language: Python
-    stars: 15
-    forks: 0
-  liuh886/obsidian-ical-plugin-pro:
-    description: Obsidian plugin that turns Markdown tasks into standards-compliant iCalendar feeds for Google, Apple, and Outlook.
-    language: TypeScript
-    live_url: https://community.obsidian.md/plugins/ical-plugin-pro
-    live_label: Open plugin
-    stars: 5
-    forks: 1
-  liuh886/ownly:
-    description: Local-first ownership memory for humans and AI agents, with Obsidian, Web, and stable JSON CLI surfaces.
-    language: TypeScript
-    live_url: https://liuh886.github.io/ownly/
-    live_label: Open app
-    secondary_url: https://obsidian.md/plugins?id=ownly
-    secondary_label: Obsidian plugin
-    stars: 3
-    forks: 0
-  liuh886/ccus-policy-hub:
-    description: Agent-first CCUS context layer linking policy, facility, and country evidence; now tracking AIDC configured with CCS.
-    language: JavaScript
-    stars: 3
-    forks: 1
   liuh886/the_ice_block_expedition_1959:
     description: Energy-balance and heat-equation simulation of the 1959 ice block expedition.
     language: Jupyter Notebook
     stars: 3
+    forks: 0
+  liuh886/open-phrasebank:
+    description: Custom phrasebank generation from selected texts and corpora.
+    language: Python
+    stars: 15
     forks: 0

@@ -1,19 +1,31 @@
 ---
 layout: page
-title: Digital Carbon Monitoring & MRV
-description: A proposed framework for offshore CO₂ transport and storage.
-img: assets/img/2026_ccus_dmrv.jpg
-importance: 1
+title: dMRV is the key;
+description: Digital MRV and disclosure framework design for CCUS clusters.
+img: assets/img/ccus-dmrv.svg
+importance: 0
+year: 2025-2026
 category: work
-related_publications: false
 ---
 
-Digital Carbon Monitoring & MRV is a proposed framework for offshore CO₂ transport and storage. It combines satellite, vessel, and sensor data to verify storage integrity and support regulatory compliance.
+> **TL;DR**
+> - **Problem:** Cluster-based CCUS needs trustworthy, auditable MRV and disclosure across multiple emitters, pipelines, and storage operators.
+> - **Data:** Standards + policy requirements + project interfaces + monitoring telemetry (including emerging fiber/DAS-style sensing).
+> - **Method:** Gap analysis (single-project MRV vs. cluster reality) + risk-boundary mapping + a tiered digital MRV & disclosure design.
+> - **Output:** A practical dMRV blueprint: boundary definition, data fields, quality tiers, disclosure obligations, and governance touchpoints.
+> - **Impact:** Higher trust for regulators/financiers and a clearer path to “bankable” CCUS cluster development.
+> - **Links:** Slides and supporting materials available on request.
+
+## What I did
+
+This project focuses on **digital Monitoring, Reporting & Verification (dMRV)** for **CCUS clusters** (shared infrastructure and multi-party operations).
+
+Key workstreams:
+- Clarified why cluster CCUS breaks the “single-project MRV” assumptions (boundaries, responsibility, risk-sharing).
+- Framed MRV as an infrastructure for **trust**: compliance evidence + financing signal, not just reporting.
+- Designed a **tiered** digital disclosure model to translate engineering-quality data into governance/finance language.
 
 ## Current status
 
 The ESG30 report was presented on 13 November 2026 and included in the 2026 China ESG Development White Paper. Slides and detailed materials available on request.
 
-## Links
-
-- ESG30 report: <span class="text-muted">Link to be added</span>

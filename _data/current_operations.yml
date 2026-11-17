@@ -4,30 +4,35 @@ operations:
     status: CLIMATE INTELLIGENCE
     summary: Agent-first CCUS context layer linking policy, facility, and country evidence; now tracking AIDC configured with CCS (PRD §10, Nov 2026).
     href: https://liuh886.github.io/ccus-policy-hub/
-    href_label: Open Policy Hub
-    secondary_href: https://github.com/liuh886/ccus-policy-hub
-    secondary_label: Source Code
+    label: Open system
   - id: OP-02
     title: Ductor — AI Agentic Harness
     status: AGENT HARNESS
-    summary: A fast, minimal, cross-platform harness for LLM agents, with a Python API, CLI, and provider routing.
+    summary: Upstream contributions covering Windows and Docker compatibility, Telegram streaming, provider and model discovery, and Antigravity runtime support for an AI agentic harness.
     href: https://github.com/PleasePrompto/ductor
-    href_label: Open Ductor
-    secondary_href: https://pypi.org/project/ductor-ai/
-    secondary_label: PyPI
+    label: Upstream project
+    secondary_href: https://github.com/PleasePrompto/ductor/pull/153
+    secondary_label: Merged contribution
   - id: OP-03
     title: Climate-to-energy downscaling
     status: RESEARCH MODEL
-    summary: ML-downscaled snow and water resources over 5 km grids, published in Journal of Glaciology and Remote Sensing of Environment.
-    href: /projects/2026-climate-to-energy-downscaling/
-    href_label: Open project
-    secondary_href: https://github.com/liuh886/Climate-to-energy-downscaling
-    secondary_label: Source Code
+    summary: Quantile-based bias adjustment and downscaling of CMIP6 wind-speed projections against ERA5, testing when corrected climate data becomes useful for energy-system modeling.
+    href: /projects/2023_downscaling/
+    label: View project
   - id: OP-04
     title: Ownly
     status: LOCAL-FIRST APP
-    summary: Local-first ownership memory for humans and AI agents, with Obsidian, Web, and stable JSON CLI surfaces.
+    summary: A local-first ownership memory and decision ledger for tracking what you own, what it costs, how you use it, and what you learn.
     href: https://liuh886.github.io/ownly/
-    href_label: Open Ownly
-    secondary_href: https://github.com/liuh886/ownly
-    secondary_label: Source Code
+    label: Open app
+
+dispatches:
+  - date: 2026-08-02
+    label: Shell reset
+    text: Mission Log homepage moved away from legacy news and into a task-record homepage architecture.
+  - date: 2026-08-02
+    label: Product lane
+    text: Active systems are now treated as maintained product and research lanes rather than chronological updates.
+  - date: 2026-08-02
+    label: Design direction
+    text: The homepage should read as a working control surface for a solo research and product practice, not as a theme demo.
