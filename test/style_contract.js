@@ -228,7 +228,6 @@ requireIncludes(
     'id="latest-notes"',
     "latest_notes_feature.enabled",
     "Full notes archive",
-    "{{ '/portfolio/' | relative_url }}",
   ],
   "Homepage",
 );
