@@ -48,7 +48,7 @@ requireAbsent(plugin, ["def self.apply_home_portfolio_link(page)", 'data-hao-por
 const aboutPage = read("_pages/about.md");
 requireIncludes(
   aboutPage,
-  ['<div class="hao-home-contact-links">', "<a href=\"{{ '/portfolio/' | relative_url }}\">Portfolio</a>"],
+  ['<div class="hao-home-contact-links">'],
   "Homepage source"
 );
 

@@ -229,7 +229,6 @@ home_cta: false
       <h2 id="contact-title">Book a conversation or browse the full record.</h2>
     </div>
     <div class="hao-home-contact-links">
-      <a href="{{ '/portfolio/' | relative_url }}">Portfolio</a>
       <a href="https://calendar.app.google/UQ267iEs4MTAGFSd7" target="_blank" rel="noopener noreferrer">Book a chat</a>
       <a href="https://github.com/liuh886" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://www.linkedin.com/in/liuzhihao" target="_blank" rel="noopener noreferrer">LinkedIn</a>

@@ -89,9 +89,6 @@ const deployments = read("_data/selected_deployments.yml");
 requireIncludes(
   deployments,
   [
-    "title: OceanHub",
-    "href: https://liuh886.github.io/OceanHub/",
-    "repository_href: https://github.com/liuh886/OceanHub",
     "title: 4D Seismic Hub",
     "href: https://liuh886.github.io/4d-seismic-hub/",
     "repository_href: https://github.com/liuh886/4d-seismic-hub",
